@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "colored_trapdoors",
+  "ingredients": [
+    {
+      "item": "minecraft:cyan_dye"
+    },
+    {
+      "tag": "minecraft:wooden_trapdoors"
+    }
+  ],
+  "result": {
+    "item": "extension:cyan_trapdoor"
+  }
+}

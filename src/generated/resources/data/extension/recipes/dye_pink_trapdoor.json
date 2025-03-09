@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "colored_trapdoors",
+  "ingredients": [
+    {
+      "item": "minecraft:pink_dye"
+    },
+    {
+      "tag": "minecraft:wooden_trapdoors"
+    }
+  ],
+  "result": {
+    "item": "extension:pink_trapdoor"
+  }
+}

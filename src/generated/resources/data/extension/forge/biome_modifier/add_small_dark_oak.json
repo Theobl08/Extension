@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#forge:is_plains",
+  "features": "extension:samll_dark_oak_placed",
+  "step": "vegetal_decoration"
+}

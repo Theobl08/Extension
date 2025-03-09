@@ -1,0 +1,10 @@
+{
+    "pack": {
+        "description": "Fix models for Sandstone Wall and Sandstone Upside-down Stairs",
+        "pack_format": 15,
+        "supported_formats":[7,40]
+    },
+    "fusion": {
+        "overrides_folder": "fusion-overrides"
+    }
+}

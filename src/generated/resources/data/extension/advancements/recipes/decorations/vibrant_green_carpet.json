@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "extension:vibrant_green_carpet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_vibrant_green_wool": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extension:vibrant_green_wool"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_vibrant_green_wool",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "extension:vibrant_green_carpet"
+    ]
+  },
+  "sends_telemetry_event": false
+}

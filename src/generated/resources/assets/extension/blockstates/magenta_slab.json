@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "extension:block/magenta_slab"
+    },
+    "type=double": {
+      "model": "extension:block/magenta_planks"
+    },
+    "type=top": {
+      "model": "extension:block/magenta_slab_top"
+    }
+  }
+}

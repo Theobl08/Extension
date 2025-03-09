@@ -1,0 +1,23 @@
+{
+  "values": [
+    "extension:stone_wall",
+    "extension:polished_granite_wall",
+    "extension:polished_diorite_wall",
+    "extension:polished_andesite_wall",
+    "extension:prismarine_brick_wall",
+    "extension:dark_prismarine_wall",
+    "extension:purpur_wall",
+    "extension:quartz_wall",
+    "extension:smooth_quartz_wall",
+    "extension:blue_nether_brick_wall",
+    "extension:soul_sandstone_wall",
+    "extension:cut_copper_wall",
+    "extension:exposed_cut_copper_wall",
+    "extension:weathered_cut_copper_wall",
+    "extension:oxidized_cut_copper_wall",
+    "extension:waxed_cut_copper_wall",
+    "extension:waxed_exposed_cut_copper_wall",
+    "extension:waxed_weathered_cut_copper_wall",
+    "extension:waxed_oxidized_cut_copper_wall"
+  ]
+}

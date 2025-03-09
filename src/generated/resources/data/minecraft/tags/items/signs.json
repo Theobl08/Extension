@@ -1,0 +1,20 @@
+{
+  "values": [
+    "extension:white_sign",
+    "extension:light_gray_sign",
+    "extension:gray_sign",
+    "extension:black_sign",
+    "extension:brown_sign",
+    "extension:red_sign",
+    "extension:orange_sign",
+    "extension:yellow_sign",
+    "extension:lime_sign",
+    "extension:green_sign",
+    "extension:cyan_sign",
+    "extension:light_blue_sign",
+    "extension:blue_sign",
+    "extension:purple_sign",
+    "extension:magenta_sign",
+    "extension:pink_sign"
+  ]
+}

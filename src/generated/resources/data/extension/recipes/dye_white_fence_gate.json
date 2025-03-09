@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "colored_fence_gates",
+  "ingredients": [
+    {
+      "item": "minecraft:white_dye"
+    },
+    {
+      "tag": "minecraft:fence_gates"
+    }
+  ],
+  "result": {
+    "item": "extension:white_fence_gate"
+  }
+}

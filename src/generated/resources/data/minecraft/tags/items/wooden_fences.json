@@ -1,0 +1,20 @@
+{
+  "values": [
+    "extension:white_fence",
+    "extension:light_gray_fence",
+    "extension:gray_fence",
+    "extension:black_fence",
+    "extension:brown_fence",
+    "extension:red_fence",
+    "extension:orange_fence",
+    "extension:yellow_fence",
+    "extension:lime_fence",
+    "extension:green_fence",
+    "extension:cyan_fence",
+    "extension:light_blue_fence",
+    "extension:blue_fence",
+    "extension:purple_fence",
+    "extension:magenta_fence",
+    "extension:pink_fence"
+  ]
+}

@@ -1,0 +1,7 @@
+// 1.20.1	2023-11-18T17:19:13.2929272	Registries
+40b4dc7835281f042be8023126d191250bf1cb65 data/extension/forge/biome_modifier/add_amethyst_ore.json
+177e7e1e7147e18786205a9d06aa4cdb90211914 data/extension/forge/biome_modifier/add_small_dark_oak.json
+79401037ac8e95eba9c1f187e5548556ea914137 data/extension/worldgen/configured_feature/amethyst_ore.json
+875019ea8d9ba16c2e8c541d40d3d041e237540f data/extension/worldgen/configured_feature/small_dark_oak.json
+b2f8ce64365cb7996f741f0333bfd1a46d156149 data/extension/worldgen/placed_feature/amethyst_ore_placed.json
+28217dabb9fdc72a5aec223486a6c37bc18b5e29 data/extension/worldgen/placed_feature/samll_dark_oak_placed.json

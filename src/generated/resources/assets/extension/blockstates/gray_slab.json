@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "extension:block/gray_slab"
+    },
+    "type=double": {
+      "model": "extension:block/gray_planks"
+    },
+    "type=top": {
+      "model": "extension:block/gray_slab_top"
+    }
+  }
+}

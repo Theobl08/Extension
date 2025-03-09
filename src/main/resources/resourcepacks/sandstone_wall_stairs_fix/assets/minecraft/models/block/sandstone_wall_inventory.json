@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_sandstone_wall_inventory",
+  "textures": {
+    "wall": "minecraft:block/sandstone",
+    "top": "block/sandstone_top"
+  }
+}

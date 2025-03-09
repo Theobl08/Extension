@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "colored_boats",
+  "ingredients": [
+    {
+      "item": "minecraft:red_dye"
+    },
+    {
+      "tag": "minecraft:boats"
+    }
+  ],
+  "result": {
+    "item": "extension:red_boat"
+  }
+}

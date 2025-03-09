@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "colored_fence_gates",
+  "ingredients": [
+    {
+      "item": "minecraft:pink_dye"
+    },
+    {
+      "tag": "minecraft:fence_gates"
+    }
+  ],
+  "result": {
+    "item": "extension:pink_fence_gate"
+  }
+}

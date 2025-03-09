@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "extension:block/white_antiblock"
+    }
+  }
+}

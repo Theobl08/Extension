@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "colored_doors",
+  "ingredients": [
+    {
+      "item": "minecraft:blue_dye"
+    },
+    {
+      "tag": "minecraft:wooden_doors"
+    }
+  ],
+  "result": {
+    "item": "extension:blue_door"
+  }
+}

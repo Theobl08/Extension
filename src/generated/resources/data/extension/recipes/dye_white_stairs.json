@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "colored_stairs",
+  "ingredients": [
+    {
+      "item": "minecraft:white_dye"
+    },
+    {
+      "tag": "minecraft:wooden_stairs"
+    }
+  ],
+  "result": {
+    "item": "extension:white_stairs"
+  }
+}

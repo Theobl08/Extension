@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "extension:violet_carpet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_violet_wool": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extension:violet_wool"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_violet_wool",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "extension:violet_carpet"
+    ]
+  },
+  "sends_telemetry_event": false
+}

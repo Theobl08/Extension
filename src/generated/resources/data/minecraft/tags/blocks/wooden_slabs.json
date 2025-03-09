@@ -1,0 +1,20 @@
+{
+  "values": [
+    "extension:white_slab",
+    "extension:light_gray_slab",
+    "extension:gray_slab",
+    "extension:black_slab",
+    "extension:brown_slab",
+    "extension:red_slab",
+    "extension:orange_slab",
+    "extension:yellow_slab",
+    "extension:lime_slab",
+    "extension:green_slab",
+    "extension:cyan_slab",
+    "extension:light_blue_slab",
+    "extension:blue_slab",
+    "extension:purple_slab",
+    "extension:magenta_slab",
+    "extension:pink_slab"
+  ]
+}

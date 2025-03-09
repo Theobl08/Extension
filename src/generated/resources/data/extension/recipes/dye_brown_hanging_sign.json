@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "colored_hanging_signs",
+  "ingredients": [
+    {
+      "item": "minecraft:brown_dye"
+    },
+    {
+      "tag": "minecraft:hanging_signs"
+    }
+  ],
+  "result": {
+    "item": "extension:brown_hanging_sign"
+  }
+}

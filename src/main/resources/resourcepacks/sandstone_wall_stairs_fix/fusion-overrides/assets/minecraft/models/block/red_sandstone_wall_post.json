@@ -1,0 +1,27 @@
+{
+  "loader": "fusion:model",
+  "type": "connecting",
+  "connections": [
+    {
+      "type": "is_same_block"
+    },
+    {
+      "type": "match_block",
+      "block": "red_sandstone_slab"
+    },
+    {
+      "type": "match_block",
+      "block": "red_sandstone_stairs"
+    },
+    {
+      "type": "match_block",
+      "block": "red_sandstone"
+    }
+  ],
+  "parent": "minecraft:block/template_sandstone_wall_post",
+  "textures": {
+    "wall": "minecraft:block/sandstone/red_sandstone",
+    "top": "minecraft:block/red_sandstone_top",
+    "bottom": "minecraft:block/red_sandstone_bottom"
+  }
+}

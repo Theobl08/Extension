@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "colored_chest_boats",
+  "ingredients": [
+    {
+      "item": "minecraft:green_dye"
+    },
+    {
+      "tag": "minecraft:chest_boats"
+    }
+  ],
+  "result": {
+    "item": "extension:green_chest_boat"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "values": [
+    "#extension:white_logs",
+    "#extension:light_gray_logs",
+    "#extension:gray_logs",
+    "#extension:black_logs",
+    "#extension:brown_logs",
+    "#extension:red_logs",
+    "#extension:orange_logs",
+    "#extension:yellow_logs",
+    "#extension:lime_logs",
+    "#extension:green_logs",
+    "#extension:cyan_logs",
+    "#extension:light_blue_logs",
+    "#extension:blue_logs",
+    "#extension:purple_logs",
+    "#extension:magenta_logs",
+    "#extension:pink_logs"
+  ]
+}

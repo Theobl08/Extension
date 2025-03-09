@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "colored_slabs",
+  "ingredients": [
+    {
+      "item": "minecraft:white_dye"
+    },
+    {
+      "tag": "minecraft:wooden_fences"
+    }
+  ],
+  "result": {
+    "item": "extension:white_fence"
+  }
+}

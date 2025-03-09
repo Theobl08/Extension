@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "extension:cyan_planks"
+    }
+  ],
+  "result": {
+    "item": "extension:cyan_button"
+  }
+}
