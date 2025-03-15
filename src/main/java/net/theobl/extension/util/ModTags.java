@@ -39,7 +39,7 @@ public class ModTags {
 
     public static class Items {
         public static final TagKey<Item> ANTIBLOCK = tag("antiblock");
-//        public static final TagKey<Item> WHITE_LOGS = tag("white_logs");
+        public static final TagKey<Item> DYEABLE_BOATS = tag("dyeable_boats");
 //        public static final TagKey<Item> LIGHT_GRAY_LOGS = tag("light_gray_logs");
 //        public static final TagKey<Item> GRAY_LOGS = tag("gray_logs");
 //        public static final TagKey<Item> BLACK_LOGS = tag("black_logs");

@@ -13,43 +13,49 @@ import net.theobl.extension.mixin.FireBlockMixin;
 
 public class ModVanillaCompat {
     public static void setup() {
-        for (RegistryObject<Block> log : ModBlocks.COLORED_LOGS){
+        for (RegistryObject<Block> log : ModBlocks.COLORED_LOGS) {
             RegistryObject<Block> strippedLog = ModBlocks.COLORED_STRIPPED_LOGS.get(ModBlocks.COLORED_LOGS.indexOf(log));
             registerFlammable(log.get(), 5,5);
             registerFlammable(strippedLog.get(), 5,5);
             registerStrippable(log.get(), strippedLog.get());
         }
 
-        for (RegistryObject<Block> wood : ModBlocks.COLORED_WOODS){
+        for (RegistryObject<Block> wood : ModBlocks.COLORED_WOODS) {
             RegistryObject<Block> strippedWood = ModBlocks.COLORED_STRIPPED_WOODS.get(ModBlocks.COLORED_WOODS.indexOf(wood));
             registerFlammable(wood.get(), 5,5);
             registerFlammable(strippedWood.get(), 5,5);
             registerStrippable(wood.get(), strippedWood.get());
         }
 
-        for (RegistryObject<Block> leaves : ModBlocks.COLORED_LEAVES){
+        for (RegistryObject<Block> leaves : ModBlocks.COLORED_LEAVES) {
             registerFlammable(leaves.get(), 30,60);
         }
 
-        for (RegistryObject<Block> plank : ModBlocks.COLORED_PLANKS){
+        for (RegistryObject<Block> plank : ModBlocks.COLORED_PLANKS) {
             registerFlammable(plank.get(), 5,20);
         }
 
-        for (RegistryObject<Block> stair : ModBlocks.COLORED_STAIRS){
+        for (RegistryObject<Block> stair : ModBlocks.COLORED_STAIRS) {
             registerFlammable(stair.get(), 5,20);
         }
 
-        for (RegistryObject<Block> slab : ModBlocks.COLORED_SLABS){
+        for (RegistryObject<Block> slab : ModBlocks.COLORED_SLABS) {
             registerFlammable(slab.get(), 5,20);
         }
 
-        for (RegistryObject<Block> fence : ModBlocks.COLORED_FENCES){
+        for (RegistryObject<Block> fence : ModBlocks.COLORED_FENCES) {
             registerFlammable(fence.get(), 5,20);
         }
 
-        for (RegistryObject<Block> gate : ModBlocks.COLORED_FENCE_GATES){
+        for (RegistryObject<Block> gate : ModBlocks.COLORED_FENCE_GATES) {
             registerFlammable(gate.get(), 5,20);
         }
+
+        registerFlammable(ModBlocks.PAINTING_PLANKS.get(), 5, 20);
+        registerFlammable(ModBlocks.PAINTING_STAIRS.get(), 5, 20);
+        registerFlammable(ModBlocks.PAINTING_SLAB.get(), 5, 20);
+        registerFlammable(ModBlocks.PAINTING_FENCE.get(), 5, 20);
+        registerFlammable(ModBlocks.PAINTING_FENCE_GATE.get(), 5, 20);
 
         registerFlammable(ModBlocks.OAK_MOSAIC.get(), 5,20);
         registerFlammable(ModBlocks.SPRUCE_MOSAIC.get(), 5,20);
@@ -68,11 +74,6 @@ public class ModVanillaCompat {
         registerFlammable(ModBlocks.MANGROVE_BOOKSHELF.get(), 30,20);
         registerFlammable(ModBlocks.BAMBOO_BOOKSHELF.get(), 30,20);
         registerFlammable(ModBlocks.CHERRY_BOOKSHELF.get(), 30,20);
-
-//        registerFlammable(ModBlocks.WHITE_LEAVES.get(), 30, 60);
-//        registerFlammable(ModBlocks.LIGHT_GRAY_LEAVES.get(), 30, 60);
-//        registerFlammable(ModBlocks.GRAY_LEAVES.get(), 30, 60);
-//        registerFlammable(ModBlocks.BLACK_LEAVES.get(), 30, 60);
 
         registerFlammable(ModBlocks.VIBRANT_RED_WOOL.get(), 30, 60);
         registerFlammable(ModBlocks.DULL_ORANGE_WOOL.get(), 30, 60);

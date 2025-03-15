@@ -312,6 +312,25 @@ public class ModBlocks {
     public static final RegistryObject<Block> WARPED_CRAFTING_TABLE = registerBlock("warped_crafting_table",
             () -> new ModCraftingTableBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)));
 
+    public static final RegistryObject<Block> PAINTING_PLANKS = registerBlock("painting_planks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+    public static final RegistryObject<Block> PAINTING_STAIRS = registerBlock("painting_stairs",
+            () -> new StairBlock(() -> PAINTING_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)));
+    public static final RegistryObject<Block> PAINTING_SLAB = registerBlock("painting_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)));
+    public static final RegistryObject<Block> PAINTING_FENCE = registerBlock("painting_fence",
+            () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)));
+    public static final RegistryObject<Block> PAINTING_FENCE_GATE = registerBlock("painting_fence_gate",
+            () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE), SoundEvents.FENCE_GATE_OPEN, SoundEvents.FENCE_GATE_CLOSE));
+    public static final RegistryObject<Block> PAINTING_DOOR = registerBlock("painting_door",
+            () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR),BlockSetType.OAK));
+    public static final RegistryObject<Block> PAINTING_TRAPDOOR = registerBlock("painting_trapdoor",
+            () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR).isValidSpawn(ModBlocks::never),BlockSetType.OAK));
+    public static final RegistryObject<Block> PAINTING_PRESSURE_PLATE = registerBlock("painting_pressure_plate",
+            () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK));
+    public static final RegistryObject<Block> PAINTING_BUTTON = registerBlock("painting_button",
+            () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON), BlockSetType.OAK, 30, true));
+
     public static final List<RegistryObject<Block>> COLORED_LEAVES = registerColoredLeaves();
     private static List<RegistryObject<Block>> registerColoredLeaves(){
         List<RegistryObject<Block>> leaves = new ArrayList<>();

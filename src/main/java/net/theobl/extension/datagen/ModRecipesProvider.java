@@ -293,6 +293,15 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICK_SLAB.get(), Ingredient.of(ModBlocks.BLUE_NETHER_BRICKS.get()))
                 .unlockedBy(getHasName(ModBlocks.BLUE_NETHER_BRICKS.get()), has(ModBlocks.BLUE_NETHER_BRICKS.get())).save(pWriter);
 
+        twoByTwoPacker(pWriter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PAINTING_PLANKS.get(), Items.STICK);
+        woodenStairs(pWriter, ModBlocks.PAINTING_STAIRS.get(), ModBlocks.PAINTING_PLANKS.get());
+        woodenSlab(pWriter, ModBlocks.PAINTING_SLAB.get(), ModBlocks.PAINTING_PLANKS.get());
+        woodenFence(pWriter, ModBlocks.PAINTING_FENCE.get(), ModBlocks.PAINTING_PLANKS.get());
+        woodenFenceGate(pWriter, ModBlocks.PAINTING_FENCE_GATE.get(), ModBlocks.PAINTING_PLANKS.get());
+        woodenDoor(pWriter, ModBlocks.PAINTING_DOOR.get(), ModBlocks.PAINTING_PLANKS.get());
+        woodenTrapdoor(pWriter, ModBlocks.PAINTING_TRAPDOOR.get(), ModBlocks.PAINTING_PLANKS.get());
+        woodenButton(pWriter, ModBlocks.PAINTING_BUTTON.get(), ModBlocks.PAINTING_PLANKS.get());
+        woodenPressurePlate(pWriter, ModBlocks.PAINTING_PRESSURE_PLATE.get(), ModBlocks.PAINTING_PLANKS.get());
 
         for (RegistryObject<Block> planks : ModBlocks.COLORED_PLANKS){
             int index = ModBlocks.COLORED_PLANKS.indexOf(planks);
@@ -325,7 +334,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         colorBlockWithDye(pWriter, DYES, ModBlocks.COLORED_BUTTONS, ItemTags.WOODEN_BUTTONS, "colored_buttons");
         colorBlockWithDye(pWriter, DYES, ModBlocks.COLORED_SIGNS, ItemTags.SIGNS, "colored_signs");
         colorBlockWithDye(pWriter, DYES, ModBlocks.COLORED_HANGING_SIGNS, ItemTags.HANGING_SIGNS, "colored_hanging_signs");
-        colorItemWithDye(pWriter, DYES, ModItems.COLORED_BOATS, ItemTags.BOATS, "colored_boats");
+        colorItemWithDye(pWriter, DYES, ModItems.COLORED_BOATS, ModTags.Items.DYEABLE_BOATS, "colored_boats");
         colorItemWithDye(pWriter, DYES, ModItems.COLORED_CHEST_BOATS, ItemTags.CHEST_BOATS, "colored_chest_boats");
 
 //        planksFromLog(pWriter, ModBlocks.WHITE_PLANKS.get().asItem(), ModTags.Items.WHITE_LOGS, 4);
@@ -480,13 +489,13 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
 
     protected static void colorItemWithDye(Consumer<FinishedRecipe> pWriter, List<Item> pDye, List<RegistryObject<Item>> pDyeableItems, TagKey<Item> pTag, String pGroup) {
         for(int i = 0; i < pDye.size(); i++) {
-            Item item = pDye.get(i);
+            Item dye = pDye.get(i);
             Item result = pDyeableItems.get(i).get();
             ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result)
-                    .requires(item)
+                    .requires(dye)
                     .requires(pTag)
                     .group(pGroup)
-                    .unlockedBy("has_needed_dye", has(item))
+                    .unlockedBy("has_needed_dye", has(dye))
                     .save(pWriter, new ResourceLocation(Extension.MOD_ID, "dye_" + getItemName(result)));
         }
     }

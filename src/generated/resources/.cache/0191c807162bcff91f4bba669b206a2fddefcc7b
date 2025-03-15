@@ -1,4 +1,4 @@
-// 1.20.1	2025-02-20T17:06:20.8132498	Item Models: extension
+// 1.20.1	2025-03-12T21:15:40.9265131	Item Models: extension
 40e4c8bc20c7e79d744c634598fdd3c958872fb5 assets/extension/models/item/alpha_white_dye.json
 3192f9c00016adaea2dd275a8b944ff2059e7b65 assets/extension/models/item/black_boat.json
 cc96a7864efa94fea95017688584ace1d5710ff0 assets/extension/models/item/black_chest_boat.json
@@ -66,6 +66,7 @@ b8123b2baec04d187e01fe3a43d00f1f7a64f03e assets/extension/models/item/magenta_do
 113b39f30a4fad4bc26bdaab9f42f79fd660c3c5 assets/extension/models/item/orange_door.json
 0811e8a95b554f9fbfba4918630b1029f8464834 assets/extension/models/item/orange_hanging_sign.json
 c6c80ad76d4c73ec826483d7f38bc77f59b5e405 assets/extension/models/item/orange_sign.json
+03a65ba8fc7f5d05964b840b2d7fcd66c96ad8be assets/extension/models/item/painting_door.json
 8e8a41d1c31c4495895fe5e40062afd6c3575d9b assets/extension/models/item/pink_boat.json
 a29a3d19c97b92dd3aa4ca6536bc507f59ce2514 assets/extension/models/item/pink_chest_boat.json
 47c350f9919dcb4b5d88f7ccb9a2bc64fa7cf58d assets/extension/models/item/pink_door.json

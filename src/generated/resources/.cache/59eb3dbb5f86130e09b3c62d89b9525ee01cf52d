@@ -1,4 +1,4 @@
-// 1.20.1	2025-02-23T13:22:23.0163861	Loot Tables
+// 1.20.1	2025-03-12T21:38:31.6566673	Loot Tables
 3f1c5f0383afd5675318343cdb4baac7b7e7cfd1 data/extension/loot_tables/blocks/acacia_bookshelf.json
 aa6f91052111f4bf3434cc3736181ccd49ecb402 data/extension/loot_tables/blocks/acacia_crafting_table.json
 c15b5d4f09af480559f379218f8f1ae1035320ac data/extension/loot_tables/blocks/acacia_mosaic.json
@@ -257,6 +257,15 @@ f11c667a6974f6460e068cc0253c0e56a9237157 data/extension/loot_tables/blocks/orang
 d726fe23e18746ee1d654f737a5b3ab7a8e5a810 data/extension/loot_tables/blocks/orange_wall_sign.json
 98cf5e60076b5c45ab85473f30367a2aa08b37b9 data/extension/loot_tables/blocks/orange_wood.json
 a4044be023f2b5990733e6254a11d57c020358fa data/extension/loot_tables/blocks/oxidized_cut_copper_wall.json
+e016f3ab44a8f7d4af7a0af06f96f5c0741f8d50 data/extension/loot_tables/blocks/painting_button.json
+65b36eefa6fb6d8f62a045cd59227b671f582399 data/extension/loot_tables/blocks/painting_door.json
+502441201227597d9c085c7b149bfec893692dca data/extension/loot_tables/blocks/painting_fence.json
+e333a73f0e22ae7a4a1b57c1a93377c7b41412d4 data/extension/loot_tables/blocks/painting_fence_gate.json
+fae8d7c4cc41df6e4bbe55bec0f2eccf58e1c888 data/extension/loot_tables/blocks/painting_planks.json
+526d97a028e6e486e5142cebf9585b392f9338e8 data/extension/loot_tables/blocks/painting_pressure_plate.json
+1e5e020735ab9920f731a24edcecdcd9fe09e4af data/extension/loot_tables/blocks/painting_slab.json
+a86135340866484a2d6b38a35d16148aeded0e3f data/extension/loot_tables/blocks/painting_stairs.json
+8e434656ed34fb559503dc3333cd883ca892e675 data/extension/loot_tables/blocks/painting_trapdoor.json
 b05e160283948e5f2f117604e1147451013c3847 data/extension/loot_tables/blocks/pink_antiblock.json
 46844e29a15c184aa85cc43883bd35740aca38dc data/extension/loot_tables/blocks/pink_button.json
 8dc9534a80d97416029cd4de99f91cede646be13 data/extension/loot_tables/blocks/pink_door.json

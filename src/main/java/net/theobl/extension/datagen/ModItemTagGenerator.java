@@ -7,6 +7,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -27,6 +28,9 @@ public class ModItemTagGenerator extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
         this.tag(Tags.Items.GLASS_PANES).add(ModBlocks.TINTED_GLASS_PANE.get().asItem());
+
+        this.tag(ItemTags.BOATS).add(ModItems.CRIMSON_BOAT.get(), ModItems.WARPED_BOAT.get());
+        this.tag(ItemTags.CHEST_BOATS).add(ModItems.CRIMSON_CHEST_BOAT.get(), ModItems.WARPED_CHEST_BOAT.get());
 
         for (RegistryObject<Block> antiblock : ModBlocks.ANTIBLOCKS) {
             this.tag(ModTags.Items.ANTIBLOCK).add(antiblock.get().asItem());
@@ -108,6 +112,7 @@ public class ModItemTagGenerator extends ItemTagsProvider {
 
         for (RegistryObject<Item> boat : ModItems.COLORED_BOATS) {
             this.tag(ItemTags.BOATS).add(boat.get());
+            this.tag(ModTags.Items.DYEABLE_BOATS).add(boat.get());
         }
         for (RegistryObject<Item> chestBoat : ModItems.COLORED_CHEST_BOATS) {
             this.tag(ItemTags.CHEST_BOATS).add(chestBoat.get());
@@ -131,8 +136,17 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                         ModItems.SILVER_DYE.get(),
                         ModItems.ALPHA_WHITE_DYE.get());
 
-        this.tag(ItemTags.BOATS).add(ModItems.CRIMSON_BOAT.get(), ModItems.WARPED_BOAT.get());
-
-        this.tag(ItemTags.CHEST_BOATS).add(ModItems.CRIMSON_CHEST_BOAT.get(), ModItems.WARPED_CHEST_BOAT.get());
+        this.tag(ModTags.Items.DYEABLE_BOATS)
+                .add(Items.OAK_BOAT)
+                .add(Items.SPRUCE_BOAT)
+                .add(Items.BIRCH_BOAT)
+                .add(Items.JUNGLE_BOAT)
+                .add(Items.ACACIA_BOAT)
+                .add(Items.DARK_OAK_BOAT)
+                .add(Items.MANGROVE_BOAT)
+                .add(Items.BAMBOO_RAFT)
+                .add(Items.CHERRY_BOAT)
+                .add(ModItems.CRIMSON_BOAT.get())
+                .add(ModItems.WARPED_BOAT.get());
     }
 }

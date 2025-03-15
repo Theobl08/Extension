@@ -216,6 +216,16 @@ public class ModBLockLootTables extends BlockLootSubProvider {
             this.add(leaves.get(), block -> createLeavesDrops(block, ModBlocks.COLORED_LOGS.get(index).get(), NORMAL_LEAVES_SAPLING_CHANCES));
         }
 
+        this.dropSelf(ModBlocks.PAINTING_PLANKS.get());
+        this.dropSelf(ModBlocks.PAINTING_STAIRS.get());
+        this.add(ModBlocks.PAINTING_SLAB.get(), block -> createSlabItemTable(ModBlocks.PAINTING_SLAB.get()));
+        this.dropSelf(ModBlocks.PAINTING_FENCE.get());
+        this.dropSelf(ModBlocks.PAINTING_FENCE_GATE.get());
+        this.add(ModBlocks.PAINTING_DOOR.get(), block -> createDoorTable(ModBlocks.PAINTING_DOOR.get()));
+        this.dropSelf(ModBlocks.PAINTING_TRAPDOOR.get());
+        this.dropSelf(ModBlocks.PAINTING_PRESSURE_PLATE.get());
+        this.dropSelf(ModBlocks.PAINTING_BUTTON.get());
+
 //        this.dropSelf(ModBlocks.WHITE_LOG.get());
 //        this.dropSelf(ModBlocks.WHITE_WOOD.get());
 //        this.dropSelf(ModBlocks.STRIPPED_WHITE_LOG.get());

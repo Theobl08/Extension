@@ -50,6 +50,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.WARPED_BOAT);
         simpleItem(ModItems.WARPED_CHEST_BOAT);
 
+        simpleBlockItem(ModBlocks.PAINTING_DOOR);
+
         for (RegistryObject<Item> item : ModItems.COLORED_SIGNS) {
             simpleItem(item);
         }

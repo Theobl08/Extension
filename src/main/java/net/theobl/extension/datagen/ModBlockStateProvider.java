@@ -160,6 +160,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
         craftingTableBlockWithItem(ModBlocks.CRIMSON_CRAFTING_TABLE,"crimson");
         craftingTableBlockWithItem(ModBlocks.WARPED_CRAFTING_TABLE,"warped");
 
+        blockWithItem(ModBlocks.PAINTING_PLANKS);
+        stairsWithItem(ModBlocks.PAINTING_STAIRS, ModBlocks.PAINTING_PLANKS);
+        slabWithItem(ModBlocks.PAINTING_SLAB, ModBlocks.PAINTING_PLANKS);
+        fenceWithItem(ModBlocks.PAINTING_FENCE, ModBlocks.PAINTING_PLANKS.get());
+        fenceGateWithItem(ModBlocks.PAINTING_FENCE_GATE, ModBlocks.PAINTING_PLANKS.get());
+        doorBlockWithRenderType((DoorBlock) ModBlocks.PAINTING_DOOR.get(),
+                modLoc("block/" + name(ModBlocks.PAINTING_DOOR.get()) + "_bottom"), modLoc("block/" + name(ModBlocks.PAINTING_DOOR.get()) + "_top"), "cutout");
+        trapdoorWithItem(ModBlocks.PAINTING_TRAPDOOR);
+        pressurePlateWithItem(ModBlocks.PAINTING_PRESSURE_PLATE, ModBlocks.PAINTING_PLANKS);
+        buttonWithItem(ModBlocks.PAINTING_BUTTON, ModBlocks.PAINTING_PLANKS);
+
         for (RegistryObject<Block> plank : ModBlocks.COLORED_PLANKS) {
             int index = ModBlocks.COLORED_PLANKS.indexOf(plank);
             blockWithItem(plank);
@@ -359,9 +370,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private void buttonWithItem(RegistryObject<Block> button, RegistryObject<Block> texture) {
         buttonBlock(((ButtonBlock) button.get()), blockTexture(texture.get()));
         simpleBlockItem(button.get(),
-                models().singleTexture(name(button.get()) + "_inventory",
-                        new ResourceLocation("minecraft:block/button_inventory"),
-                        "texture", blockTexture(texture.get())));
+                models().buttonInventory(name(button.get()) + "_inventory", blockTexture(texture.get())));
+//                models().singleTexture(name(button.get()) + "_inventory",
+//                        new ResourceLocation("minecraft:block/button_inventory"),
+//                        "texture", blockTexture(texture.get())));
     }
 
     private void wallWithItem(RegistryObject<Block> wall, Block texture) {
@@ -379,9 +391,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private void fenceWithItem(RegistryObject<Block> fence, Block texture) {
         fenceBlock(((FenceBlock) fence.get()), blockTexture(texture));
         simpleBlockItem(fence.get(),
-                models().singleTexture(name(fence.get()) + "_inventory",
-                        new ResourceLocation("minecraft:block/fence_inventory"),
-                        "texture", blockTexture(texture)));
+                models().fenceInventory(name(fence.get()) + "_inventory", blockTexture(texture)));
+//                models().singleTexture(name(fence.get()) + "_inventory",
+//                        new ResourceLocation("minecraft:block/fence_inventory"),
+//                        "texture", blockTexture(texture)));
     }
 
     private void pillarBlockWithItem(RegistryObject<Block> blockRegistryObject, String side, String bottom, String top) {
