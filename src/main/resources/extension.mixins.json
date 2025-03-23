@@ -5,6 +5,7 @@
   "refmap": "extension.refmap.json",
   "mixins": [
     "AbstractMinecartMixin",
+    "AnimalMixin",
     "DarkOakTreeGrowerMixin",
     "DirtPathBlockMixin",
     "DoorBlockMixin",
