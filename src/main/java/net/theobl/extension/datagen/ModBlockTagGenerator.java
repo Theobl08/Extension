@@ -74,87 +74,56 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         for (RegistryObject<Block> block : ModBlocks.COLORED_PLANKS) {
             this.tag(BlockTags.PLANKS).add(block.get());
         }
-
-//        this.tag(BlockTags.PLANKS)
-//                .add(ModBlocks.WHITE_PLANKS.get())
-//                .add(ModBlocks.LIGHT_GRAY_PLANKS.get())
-//                .add(ModBlocks.GRAY_PLANKS.get())
-//                .add(ModBlocks.BLACK_PLANKS.get());
-
-//        this.tag(BlockTags.WOODEN_STAIRS)
-//                .add(ModBlocks.WHITE_STAIRS.get())
-//                .add(ModBlocks.LIGHT_GRAY_STAIRS.get())
-//                .add(ModBlocks.GRAY_STAIRS.get())
-//                .add(ModBlocks.BLACK_STAIRS.get());
+        this.tag(BlockTags.PLANKS)
+                .add(ModBlocks.PAINTING_PLANKS.get());
 
         for (RegistryObject<Block> block : ModBlocks.COLORED_STAIRS) {
             this.tag(BlockTags.WOODEN_STAIRS).add(block.get());
         }
+        this.tag(BlockTags.WOODEN_STAIRS)
+                .add(ModBlocks.PAINTING_STAIRS.get());
 
         for (RegistryObject<Block> block : ModBlocks.COLORED_SLABS) {
             this.tag(BlockTags.WOODEN_SLABS).add(block.get());
         }
-
-//        this.tag(BlockTags.WOODEN_SLABS)
-//                .add(ModBlocks.WHITE_SLAB.get())
-//                .add(ModBlocks.LIGHT_GRAY_SLAB.get())
-//                .add(ModBlocks.GRAY_SLAB.get())
-//                .add(ModBlocks.BLACK_SLAB.get());
+        this.tag(BlockTags.WOODEN_SLABS)
+                .add(ModBlocks.PAINTING_SLAB.get());
 
         for (RegistryObject<Block> block : ModBlocks.COLORED_FENCES) {
             this.tag(BlockTags.WOODEN_FENCES).add(block.get());
         }
-//        this.tag(BlockTags.WOODEN_FENCES)
-//                .add(ModBlocks.WHITE_FENCE.get())
-//                .add(ModBlocks.LIGHT_GRAY_FENCE.get())
-//                .add(ModBlocks.GRAY_FENCE.get())
-//                .add(ModBlocks.BLACK_FENCE.get());
+        this.tag(BlockTags.WOODEN_FENCES)
+                .add(ModBlocks.PAINTING_FENCE.get());
 
         for (RegistryObject<Block> block : ModBlocks.COLORED_FENCE_GATES) {
             this.tag(BlockTags.FENCE_GATES).add(block.get());
         }
-//        this.tag(BlockTags.FENCE_GATES)
-//                .add(ModBlocks.WHITE_FENCE_GATE.get())
-//                .add(ModBlocks.LIGHT_GRAY_FENCE_GATE.get())
-//                .add(ModBlocks.GRAY_FENCE_GATE.get())
-//                .add(ModBlocks.BLACK_FENCE_GATE.get());
+        this.tag(BlockTags.FENCE_GATES)
+                .add(ModBlocks.PAINTING_FENCE_GATE.get());
 
         for (RegistryObject<Block> block : ModBlocks.COLORED_DOORS) {
             this.tag(BlockTags.WOODEN_DOORS).add(block.get());
         }
-
-//        this.tag(BlockTags.WOODEN_DOORS)
-//                .add(ModBlocks.WHITE_DOOR.get())
-//                .add(ModBlocks.LIGHT_GRAY_DOOR.get())
-//                .add(ModBlocks.GRAY_DOOR.get())
-//                .add(ModBlocks.BLACK_DOOR.get());
+        this.tag(BlockTags.WOODEN_DOORS)
+                .add(ModBlocks.PAINTING_DOOR.get());
 
         for (RegistryObject<Block> block : ModBlocks.COLORED_TRAPDOORS) {
             this.tag(BlockTags.WOODEN_TRAPDOORS).add(block.get());
         }
-//        this.tag(BlockTags.WOODEN_TRAPDOORS)
-//                .add(ModBlocks.WHITE_TRAPDOOR.get())
-//                .add(ModBlocks.LIGHT_GRAY_TRAPDOOR.get())
-//                .add(ModBlocks.GRAY_TRAPDOOR.get())
-//                .add(ModBlocks.BLACK_TRAPDOOR.get());
+        this.tag(BlockTags.WOODEN_TRAPDOORS)
+                .add(ModBlocks.PAINTING_TRAPDOOR.get());
 
         for (RegistryObject<Block> block : ModBlocks.COLORED_PRESSURE_PLATES) {
             this.tag(BlockTags.WOODEN_PRESSURE_PLATES).add(block.get());
         }
-//        this.tag(BlockTags.WOODEN_PRESSURE_PLATES)
-//                .add(ModBlocks.WHITE_PRESSURE_PLATE.get())
-//                .add(ModBlocks.LIGHT_GRAY_PRESSURE_PLATE.get())
-//                .add(ModBlocks.GRAY_PRESSURE_PLATE.get())
-//                .add(ModBlocks.BLACK_PRESSURE_PLATE.get());
+        this.tag(BlockTags.WOODEN_PRESSURE_PLATES)
+                .add(ModBlocks.PAINTING_PRESSURE_PLATE.get());
 
         for (RegistryObject<Block> block : ModBlocks.COLORED_BUTTONS) {
             this.tag(BlockTags.WOODEN_BUTTONS).add(block.get());
         }
-//        this.tag(BlockTags.WOODEN_BUTTONS)
-//                .add(ModBlocks.WHITE_BUTTON.get())
-//                .add(ModBlocks.LIGHT_GRAY_BUTTON.get())
-//                .add(ModBlocks.GRAY_BUTTON.get())
-//                .add(ModBlocks.BLACK_BUTTON.get());
+        this.tag(BlockTags.WOODEN_BUTTONS)
+                .add(ModBlocks.PAINTING_BUTTON.get());
 
         for (RegistryObject<Block> block : ModBlocks.COLORED_SIGNS) {
             this.tag(BlockTags.STANDING_SIGNS).add(block.get());

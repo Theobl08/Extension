@@ -15,6 +15,7 @@
     "extension:blue_pressure_plate",
     "extension:purple_pressure_plate",
     "extension:magenta_pressure_plate",
-    "extension:pink_pressure_plate"
+    "extension:pink_pressure_plate",
+    "extension:painting_pressure_plate"
   ]
 }

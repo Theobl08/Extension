@@ -1,5 +1,7 @@
 {
   "values": [
+    "extension:crimson_boat",
+    "extension:warped_boat",
     "extension:white_boat",
     "extension:light_gray_boat",
     "extension:gray_boat",
@@ -15,8 +17,6 @@
     "extension:blue_boat",
     "extension:purple_boat",
     "extension:magenta_boat",
-    "extension:pink_boat",
-    "extension:crimson_boat",
-    "extension:warped_boat"
+    "extension:pink_boat"
   ]
 }
