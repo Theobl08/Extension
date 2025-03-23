@@ -2,6 +2,7 @@ package net.theobl.extension;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -13,6 +14,7 @@ import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -156,6 +158,7 @@ public class Extension
             EntityRenderers.register(ModEntities.MOD_CHEST_BOAT.get(), pContext -> new ModBoatRenderer(pContext, true));
 
             ItemBlockRenderTypes.setRenderLayer(Fluids.LAVA, RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(Blocks.WATER_CAULDRON, RenderType.translucent());
         }
     }
 }
