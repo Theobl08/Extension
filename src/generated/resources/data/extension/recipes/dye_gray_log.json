@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "colored_logs",
+  "ingredients": [
+    {
+      "item": "minecraft:gray_dye"
+    },
+    {
+      "tag": "extension:dyeable_logs"
+    }
+  ],
+  "result": {
+    "item": "extension:gray_log"
+  }
+}

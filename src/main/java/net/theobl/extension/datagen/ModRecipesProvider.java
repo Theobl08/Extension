@@ -323,6 +323,10 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         }
 
         colorBlockWithDye(pWriter, DYES, ModBlocks.COLORED_LEAVES, ItemTags.LEAVES, "colored_leaves");
+        colorBlockWithDye(pWriter, DYES, ModBlocks.COLORED_LOGS, ModTags.Items.DYEABLE_LOGS, "colored_logs");
+        colorBlockWithDye(pWriter, DYES, ModBlocks.COLORED_WOODS, ModTags.Items.DYEABLE_WOODS, "colored_woods");
+        colorBlockWithDye(pWriter, DYES, ModBlocks.COLORED_STRIPPED_LOGS, ModTags.Items.DYEABLE_STRIPPED_LOGS, "colored_stripped_logs");
+        colorBlockWithDye(pWriter, DYES, ModBlocks.COLORED_STRIPPED_WOODS, ModTags.Items.DYEABLE_STRIPPED_WOODS, "colored_stripped_woods");
         colorBlockWithDye(pWriter, DYES, ModBlocks.COLORED_PLANKS, ItemTags.PLANKS, "colored_planks");
         colorBlockWithDye(pWriter, DYES, ModBlocks.COLORED_STAIRS, ItemTags.WOODEN_STAIRS, "colored_stairs");
         colorBlockWithDye(pWriter, DYES, ModBlocks.COLORED_SLABS, ItemTags.WOODEN_SLABS, "colored_slabs");

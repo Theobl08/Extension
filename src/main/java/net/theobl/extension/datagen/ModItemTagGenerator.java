@@ -118,6 +118,14 @@ public class ModItemTagGenerator extends ItemTagsProvider {
             this.tag(ItemTags.CHEST_BOATS).add(chestBoat.get());
         }
 
+        for (RegistryObject<Block> coloredLog : ModBlocks.COLORED_LOGS) {
+            int index = ModBlocks.COLORED_LOGS.indexOf(coloredLog);
+            this.tag(ModTags.Items.DYEABLE_LOGS).add(coloredLog.get().asItem());
+            this.tag(ModTags.Items.DYEABLE_STRIPPED_LOGS).add(ModBlocks.COLORED_STRIPPED_LOGS.get(index).get().asItem());
+            this.tag(ModTags.Items.DYEABLE_WOODS).add(ModBlocks.COLORED_WOODS.get(index).get().asItem());
+            this.tag(ModTags.Items.DYEABLE_STRIPPED_WOODS).add(ModBlocks.COLORED_STRIPPED_WOODS.get(index).get().asItem());
+        }
+
         this.tag(Tags.Items.DYES)
                 .add(ModItems.VIBRANT_RED_DYE.get(),
                         ModItems.DULL_ORANGE_DYE.get(),
@@ -148,5 +156,57 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 .add(Items.CHERRY_BOAT)
                 .add(ModItems.CRIMSON_BOAT.get())
                 .add(ModItems.WARPED_BOAT.get());
+
+        this.tag(ModTags.Items.DYEABLE_LOGS)
+                .add(Items.OAK_LOG)
+                .add(Items.SPRUCE_LOG)
+                .add(Items.BIRCH_LOG)
+                .add(Items.JUNGLE_LOG)
+                .add(Items.ACACIA_LOG)
+                .add(Items.DARK_OAK_LOG)
+                .add(Items.MANGROVE_LOG)
+                .add(Items.BAMBOO_BLOCK)
+                .add(Items.CHERRY_LOG)
+                .add(Items.CRIMSON_STEM)
+                .add(Items.WARPED_STEM);
+
+        this.tag(ModTags.Items.DYEABLE_WOODS)
+                .add(Items.OAK_WOOD)
+                .add(Items.SPRUCE_WOOD)
+                .add(Items.BIRCH_WOOD)
+                .add(Items.JUNGLE_WOOD)
+                .add(Items.ACACIA_WOOD)
+                .add(Items.DARK_OAK_WOOD)
+                .add(Items.MANGROVE_WOOD)
+//                .add(Items.BAMBOO_BLOCK)
+                .add(Items.CHERRY_WOOD)
+                .add(Items.CRIMSON_HYPHAE)
+                .add(Items.WARPED_HYPHAE);
+
+        this.tag(ModTags.Items.DYEABLE_STRIPPED_LOGS)
+                .add(Items.STRIPPED_OAK_LOG)
+                .add(Items.STRIPPED_SPRUCE_LOG)
+                .add(Items.STRIPPED_BIRCH_LOG)
+                .add(Items.STRIPPED_JUNGLE_LOG)
+                .add(Items.STRIPPED_ACACIA_LOG)
+                .add(Items.STRIPPED_DARK_OAK_LOG)
+                .add(Items.STRIPPED_MANGROVE_LOG)
+                .add(Items.STRIPPED_BAMBOO_BLOCK)
+                .add(Items.STRIPPED_CHERRY_LOG)
+                .add(Items.STRIPPED_CRIMSON_STEM)
+                .add(Items.STRIPPED_WARPED_STEM);
+
+        this.tag(ModTags.Items.DYEABLE_STRIPPED_WOODS)
+                .add(Items.STRIPPED_OAK_WOOD)
+                .add(Items.STRIPPED_SPRUCE_WOOD)
+                .add(Items.STRIPPED_BIRCH_WOOD)
+                .add(Items.STRIPPED_JUNGLE_WOOD)
+                .add(Items.STRIPPED_ACACIA_WOOD)
+                .add(Items.STRIPPED_DARK_OAK_WOOD)
+                .add(Items.STRIPPED_MANGROVE_WOOD)
+//                .add(Items.STRIPPED_BAMBOO_BLOCK)
+                .add(Items.STRIPPED_CHERRY_WOOD)
+                .add(Items.STRIPPED_CRIMSON_HYPHAE)
+                .add(Items.STRIPPED_WARPED_HYPHAE);
     }
 }

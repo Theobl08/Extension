@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "colored_stripped_logs",
+  "ingredients": [
+    {
+      "item": "minecraft:red_dye"
+    },
+    {
+      "tag": "extension:dyeable_stripped_logs"
+    }
+  ],
+  "result": {
+    "item": "extension:stripped_red_log"
+  }
+}

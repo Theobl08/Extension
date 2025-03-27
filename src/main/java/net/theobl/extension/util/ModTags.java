@@ -40,9 +40,10 @@ public class ModTags {
     public static class Items {
         public static final TagKey<Item> ANTIBLOCK = tag("antiblock");
         public static final TagKey<Item> DYEABLE_BOATS = tag("dyeable_boats");
-//        public static final TagKey<Item> LIGHT_GRAY_LOGS = tag("light_gray_logs");
-//        public static final TagKey<Item> GRAY_LOGS = tag("gray_logs");
-//        public static final TagKey<Item> BLACK_LOGS = tag("black_logs");
+        public static final TagKey<Item> DYEABLE_LOGS = tag("dyeable_logs");
+        public static final TagKey<Item> DYEABLE_WOODS = tag("dyeable_woods");
+        public static final TagKey<Item> DYEABLE_STRIPPED_LOGS = tag("dyeable_stripped_logs");
+        public static final TagKey<Item> DYEABLE_STRIPPED_WOODS = tag("dyeable_stripped_woods");
         public static final List<TagKey<Item>> COLORED_LOGS = createColoredItemTags();
 
         private static List<TagKey<Item>> createColoredItemTags() {

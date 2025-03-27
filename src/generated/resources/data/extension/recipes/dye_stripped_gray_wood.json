@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "colored_stripped_woods",
+  "ingredients": [
+    {
+      "item": "minecraft:gray_dye"
+    },
+    {
+      "tag": "extension:dyeable_stripped_woods"
+    }
+  ],
+  "result": {
+    "item": "extension:stripped_gray_wood"
+  }
+}
