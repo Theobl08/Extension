@@ -1,4 +1,4 @@
-// 1.20.1	2025-03-27T14:28:21.8239228	Recipes
+// 1.20.1	2025-03-27T19:20:19.7860129	Recipes
 0c74caff1472cb5357b3bfa5c900ba96ab99de2c data/extension/advancements/recipes/building_blocks/acacia_bookshelf.json
 6e7ab7db29d3771d070cdccd2f91692fc94d1f67 data/extension/advancements/recipes/building_blocks/acacia_crafting_table.json
 b29e3b7bcb496f0508867a84dca6cdfb9d71e703 data/extension/advancements/recipes/building_blocks/acacia_mosaic.json
@@ -1312,7 +1312,7 @@ c8ce96af612d0a933bd8ae4fc68ac111542ecd27 data/extension/recipes/orange_trapdoor.
 47dfbc7d3ffa43b298b79939f4ed4912ae189f8c data/extension/recipes/painting_door.json
 d6c876aa22f7ea6aafdf5dce1694dd9a58ad1c6f data/extension/recipes/painting_fence.json
 004c91fa18ebe04ae4696c332a1c728efcc65f46 data/extension/recipes/painting_fence_gate.json
-3ccbef99f1ab928effcfae95d48fa271564bd567 data/extension/recipes/painting_planks.json
+9f57e104ef9ca65bea42c5b739a31e828f62f3d2 data/extension/recipes/painting_planks.json
 adeee60991397d3fb0dbfde2fc845199f3a4dd12 data/extension/recipes/painting_pressure_plate.json
 6705a4692f1fb5d5ddd4befd952d6ea33f856daa data/extension/recipes/painting_slab.json
 6bbffd3d0420e0331f9e90608a20d8656e41099f data/extension/recipes/painting_stairs.json

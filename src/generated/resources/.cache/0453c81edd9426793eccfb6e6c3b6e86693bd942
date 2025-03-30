@@ -1,10 +1,14 @@
-// 1.20.1	2025-03-23T15:34:31.1160822	Tags for minecraft:item mod id extension
+// 1.20.1	2025-03-27T19:20:19.7970118	Tags for minecraft:item mod id extension
 b9b12a3bf0d7dd67471995915ae71c3a76db5208 data/extension/tags/items/antiblock.json
 3efc3e05c4c235aa444463e17613023078fe576e data/extension/tags/items/black_logs.json
 2f11902282a5e0b6a6b2c311e9a87add02a8710d data/extension/tags/items/blue_logs.json
 8be06fdfa2cac61ed06e2e4658538fbd8e29cccd data/extension/tags/items/brown_logs.json
 c6d42efa7b98b72aa490fa2dab88c840e5327206 data/extension/tags/items/cyan_logs.json
 2352b53245842644587460a9d0e10b17d263412b data/extension/tags/items/dyeable_boats.json
+97a8c5b7c8b61e50601bc7cf6196316ad61e3387 data/extension/tags/items/dyeable_logs.json
+5b024f821fbcbea5d8e640d8772e9455ab82c321 data/extension/tags/items/dyeable_stripped_logs.json
+42dfb3ddc31b23dd6f25521fb43fcd8ec9facdfa data/extension/tags/items/dyeable_stripped_woods.json
+af6dda98560cdf32fc59519ba912ee0922619129 data/extension/tags/items/dyeable_woods.json
 ddc70cfff1f78b0bdd64451ac2e78e4cd427f7aa data/extension/tags/items/gray_logs.json
 62770f7bbd2f30ce28ed863babdd333d319221ea data/extension/tags/items/green_logs.json
 45035afa02504e98cdd96a6db28e15bdacd0b045 data/extension/tags/items/light_blue_logs.json

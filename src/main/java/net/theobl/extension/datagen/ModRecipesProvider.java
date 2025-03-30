@@ -293,7 +293,9 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICK_SLAB.get(), Ingredient.of(ModBlocks.BLUE_NETHER_BRICKS.get()))
                 .unlockedBy(getHasName(ModBlocks.BLUE_NETHER_BRICKS.get()), has(ModBlocks.BLUE_NETHER_BRICKS.get())).save(pWriter);
 
-        twoByTwoPacker(pWriter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PAINTING_PLANKS.get(), Items.STICK);
+//        twoByTwoPacker(pWriter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PAINTING_PLANKS.get(), Items.STICK);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PAINTING_PLANKS.get(), 2)
+                .define('#', Items.STICK).pattern("##").pattern("##").unlockedBy(getHasName(Items.STICK), has(Items.STICK)).save(pWriter);
         woodenStairs(pWriter, ModBlocks.PAINTING_STAIRS.get(), ModBlocks.PAINTING_PLANKS.get());
         woodenSlab(pWriter, ModBlocks.PAINTING_SLAB.get(), ModBlocks.PAINTING_PLANKS.get());
         woodenFence(pWriter, ModBlocks.PAINTING_FENCE.get(), ModBlocks.PAINTING_PLANKS.get());
