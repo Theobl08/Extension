@@ -178,6 +178,7 @@ public class ModVanillaCompat {
         }
         else if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
             registerAfter(Items.SPAWNER, ModItems.SPAWNER_MINECART.get(), entries);
+            registerAfter(Items.HUSK_SPAWN_EGG, ModItems.ILLUSIONER_SPAWN_EGG.get(), entries);
         }
         else if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             registerAfter(Items.NETHER_BRICK, ModItems.RED_NETHER_BRICK.get(), entries);

@@ -28,7 +28,7 @@ public class ScreenEffectRendererMixin {
             if(player.isCreative()) {
                 ci.cancel();
             } else if (player.hasEffect(MobEffects.FIRE_RESISTANCE) &&
-                    !mobEffectInstance.endsWithin(300) &&
+                    !mobEffectInstance.endsWithin(400) &&
                     !player.isHolding(Items.MILK_BUCKET)) {
                 ci.cancel();
             }

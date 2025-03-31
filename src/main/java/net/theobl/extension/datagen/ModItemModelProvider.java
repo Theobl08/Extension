@@ -74,6 +74,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.NETHERITE_HORSE_ARMOR);
         simpleItem(ModItems.SPAWNER_MINECART);
+        spawnEggItem(ModItems.ILLUSIONER_SPAWN_EGG);
+
 
 //        simpleItem(ModItems.WHITE_SIGN);
 //        simpleItem(ModItems.WHITE_HANGING_SIGN);
@@ -90,6 +92,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(Extension.MOD_ID, "item/"+item.getId().getPath()));
+    }
+
+    private ItemModelBuilder spawnEggItem(RegistryObject<Item> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/template_spawn_egg"));
     }
 
     private ItemModelBuilder simpleBlockItem(RegistryObject<Block> item) {

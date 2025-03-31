@@ -1,6 +1,12 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "extension:block/cube_no_ambientocclusion",
   "textures": {
-    "all": "extension:block/white_antiblock"
+    "down": "extension:block/white_antiblock",
+    "east": "extension:block/white_antiblock",
+    "north": "extension:block/white_antiblock",
+    "particle": "extension:block/white_antiblock",
+    "south": "extension:block/white_antiblock",
+    "up": "extension:block/white_antiblock",
+    "west": "extension:block/white_antiblock"
   }
 }

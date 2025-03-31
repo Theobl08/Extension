@@ -1,11 +1,13 @@
 package net.theobl.extension.item;
 
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -125,6 +127,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> SPAWNER_MINECART = ITEMS.register("spawner_minecart",
             () -> new MinecartItem(AbstractMinecart.Type.SPAWNER, new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> ILLUSIONER_SPAWN_EGG = ITEMS.register("illusioner_spawn_egg",
+            () -> new SpawnEggItem(EntityType.ILLUSIONER, 9804699, 1267859, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

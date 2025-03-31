@@ -1,4 +1,4 @@
-// 1.20.1	2025-03-12T21:15:40.9265131	Item Models: extension
+// 1.20.1	2025-03-31T18:44:37.795586	Item Models: extension
 40e4c8bc20c7e79d744c634598fdd3c958872fb5 assets/extension/models/item/alpha_white_dye.json
 3192f9c00016adaea2dd275a8b944ff2059e7b65 assets/extension/models/item/black_boat.json
 cc96a7864efa94fea95017688584ace1d5710ff0 assets/extension/models/item/black_chest_boat.json
@@ -40,6 +40,7 @@ fd12210d777a3438cd3fbc32a904bcea666d367b assets/extension/models/item/green_boat
 af5c9dd8ec4179658b7edc36d3a37397791f9498 assets/extension/models/item/green_door.json
 a3f64bf8b84ce80a88bae0a5d961b1fa633b0b8c assets/extension/models/item/green_hanging_sign.json
 06419b8052228aa5afbc67127f2682b07fc8cbcb assets/extension/models/item/green_sign.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/extension/models/item/illusioner_spawn_egg.json
 7b8ea7725de84a0355cf8bd1267607469325d609 assets/extension/models/item/light_blue_boat.json
 fccc1caab3e22a5ea6c3289056b142dadbd5cbbd assets/extension/models/item/light_blue_chest_boat.json
 e2fa0536c986b847f3de074c53278161c1b1b1d1 assets/extension/models/item/light_blue_door.json

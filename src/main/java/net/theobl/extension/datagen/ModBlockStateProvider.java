@@ -90,7 +90,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         }
 
         for (RegistryObject<Block> antiblock : ModBlocks.ANTIBLOCKS) {
-            blockWithItem(antiblock);
+            antiblock(antiblock);
         }
 
         blockWithItem(ModBlocks.VIBRANT_RED_WOOL);
@@ -449,6 +449,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .texture("west", west);
     }
 
+    private BlockModelBuilder cubeFullBright(String name, ResourceLocation particle, ResourceLocation down, ResourceLocation up, ResourceLocation north, ResourceLocation south, ResourceLocation east, ResourceLocation west) {
+        return models().withExistingParent(name, Extension.MOD_ID + ":block/cube_no_ambientocclusion")
+                .texture("particle", particle)
+                .texture("down", down)
+                .texture("up", up)
+                .texture("north", north)
+                .texture("south", south)
+                .texture("east", east)
+                .texture("west", west);
+    }
+
     private void craftingTableBlockWithItem(RegistryObject<Block> blockRegistryObject, String woodType) {
         simpleBlockWithItem(blockRegistryObject.get(),
                 cubeWithParticleTexture(woodType + "_crafting_table",
@@ -459,6 +470,18 @@ public class ModBlockStateProvider extends BlockStateProvider {
                         new ResourceLocation(Extension.MOD_ID, "block/" + woodType + "_crafting_table_side"),
                         new ResourceLocation(Extension.MOD_ID, "block/" + woodType + "_crafting_table_side"),
                         new ResourceLocation(Extension.MOD_ID, "block/" + woodType + "_crafting_table_front")));
+    }
+
+    private void antiblock(RegistryObject<Block> blockRegistryObject) {
+        simpleBlockWithItem(blockRegistryObject.get(),
+                cubeFullBright(name(blockRegistryObject.get()),
+                        blockTexture(blockRegistryObject.get()),
+                        blockTexture(blockRegistryObject.get()),
+                        blockTexture(blockRegistryObject.get()),
+                        blockTexture(blockRegistryObject.get()),
+                        blockTexture(blockRegistryObject.get()),
+                        blockTexture(blockRegistryObject.get()),
+                        blockTexture(blockRegistryObject.get())));
     }
 
     private void lantern(RegistryObject<Block> pLantern){
