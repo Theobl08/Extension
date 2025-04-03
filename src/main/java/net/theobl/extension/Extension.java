@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.commands.RaidCommand;
 import net.minecraft.server.commands.ResetChunksCommand;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PathPackResources;
@@ -116,6 +117,7 @@ public class Extension
 
     @SubscribeEvent
     public void addCommands(RegisterCommandsEvent event) {
+        RaidCommand.register(event.getDispatcher());
         ResetChunksCommand.register(event.getDispatcher());
     }
 
