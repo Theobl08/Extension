@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.commands.RaidCommand;
 import net.minecraft.server.commands.ResetChunksCommand;
 import net.minecraft.server.packs.PackType;
@@ -70,6 +71,7 @@ public class Extension
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(ModVanillaCompat::registerItemInVanillaTabs);
 
+        modEventBus.addListener(this::addPackFinders);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -127,8 +129,8 @@ public class Extension
         if (event.getPackType() == PackType.CLIENT_RESOURCES)
         {
             var resourcePath = ModList.get().getModFileById(MOD_ID).getFile().findResource("resourcepacks/sandstone_wall_stairs_fix");
-            var pack = Pack.readMetaAndCreate("builtin/extension", Component.literal("Sandstone Wall and Stairs fix"), false,
-                    (path) -> new PathPackResources(path, resourcePath, false), PackType.CLIENT_RESOURCES, Pack.Position.BOTTOM, PackSource.DEFAULT);
+            var pack = Pack.readMetaAndCreate(new ResourceLocation(MOD_ID, "sandstone_wall_stairs_fix").toString(), Component.literal("Sandstone Wall and Stairs fix"), false,
+                    (path) -> new PathPackResources(path, resourcePath, true), PackType.CLIENT_RESOURCES, Pack.Position.BOTTOM, PackSource.DEFAULT);
             event.addRepositorySource((packConsumer) -> packConsumer.accept(pack));
         }
     }
