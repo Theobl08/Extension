@@ -11,12 +11,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(ClientLevel.ClientLevelData.class)
 public class ClientLevelMixin {
     @Inject(at = @At("RETURN"), method = "getHorizonHeight", cancellable = true)
-    private void extensionGetHorizonHeight(LevelHeightAccessor pLevel, CallbackInfoReturnable<Double> cir){
-        if(Config.clearVoid) cir.setReturnValue((double) pLevel.getMinBuildHeight());
+    private void getHorizonHeight(LevelHeightAccessor level, CallbackInfoReturnable<Double> cir) {
+        if(Config.clearVoid)
+            cir.setReturnValue((double) level.getMinBuildHeight());
     }
 
     @Inject(at = @At("RETURN"), method = "getClearColorScale", cancellable = true)
-    private void extensionGetClearColorScale(CallbackInfoReturnable<Float> cir){
-        if(Config.clearVoid) cir.setReturnValue(1.0F);
+    private void getClearColorScale(CallbackInfoReturnable<Float> cir) {
+        if(Config.clearVoid)
+            cir.setReturnValue(1.0F);
     }
 }

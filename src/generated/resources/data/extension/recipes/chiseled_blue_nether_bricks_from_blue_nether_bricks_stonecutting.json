@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "extension:blue_nether_bricks"
-  },
-  "result": "extension:chiseled_blue_nether_bricks"
-}

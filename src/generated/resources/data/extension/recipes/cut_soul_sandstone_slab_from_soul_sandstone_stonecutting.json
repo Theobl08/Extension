@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 2,
-  "ingredient": {
-    "item": "extension:soul_sandstone"
-  },
-  "result": "extension:cut_soul_sandstone_slab"
-}

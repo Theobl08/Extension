@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": [
+      {
+        "item": "extension:soul_sandstone"
+      },
+      {
+        "item": "extension:chiseled_soul_sandstone"
+      }
+    ]
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "extension:soul_sandstone_slab"
+  }
+}

@@ -1,26 +1,27 @@
 {
   "required": true,
+  "minVersion": "0.8",
   "package": "net.theobl.extension.mixin",
-  "compatibilityLevel": "JAVA_17",
+  "compatibilityLevel": "JAVA_21",
   "refmap": "extension.refmap.json",
   "mixins": [
     "AbstractMinecartMixin",
     "AnimalMixin",
-    "DarkOakTreeGrowerMixin",
-    "DirtPathBlockMixin",
-    "DoorBlockMixin",
-    "EndIslandsMixin",
+    "BlockMixin",
+    "BoatMixin",
+    "CarvedPumpkinBlockMixin",
+    "EndIslandDensityFunctionMixin",
     "EntityMixin",
-    "FireBlockMixin",
-    "NoiseBasedChunkGeneratorMixin",
-    "ShovelItemMixin",
-    "TrapdoorBlockMixin"
+    "GossipTypeMixin",
+    "MinecartSpawnerMixin",
+    "NoiseChunkBasedGeneratorMixin"
   ],
   "client": [
     "ClientLevelMixin",
     "FogRendererMixin",
-    "LocalPlayerMixin",
     "ScreenEffectRendererMixin"
   ],
-  "minVersion": "0.8"
+  "injectors": {
+    "defaultRequire": 1
+  }
 }

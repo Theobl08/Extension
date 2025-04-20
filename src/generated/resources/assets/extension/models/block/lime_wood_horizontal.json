@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column_horizontal",
-  "textures": {
-    "end": "extension:block/lime_log",
-    "side": "extension:block/lime_log"
-  }
-}

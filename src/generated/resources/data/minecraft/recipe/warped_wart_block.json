@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "extension:blue_nether_wart"
+    },
+    {
+      "item": "extension:blue_nether_wart"
+    },
+    {
+      "item": "extension:blue_nether_wart"
+    },
+    {
+      "item": "extension:blue_nether_wart"
+    },
+    {
+      "item": "extension:blue_nether_wart"
+    },
+    {
+      "item": "extension:blue_nether_wart"
+    },
+    {
+      "item": "extension:blue_nether_wart"
+    },
+    {
+      "item": "extension:blue_nether_wart"
+    },
+    {
+      "item": "extension:blue_nether_wart"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:warped_wart_block"
+  }
+}

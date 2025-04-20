@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "extension:block/lime_planks",
-    "side": "extension:block/lime_planks",
-    "top": "extension:block/lime_planks"
-  }
-}

@@ -11,14 +11,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AbstractMinecart.class)
 public abstract class AbstractMinecartMixin {
-
     @Shadow
     public abstract AbstractMinecart.Type getMinecartType();
 
-    @Inject(at = @At("RETURN"), method = "getPickResult", cancellable = true)
-    private void extension$pickBlockSpawnerMinecart(CallbackInfoReturnable<ItemStack> cir){
-        if(this.getMinecartType() == AbstractMinecart.Type.SPAWNER){
-            cir.setReturnValue(new ItemStack(ModItems.SPAWNER_MINECART.get()));
+    @Inject(method = "getPickResult", at = @At("RETURN"), cancellable = true)
+    private void pickSpawnerMinecart(CallbackInfoReturnable<ItemStack> cir){
+        if(this.getMinecartType() == AbstractMinecart.Type.SPAWNER) {
+            cir.setReturnValue(new ItemStack(ModItems.SPAWNER_MINECART.asItem()));
         }
     }
 }

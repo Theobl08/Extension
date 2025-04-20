@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "extension:block/pink_log",
-    "side": "extension:block/pink_log"
-  }
-}
