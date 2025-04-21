@@ -10,11 +10,13 @@
     "BlockMixin",
     "BoatMixin",
     "CarvedPumpkinBlockMixin",
+    "DirtPathBlockMixin",
     "EndIslandDensityFunctionMixin",
     "EntityMixin",
     "GossipTypeMixin",
     "MinecartSpawnerMixin",
-    "NoiseChunkBasedGeneratorMixin"
+    "NoiseChunkBasedGeneratorMixin",
+    "ShovelItemMixin"
   ],
   "client": [
     "ClientLevelMixin",
