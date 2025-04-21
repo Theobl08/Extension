@@ -17,12 +17,10 @@ import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 public class ModBlocks {
+    // Create a Deferred Register to hold Blocks which will all be registered under the "extension" namespace
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Extension.MODID);
 
-    // Creates a new Block with the id "extension:example_block", combining the namespace and path
-//    public static final DeferredBlock<Block> EXAMPLE_BLOCK = registerBlock("example_block",
-//            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE)));
-
+    // Creates a new Block with the id "extension:stone_wall", combining the namespace and path
     public static final DeferredBlock<Block> STONE_WALL = registerBlock("stone_wall",
             () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE_WALL).forceSolidOn()));
     public static final DeferredBlock<Block> POLISHED_GRANITE_WALL = registerBlock("polished_granite_wall",

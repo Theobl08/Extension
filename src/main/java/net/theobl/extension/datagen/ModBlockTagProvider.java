@@ -65,22 +65,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 else if(!(deferredBlock.get() instanceof WallBlock))
                     tag(Tags.Blocks.SANDSTONE_BLOCKS).add(deferredBlock.get());
             }
-        }
-//
-//        tag(BlockTags.WALLS)
-//                .add(ModBlocks.STONE_WALL.get())
-//                .add(ModBlocks.POLISHED_GRANITE_WALL.get())
-//                .add(ModBlocks.POLISHED_DIORITE_WALL.get())
-//                .add(ModBlocks.POLISHED_ANDESITE_WALL.get())
-//                .add(ModBlocks.PRISMARINE_BRICK_WALL.get())
-//                .add(ModBlocks.DARK_PRISMARINE_WALL.get())
-//                .add(ModBlocks.PURPUR_WALL.get())
-//                .add(ModBlocks.QUARTZ_WALL.get())
-//                .add(ModBlocks.QUARTZ_BRICK_WALL.get())
-//                .add(ModBlocks.BLUE_NETHER_BRICK_WALL.get())
-//                .add(ModBlocks.SOUL_SANDSTONE_WALL.get());
-
-        for(DeferredHolder<Block, ? extends Block> deferredBlock : ModBlocks.BLOCKS.getEntries()){
+            
             if(mineableWithPickaxe(deferredBlock.get()))
                 tag(BlockTags.MINEABLE_WITH_PICKAXE).add(deferredBlock.get());
         }

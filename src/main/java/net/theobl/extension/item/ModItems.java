@@ -12,12 +12,8 @@ import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
 
 public class ModItems {
+    // Create a Deferred Register to hold Items which will all be registered under the "extension" namespace
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Extension.MODID);
-
-    // Creates a new food item with the id "extension:example_id", nutrition 1 and saturation 2
-//    public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item",
-//            new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(1).saturationModifier(2f).build()));
-
 
     public static final DeferredItem<Item> SPAWNER_MINECART = ITEMS.register("spawner_minecart",
             () -> new MinecartItem(AbstractMinecart.Type.SPAWNER, new Item.Properties().stacksTo(1)));
