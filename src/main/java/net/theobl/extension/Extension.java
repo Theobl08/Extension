@@ -4,6 +4,9 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionBrewing;
+import net.minecraft.world.item.alchemy.Potions;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -15,6 +18,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.block.entity.ModBlockEntities;
@@ -61,6 +65,14 @@ public class Extension {
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
+    }
+
+    @SubscribeEvent
+    public void registerBrewingRecipes(RegisterBrewingRecipesEvent event) {
+        // Gets the builder to add recipes to
+        PotionBrewing.Builder builder = event.getBuilder();
+        builder.addMix(Potions.MUNDANE, ModItems.BLUE_NETHER_WART.asItem(), Potions.AWKWARD);
+        builder.addMix(Potions.AWKWARD, Items.RABBIT_HIDE, Potions.LUCK);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
