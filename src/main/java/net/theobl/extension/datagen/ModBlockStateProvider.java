@@ -31,7 +31,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         wallBlockWithItem(ModBlocks.PRISMARINE_BRICK_WALL, Blocks.PRISMARINE_BRICKS);
         wallBlockWithItem(ModBlocks.DARK_PRISMARINE_WALL, Blocks.DARK_PRISMARINE);
         wallBlockWithItem(ModBlocks.PURPUR_WALL, Blocks.PURPUR_BLOCK);
-        wallBlockWithItem(ModBlocks.QUARTZ_WALL, "quartz_block_top");
+        wallBlockWithItem(ModBlocks.QUARTZ_WALL, Blocks.QUARTZ_BLOCK, "_top");
 
         stairsBlockWithItem(ModBlocks.SMOOTH_STONE_STAIRS, Blocks.SMOOTH_STONE);
         stairsBlockWithItem(ModBlocks.NETHERITE_STAIRS, Blocks.NETHERITE_BLOCK);
@@ -106,7 +106,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalBlock(ModBlocks.REDSTONE_O_LANTERN.get(), mcLoc("block/pumpkin_side"), modLoc("block/redstone_o_lantern"), mcLoc("block/pumpkin_top"));
         blockItem(ModBlocks.REDSTONE_O_LANTERN);
 
-        lantern(ModBlocks.REDSTONE_LANTERN);
+        lantern();
         campfire(ModBlocks.REDSTONE_CAMPFIRE);
     }
 
@@ -127,18 +127,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     private void stairsBlockWithItem(DeferredBlock<?> deferredBlock, Block texture) {
-        stairsBlock((StairBlock) deferredBlock.get(), blockTexture(texture));
-        blockItem(deferredBlock);
+        stairsBlockWithItem(deferredBlock, texture, "");
     }
 
-    private void stairsBlockWithItem(DeferredBlock<?> deferredBlock, Block texture, String appendix) {
-        stairsBlock((StairBlock) deferredBlock.get(), extend(blockTexture(texture), appendix));
+    private void stairsBlockWithItem(DeferredBlock<?> deferredBlock, Block texture, String textureAppendix) {
+        stairsBlock((StairBlock) deferredBlock.get(), extend(blockTexture(texture), textureAppendix));
         blockItem(deferredBlock);
     }
 
     private void slabBlockWithItem(DeferredBlock<?> deferredBlock, Block texture) {
-        slabBlock((SlabBlock) deferredBlock.get(), blockTexture(texture), blockTexture(texture));
-        blockItem(deferredBlock);
+        slabBlockWithItem(deferredBlock, texture, texture, "");
     }
 
     private void slabBlockWithItem(DeferredBlock<?> deferredBlock, Block doubleSlab, Block texture, String textureAppendix) {
@@ -147,15 +145,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     private void wallBlockWithItem(DeferredBlock<?> deferredBlock, Block texture) {
-        wallBlock((WallBlock) deferredBlock.get(), blockTexture(texture));
-        simpleBlockItem(deferredBlock.get(), itemModels().wallInventory("block/" + name(deferredBlock.get()) + "_inventory", blockTexture(texture)));
+        wallBlockWithItem(deferredBlock, texture, "");
     }
 
-    private void wallBlockWithItem(DeferredBlock<?> deferredBlock, String textureName) {
-        wallBlock((WallBlock) deferredBlock.get(),
-                ResourceLocation.parse("block/" + textureName));
-        simpleBlockItem(deferredBlock.get(), itemModels().wallInventory("block/" + name(deferredBlock.get()) + "_inventory",
-                ResourceLocation.parse("block/" + textureName)));
+    private void wallBlockWithItem(DeferredBlock<?> deferredBlock, Block texture, String textureAppendix) {
+        wallBlock((WallBlock) deferredBlock.get(), extend(blockTexture(texture), textureAppendix));
+        simpleBlockItem(deferredBlock.get(), itemModels().wallInventory("block/" + name(deferredBlock.get()) + "_inventory", extend(blockTexture(texture), textureAppendix)));
     }
 
 
@@ -166,10 +161,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void blockItem(DeferredBlock<?> deferredBlock) {
         simpleBlockItem(deferredBlock.get(), new ModelFile.UncheckedModelFile("extension:block/" + deferredBlock.getId().getPath()));
-    }
-
-    private void blockItem(DeferredBlock<?> deferredBlock, String appendix) {
-        simpleBlockItem(deferredBlock.get(), new ModelFile.UncheckedModelFile("extension:block/" + deferredBlock.getId().getPath() + appendix));
     }
 
     public void createCrop(BushBlock block, IntegerProperty ageProperties, int... ageToVisualStageMapping) {
@@ -185,7 +176,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         return models;
     }
 
-    private void lantern(DeferredBlock<Block> lantern){
+    private void lantern(){
+        DeferredBlock<Block> lantern = ModBlocks.REDSTONE_LANTERN;
         getVariantBuilder(lantern.get())
                 .partialState().with(LanternBlock.HANGING, false).with(RedstoneTorchBlock.LIT, false)
                 .modelForState().modelFile(models().withExistingParent(name(lantern.get()) + "_off", mcLoc("block/template_lantern"))
