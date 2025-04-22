@@ -16,6 +16,7 @@ import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.item.ModItems;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ModLanguageProvider extends LanguageProvider {
@@ -46,6 +47,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addConfig(Config.BOAT_STEP_UP);
         addConfig(Config.CLEAR_VOID);
         addConfig(Config.NO_FIRE_OVERLAY);
+        addConfig(Config.FARMLAND_TRAMPLE);
     }
 
     private static @NotNull String capitalizeString(String string) {

@@ -10,6 +10,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.NetherWartBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -23,6 +24,7 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.item.ModItems;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 public class ModBlockLootTableProvider extends BlockLootSubProvider {
@@ -95,10 +97,17 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.add(ModBlocks.REDSTONE_CAMPFIRE.get(),
                 block -> this.createSilkTouchDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.REDSTONE)
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))))));
+
+        // Modify some minecraft loot tables
+        this.add(Blocks.DIRT_PATH, block -> this.createSingleItemTableWithSilkTouch(block, Blocks.DIRT));
     }
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        return ModBlocks.BLOCKS.getEntries().stream().map(Holder::value)::iterator;
+        //return ModBlocks.BLOCKS.getEntries().stream().map(Holder::value)::iterator;
+        ArrayList<Block> knownBlocks = new ArrayList<>();
+        ModBlocks.BLOCKS.getEntries().stream().map(Holder::value).forEach(knownBlocks::add);
+        knownBlocks.add(Blocks.DIRT_PATH);
+        return knownBlocks;
     }
 }

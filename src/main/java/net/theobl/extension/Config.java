@@ -23,16 +23,22 @@ public class Config {
             BUILDER.comment("Whether boats can step up 1 full block")
                     .define("boatStepUp", true);
 
+    public static final ModConfigSpec.BooleanValue FARMLAND_TRAMPLE =
+            BUILDER.comment("Set to false to disable farmland trampling")
+                    .define("farmlandTrampling", false);
+
     static final ModConfigSpec SPEC = BUILDER.build();
 
     public static Boolean clearVoid;
     public static Boolean noFireOverlay;
     public static Boolean boatStepUp;
+    public static Boolean farmlandTrample;
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
         clearVoid = CLEAR_VOID.get();
         noFireOverlay = NO_FIRE_OVERLAY.get();
         boatStepUp = BOAT_STEP_UP.get();
+        farmlandTrample = FARMLAND_TRAMPLE.get();
     }
 }

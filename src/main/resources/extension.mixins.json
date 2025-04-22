@@ -13,6 +13,7 @@
     "DirtPathBlockMixin",
     "EndIslandDensityFunctionMixin",
     "EntityMixin",
+    "FarmBlockMixin",
     "GossipTypeMixin",
     "MinecartSpawnerMixin",
     "NoiseChunkBasedGeneratorMixin",
