@@ -100,6 +100,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         // Modify some minecraft loot tables
         this.add(Blocks.DIRT_PATH, block -> this.createSingleItemTableWithSilkTouch(block, Blocks.DIRT));
+        this.dropWhenSilkTouch(Blocks.BUDDING_AMETHYST);
+        this.dropWhenSilkTouch(Blocks.REINFORCED_DEEPSLATE);
     }
 
     @Override
@@ -108,6 +110,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         ArrayList<Block> knownBlocks = new ArrayList<>();
         ModBlocks.BLOCKS.getEntries().stream().map(Holder::value).forEach(knownBlocks::add);
         knownBlocks.add(Blocks.DIRT_PATH);
+        knownBlocks.add(Blocks.BUDDING_AMETHYST);
+        knownBlocks.add(Blocks.REINFORCED_DEEPSLATE);
         return knownBlocks;
     }
 }
