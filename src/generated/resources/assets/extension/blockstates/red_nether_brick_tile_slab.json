@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "extension:block/red_nether_brick_tile_slab"
+    },
+    "type=double": {
+      "model": "extension:block/red_nether_brick_tiles"
+    },
+    "type=top": {
+      "model": "extension:block/red_nether_brick_tile_slab_top"
+    }
+  }
+}

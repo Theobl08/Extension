@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_nether_brick_tiles": {
+      "conditions": {
+        "items": [
+          {
+            "items": "extension:nether_brick_tiles"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "extension:nether_brick_tile_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_nether_brick_tiles"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "extension:nether_brick_tile_stairs"
+    ]
+  }
+}

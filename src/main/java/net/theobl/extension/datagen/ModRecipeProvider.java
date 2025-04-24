@@ -88,10 +88,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.QUARTZ_BRICK_SLAB, Blocks.QUARTZ_BRICKS,2);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.QUARTZ_BRICK_WALL, Blocks.QUARTZ_BRICKS);
 
+        tilesRecipes(recipeOutput, ModBlocks.NETHER_BRICK_TILES, Blocks.NETHER_BRICKS);
+
         smeltingResultFromBase(recipeOutput, ModBlocks.CRACKED_RED_NETHER_BRICKS, Items.RED_NETHER_BRICKS);
         fence(recipeOutput, ModBlocks.RED_NETHER_BRICK_FENCE.get(), Blocks.RED_NETHER_BRICKS, ModItems.RED_NETHER_BRICK.get());
         chiseled(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICK_SLAB);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICKS);
+        tilesRecipes(recipeOutput, ModBlocks.RED_NETHER_BRICK_TILES, Blocks.RED_NETHER_BRICKS);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICKS)
                 .define('W', ModItems.BLUE_NETHER_WART)
@@ -105,6 +108,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.BLUE_NETHER_BRICK_WALL, ModBlocks.BLUE_NETHER_BRICKS);
         fence(recipeOutput, ModBlocks.BLUE_NETHER_BRICK_FENCE.get(), ModBlocks.BLUE_NETHER_BRICKS, ModItems.BLUE_NETHER_BRICK.get());
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICKS);
+        tilesRecipes(recipeOutput, ModBlocks.BLUE_NETHER_BRICK_TILES, ModBlocks.BLUE_NETHER_BRICKS);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_SANDSTONE, 1)
                 .define('#', Items.SOUL_SAND)
@@ -230,5 +234,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     protected static void cutRecipes(RecipeOutput recipeOutput, ItemLike cutResult, ItemLike material) {
         cut(recipeOutput, RecipeCategory.BUILDING_BLOCKS, cutResult, material);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, cutResult, material);
+    }
+
+    protected static void tilesRecipes(RecipeOutput recipeOutput, ItemLike tiles, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, tiles, 4)
+                .define('S', material)
+                .pattern("SS")
+                .pattern("SS")
+                .unlockedBy(getHasName(material), has(material))
+                .save(recipeOutput);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, tiles, material);
     }
 }

@@ -9,7 +9,10 @@
     "extension:purpur_wall",
     "extension:quartz_wall",
     "extension:quartz_brick_wall",
+    "extension:nether_brick_tile_wall",
+    "extension:red_nether_brick_tile_wall",
     "extension:blue_nether_brick_wall",
+    "extension:blue_nether_brick_tile_wall",
     "extension:soul_sandstone_wall"
   ]
 }

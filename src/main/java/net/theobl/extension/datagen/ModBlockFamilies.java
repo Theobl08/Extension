@@ -24,6 +24,18 @@ public class ModBlockFamilies {
             .slab(ModBlocks.QUARTZ_BRICK_SLAB.get())
             .getFamily();
 
+    public static final BlockFamily NETHER_BRICK_TILES = familyBuilder(ModBlocks.NETHER_BRICK_TILES.get())
+            .slab(ModBlocks.NETHER_BRICK_TILE_SLAB.get())
+            .stairs(ModBlocks.NETHER_BRICK_TILE_STAIRS.get())
+            .wall(ModBlocks.NETHER_BRICK_TILE_WALL.get())
+            .getFamily();
+
+    public static final BlockFamily RED_NETHER_BRICK_TILES = familyBuilder(ModBlocks.RED_NETHER_BRICK_TILES.get())
+            .slab(ModBlocks.RED_NETHER_BRICK_TILE_SLAB.get())
+            .stairs(ModBlocks.RED_NETHER_BRICK_TILE_STAIRS.get())
+            .wall(ModBlocks.RED_NETHER_BRICK_TILE_WALL.get())
+            .getFamily();
+
     public static final BlockFamily BLUE_NETHER_BRICKS = familyBuilder(ModBlocks.BLUE_NETHER_BRICKS.get())
             //.fence(ModBlocks.BLUE_NETHER_BRICK_FENCE.get())
             .wall(ModBlocks.BLUE_NETHER_BRICK_WALL.get())
@@ -31,6 +43,12 @@ public class ModBlockFamilies {
             .slab(ModBlocks.BLUE_NETHER_BRICK_SLAB.get())
             .chiseled(ModBlocks.CHISELED_BLUE_NETHER_BRICKS.get())
             .cracked(ModBlocks.CRACKED_BLUE_NETHER_BRICKS.get())
+            .getFamily();
+
+    public static final BlockFamily BLUE_NETHER_BRICK_TILES = familyBuilder(ModBlocks.BLUE_NETHER_BRICK_TILES.get())
+            .slab(ModBlocks.BLUE_NETHER_BRICK_TILE_SLAB.get())
+            .stairs(ModBlocks.BLUE_NETHER_BRICK_TILE_STAIRS.get())
+            .wall(ModBlocks.BLUE_NETHER_BRICK_TILE_WALL.get())
             .getFamily();
 
     public static final BlockFamily SOUL_SANDSTONE = familyBuilder(ModBlocks.SOUL_SANDSTONE.get())

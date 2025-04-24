@@ -57,9 +57,18 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.add(ModBlocks.QUARTZ_BRICK_SLAB.get(), block -> createSlabItemTable(ModBlocks.QUARTZ_BRICK_SLAB.get()));
         this.dropSelf(ModBlocks.QUARTZ_BRICK_WALL.get());
 
+        this.dropSelf(ModBlocks.NETHER_BRICK_TILES.get());
+        this.dropSelf(ModBlocks.NETHER_BRICK_TILE_STAIRS.get());
+        this.add(ModBlocks.NETHER_BRICK_TILE_SLAB.get(), block -> createSlabItemTable(ModBlocks.NETHER_BRICK_TILE_SLAB.get()));
+        this.dropSelf(ModBlocks.NETHER_BRICK_TILE_WALL.get());
+
         this.dropSelf(ModBlocks.CRACKED_RED_NETHER_BRICKS.get());
         this.dropSelf(ModBlocks.RED_NETHER_BRICK_FENCE.get());
         this.dropSelf(ModBlocks.CHISELED_RED_NETHER_BRICKS.get());
+        this.dropSelf(ModBlocks.RED_NETHER_BRICK_TILES.get());
+        this.dropSelf(ModBlocks.RED_NETHER_BRICK_TILE_STAIRS.get());
+        this.add(ModBlocks.RED_NETHER_BRICK_TILE_SLAB.get(), block -> createSlabItemTable(ModBlocks.RED_NETHER_BRICK_TILE_SLAB.get()));
+        this.dropSelf(ModBlocks.RED_NETHER_BRICK_TILE_WALL.get());
 
         LootItemCondition.Builder lootItemConditionBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.BLUE_NETHER_WART.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(NetherWartBlock.AGE, 3));
@@ -78,6 +87,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.BLUE_NETHER_BRICK_WALL.get());
         this.dropSelf(ModBlocks.BLUE_NETHER_BRICK_FENCE.get());
         this.dropSelf(ModBlocks.CHISELED_BLUE_NETHER_BRICKS.get());
+        this.dropSelf(ModBlocks.BLUE_NETHER_BRICK_TILES.get());
+        this.dropSelf(ModBlocks.BLUE_NETHER_BRICK_TILE_STAIRS.get());
+        this.add(ModBlocks.BLUE_NETHER_BRICK_TILE_SLAB.get(), block -> createSlabItemTable(ModBlocks.BLUE_NETHER_BRICK_TILE_SLAB.get()));
+        this.dropSelf(ModBlocks.BLUE_NETHER_BRICK_TILE_WALL.get());
 
         this.dropSelf(ModBlocks.SOUL_SANDSTONE.get());
         this.dropSelf(ModBlocks.SOUL_SANDSTONE_STAIRS.get());

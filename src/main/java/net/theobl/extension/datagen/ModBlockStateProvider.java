@@ -46,9 +46,18 @@ public class ModBlockStateProvider extends BlockStateProvider {
         slabBlockWithItem(ModBlocks.QUARTZ_BRICK_SLAB, Blocks.QUARTZ_BRICKS);
         wallBlockWithItem(ModBlocks.QUARTZ_BRICK_WALL, Blocks.QUARTZ_BRICKS);
 
+        blockWithItem(ModBlocks.NETHER_BRICK_TILES);
+        stairsBlockWithItem(ModBlocks.NETHER_BRICK_TILE_STAIRS, ModBlocks.NETHER_BRICK_TILES.get());
+        slabBlockWithItem(ModBlocks.NETHER_BRICK_TILE_SLAB, ModBlocks.NETHER_BRICK_TILES.get());
+        wallBlockWithItem(ModBlocks.NETHER_BRICK_TILE_WALL, ModBlocks.NETHER_BRICK_TILES.get());
+
         blockWithItem(ModBlocks.CRACKED_RED_NETHER_BRICKS);
         fenceBlockWithItem(ModBlocks.RED_NETHER_BRICK_FENCE, Blocks.RED_NETHER_BRICKS);
         blockWithItem(ModBlocks.CHISELED_RED_NETHER_BRICKS);
+        blockWithItem(ModBlocks.RED_NETHER_BRICK_TILES);
+        stairsBlockWithItem(ModBlocks.RED_NETHER_BRICK_TILE_STAIRS, ModBlocks.RED_NETHER_BRICK_TILES.get());
+        slabBlockWithItem(ModBlocks.RED_NETHER_BRICK_TILE_SLAB, ModBlocks.RED_NETHER_BRICK_TILES.get());
+        wallBlockWithItem(ModBlocks.RED_NETHER_BRICK_TILE_WALL, ModBlocks.RED_NETHER_BRICK_TILES.get());
 
         createCrop((BushBlock) ModBlocks.BLUE_NETHER_WART.get(), NetherWartBlock.AGE, 0, 1, 1, 2);
 
@@ -59,6 +68,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         wallBlockWithItem(ModBlocks.BLUE_NETHER_BRICK_WALL, ModBlocks.BLUE_NETHER_BRICKS.get());
         fenceBlockWithItem(ModBlocks.BLUE_NETHER_BRICK_FENCE, ModBlocks.BLUE_NETHER_BRICKS.get());
         blockWithItem(ModBlocks.CHISELED_BLUE_NETHER_BRICKS);
+        blockWithItem(ModBlocks.BLUE_NETHER_BRICK_TILES);
+        stairsBlockWithItem(ModBlocks.BLUE_NETHER_BRICK_TILE_STAIRS, ModBlocks.BLUE_NETHER_BRICK_TILES.get());
+        slabBlockWithItem(ModBlocks.BLUE_NETHER_BRICK_TILE_SLAB, ModBlocks.BLUE_NETHER_BRICK_TILES.get());
+        wallBlockWithItem(ModBlocks.BLUE_NETHER_BRICK_TILE_WALL, ModBlocks.BLUE_NETHER_BRICK_TILES.get());
 
         simpleBlockWithItem(ModBlocks.SOUL_SANDSTONE.get(),
                 models().cubeBottomTop(name(ModBlocks.SOUL_SANDSTONE.get()),

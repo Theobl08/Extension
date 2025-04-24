@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-20T13:19:57.2194917	Tags for minecraft:item mod id extension
+// 1.21.1	2025-04-24T00:41:13.5490363	Tags for minecraft:item mod id extension
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks/nether.json
 d4dca80551a0d488392912428cdc618c8b8e9197 data/c/tags/item/crops.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/item/fences.json
@@ -9,6 +9,6 @@ ee90fd36ae9a8638d0d8f73aa91314f85ac2e3bd data/c/tags/item/sandstone/blocks.json
 4129d63523084b45c78c6fc8da77ed857f6e6a75 data/c/tags/item/sandstone/slabs.json
 bdef780f9a4c2965de35f74f5eb088150d9f694d data/c/tags/item/sandstone/stairs.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/minecraft/tags/item/fences.json
-db3d88aba27744408336643d0958adf33590d130 data/minecraft/tags/item/slabs.json
-a43d881dcdb392b548bd9204a255c47af0696c8e data/minecraft/tags/item/stairs.json
-1ac51e2c2cb1aacc13ef484e83a67f0d3c246440 data/minecraft/tags/item/walls.json
+c9881668465ed95afad50cd572aa73927332893f data/minecraft/tags/item/slabs.json
+05117f3d7b4c36810eb459fe1fceb97fa372a433 data/minecraft/tags/item/stairs.json
+efb972e0fc0097154747a23b85b36d754dc9bf99 data/minecraft/tags/item/walls.json

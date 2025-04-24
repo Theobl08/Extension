@@ -56,16 +56,31 @@ public class ModCreativeModeTabs {
             event.insertAfter(ModBlocks.QUARTZ_BRICK_STAIRS.toStack(), ModBlocks.QUARTZ_BRICK_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.QUARTZ_BRICK_SLAB.toStack(), ModBlocks.QUARTZ_BRICK_WALL.toStack(), PARENT_AND_SEARCH_TABS);
 
+            event.insertAfter(Items.CHISELED_NETHER_BRICKS.getDefaultInstance(), ModBlocks.NETHER_BRICK_TILES.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.NETHER_BRICK_TILES.toStack(), ModBlocks.NETHER_BRICK_TILE_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.NETHER_BRICK_TILE_STAIRS.toStack(), ModBlocks.NETHER_BRICK_TILE_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.NETHER_BRICK_TILE_SLAB.toStack(), ModBlocks.NETHER_BRICK_TILE_WALL.toStack(), PARENT_AND_SEARCH_TABS);
+
             event.insertAfter(Items.RED_NETHER_BRICKS.getDefaultInstance(), ModBlocks.CRACKED_RED_NETHER_BRICKS.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.RED_NETHER_BRICK_WALL.getDefaultInstance(), ModBlocks.RED_NETHER_BRICK_FENCE.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.RED_NETHER_BRICK_FENCE.toStack(), ModBlocks.CHISELED_RED_NETHER_BRICKS.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModBlocks.CHISELED_RED_NETHER_BRICKS.toStack(), ModBlocks.BLUE_NETHER_BRICKS.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.CHISELED_RED_NETHER_BRICKS.toStack(), ModBlocks.RED_NETHER_BRICK_TILES.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.RED_NETHER_BRICK_TILES.toStack(), ModBlocks.RED_NETHER_BRICK_TILE_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.RED_NETHER_BRICK_TILE_STAIRS.toStack(), ModBlocks.RED_NETHER_BRICK_TILE_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.RED_NETHER_BRICK_TILE_SLAB.toStack(), ModBlocks.RED_NETHER_BRICK_TILE_WALL.toStack(), PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(ModBlocks.RED_NETHER_BRICK_TILE_WALL.toStack(), ModBlocks.BLUE_NETHER_BRICKS.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.BLUE_NETHER_BRICKS.toStack(), ModBlocks.CRACKED_BLUE_NETHER_BRICKS.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.CRACKED_BLUE_NETHER_BRICKS.toStack(), ModBlocks.BLUE_NETHER_BRICK_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.BLUE_NETHER_BRICK_STAIRS.toStack(), ModBlocks.BLUE_NETHER_BRICK_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.BLUE_NETHER_BRICK_SLAB.toStack(), ModBlocks.BLUE_NETHER_BRICK_WALL.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.BLUE_NETHER_BRICK_WALL.toStack(), ModBlocks.BLUE_NETHER_BRICK_FENCE.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.BLUE_NETHER_BRICK_FENCE.toStack(), ModBlocks.CHISELED_BLUE_NETHER_BRICKS.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.CHISELED_BLUE_NETHER_BRICKS.toStack(), ModBlocks.BLUE_NETHER_BRICK_TILES.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.BLUE_NETHER_BRICK_TILES.toStack(), ModBlocks.BLUE_NETHER_BRICK_TILE_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.BLUE_NETHER_BRICK_TILE_STAIRS.toStack(), ModBlocks.BLUE_NETHER_BRICK_TILE_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.BLUE_NETHER_BRICK_TILE_SLAB.toStack(), ModBlocks.BLUE_NETHER_BRICK_TILE_WALL.toStack(), PARENT_AND_SEARCH_TABS);
+
             Item previous = Items.CUT_RED_SANDSTONE_SLAB;
             for (DeferredHolder<Block, ? extends Block> entry : ModBlocks.BLOCKS.getEntries()) {
                 if (entry.get().toString().contains("soul_sandstone")) {
