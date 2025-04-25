@@ -38,6 +38,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.REDSTONE_CAMPFIRE.get());
 
         tag(BlockTags.CAMPFIRES).add(ModBlocks.REDSTONE_CAMPFIRE.get());
+        tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModBlocks.SOUL_O_LANTERN.get());
         tag(Tags.Blocks.PUMPKINS)
                 .add(ModBlocks.SOUL_O_LANTERN.get())
                 .add(ModBlocks.REDSTONE_O_LANTERN.get());

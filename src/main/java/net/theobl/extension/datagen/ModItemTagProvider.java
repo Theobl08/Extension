@@ -28,6 +28,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
         copy(BlockTags.SLABS, ItemTags.SLABS);
         copy(BlockTags.WALLS, ItemTags.WALLS);
         copy(BlockTags.FENCES, ItemTags.FENCES);
+        copy(BlockTags.SOUL_FIRE_BASE_BLOCKS, ItemTags.SOUL_FIRE_BASE_BLOCKS);
         copy(Tags.Blocks.FENCES, Tags.Items.FENCES);
         copy(Tags.Blocks.FENCES_NETHER_BRICK, Tags.Items.FENCES_NETHER_BRICK);
         copy(Tags.Blocks.GLASS_PANES, Tags.Items.GLASS_PANES);

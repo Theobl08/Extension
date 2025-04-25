@@ -89,12 +89,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.QUARTZ_BRICK_WALL, Blocks.QUARTZ_BRICKS);
 
         tilesRecipes(recipeOutput, ModBlocks.NETHER_BRICK_TILES, Blocks.NETHER_BRICKS);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHER_BRICK_TILE_STAIRS, ModBlocks.NETHER_BRICK_TILES);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHER_BRICK_TILE_SLAB, ModBlocks.NETHER_BRICK_TILES, 2);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.NETHER_BRICK_TILE_WALL, ModBlocks.NETHER_BRICK_TILES);
 
         smeltingResultFromBase(recipeOutput, ModBlocks.CRACKED_RED_NETHER_BRICKS, Items.RED_NETHER_BRICKS);
         fence(recipeOutput, ModBlocks.RED_NETHER_BRICK_FENCE.get(), Blocks.RED_NETHER_BRICKS, ModItems.RED_NETHER_BRICK.get());
         chiseled(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICK_SLAB);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICKS);
         tilesRecipes(recipeOutput, ModBlocks.RED_NETHER_BRICK_TILES, Blocks.RED_NETHER_BRICKS);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_NETHER_BRICK_TILE_STAIRS, ModBlocks.RED_NETHER_BRICK_TILES);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_NETHER_BRICK_TILE_SLAB, ModBlocks.RED_NETHER_BRICK_TILES, 2);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.RED_NETHER_BRICK_TILE_WALL, ModBlocks.RED_NETHER_BRICK_TILES);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICKS)
                 .define('W', ModItems.BLUE_NETHER_WART)
@@ -109,6 +115,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         fence(recipeOutput, ModBlocks.BLUE_NETHER_BRICK_FENCE.get(), ModBlocks.BLUE_NETHER_BRICKS, ModItems.BLUE_NETHER_BRICK.get());
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICKS);
         tilesRecipes(recipeOutput, ModBlocks.BLUE_NETHER_BRICK_TILES, ModBlocks.BLUE_NETHER_BRICKS);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICK_TILE_STAIRS, ModBlocks.BLUE_NETHER_BRICK_TILES);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICK_TILE_SLAB, ModBlocks.BLUE_NETHER_BRICK_TILES, 2);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.BLUE_NETHER_BRICK_TILE_WALL, ModBlocks.BLUE_NETHER_BRICK_TILES);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_SANDSTONE, 1)
                 .define('#', Items.SOUL_SAND)
