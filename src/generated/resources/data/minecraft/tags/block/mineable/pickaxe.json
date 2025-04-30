@@ -2,6 +2,9 @@
   "values": [
     "extension:smooth_stone_stairs",
     "extension:netherite_stairs",
+    "extension:polished_stone",
+    "extension:polished_stone_stairs",
+    "extension:polished_stone_slab",
     "extension:smooth_basalt_stairs",
     "extension:smooth_basalt_slab",
     "extension:quartz_brick_stairs",

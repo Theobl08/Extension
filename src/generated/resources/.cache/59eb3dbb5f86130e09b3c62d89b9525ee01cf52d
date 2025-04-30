@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-24T00:41:13.5430355	Loot Tables
+// 1.21.1	2025-04-30T14:47:19.5620003	Loot Tables
 dfca12890ac76762b2974429397142439699a2fb data/extension/loot_table/blocks/blue_nether_bricks.json
 75742c9f09172a27f1c036b6349496847fa6b3a0 data/extension/loot_table/blocks/blue_nether_brick_fence.json
 3237ed18490dd5202e870d4fbb3bc57736e140de data/extension/loot_table/blocks/blue_nether_brick_slab.json
@@ -25,6 +25,10 @@ bb0d32855dbaa850fee2111120e1aebc9448eab3 data/extension/loot_table/blocks/nether
 a3472cbfc4275f3c3a91ad2ed132550db219da85 data/extension/loot_table/blocks/polished_andesite_wall.json
 2439a44248bd061e6d3d78827f7e945863470b82 data/extension/loot_table/blocks/polished_diorite_wall.json
 20ea3b29ce97d7462ccef2100614deae1df37d89 data/extension/loot_table/blocks/polished_granite_wall.json
+d7b89f865570034f32e665af8804f34559e8e0be data/extension/loot_table/blocks/polished_stone.json
+153afb4dcaec143d782444b31c8abaa83d32a380 data/extension/loot_table/blocks/polished_stone_slab.json
+4894e4970a3a0fd65905e6a396361a848d262336 data/extension/loot_table/blocks/polished_stone_stairs.json
+3ac89e11393ba4c96f0c13f4c41df087f5075e69 data/extension/loot_table/blocks/polished_stone_wall.json
 e5fe705fe3899188f470161103ebe7e227c4c297 data/extension/loot_table/blocks/prismarine_brick_wall.json
 17ebd1dabf0f2f3cacec630a465d43fcf05e7a38 data/extension/loot_table/blocks/purpur_wall.json
 16213afb727ccdf99f2196d8b76f034d9e9235e0 data/extension/loot_table/blocks/quartz_brick_slab.json

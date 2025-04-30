@@ -73,10 +73,11 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     }
 
     private boolean mineableWithPickaxe(Block block) {
-        return !block.toString().contains("wall") &&
+        return !block.toString().contains("wall") && // "#minecraft:wall" is already in the tag
                 (block.toString().contains("soul_sandstone") ||
                         block.toString().contains("brick") ||
                         block.toString().contains("smooth") ||
+                        block.toString().contains("polished") ||
                         block.defaultBlockState().is(ModBlocks.REDSTONE_LANTERN.get()) ||
                         block.defaultBlockState().is(ModBlocks.NETHERITE_STAIRS.get()));
     }

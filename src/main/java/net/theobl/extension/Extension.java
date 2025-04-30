@@ -32,6 +32,10 @@ import org.slf4j.Logger;
 public class Extension {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "extension";
+
+    public static final double BRIGHTNESS_MIN = -1;
+    public static final double BRIGHTNESS_MAX = 1200;
+    public static final double BRIGHTNESS_STEP = 0.05;
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 

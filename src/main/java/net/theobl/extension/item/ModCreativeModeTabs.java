@@ -49,6 +49,11 @@ public class ModCreativeModeTabs {
             event.insertAfter(Items.PURPUR_SLAB.getDefaultInstance(), ModBlocks.PURPUR_WALL.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.QUARTZ_SLAB.getDefaultInstance(), ModBlocks.QUARTZ_WALL.toStack(), PARENT_AND_SEARCH_TABS);
 
+            event.insertAfter(Items.SMOOTH_STONE_SLAB.getDefaultInstance(), ModBlocks.POLISHED_STONE.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.POLISHED_STONE.toStack(), ModBlocks.POLISHED_STONE_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.POLISHED_STONE_STAIRS.toStack(), ModBlocks.POLISHED_STONE_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.POLISHED_STONE_SLAB.toStack(), ModBlocks.POLISHED_STONE_WALL.toStack(), PARENT_AND_SEARCH_TABS);
+
             event.insertAfter(Items.SMOOTH_BASALT.getDefaultInstance(), ModBlocks.SMOOTH_BASALT_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.SMOOTH_BASALT_STAIRS.toStack(), ModBlocks.SMOOTH_BASALT_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
 
@@ -92,6 +97,7 @@ public class ModCreativeModeTabs {
         if (event.getTabKey() == CreativeModeTabs.COLORED_BLOCKS)
             event.insertAfter(Items.GLASS_PANE.getDefaultInstance(), ModBlocks.TINTED_GLASS_PANE.toStack(), PARENT_AND_SEARCH_TABS);
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            event.insertAfter(Items.SOUL_SAND.getDefaultInstance(), ModBlocks.SOUL_SANDSTONE.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.JACK_O_LANTERN.getDefaultInstance(), ModBlocks.SOUL_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.SOUL_O_LANTERN.toStack(), ModBlocks.REDSTONE_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
         }

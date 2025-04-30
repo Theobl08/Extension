@@ -13,6 +13,12 @@ import java.util.stream.Stream;
 public class ModBlockFamilies {
     private static final Map<Block, BlockFamily> MAP = Maps.newHashMap();
 
+    public static final BlockFamily POLISHED_STONE = familyBuilder(ModBlocks.POLISHED_STONE.get())
+            .wall(ModBlocks.POLISHED_STONE_WALL.get())
+            .stairs(ModBlocks.POLISHED_STONE_STAIRS.get())
+            .slab(ModBlocks.POLISHED_STONE_SLAB.get())
+            .getFamily();
+
     public static final BlockFamily SMOOTH_BASALT = familyBuilder(Blocks.SMOOTH_BASALT)
             .stairs(ModBlocks.SMOOTH_BASALT_STAIRS.get())
             .slab(ModBlocks.SMOOTH_BASALT_SLAB.get())

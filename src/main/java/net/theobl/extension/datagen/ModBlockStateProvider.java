@@ -39,6 +39,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         paneBlock((IronBarsBlock) ModBlocks.TINTED_GLASS_PANE.get(),
                 blockTexture(Blocks.TINTED_GLASS), modLoc("block/tinted_glass_pane_top"));
 
+        blockWithItem(ModBlocks.POLISHED_STONE);
+        stairsBlockWithItem(ModBlocks.POLISHED_STONE_STAIRS, ModBlocks.POLISHED_STONE.get());
+        slabBlockWithItem(ModBlocks.POLISHED_STONE_SLAB, ModBlocks.POLISHED_STONE.get());
+        wallBlockWithItem(ModBlocks.POLISHED_STONE_WALL, ModBlocks.POLISHED_STONE.get());
+
         stairsBlockWithItem(ModBlocks.SMOOTH_BASALT_STAIRS, Blocks.SMOOTH_BASALT);
         slabBlockWithItem(ModBlocks.SMOOTH_BASALT_SLAB, Blocks.SMOOTH_BASALT);
 
