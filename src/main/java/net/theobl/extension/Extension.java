@@ -1,7 +1,10 @@
 package net.theobl.extension;
 
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.OptionInstance;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.Items;
@@ -27,6 +30,8 @@ import net.theobl.extension.item.ModCreativeModeTabs;
 import net.theobl.extension.item.ModItems;
 import org.slf4j.Logger;
 
+import java.util.Optional;
+
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(Extension.MODID)
 public class Extension {
@@ -34,7 +39,7 @@ public class Extension {
     public static final String MODID = "extension";
 
     public static final double BRIGHTNESS_MIN = -1;
-    public static final double BRIGHTNESS_MAX = 1200;
+    public static final double BRIGHTNESS_MAX = 12;
     public static final double BRIGHTNESS_STEP = 0.05;
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -101,6 +106,31 @@ public class Extension {
         @SubscribeEvent
         public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
             event.registerBlockEntityRenderer(ModBlockEntities.REDSTONE_CAMPFIRE.get(), RedstoneCampfireBlockEntityRenderer::new);
+        }
+    }
+
+    public enum BetterSlider implements OptionInstance.SliderableValueSet<Double> {
+        INSTANCE;
+
+        @Override
+        public double toSliderValue(Double value) {
+            return (value - BRIGHTNESS_MIN) / (BRIGHTNESS_MAX - BRIGHTNESS_MIN);
+        }
+
+        @Override
+        public Double fromSliderValue(double value) {
+            return value * (BRIGHTNESS_MAX - BRIGHTNESS_MIN) + BRIGHTNESS_MIN;
+        }
+
+        @Override
+        public Optional<Double> validateValue(Double value) {
+            return value >= BRIGHTNESS_MIN && value <= BRIGHTNESS_MAX ? Optional.of(value) : Optional.empty();
+        }
+
+        @Override
+        public Codec<Double> codec() {
+            return Codec.either(Codec.doubleRange(BRIGHTNESS_MIN, BRIGHTNESS_MAX), Codec.BOOL)
+                    .xmap(either -> either.map(value -> value, value -> value ? 1.0 : 0.0), Either::left);
         }
     }
 }

@@ -17,11 +17,14 @@
     "GossipTypeMixin",
     "MinecartSpawnerMixin",
     "NoiseChunkBasedGeneratorMixin",
-    "ShovelItemMixin"
+    "ShovelItemMixin",
+    "SliderControlMixin"
   ],
   "client": [
     "ClientLevelMixin",
     "FogRendererMixin",
+    "LightTextureMixin",
+    "OptionInstanceMixin",
     "ScreenEffectRendererMixin"
   ],
   "injectors": {
