@@ -19,6 +19,12 @@ public class ModBlockFamilies {
             .slab(ModBlocks.POLISHED_STONE_SLAB.get())
             .getFamily();
 
+    public static final BlockFamily MOSSY_STONE_BRICKS = familyBuilder(ModBlocks.MOSSY_DEEPSLATE_BRICKS.get())
+            .wall(ModBlocks.MOSSY_DEEPSLATE_BRICK_WALL.get())
+            .stairs(ModBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS.get())
+            .slab(ModBlocks.MOSSY_DEEPSLATE_BRICK_SLAB.get())
+            .getFamily();
+
     public static final BlockFamily SMOOTH_BASALT = familyBuilder(Blocks.SMOOTH_BASALT)
             .stairs(ModBlocks.SMOOTH_BASALT_STAIRS.get())
             .slab(ModBlocks.SMOOTH_BASALT_SLAB.get())

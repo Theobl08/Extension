@@ -44,6 +44,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         slabBlockWithItem(ModBlocks.POLISHED_STONE_SLAB, ModBlocks.POLISHED_STONE.get());
         wallBlockWithItem(ModBlocks.POLISHED_STONE_WALL, ModBlocks.POLISHED_STONE.get());
 
+        blockWithItem(ModBlocks.MOSSY_DEEPSLATE_BRICKS);
+        stairsBlockWithItem(ModBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS, ModBlocks.MOSSY_DEEPSLATE_BRICKS.get());
+        slabBlockWithItem(ModBlocks.MOSSY_DEEPSLATE_BRICK_SLAB, ModBlocks.MOSSY_DEEPSLATE_BRICKS.get());
+        wallBlockWithItem(ModBlocks.MOSSY_DEEPSLATE_BRICK_WALL, ModBlocks.MOSSY_DEEPSLATE_BRICKS.get());
+
         stairsBlockWithItem(ModBlocks.SMOOTH_BASALT_STAIRS, Blocks.SMOOTH_BASALT);
         slabBlockWithItem(ModBlocks.SMOOTH_BASALT_SLAB, Blocks.SMOOTH_BASALT);
 

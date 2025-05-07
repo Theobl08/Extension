@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-30T14:47:19.5620003	Loot Tables
+// 1.21.1	2025-05-05T20:29:53.3073154	Loot Tables
 dfca12890ac76762b2974429397142439699a2fb data/extension/loot_table/blocks/blue_nether_bricks.json
 75742c9f09172a27f1c036b6349496847fa6b3a0 data/extension/loot_table/blocks/blue_nether_brick_fence.json
 3237ed18490dd5202e870d4fbb3bc57736e140de data/extension/loot_table/blocks/blue_nether_brick_slab.json
@@ -17,6 +17,10 @@ c24ea39a653d9ec16b6c1605c3d8be9c8d842cc9 data/extension/loot_table/blocks/cracke
 094dc8da693528e1e93238b50822b66fe60299a7 data/extension/loot_table/blocks/cut_soul_sandstone.json
 d272ae563d02a9c36eb6987151a17a5c78329f0f data/extension/loot_table/blocks/cut_soul_sandstone_slab.json
 c4ecd553b9b5ba99a2609a0c929a96d8b3e9bafd data/extension/loot_table/blocks/dark_prismarine_wall.json
+2bd328249459d01295645f41c1700b6a69584145 data/extension/loot_table/blocks/mossy_deepslate_bricks.json
+3712ae987e8f409a2ac4f18ca52e7621fb105ab0 data/extension/loot_table/blocks/mossy_deepslate_brick_slab.json
+e77aa3dcee2eb58ca95687aa369b0b09de490167 data/extension/loot_table/blocks/mossy_deepslate_brick_stairs.json
+c5a4dd8c311703725d820a92fa01d8eb496e63ee data/extension/loot_table/blocks/mossy_deepslate_brick_wall.json
 e25ce0f34563a5881fe8325caa48a7d90dbfa6e6 data/extension/loot_table/blocks/netherite_stairs.json
 91a2a87a70a1dbd2a9dda7ed4ff25f11806db234 data/extension/loot_table/blocks/nether_brick_tiles.json
 bb0d32855dbaa850fee2111120e1aebc9448eab3 data/extension/loot_table/blocks/nether_brick_tile_slab.json
