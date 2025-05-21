@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -19,13 +20,11 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.theobl.extension.block.ModBlocks;
-import net.theobl.extension.block.entity.ModBlockEntities;
-import net.theobl.extension.block.entity.RedstoneCampfireBlockEntityRenderer;
 import net.theobl.extension.item.ModCreativeModeTabs;
 import net.theobl.extension.item.ModItems;
 import org.slf4j.Logger;
@@ -57,8 +56,6 @@ public class Extension {
         // Register the Deferred Register to the mod event bus so tabs get registered
         ModCreativeModeTabs.register(modEventBus);
 
-        ModBlockEntities.register(modEventBus);
-
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (Extension) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
@@ -66,6 +63,7 @@ public class Extension {
 
         // Register the item to a creative tab
         modEventBus.addListener(ModCreativeModeTabs::addCreative);
+        modEventBus.addListener(this::addBlockToBlockEntity);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -74,6 +72,10 @@ public class Extension {
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
+    }
+
+    private void addBlockToBlockEntity(BlockEntityTypeAddBlocksEvent event) {
+        event.modify(BlockEntityType.CAMPFIRE, ModBlocks.REDSTONE_CAMPFIRE.get());
     }
 
     @SubscribeEvent
@@ -101,11 +103,6 @@ public class Extension {
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
 
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TINTED_GLASS_PANE.get(), RenderType.TRANSLUCENT);
-        }
-
-        @SubscribeEvent
-        public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
-            event.registerBlockEntityRenderer(ModBlockEntities.REDSTONE_CAMPFIRE.get(), RedstoneCampfireBlockEntityRenderer::new);
         }
     }
 
