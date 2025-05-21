@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-21T14:17:15.5746179	Loot Tables
+// 1.21.1	2025-05-21T14:38:21.8419607	Loot Tables
 dfca12890ac76762b2974429397142439699a2fb data/extension/loot_table/blocks/blue_nether_bricks.json
 75742c9f09172a27f1c036b6349496847fa6b3a0 data/extension/loot_table/blocks/blue_nether_brick_fence.json
 3237ed18490dd5202e870d4fbb3bc57736e140de data/extension/loot_table/blocks/blue_nether_brick_slab.json
@@ -15,7 +15,7 @@ c8612d4c18be9e1e7e6708ad06894e3157c70b5b data/extension/loot_table/blocks/chisel
 c24ea39a653d9ec16b6c1605c3d8be9c8d842cc9 data/extension/loot_table/blocks/cracked_blue_nether_bricks.json
 5af580c222c17c71e329c905b9af9b402e14a6d3 data/extension/loot_table/blocks/cracked_red_nether_bricks.json
 094dc8da693528e1e93238b50822b66fe60299a7 data/extension/loot_table/blocks/cut_soul_sandstone.json
-d272ae563d02a9c36eb6987151a17a5c78329f0f data/extension/loot_table/blocks/cut_soul_sandstone_slab.json
+3c50fb99cbe462fe5ef191f7ec4ae72d4054e6ac data/extension/loot_table/blocks/cut_soul_sandstone_slab.json
 c4ecd553b9b5ba99a2609a0c929a96d8b3e9bafd data/extension/loot_table/blocks/dark_prismarine_wall.json
 4f55a2c97df78f9a76b5db5b7c07037d2ff9b1b1 data/extension/loot_table/blocks/mossy_cobbled_deepslate.json
 440041a0d5a5525885a091ee8340c3b059180948 data/extension/loot_table/blocks/mossy_cobbled_deepslate_slab.json
@@ -54,7 +54,7 @@ c7d6c9c2d6527189ffb0ca69c6578a20c608d145 data/extension/loot_table/blocks/red_ne
 715681e6c872908222f265133e51840c000086d2 data/extension/loot_table/blocks/smooth_basalt_slab.json
 2fe980171f3f43b6aa0e0f63aec4304b9cdb8a16 data/extension/loot_table/blocks/smooth_basalt_stairs.json
 e17e183c757ae32c6161fa1d758a9f6631664412 data/extension/loot_table/blocks/smooth_soul_sandstone.json
-f13d4648d16f2b15a5df6901aea16f37f3ada50d data/extension/loot_table/blocks/smooth_soul_sandstone_slab.json
+a393afbc73ec526e6b1d57f562470866eae191e4 data/extension/loot_table/blocks/smooth_soul_sandstone_slab.json
 b398570f16d1244edf1d7b5f81276b31bdf6bad9 data/extension/loot_table/blocks/smooth_soul_sandstone_stairs.json
 46886fe51972d6e2a29187318baed13e7fd68daa data/extension/loot_table/blocks/smooth_stone_stairs.json
 8f94219a3ecd9a760994f2780dec8b644cbc7620 data/extension/loot_table/blocks/soul_o_lantern.json
