@@ -94,6 +94,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, Blocks.STONE_BRICK_WALL, ModBlocks.POLISHED_STONE);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.CHISELED_STONE_BRICKS, ModBlocks.POLISHED_STONE);
 
+        mossyRecipes(recipeOutput, ModBlocks.MOSSY_COBBLED_DEEPSLATE, Blocks.COBBLED_DEEPSLATE, "mossy_cobbled_deepslate");
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS, ModBlocks.MOSSY_COBBLED_DEEPSLATE);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB, ModBlocks.MOSSY_COBBLED_DEEPSLATE, 2);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.MOSSY_COBBLED_DEEPSLATE_WALL, ModBlocks.MOSSY_COBBLED_DEEPSLATE);
+
         mossyRecipes(recipeOutput, ModBlocks.MOSSY_DEEPSLATE_BRICKS, Blocks.DEEPSLATE_BRICKS, "mossy_deepslate_bricks");
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS, ModBlocks.MOSSY_DEEPSLATE_BRICKS);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_DEEPSLATE_BRICK_SLAB, ModBlocks.MOSSY_DEEPSLATE_BRICKS, 2);
@@ -292,12 +297,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Blocks.VINE)
                 .group(groupName)
                 .unlockedBy("has_vine", has(Blocks.VINE))
-                .save(recipeOutput, Extension.MODID + ":" + getConversionRecipeName(Blocks.MOSSY_COBBLESTONE, Blocks.VINE));
+                .save(recipeOutput, Extension.MODID + ":" + getConversionRecipeName(result, Blocks.VINE));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, result)
                 .requires(material)
                 .requires(Blocks.MOSS_BLOCK)
                 .group(groupName)
                 .unlockedBy("has_moss_block", has(Blocks.MOSS_BLOCK))
-                .save(recipeOutput, Extension.MODID + ":" + getConversionRecipeName(Blocks.MOSSY_COBBLESTONE, Blocks.MOSS_BLOCK));
+                .save(recipeOutput, Extension.MODID + ":" + getConversionRecipeName(result, Blocks.MOSS_BLOCK));
     }
 }

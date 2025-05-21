@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "extension:block/mossy_cobbled_deepslate",
+    "side": "extension:block/mossy_cobbled_deepslate",
+    "top": "extension:block/mossy_cobbled_deepslate"
+  }
+}

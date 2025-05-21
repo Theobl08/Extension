@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-05T20:29:53.3133366	Tags for minecraft:item mod id extension
+// 1.21.1	2025-05-21T14:17:15.579618	Tags for minecraft:item mod id extension
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks.json
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks/nether.json
 d4dca80551a0d488392912428cdc618c8b8e9197 data/c/tags/item/crops.json
@@ -10,7 +10,7 @@ ee90fd36ae9a8638d0d8f73aa91314f85ac2e3bd data/c/tags/item/sandstone/blocks.json
 4129d63523084b45c78c6fc8da77ed857f6e6a75 data/c/tags/item/sandstone/slabs.json
 bdef780f9a4c2965de35f74f5eb088150d9f694d data/c/tags/item/sandstone/stairs.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/minecraft/tags/item/fences.json
-ccabafcc5fbdda4c459dc8ef77b9ae441585d24c data/minecraft/tags/item/slabs.json
+32eea5565b05a56394e2de3b54f06f5868f26dfa data/minecraft/tags/item/slabs.json
 3486cb571e4d7f4403ec590dfafb6972d44ae7da data/minecraft/tags/item/soul_fire_base_blocks.json
-c3c5c8c2615d02056202ee2ffea51d48301fa7de data/minecraft/tags/item/stairs.json
-485d45d782b5b53b04879584dbae80d6768f02d2 data/minecraft/tags/item/walls.json
+181867a6458bb590048927f72f46f55dae916d6e data/minecraft/tags/item/stairs.json
+6111f39761d45607af948fef049277dd50eb429a data/minecraft/tags/item/walls.json

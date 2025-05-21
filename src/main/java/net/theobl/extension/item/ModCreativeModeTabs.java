@@ -54,6 +54,11 @@ public class ModCreativeModeTabs {
             event.insertAfter(ModBlocks.POLISHED_STONE_STAIRS.toStack(), ModBlocks.POLISHED_STONE_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.POLISHED_STONE_SLAB.toStack(), ModBlocks.POLISHED_STONE_WALL.toStack(), PARENT_AND_SEARCH_TABS);
 
+            event.insertAfter(Items.COBBLED_DEEPSLATE_WALL.getDefaultInstance(), ModBlocks.MOSSY_COBBLED_DEEPSLATE.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.MOSSY_COBBLED_DEEPSLATE.toStack(), ModBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS.toStack(), ModBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB.toStack(), ModBlocks.MOSSY_COBBLED_DEEPSLATE_WALL.toStack(), PARENT_AND_SEARCH_TABS);
+
             event.insertAfter(Items.DEEPSLATE_BRICK_WALL.getDefaultInstance(), ModBlocks.MOSSY_DEEPSLATE_BRICKS.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.MOSSY_DEEPSLATE_BRICKS.toStack(), ModBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS.toStack(), ModBlocks.MOSSY_DEEPSLATE_BRICK_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
