@@ -27,12 +27,17 @@ public class Config {
             BUILDER.comment("Set to false to disable farmland trampling")
                     .define("farmlandTrampling", false);
 
+    public static final ModConfigSpec.BooleanValue UNBREAKABLE_AT_MAX_UNBREAKING_LEVEL =
+            BUILDER.comment("Whether damageable items becomes unbreakable when the unbreaking enchantment is at max level")
+                    .define("unbreakableAtMaxUnbreakingLevel", false);
+
     static final ModConfigSpec SPEC = BUILDER.build();
 
     public static Boolean clearVoid;
     public static Boolean noFireOverlay;
     public static Boolean boatStepUp;
     public static Boolean farmlandTrample;
+    public static Boolean unbreakableAtMaxUnbreakingLevel;
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
@@ -40,5 +45,6 @@ public class Config {
         noFireOverlay = NO_FIRE_OVERLAY.get();
         boatStepUp = BOAT_STEP_UP.get();
         farmlandTrample = FARMLAND_TRAMPLE.get();
+        unbreakableAtMaxUnbreakingLevel = UNBREAKABLE_AT_MAX_UNBREAKING_LEVEL.get();
     }
 }

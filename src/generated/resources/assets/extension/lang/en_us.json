@@ -68,6 +68,7 @@
   "extension.configuration.clearVoid": "Clear Void",
   "extension.configuration.farmlandTrampling": "Farmland Trampling",
   "extension.configuration.noFireOverlay": "No Fire Overlay",
+  "extension.configuration.unbreakableAtMaxUnbreakingLevel": "Unbreakable At Max Unbreaking Level",
   "item.extension.blue_nether_brick": "Blue Nether Brick",
   "item.extension.blue_nether_wart": "Blue Nether Wart",
   "item.extension.illusioner_spawn_egg": "Illusioner Spawn Egg",

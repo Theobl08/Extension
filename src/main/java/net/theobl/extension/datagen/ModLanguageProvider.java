@@ -50,6 +50,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addConfig(Config.CLEAR_VOID);
         addConfig(Config.NO_FIRE_OVERLAY);
         addConfig(Config.FARMLAND_TRAMPLE);
+        addConfig(Config.UNBREAKABLE_AT_MAX_UNBREAKING_LEVEL);
 
         translateTags(BannerPatternTags.class);
         translateTags(BiomeTags.class);
