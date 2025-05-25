@@ -1,6 +1,7 @@
 package net.theobl.extension.datagen;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
@@ -16,6 +17,7 @@ import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.item.ModItems;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
 
@@ -48,6 +50,23 @@ public class ModLanguageProvider extends LanguageProvider {
         addConfig(Config.CLEAR_VOID);
         addConfig(Config.NO_FIRE_OVERLAY);
         addConfig(Config.FARMLAND_TRAMPLE);
+
+        translateTags(BannerPatternTags.class);
+        translateTags(BiomeTags.class);
+        translateTags(BlockTags.class);
+        translateTags(CatVariantTags.class);
+        translateTags(DamageTypeTags.class);
+        translateTags(EnchantmentTags.class);
+        translateTags(EntityTypeTags.class);
+        translateTags(FlatLevelGeneratorPresetTags.class);
+        translateTags(FluidTags.class);
+        translateTags(GameEventTags.class);
+        translateTags(InstrumentTags.class);
+        translateTags(ItemTags.class);
+        translateTags(PaintingVariantTags.class);
+        translateTags(PoiTypeTags.class);
+        translateTags(StructureTags.class);
+        translateTags(WorldPresetTags.class);
     }
 
     private static @NotNull String capitalizeString(String string) {
@@ -76,5 +95,18 @@ public class ModLanguageProvider extends LanguageProvider {
         String path = String.join(".", configValue.getPath());
         String key = "extension.configuration." + path;
         add(key, capitalizeString(path.replaceAll("(?<!_)(?=[A-Z])", " "))); //https://stackoverflow.com/questions/44644827/how-to-insert-space-before-capital-letter-for-a-string-using-java/44644996#44644996
+    }
+
+    @SuppressWarnings("unchecked")
+    private void translateTags(Class<?> c) {
+        for (Field field : c.getDeclaredFields()) {
+            TagKey<Block> tag = null;
+            try {
+                tag = (TagKey<Block>) field.get(null);
+            } catch (IllegalAccessException e) {
+                throw new IllegalStateException(c.getName() + " is missing tag name: " + field.getName());
+            }
+            add(tag, capitalizeString(field.getName().replace("_", " ").toLowerCase()));
+        }
     }
 }
