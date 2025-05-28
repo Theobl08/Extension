@@ -18,8 +18,6 @@ import net.theobl.extension.item.ModItems;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.List;
 
 public class ModLanguageProvider extends LanguageProvider {
     public ModLanguageProvider(PackOutput output, String locale) {
