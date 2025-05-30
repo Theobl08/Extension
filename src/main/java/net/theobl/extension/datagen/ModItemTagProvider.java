@@ -33,7 +33,6 @@ public class ModItemTagProvider extends ItemTagsProvider {
         copy(Tags.Blocks.FENCES, Tags.Items.FENCES);
         copy(Tags.Blocks.FENCES_NETHER_BRICK, Tags.Items.FENCES_NETHER_BRICK);
         copy(Tags.Blocks.GLASS_PANES, Tags.Items.GLASS_PANES);
-        copy(Tags.Blocks.PUMPKINS, Tags.Items.PUMPKINS);
 
         copy(Tags.Blocks.SANDSTONE_BLOCKS, Tags.Items.SANDSTONE_BLOCKS);
         copy(Tags.Blocks.SANDSTONE_STAIRS, Tags.Items.SANDSTONE_STAIRS);

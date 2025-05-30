@@ -3,9 +3,7 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": {
-    "item": "extension:blue_nether_bricks"
-  },
+  "ingredient": "extension:blue_nether_bricks",
   "result": {
     "count": 1,
     "id": "extension:cracked_blue_nether_bricks"

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:nether_brick"
-    },
-    {
-      "item": "extension:blue_nether_wart"
-    }
+    "minecraft:nether_brick",
+    "extension:blue_nether_wart"
   ],
   "result": {
     "count": 2,

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "extension:nether_brick_tiles"
-    }
+    "#": "extension:nether_brick_tiles"
   },
   "pattern": [
     "#  ",

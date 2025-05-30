@@ -1,5 +1,6 @@
 package net.theobl.extension.mixin;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameRules;
@@ -17,10 +18,12 @@ public class EntityMixin {
     @Inject(method = "setRemainingFireTicks", at = @At("TAIL"))
     private void noPlayerOnFireWhenNotNeeded(int remainingFireTicks, CallbackInfo ci) {
         if(((Entity) (Object) this) instanceof Player) {
-            if(((Player) (Object) this).isCreative())
-                this.remainingFireTicks = 0;
-            else if(!((Player) (Object) this).level().getGameRules().getBoolean(GameRules.RULE_FIRE_DAMAGE) && Config.noFireOverlay)
-                this.remainingFireTicks = 0;
+            if(((Player) (Object) this).level() instanceof ServerLevel serverLevel) {
+                if (((Player) (Object) this).isCreative())
+                    this.remainingFireTicks = 0;
+                else if (!serverLevel.getGameRules().getBoolean(GameRules.RULE_FIRE_DAMAGE) && Config.noFireOverlay)
+                    this.remainingFireTicks = 0;
+            }
         }
     }
 }

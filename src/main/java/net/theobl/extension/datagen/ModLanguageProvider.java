@@ -4,7 +4,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.tags.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.MinecartItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CarvedPumpkinBlock;
@@ -40,7 +39,7 @@ public class ModLanguageProvider extends LanguageProvider {
         for(DeferredHolder<Item, ? extends Item> item : ModItems.ITEMS.getEntries()) {
             if(item.get() instanceof MinecartItem)
                 add(item.get(),"Minecart with Monster Spawner");
-            else if(item.get() instanceof ItemNameBlockItem || !(item.get() instanceof BlockItem))
+            else if(item.get() == ModItems.BLUE_NETHER_WART.asItem() || !(item.get() instanceof BlockItem))
                 add(item.get(), capitalizeString(filterItemLang(item.get())));
         }
 

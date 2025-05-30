@@ -13,7 +13,7 @@ public class ClientLevelMixin {
     @Inject(at = @At("RETURN"), method = "getHorizonHeight", cancellable = true)
     private void getHorizonHeight(LevelHeightAccessor level, CallbackInfoReturnable<Double> cir) {
         if(Config.clearVoid)
-            cir.setReturnValue((double) level.getMinBuildHeight());
+            cir.setReturnValue((double) level.getMinY());
     }
 
     @Inject(at = @At("RETURN"), method = "getClearColorScale", cancellable = true)

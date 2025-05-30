@@ -3,15 +3,9 @@
   "category": "building",
   "key": {
     "#": [
-      {
-        "item": "extension:soul_sandstone"
-      },
-      {
-        "item": "extension:chiseled_soul_sandstone"
-      },
-      {
-        "item": "extension:cut_soul_sandstone"
-      }
+      "extension:soul_sandstone",
+      "extension:chiseled_soul_sandstone",
+      "extension:cut_soul_sandstone"
     ]
   },
   "pattern": [

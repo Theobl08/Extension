@@ -4,13 +4,16 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 @Mixin(LightTexture.class)
 public class LightTextureMixin {
-    @Redirect(at = @At(value = "INVOKE", target = "Ljava/lang/Math;max(FF)F", ordinal = 2), method = "updateLightTexture")
-    public float updateLightTexture(float a, float b) {
+    @ModifyArg(method = "getBrightness(FI)F", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;lerp(FFF)F"), index = 0)
+    private static float modifyBrightness(float delta) {
         double gamma = Minecraft.getInstance().options.gamma().get();
-        return (float) Math.max(gamma < 0 ? gamma : 0, b);
+        if (gamma < 0) {
+            return (float) (1.0F + gamma);
+        }
+        return delta;
     }
 }

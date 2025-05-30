@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "extension:red_nether_brick"
-    }
+    "#": "extension:red_nether_brick"
   },
   "pattern": [
     "##",

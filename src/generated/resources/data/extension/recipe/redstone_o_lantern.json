@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "A": {
-      "item": "minecraft:carved_pumpkin"
-    },
-    "B": {
-      "item": "minecraft:redstone_torch"
-    }
+    "A": "minecraft:carved_pumpkin",
+    "B": "minecraft:redstone_torch"
   },
   "pattern": [
     "A",

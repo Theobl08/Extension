@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "blue_nether_bricks_from_blue_nether_brick": {
+    "has_blue_nether_wart": {
       "conditions": {
         "items": [
           {
-            "items": "extension:blue_nether_brick"
+            "items": "extension:blue_nether_wart"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "blue_nether_bricks_from_blue_nether_brick"
+      "has_blue_nether_wart"
     ]
   ],
   "rewards": {

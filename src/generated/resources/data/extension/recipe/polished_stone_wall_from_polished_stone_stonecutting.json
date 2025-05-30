@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "extension:polished_stone"
-  },
+  "ingredient": "extension:polished_stone",
   "result": {
     "count": 1,
     "id": "extension:polished_stone_wall"

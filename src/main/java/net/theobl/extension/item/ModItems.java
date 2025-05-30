@@ -1,10 +1,9 @@
 package net.theobl.extension.item;
 
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.equipment.ArmorMaterials;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.theobl.extension.Extension;
@@ -14,23 +13,21 @@ public class ModItems {
     // Create a Deferred Register to hold Items which will all be registered under the "extension" namespace
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Extension.MODID);
 
-    public static final DeferredItem<Item> SPAWNER_MINECART = ITEMS.register("spawner_minecart",
-            () -> new MinecartItem(AbstractMinecart.Type.SPAWNER, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> SPAWNER_MINECART = ITEMS.registerItem("spawner_minecart",
+            properties -> new MinecartItem(EntityType.SPAWNER_MINECART, properties.stacksTo(1)));
 
-    public static final DeferredItem<Item> NETHERITE_HORSE_ARMOR = ITEMS.register("netherite_horse_armor",
-            () -> new AnimalArmorItem(ArmorMaterials.NETHERITE, AnimalArmorItem.BodyType.EQUESTRIAN, false, (new Item.Properties().stacksTo(1).fireResistant())));
+    public static final DeferredItem<Item> NETHERITE_HORSE_ARMOR = ITEMS.registerItem("netherite_horse_armor",
+            properties -> new AnimalArmorItem(ArmorMaterials.NETHERITE, AnimalArmorItem.BodyType.EQUESTRIAN, properties.stacksTo(1).fireResistant()));
 
-    public static final DeferredItem<Item> RED_NETHER_BRICK = ITEMS.register("red_nether_brick",
-            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> RED_NETHER_BRICK = ITEMS.registerSimpleItem("red_nether_brick");
 
-    public static final DeferredItem<Item> BLUE_NETHER_BRICK = ITEMS.register("blue_nether_brick",
-            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BLUE_NETHER_BRICK = ITEMS.registerSimpleItem("blue_nether_brick");
 
-    public static final DeferredItem<Item> BLUE_NETHER_WART = ITEMS.register("blue_nether_wart",
-            () -> new ItemNameBlockItem(ModBlocks.BLUE_NETHER_WART.get(), new Item.Properties()));
+    public static final DeferredItem<Item> BLUE_NETHER_WART = ITEMS.registerItem("blue_nether_wart",
+            properties -> new BlockItem(ModBlocks.BLUE_NETHER_WART.get(), properties));
 
-    public static final DeferredItem<Item> ILLUSIONER_SPAWN_EGG = ITEMS.register("illusioner_spawn_egg",
-            () -> new DeferredSpawnEggItem(() -> EntityType.ILLUSIONER, 9804699, 1267859, new Item.Properties()));
+    public static final DeferredItem<Item> ILLUSIONER_SPAWN_EGG = ITEMS.registerItem("illusioner_spawn_egg",
+            properties -> new SpawnEggItem(EntityType.ILLUSIONER, 9804699, 1267859, properties));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "extension:soul_sandstone"
-  },
+  "ingredient": "extension:soul_sandstone",
   "result": {
     "count": 1,
     "id": "extension:chiseled_soul_sandstone"

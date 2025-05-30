@@ -2,33 +2,15 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "extension:blue_nether_wart"
-    },
-    {
-      "item": "extension:blue_nether_wart"
-    },
-    {
-      "item": "extension:blue_nether_wart"
-    },
-    {
-      "item": "extension:blue_nether_wart"
-    },
-    {
-      "item": "extension:blue_nether_wart"
-    },
-    {
-      "item": "extension:blue_nether_wart"
-    },
-    {
-      "item": "extension:blue_nether_wart"
-    },
-    {
-      "item": "extension:blue_nether_wart"
-    },
-    {
-      "item": "extension:blue_nether_wart"
-    }
+    "extension:blue_nether_wart",
+    "extension:blue_nether_wart",
+    "extension:blue_nether_wart",
+    "extension:blue_nether_wart",
+    "extension:blue_nether_wart",
+    "extension:blue_nether_wart",
+    "extension:blue_nether_wart",
+    "extension:blue_nether_wart",
+    "extension:blue_nether_wart"
   ],
   "result": {
     "count": 1,

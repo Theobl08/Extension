@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "extension:red_nether_brick_tiles"
-  },
+  "ingredient": "extension:red_nether_brick_tiles",
   "result": {
     "count": 1,
     "id": "extension:red_nether_brick_tile_wall"

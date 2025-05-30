@@ -24,7 +24,7 @@ public class ModCreativeModeTabs {
                     .icon(() -> ModItems.SPAWNER_MINECART.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
                         for (DeferredHolder<Item, ? extends Item> deferredItem : ModItems.ITEMS.getEntries()) {
-                            if(deferredItem.get() instanceof BlockItem && !(deferredItem.get() instanceof ItemNameBlockItem))
+                            if(deferredItem.get() instanceof BlockItem && !(deferredItem.get() == ModItems.BLUE_NETHER_WART.asItem()))
                                 output.accept(deferredItem.get());
                         }
                         for (DeferredHolder<Item, ? extends Item> deferredItem : ModItems.ITEMS.getEntries()) {

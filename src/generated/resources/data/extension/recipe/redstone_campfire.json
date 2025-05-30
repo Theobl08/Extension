@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "C": {
-      "tag": "c:dusts/redstone"
-    },
-    "L": {
-      "tag": "minecraft:logs"
-    },
-    "S": {
-      "item": "minecraft:stick"
-    }
+    "C": "#c:dusts/redstone",
+    "L": "#minecraft:logs",
+    "S": "minecraft:stick"
   },
   "pattern": [
     " S ",

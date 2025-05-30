@@ -24,181 +24,181 @@ import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public ModRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries);
+    public ModRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
+        super(provider, recipeOutput);
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput recipeOutput) {
-        generateForEnabledBlockFamilies(recipeOutput, FeatureFlagSet.of(FeatureFlags.VANILLA));
+    protected void buildRecipes() {
+        generateForEnabledBlockFamilies(FeatureFlagSet.of(FeatureFlags.VANILLA));
 
-        netheriteSmithing(recipeOutput, Items.DIAMOND_HORSE_ARMOR, RecipeCategory.COMBAT, ModItems.NETHERITE_HORSE_ARMOR.asItem());
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TRANSPORTATION, ModItems.SPAWNER_MINECART)
+        netheriteSmithing(Items.DIAMOND_HORSE_ARMOR, RecipeCategory.COMBAT, ModItems.NETHERITE_HORSE_ARMOR.asItem());
+        shapeless(RecipeCategory.TRANSPORTATION, ModItems.SPAWNER_MINECART)
                 .requires(Blocks.SPAWNER)
                 .requires(Items.MINECART)
                 .unlockedBy("has_minecart", has(Items.MINECART))
-                .save(recipeOutput);
+                .save(output);
 
-        oneToOneConversionRecipe(recipeOutput, Items.NETHER_WART, Items.NETHER_WART_BLOCK, "nether_wart", 9);
-        oneToOneConversionRecipe(recipeOutput, ModItems.BLUE_NETHER_WART, Items.WARPED_WART_BLOCK, null, 9);
-        threeByThreePacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.WARPED_WART_BLOCK, ModItems.BLUE_NETHER_WART);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.RED_NETHER_BRICK, 2)
+        oneToOneConversionRecipe(Items.NETHER_WART, Items.NETHER_WART_BLOCK, "nether_wart", 9);
+        oneToOneConversionRecipe(ModItems.BLUE_NETHER_WART, Items.WARPED_WART_BLOCK, null, 9);
+        threeByThreePacker(RecipeCategory.BUILDING_BLOCKS, Blocks.WARPED_WART_BLOCK, ModItems.BLUE_NETHER_WART);
+        shapeless(RecipeCategory.MISC, ModItems.RED_NETHER_BRICK, 2)
                 .requires(Items.NETHER_BRICK).requires(Items.NETHER_WART)
-                .unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK)).save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BLUE_NETHER_BRICK, 2)
+                .unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK)).save(output);
+        shapeless(RecipeCategory.MISC, ModItems.BLUE_NETHER_BRICK, 2)
                 .requires(Items.NETHER_BRICK).requires(ModItems.BLUE_NETHER_WART)
-                .unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK)).save(recipeOutput);
+                .unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK)).save(output);
 
-        twoByTwoPacker(recipeOutput, Blocks.RED_NETHER_BRICKS, ModItems.RED_NETHER_BRICK);
-        twoByTwoPacker(recipeOutput, ModBlocks.BLUE_NETHER_BRICKS, ModItems.BLUE_NETHER_BRICK);
+        twoByTwoPacker(Blocks.RED_NETHER_BRICKS, ModItems.RED_NETHER_BRICK);
+        twoByTwoPacker(ModBlocks.BLUE_NETHER_BRICKS, ModItems.BLUE_NETHER_BRICK);
 
-        wallRecipes(recipeOutput, ModBlocks.STONE_WALL.get(), Items.STONE);
-        wallRecipes(recipeOutput, ModBlocks.POLISHED_GRANITE_WALL.get(), Items.POLISHED_GRANITE);
-        wallRecipes(recipeOutput, ModBlocks.POLISHED_DIORITE_WALL.get(), Items.POLISHED_DIORITE);
-        wallRecipes(recipeOutput, ModBlocks.POLISHED_ANDESITE_WALL.get(), Items.POLISHED_ANDESITE);
-        wallRecipes(recipeOutput, ModBlocks.PRISMARINE_BRICK_WALL.get(), Items.PRISMARINE_BRICKS);
-        wallRecipes(recipeOutput, ModBlocks.DARK_PRISMARINE_WALL.get(), Items.DARK_PRISMARINE);
-        wallRecipes(recipeOutput, ModBlocks.PURPUR_WALL.get(), Items.PURPUR_BLOCK);
-        wallRecipes(recipeOutput, ModBlocks.QUARTZ_WALL.get(), Items.QUARTZ_BLOCK);
+        wallRecipes(ModBlocks.STONE_WALL.get(), Items.STONE);
+        wallRecipes(ModBlocks.POLISHED_GRANITE_WALL.get(), Items.POLISHED_GRANITE);
+        wallRecipes(ModBlocks.POLISHED_DIORITE_WALL.get(), Items.POLISHED_DIORITE);
+        wallRecipes(ModBlocks.POLISHED_ANDESITE_WALL.get(), Items.POLISHED_ANDESITE);
+        wallRecipes(ModBlocks.PRISMARINE_BRICK_WALL.get(), Items.PRISMARINE_BRICKS);
+        wallRecipes(ModBlocks.DARK_PRISMARINE_WALL.get(), Items.DARK_PRISMARINE);
+        wallRecipes(ModBlocks.PURPUR_WALL.get(), Items.PURPUR_BLOCK);
+        wallRecipes(ModBlocks.QUARTZ_WALL.get(), Items.QUARTZ_BLOCK);
 
         stairBuilder(ModBlocks.SMOOTH_STONE_STAIRS, Ingredient.of(Items.SMOOTH_STONE)).unlockedBy(getHasName(Items.SMOOTH_STONE), has(Items.SMOOTH_STONE))
-                .save(recipeOutput);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_STONE_STAIRS, Blocks.SMOOTH_STONE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERITE_STAIRS, Blocks.NETHERITE_BLOCK);
+                .save(output);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_STONE_STAIRS, Blocks.SMOOTH_STONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERITE_STAIRS, Blocks.NETHERITE_BLOCK);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TINTED_GLASS_PANE, 2)
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TINTED_GLASS_PANE, 2)
                 .define('G', Blocks.GLASS_PANE)
                 .define('S', Items.AMETHYST_SHARD)
                 .pattern(" S ")
                 .pattern("SGS")
                 .pattern(" S ")
                 .unlockedBy("has_amethyst_shard", has(Items.AMETHYST_SHARD))
-                .save(recipeOutput, Extension.MODID + ":" + getConversionRecipeName(ModBlocks.TINTED_GLASS_PANE, Blocks.GLASS_PANE));
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.TINTED_GLASS_PANE, 16)
+                .save(output, Extension.MODID + ":" + getConversionRecipeName(ModBlocks.TINTED_GLASS_PANE, Blocks.GLASS_PANE));
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.TINTED_GLASS_PANE, 16)
                 .define('#', Blocks.TINTED_GLASS)
                 .pattern("###")
                 .pattern("###")
                 .unlockedBy("has_tinted_glass", has(Blocks.TINTED_GLASS))
-                .save(recipeOutput);
+                .save(output);
 
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.STONE_BRICKS, ModBlocks.POLISHED_STONE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE, Blocks.STONE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE_STAIRS, Blocks.STONE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE_STAIRS, ModBlocks.POLISHED_STONE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE_SLAB, Blocks.STONE, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE_SLAB, ModBlocks.POLISHED_STONE, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.POLISHED_STONE_WALL, Blocks.STONE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.POLISHED_STONE_WALL, ModBlocks.POLISHED_STONE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.STONE_BRICK_STAIRS, ModBlocks.POLISHED_STONE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.STONE_BRICK_SLAB, ModBlocks.POLISHED_STONE, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, Blocks.STONE_BRICK_WALL, ModBlocks.POLISHED_STONE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.CHISELED_STONE_BRICKS, ModBlocks.POLISHED_STONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.STONE_BRICKS, ModBlocks.POLISHED_STONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE, Blocks.STONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE_STAIRS, Blocks.STONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE_STAIRS, ModBlocks.POLISHED_STONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE_SLAB, Blocks.STONE, 2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE_SLAB, ModBlocks.POLISHED_STONE, 2);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, ModBlocks.POLISHED_STONE_WALL, Blocks.STONE);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, ModBlocks.POLISHED_STONE_WALL, ModBlocks.POLISHED_STONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.STONE_BRICK_STAIRS, ModBlocks.POLISHED_STONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.STONE_BRICK_SLAB, ModBlocks.POLISHED_STONE, 2);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, Blocks.STONE_BRICK_WALL, ModBlocks.POLISHED_STONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.CHISELED_STONE_BRICKS, ModBlocks.POLISHED_STONE);
 
-        mossyRecipes(recipeOutput, ModBlocks.MOSSY_COBBLED_DEEPSLATE, Blocks.COBBLED_DEEPSLATE, "mossy_cobbled_deepslate");
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS, ModBlocks.MOSSY_COBBLED_DEEPSLATE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB, ModBlocks.MOSSY_COBBLED_DEEPSLATE, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.MOSSY_COBBLED_DEEPSLATE_WALL, ModBlocks.MOSSY_COBBLED_DEEPSLATE);
+        mossyRecipes(ModBlocks.MOSSY_COBBLED_DEEPSLATE, Blocks.COBBLED_DEEPSLATE, "mossy_cobbled_deepslate");
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS, ModBlocks.MOSSY_COBBLED_DEEPSLATE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB, ModBlocks.MOSSY_COBBLED_DEEPSLATE, 2);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, ModBlocks.MOSSY_COBBLED_DEEPSLATE_WALL, ModBlocks.MOSSY_COBBLED_DEEPSLATE);
 
-        mossyRecipes(recipeOutput, ModBlocks.MOSSY_DEEPSLATE_BRICKS, Blocks.DEEPSLATE_BRICKS, "mossy_deepslate_bricks");
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS, ModBlocks.MOSSY_DEEPSLATE_BRICKS);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_DEEPSLATE_BRICK_SLAB, ModBlocks.MOSSY_DEEPSLATE_BRICKS, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.MOSSY_DEEPSLATE_BRICK_WALL, ModBlocks.MOSSY_DEEPSLATE_BRICKS);
+        mossyRecipes(ModBlocks.MOSSY_DEEPSLATE_BRICKS, Blocks.DEEPSLATE_BRICKS, "mossy_deepslate_bricks");
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS, ModBlocks.MOSSY_DEEPSLATE_BRICKS);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_DEEPSLATE_BRICK_SLAB, ModBlocks.MOSSY_DEEPSLATE_BRICKS, 2);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, ModBlocks.MOSSY_DEEPSLATE_BRICK_WALL, ModBlocks.MOSSY_DEEPSLATE_BRICKS);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.STONE_BRICKS, 4)
+        shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.STONE_BRICKS, 4)
                 .define('#', ModBlocks.POLISHED_STONE)
                 .pattern("##")
                 .pattern("##")
                 .unlockedBy("has_polished_stone", has(ModBlocks.POLISHED_STONE))
-                .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE, 4)
+                .save(output);
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE, 4)
                 .define('#', Blocks.STONE)
                 .pattern("##")
                 .pattern("##")
                 .unlockedBy("has_stone", has(Blocks.STONE))
-                .save(recipeOutput);
+                .save(output);
 
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_BASALT_STAIRS, Blocks.SMOOTH_BASALT);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_BASALT_SLAB, Blocks.SMOOTH_BASALT,2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_BASALT_STAIRS, Blocks.SMOOTH_BASALT);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_BASALT_SLAB, Blocks.SMOOTH_BASALT,2);
 
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.QUARTZ_BRICK_STAIRS, Blocks.QUARTZ_BRICKS);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.QUARTZ_BRICK_SLAB, Blocks.QUARTZ_BRICKS,2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.QUARTZ_BRICK_WALL, Blocks.QUARTZ_BRICKS);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.QUARTZ_BRICK_STAIRS, Blocks.QUARTZ_BRICKS);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.QUARTZ_BRICK_SLAB, Blocks.QUARTZ_BRICKS,2);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, ModBlocks.QUARTZ_BRICK_WALL, Blocks.QUARTZ_BRICKS);
 
-        tilesRecipes(recipeOutput, ModBlocks.NETHER_BRICK_TILES, Blocks.NETHER_BRICKS);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHER_BRICK_TILE_STAIRS, ModBlocks.NETHER_BRICK_TILES);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHER_BRICK_TILE_SLAB, ModBlocks.NETHER_BRICK_TILES, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.NETHER_BRICK_TILE_WALL, ModBlocks.NETHER_BRICK_TILES);
+        tilesRecipes(ModBlocks.NETHER_BRICK_TILES, Blocks.NETHER_BRICKS);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHER_BRICK_TILE_STAIRS, ModBlocks.NETHER_BRICK_TILES);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHER_BRICK_TILE_SLAB, ModBlocks.NETHER_BRICK_TILES, 2);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, ModBlocks.NETHER_BRICK_TILE_WALL, ModBlocks.NETHER_BRICK_TILES);
 
-        smeltingResultFromBase(recipeOutput, ModBlocks.CRACKED_RED_NETHER_BRICKS, Items.RED_NETHER_BRICKS);
-        fence(recipeOutput, ModBlocks.RED_NETHER_BRICK_FENCE.get(), Blocks.RED_NETHER_BRICKS, ModItems.RED_NETHER_BRICK.get());
-        chiseled(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICK_SLAB);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICKS);
-        tilesRecipes(recipeOutput, ModBlocks.RED_NETHER_BRICK_TILES, Blocks.RED_NETHER_BRICKS);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_NETHER_BRICK_TILE_STAIRS, ModBlocks.RED_NETHER_BRICK_TILES);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_NETHER_BRICK_TILE_SLAB, ModBlocks.RED_NETHER_BRICK_TILES, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.RED_NETHER_BRICK_TILE_WALL, ModBlocks.RED_NETHER_BRICK_TILES);
+        smeltingResultFromBase(ModBlocks.CRACKED_RED_NETHER_BRICKS, Items.RED_NETHER_BRICKS);
+        fence(ModBlocks.RED_NETHER_BRICK_FENCE.get(), Blocks.RED_NETHER_BRICKS, ModItems.RED_NETHER_BRICK.get());
+        chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICK_SLAB);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICKS);
+        tilesRecipes(ModBlocks.RED_NETHER_BRICK_TILES, Blocks.RED_NETHER_BRICKS);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_NETHER_BRICK_TILE_STAIRS, ModBlocks.RED_NETHER_BRICK_TILES);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_NETHER_BRICK_TILE_SLAB, ModBlocks.RED_NETHER_BRICK_TILES, 2);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, ModBlocks.RED_NETHER_BRICK_TILE_WALL, ModBlocks.RED_NETHER_BRICK_TILES);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICKS)
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICKS)
                 .define('W', ModItems.BLUE_NETHER_WART)
                 .define('N', Items.NETHER_BRICK)
                 .pattern("NW")
                 .pattern("WN")
                 .unlockedBy("has_blue_nether_wart", has(ModItems.BLUE_NETHER_WART))
-                .save(recipeOutput);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICK_SLAB, ModBlocks.BLUE_NETHER_BRICKS, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICK_STAIRS, ModBlocks.BLUE_NETHER_BRICKS);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.BLUE_NETHER_BRICK_WALL, ModBlocks.BLUE_NETHER_BRICKS);
-        fence(recipeOutput, ModBlocks.BLUE_NETHER_BRICK_FENCE.get(), ModBlocks.BLUE_NETHER_BRICKS, ModItems.BLUE_NETHER_BRICK.get());
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICKS);
-        tilesRecipes(recipeOutput, ModBlocks.BLUE_NETHER_BRICK_TILES, ModBlocks.BLUE_NETHER_BRICKS);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICK_TILE_STAIRS, ModBlocks.BLUE_NETHER_BRICK_TILES);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICK_TILE_SLAB, ModBlocks.BLUE_NETHER_BRICK_TILES, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.BLUE_NETHER_BRICK_TILE_WALL, ModBlocks.BLUE_NETHER_BRICK_TILES);
+                .save(output);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICK_SLAB, ModBlocks.BLUE_NETHER_BRICKS, 2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICK_STAIRS, ModBlocks.BLUE_NETHER_BRICKS);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, ModBlocks.BLUE_NETHER_BRICK_WALL, ModBlocks.BLUE_NETHER_BRICKS);
+        fence(ModBlocks.BLUE_NETHER_BRICK_FENCE.get(), ModBlocks.BLUE_NETHER_BRICKS, ModItems.BLUE_NETHER_BRICK.get());
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_BLUE_NETHER_BRICKS, ModBlocks.BLUE_NETHER_BRICKS);
+        tilesRecipes(ModBlocks.BLUE_NETHER_BRICK_TILES, ModBlocks.BLUE_NETHER_BRICKS);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICK_TILE_STAIRS, ModBlocks.BLUE_NETHER_BRICK_TILES);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICK_TILE_SLAB, ModBlocks.BLUE_NETHER_BRICK_TILES, 2);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, ModBlocks.BLUE_NETHER_BRICK_TILE_WALL, ModBlocks.BLUE_NETHER_BRICK_TILES);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_SANDSTONE, 1)
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_SANDSTONE, 1)
                 .define('#', Items.SOUL_SAND)
                 .pattern("##")
                 .pattern("##")
                 .unlockedBy(getHasName(Items.SOUL_SAND), has(Items.SOUL_SAND))
-                .save(recipeOutput.withConditions(not(modLoaded("quark"))));
+                .save(output.withConditions(not(modLoaded("quark"))));
         stairBuilder(ModBlocks.SOUL_SANDSTONE_STAIRS, Ingredient.of(ModBlocks.SOUL_SANDSTONE, ModBlocks.CHISELED_SOUL_SANDSTONE, ModBlocks.CUT_SOUL_SANDSTONE))
                 .unlockedBy("has_soul_sandstone", has(ModBlocks.SOUL_SANDSTONE))
                 .unlockedBy("has_chiseled_soul_sandstone", has(ModBlocks.CHISELED_SOUL_SANDSTONE))
                 .unlockedBy("has_cut_soul_sandstone", has(ModBlocks.CUT_SOUL_SANDSTONE))
-                .save(recipeOutput);
+                .save(output);
         slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_SANDSTONE_SLAB, Ingredient.of(ModBlocks.SOUL_SANDSTONE, ModBlocks.CHISELED_SOUL_SANDSTONE))
                 .unlockedBy("has_soul_sandstone", has(ModBlocks.SOUL_SANDSTONE))
                 .unlockedBy("has_chiseled_soul_sandstone", has(ModBlocks.CHISELED_SOUL_SANDSTONE))
-                .save(recipeOutput);
-        wallRecipes(recipeOutput, ModBlocks.SOUL_SANDSTONE_WALL, ModBlocks.SOUL_SANDSTONE);
-        chiseled(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_SOUL_SANDSTONE, ModBlocks.SOUL_SANDSTONE_SLAB);
-        smeltingResultFromBase(recipeOutput, ModBlocks.SMOOTH_SOUL_SANDSTONE, ModBlocks.SOUL_SANDSTONE);
-        cutRecipes(recipeOutput, ModBlocks.CUT_SOUL_SANDSTONE, ModBlocks.SOUL_SANDSTONE);
+                .save(output);
+        wallRecipes(ModBlocks.SOUL_SANDSTONE_WALL, ModBlocks.SOUL_SANDSTONE);
+        chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_SOUL_SANDSTONE, ModBlocks.SOUL_SANDSTONE_SLAB);
+        smeltingResultFromBase(ModBlocks.SMOOTH_SOUL_SANDSTONE, ModBlocks.SOUL_SANDSTONE);
+        cutRecipes(ModBlocks.CUT_SOUL_SANDSTONE, ModBlocks.SOUL_SANDSTONE);
 
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_SANDSTONE_STAIRS, ModBlocks.SOUL_SANDSTONE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_SANDSTONE_SLAB, ModBlocks.SOUL_SANDSTONE, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_SOUL_SANDSTONE, ModBlocks.SOUL_SANDSTONE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS, ModBlocks.SMOOTH_SOUL_SANDSTONE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_SOUL_SANDSTONE_SLAB, ModBlocks.SMOOTH_SOUL_SANDSTONE, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SOUL_SANDSTONE_SLAB, ModBlocks.SOUL_SANDSTONE, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SOUL_SANDSTONE_SLAB, ModBlocks.CUT_SOUL_SANDSTONE, 2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_SANDSTONE_STAIRS, ModBlocks.SOUL_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_SANDSTONE_SLAB, ModBlocks.SOUL_SANDSTONE, 2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_SOUL_SANDSTONE, ModBlocks.SOUL_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS, ModBlocks.SMOOTH_SOUL_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_SOUL_SANDSTONE_SLAB, ModBlocks.SMOOTH_SOUL_SANDSTONE, 2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SOUL_SANDSTONE_SLAB, ModBlocks.SOUL_SANDSTONE, 2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SOUL_SANDSTONE_SLAB, ModBlocks.CUT_SOUL_SANDSTONE, 2);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_O_LANTERN)
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_O_LANTERN)
                 .define('A', Blocks.CARVED_PUMPKIN)
                 .define('B', Blocks.SOUL_TORCH)
                 .pattern("A")
                 .pattern("B")
                 .unlockedBy("has_carved_pumpkin", has(Blocks.CARVED_PUMPKIN))
-                .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.REDSTONE_O_LANTERN)
+                .save(output);
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.REDSTONE_O_LANTERN)
                 .define('A', Blocks.CARVED_PUMPKIN)
                 .define('B', Blocks.REDSTONE_TORCH)
                 .pattern("A")
                 .pattern("B")
                 .unlockedBy("has_carved_pumpkin", has(Blocks.CARVED_PUMPKIN))
-                .save(recipeOutput);
+                .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.REDSTONE_LANTERN)
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.REDSTONE_LANTERN)
                 .define('#', Items.REDSTONE_TORCH)
                 .define('X', Items.IRON_NUGGET)
                 .pattern("XXX")
@@ -206,9 +206,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("XXX")
                 .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
                 .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
-                .save(recipeOutput);
+                .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.REDSTONE_CAMPFIRE)
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.REDSTONE_CAMPFIRE)
                 .define('L', ItemTags.LOGS)
                 .define('S', Items.STICK)
                 .define('C', Tags.Items.DUSTS_REDSTONE)
@@ -217,92 +217,108 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("LLL")
                 .unlockedBy("has_stick", has(Items.STICK))
                 .unlockedBy("has_redstone", has(Tags.Items.DUSTS_REDSTONE))
-                .save(recipeOutput);
+                .save(output);
     }
 
-    protected void generateForEnabledBlockFamilies(RecipeOutput enabledFeatures, FeatureFlagSet featureFlagSet) {
+    protected void generateForEnabledBlockFamilies(FeatureFlagSet featureFlagSet) {
         ModBlockFamilies.getAllFamilies()
                 .filter(BlockFamily::shouldGenerateRecipe)
-                .forEach(family -> generateRecipes(enabledFeatures, family, featureFlagSet));
+                .forEach(family -> generateRecipes(family, featureFlagSet));
     }
 
-    protected static void oneToOneConversionRecipe(RecipeOutput recipeOutput, ItemLike result, ItemLike ingredient, @Nullable String group, int resultCount) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result, resultCount)
+    protected void oneToOneConversionRecipe(ItemLike result, ItemLike ingredient, @Nullable String group, int resultCount) {
+        shapeless(RecipeCategory.MISC, result, resultCount)
                 .requires(ingredient)
                 .group(group)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(recipeOutput,Extension.MODID + ":" + getConversionRecipeName(result, ingredient));
+                .save(output, Extension.MODID + ":" + getConversionRecipeName(result, ingredient));
     }
 
-    protected static void netheriteSmithing(RecipeOutput recipeOutput, Item ingredientItem, RecipeCategory category, Item resultItem) {
+    protected void netheriteSmithing(Item ingredientItem, RecipeCategory category, Item resultItem) {
         SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredientItem), Ingredient.of(Items.NETHERITE_INGOT), category, resultItem)
                 .unlocks("has_netherite_ingot", has(Items.NETHERITE_INGOT))
-                .save(recipeOutput, Extension.MODID + ":" + getItemName(resultItem) + "_smithing");
+                .save(output, Extension.MODID + ":" + getItemName(resultItem) + "_smithing");
     }
 
-    protected static void twoByTwoPacker(RecipeOutput recipeOutput, ItemLike packed, ItemLike unpacked) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, packed, 1)
+    protected void twoByTwoPacker(ItemLike packed, ItemLike unpacked) {
+        shaped(RecipeCategory.BUILDING_BLOCKS, packed, 1)
                 .define('#', unpacked)
                 .pattern("##")
                 .pattern("##")
                 .unlockedBy(getHasName(unpacked), has(unpacked))
-                .save(recipeOutput, Extension.MODID + ":" + getConversionRecipeName(packed, unpacked));
+                .save(output, Extension.MODID + ":" + getConversionRecipeName(packed, unpacked));
     }
 
-    protected static void stonecutterResultFromBase(RecipeOutput recipeOutput, RecipeCategory category, ItemLike result, ItemLike material) {
-        stonecutterResultFromBase(recipeOutput, category, result, material, 1);
+    protected void stonecutterResultFromBase(RecipeCategory category, ItemLike result, ItemLike material) {
+        stonecutterResultFromBase(category, result, material, 1);
     }
 
-    protected static void stonecutterResultFromBase(RecipeOutput recipeOutput, RecipeCategory category, ItemLike result, ItemLike material, int resultCount) {
+    protected void stonecutterResultFromBase(RecipeCategory category, ItemLike result, ItemLike material, int resultCount) {
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(material), category, result, resultCount)
                 .unlockedBy(getHasName(material), has(material))
-                .save(recipeOutput,Extension.MODID + ":" + getConversionRecipeName(result, material) + "_stonecutting");
+                .save(output, Extension.MODID + ":" + getConversionRecipeName(result, material) + "_stonecutting");
     }
 
-    protected static void fence(RecipeOutput recipeOutput, Block fence, ItemLike material, Item middleItem) {
+    protected void fence(Block fence, ItemLike material, Item middleItem) {
         int i = !fence.defaultBlockState().is(BlockTags.WOODEN_FENCES) ? 6 : 3;
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, fence, i)
+        shaped(RecipeCategory.DECORATIONS, fence, i)
                 .define('W', material)
                 .define('#', middleItem)
                 .pattern("W#W")
                 .pattern("W#W")
                 .unlockedBy(getHasName(material), has(material))
-                .save(recipeOutput);
+                .save(output);
     }
 
-    protected static void wallRecipes(RecipeOutput recipeOutput, ItemLike wall, ItemLike material) {
-        wall(recipeOutput, RecipeCategory.DECORATIONS, wall, material);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, wall, material);
+    protected void wallRecipes(ItemLike wall, ItemLike material) {
+        wall(RecipeCategory.DECORATIONS, wall, material);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, wall, material);
     }
 
-    protected static void cutRecipes(RecipeOutput recipeOutput, ItemLike cutResult, ItemLike material) {
-        cut(recipeOutput, RecipeCategory.BUILDING_BLOCKS, cutResult, material);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, cutResult, material);
+    protected void cutRecipes(ItemLike cutResult, ItemLike material) {
+        cut(RecipeCategory.BUILDING_BLOCKS, cutResult, material);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, cutResult, material);
     }
 
-    protected static void tilesRecipes(RecipeOutput recipeOutput, ItemLike tiles, ItemLike material) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, tiles, 4)
+    protected void tilesRecipes(ItemLike tiles, ItemLike material) {
+        shaped(RecipeCategory.BUILDING_BLOCKS, tiles, 4)
                 .define('S', material)
                 .pattern("SS")
                 .pattern("SS")
                 .unlockedBy(getHasName(material), has(material))
-                .save(recipeOutput);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, tiles, material);
+                .save(output);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, tiles, material);
     }
 
-    protected static void mossyRecipes(RecipeOutput recipeOutput, ItemLike result, ItemLike material, String groupName) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, result)
+    protected void mossyRecipes(ItemLike result, ItemLike material, String groupName) {
+        shapeless(RecipeCategory.BUILDING_BLOCKS, result)
                 .requires(material)
                 .requires(Blocks.VINE)
                 .group(groupName)
                 .unlockedBy("has_vine", has(Blocks.VINE))
-                .save(recipeOutput, Extension.MODID + ":" + getConversionRecipeName(result, Blocks.VINE));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, result)
+                .save(output, Extension.MODID + ":" + getConversionRecipeName(result, Blocks.VINE));
+        shapeless(RecipeCategory.BUILDING_BLOCKS, result)
                 .requires(material)
                 .requires(Blocks.MOSS_BLOCK)
                 .group(groupName)
                 .unlockedBy("has_moss_block", has(Blocks.MOSS_BLOCK))
-                .save(recipeOutput, Extension.MODID + ":" + getConversionRecipeName(result, Blocks.MOSS_BLOCK));
+                .save(output, Extension.MODID + ":" + getConversionRecipeName(result, Blocks.MOSS_BLOCK));
+    }
+
+    public static final class Runner extends RecipeProvider.Runner {
+        public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+            super(output, lookupProvider);
+        }
+
+        @Override
+        protected RecipeProvider createRecipeProvider(HolderLookup.Provider lookupProvider, RecipeOutput output) {
+            return new ModRecipeProvider(lookupProvider, output);
+        }
+
+        @Override
+        public String getName() {
+            return "Extension recipes";
+        }
     }
 }
