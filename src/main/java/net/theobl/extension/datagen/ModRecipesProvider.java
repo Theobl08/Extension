@@ -342,18 +342,6 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
         colorBlockWithDye(pWriter, DYES, ModBlocks.COLORED_HANGING_SIGNS, ItemTags.HANGING_SIGNS, "colored_hanging_signs");
         colorItemWithDye(pWriter, DYES, ModItems.COLORED_BOATS, ModTags.Items.DYEABLE_BOATS, "colored_boats");
         colorItemWithDye(pWriter, DYES, ModItems.COLORED_CHEST_BOATS, ItemTags.CHEST_BOATS, "colored_chest_boats");
-
-//        planksFromLog(pWriter, ModBlocks.WHITE_PLANKS.get().asItem(), ModTags.Items.WHITE_LOGS, 4);
-//        woodFromLogs(pWriter, ModBlocks.WHITE_WOOD.get().asItem(), ModBlocks.WHITE_LOG.get().asItem());
-//        woodFromLogs(pWriter, ModBlocks.STRIPPED_WHITE_WOOD.get().asItem(), ModBlocks.STRIPPED_WHITE_LOG.get().asItem());
-//        woodenStairs(pWriter, ModBlocks.WHITE_STAIRS.get(), ModBlocks.WHITE_PLANKS.get());
-//        woodenSlab(pWriter, ModBlocks.WHITE_SLAB.get(), ModBlocks.WHITE_PLANKS.get());
-//        woodenFence(pWriter, ModBlocks.WHITE_FENCE.get(), ModBlocks.WHITE_PLANKS.get());
-//        woodenFenceGate(pWriter, ModBlocks.WHITE_FENCE_GATE.get(), ModBlocks.WHITE_PLANKS.get());
-//        woodenDoor(pWriter, ModBlocks.WHITE_DOOR.get(), ModBlocks.WHITE_PLANKS.get());
-//        woodenTrapdoor(pWriter, ModBlocks.WHITE_TRAPDOOR.get(), ModBlocks.WHITE_PLANKS.get());
-//        woodenPressurePlate(pWriter, ModBlocks.WHITE_PRESSURE_PLATE.get(), ModBlocks.WHITE_PLANKS.get());
-//        woodenButton(pWriter, ModBlocks.WHITE_BUTTON.get(), ModBlocks.WHITE_PLANKS.get());
     }
 
 

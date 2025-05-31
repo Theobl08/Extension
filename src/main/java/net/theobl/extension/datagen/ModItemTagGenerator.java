@@ -36,44 +36,6 @@ public class ModItemTagGenerator extends ItemTagsProvider {
             this.tag(ModTags.Items.ANTIBLOCK).add(antiblock.get().asItem());
         }
 
-//        this.tag(ModTags.Items.WHITE_LOGS)
-//                .add(ModBlocks.WHITE_LOG.get().asItem(),
-//                        ModBlocks.WHITE_WOOD.get().asItem(),
-//                        ModBlocks.COLORED_STRIPPED_LOGS.get(0).get().asItem(),
-//                        ModBlocks.COLORED_STRIPPED_WOODS.get(0).get().asItem());
-////                        ModBlocks.STRIPPED_WHITE_LOG.get().asItem(),
-////                        ModBlocks.STRIPPED_WHITE_WOOD.get().asItem());
-//
-//        this.tag(ModTags.Items.LIGHT_GRAY_LOGS)
-//                .add(ModBlocks.LIGHT_GRAY_LOG.get().asItem(),
-//                        ModBlocks.LIGHT_GRAY_WOOD.get().asItem(),
-//                        ModBlocks.COLORED_STRIPPED_LOGS.get(1).get().asItem(),
-//                        ModBlocks.COLORED_STRIPPED_WOODS.get(1).get().asItem());
-////                        ModBlocks.STRIPPED_LIGHT_GRAY_LOG.get().asItem(),
-////                        ModBlocks.STRIPPED_LIGHT_GRAY_WOOD.get().asItem());
-//
-//        this.tag(ModTags.Items.GRAY_LOGS)
-//                .add(ModBlocks.GRAY_LOG.get().asItem(),
-//                        ModBlocks.GRAY_WOOD.get().asItem(),
-//                        ModBlocks.COLORED_STRIPPED_LOGS.get(2).get().asItem(),
-//                        ModBlocks.COLORED_STRIPPED_WOODS.get(2).get().asItem());
-////                        ModBlocks.STRIPPED_GRAY_LOG.get().asItem(),
-////                        ModBlocks.STRIPPED_GRAY_WOOD.get().asItem());
-//
-//        this.tag(ModTags.Items.BLACK_LOGS)
-//                .add(ModBlocks.BLACK_LOG.get().asItem(),
-//                        ModBlocks.BLACK_WOOD.get().asItem(),
-//                        ModBlocks.COLORED_STRIPPED_LOGS.get(3).get().asItem(),
-//                        ModBlocks.COLORED_STRIPPED_WOODS.get(3).get().asItem());
-////                        ModBlocks.STRIPPED_BLACK_LOG.get().asItem(),
-////                        ModBlocks.STRIPPED_BLACK_WOOD.get().asItem());
-//
-//        this.tag(ItemTags.LOGS_THAT_BURN)
-//                .addTag(ModTags.Items.WHITE_LOGS)
-//                .addTag(ModTags.Items.LIGHT_GRAY_LOGS)
-//                .addTag(ModTags.Items.GRAY_LOGS)
-//                .addTag(ModTags.Items.BLACK_LOGS);
-
         for(TagKey<Item> tag : ModTags.Items.COLORED_LOGS){
             int index = ModTags.Items.COLORED_LOGS.indexOf(tag);
             this.copy(ModTags.Blocks.COLORED_LOGS.get(index), tag);

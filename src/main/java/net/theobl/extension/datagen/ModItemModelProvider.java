@@ -75,17 +75,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.NETHERITE_HORSE_ARMOR);
         simpleItem(ModItems.SPAWNER_MINECART);
         spawnEggItem(ModItems.ILLUSIONER_SPAWN_EGG);
-
-
-//        simpleItem(ModItems.WHITE_SIGN);
-//        simpleItem(ModItems.WHITE_HANGING_SIGN);
-
-        //fenceInventory("white_fence", modLoc("block/white_planks"));
-        //fenceGate("white_fence_gate", modLoc("block/white_planks"));
-//        simpleBlockItem(ModBlocks.WHITE_DOOR);
-//        simpleBlockItem(ModBlocks.LIGHT_GRAY_DOOR);
-//        simpleBlockItem(ModBlocks.GRAY_DOOR);
-//        simpleBlockItem(ModBlocks.BLACK_DOOR);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {

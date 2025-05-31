@@ -23,45 +23,6 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-
-//        this.tag(ModTags.Blocks.WHITE_LOGS)
-//                .add(ModBlocks.WHITE_LOG.get(),
-//                        ModBlocks.WHITE_WOOD.get(),
-//                        ModBlocks.COLORED_STRIPPED_LOGS.get(0).get(),
-//                        ModBlocks.COLORED_STRIPPED_WOODS.get(0).get());
-////                        ModBlocks.STRIPPED_WHITE_LOG.get(),
-////                        ModBlocks.STRIPPED_WHITE_WOOD.get());
-//
-//        this.tag(ModTags.Blocks.LIGHT_GRAY_LOGS)
-//                .add(ModBlocks.LIGHT_GRAY_LOG.get(),
-//                        ModBlocks.LIGHT_GRAY_WOOD.get(),
-//                        ModBlocks.COLORED_STRIPPED_LOGS.get(1).get(),
-//                        ModBlocks.COLORED_STRIPPED_WOODS.get(1).get());
-////                        ModBlocks.STRIPPED_LIGHT_GRAY_LOG.get(),
-////                        ModBlocks.STRIPPED_LIGHT_GRAY_WOOD.get());
-//
-//        this.tag(ModTags.Blocks.GRAY_LOGS)
-//                .add(ModBlocks.GRAY_LOG.get(),
-//                        ModBlocks.GRAY_WOOD.get(),
-//                        ModBlocks.COLORED_STRIPPED_LOGS.get(2).get(),
-//                        ModBlocks.COLORED_STRIPPED_WOODS.get(2).get());
-////                        ModBlocks.STRIPPED_GRAY_LOG.get(),
-////                        ModBlocks.STRIPPED_GRAY_WOOD.get());
-//
-//        this.tag(ModTags.Blocks.BLACK_LOGS)
-//                .add(ModBlocks.BLACK_LOG.get(),
-//                        ModBlocks.BLACK_WOOD.get(),
-//                        ModBlocks.COLORED_STRIPPED_LOGS.get(3).get(),
-//                        ModBlocks.COLORED_STRIPPED_WOODS.get(3).get());
-////                        ModBlocks.STRIPPED_BLACK_LOG.get(),
-////                        ModBlocks.STRIPPED_BLACK_WOOD.get());
-//
-//        this.tag(BlockTags.LOGS_THAT_BURN)
-//                .addTag(ModTags.Blocks.WHITE_LOGS)
-//                .addTag(ModTags.Blocks.LIGHT_GRAY_LOGS)
-//                .addTag(ModTags.Blocks.GRAY_LOGS)
-//                .addTag(ModTags.Blocks.BLACK_LOGS);
-
         for (TagKey<Block> tagKey : ModTags.Blocks.COLORED_LOGS) {
             int index = ModTags.Blocks.COLORED_LOGS.indexOf(tagKey);
             this.tag(tagKey).add(ModBlocks.COLORED_LOGS.get(index).get(),
@@ -140,12 +101,6 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         for (RegistryObject<Block> block : ModBlocks.COLORED_LEAVES) {
             this.tag(BlockTags.LEAVES).add(block.get());
         }
-
-//        this.tag(BlockTags.LEAVES)
-//                .add(ModBlocks.WHITE_LEAVES.get())
-//                .add(ModBlocks.LIGHT_GRAY_LEAVES.get())
-//                .add(ModBlocks.GRAY_LEAVES.get())
-//                .add(ModBlocks.BLACK_LEAVES.get());
 
         this.tag(BlockTags.STAIRS)
                 .add(ModBlocks.BLUE_NETHER_BRICK_STAIRS.get())
