@@ -4,34 +4,27 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.entity.vehicle.ChestBoat;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidType;
-import net.theobl.extension.entity.ModEntities;
+import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.item.ModItems;
 
-import java.util.function.IntFunction;
+public class ModChestBoat extends ChestBoat {
+    private static final EntityDataAccessor<Integer> DATA_ID_TYPE = SynchedEntityData.defineId(ModChestBoat.class, EntityDataSerializers.INT);
 
-public class ModChestBoatEntity extends ChestBoat {
-    private static final EntityDataAccessor<Integer> DATA_ID_TYPE = SynchedEntityData.defineId(ModChestBoatEntity.class, EntityDataSerializers.INT);
-
-
-    public ModChestBoatEntity(EntityType<? extends ChestBoat> pEntityType, Level pLevel) {
+    public ModChestBoat(EntityType<? extends ChestBoat> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
-    public ModChestBoatEntity(Level level, double pX, double pY, double pZ) {
-        this(ModEntities.MOD_CHEST_BOAT.get(), level);
+    public ModChestBoat(Level level, double pX, double pY, double pZ) {
+        this(ModEntityType.MOD_CHEST_BOAT.get(), level);
         this.setPos(pX, pY, pZ);
         this.xo = pX;
         this.yo = pY;
@@ -99,13 +92,13 @@ public class ModChestBoatEntity extends ChestBoat {
         return super.getDropItem();
     }
 
-    public void setVariant(ModBoatEntity.Type pVariant) {
+    public void setVariant(ModBoat.Type pVariant) {
         this.entityData.set(DATA_ID_TYPE, pVariant.ordinal());
     }
 
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(DATA_ID_TYPE, ModBoatEntity.Type.CRIMSON.ordinal());
+        this.entityData.define(DATA_ID_TYPE, ModBoat.Type.CRIMSON.ordinal());
     }
 
     protected void addAdditionalSaveData(CompoundTag pCompound) {
@@ -114,12 +107,12 @@ public class ModChestBoatEntity extends ChestBoat {
 
     protected void readAdditionalSaveData(CompoundTag pCompound) {
         if (pCompound.contains("Type",8)) {
-            this.setVariant(ModBoatEntity.Type.byName(pCompound.getString("Type")));
+            this.setVariant(ModBoat.Type.byName(pCompound.getString("Type")));
         }
     }
 
-    public ModBoatEntity.Type getModVariant() {
-        return ModBoatEntity.Type.byId(this.entityData.get(DATA_ID_TYPE));
+    public ModBoat.Type getModVariant() {
+        return ModBoat.Type.byId(this.entityData.get(DATA_ID_TYPE));
     }
 
     @Override
@@ -139,7 +132,7 @@ public class ModChestBoatEntity extends ChestBoat {
                 (type.equals(Fluids.LAVA.getFluidType()) && this.isNetherWood(this.getModVariant()));
     }
 
-    public boolean isNetherWood(ModBoatEntity.Type boatType){
+    public boolean isNetherWood(ModBoat.Type boatType){
         return ((FireBlock) Blocks.FIRE).getBurnOdds(boatType.getPlanks().defaultBlockState()) == 0;
     }
 }

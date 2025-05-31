@@ -5,8 +5,6 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
@@ -14,7 +12,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
@@ -27,7 +24,7 @@ import net.theobl.extension.util.ModTags;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ModRecipesProvider extends RecipeProvider implements IConditionBuilder {
+public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     private static final List<ItemLike> AMETHYST_SMELTABLE =
             List.of(ModBlocks.AMETHYST_ORE.get(), ModBlocks.DEEPSLATE_AMETHYST_ORE.get());
 
@@ -43,7 +40,7 @@ public class ModRecipesProvider extends RecipeProvider implements IConditionBuil
                     Items.LIME_DYE, Items.GREEN_DYE, Items.CYAN_DYE, Items.LIGHT_BLUE_DYE,
                     Items.BLUE_DYE, Items.PURPLE_DYE, Items.MAGENTA_DYE, Items.PINK_DYE);
 
-    public ModRecipesProvider(PackOutput pOutput) {
+    public ModRecipeProvider(PackOutput pOutput) {
         super(pOutput);
     }
 

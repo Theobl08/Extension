@@ -2,7 +2,6 @@ package net.theobl.extension;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -37,8 +36,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.block.ModVanillaCompat;
-import net.theobl.extension.entity.ModBlockEntities;
-import net.theobl.extension.entity.ModEntities;
+import net.theobl.extension.entity.ModBlockEntityType;
+import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.entity.client.ModBoatRenderer;
 import net.theobl.extension.item.ModCreativeModeTabs;
 import net.theobl.extension.item.ModItems;
@@ -64,8 +63,8 @@ public class Extension
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
-        ModEntities.register(modEventBus);
-        ModBlockEntities.register(modEventBus);
+        ModEntityType.register(modEventBus);
+        ModBlockEntityType.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -165,8 +164,8 @@ public class Extension
             Sheets.addWoodType(ModWoodTypes.MAGENTA);
             Sheets.addWoodType(ModWoodTypes.PINK);
 
-            EntityRenderers.register(ModEntities.MOD_BOAT.get(), pContext -> new ModBoatRenderer(pContext, false));
-            EntityRenderers.register(ModEntities.MOD_CHEST_BOAT.get(), pContext -> new ModBoatRenderer(pContext, true));
+            EntityRenderers.register(ModEntityType.MOD_BOAT.get(), pContext -> new ModBoatRenderer(pContext, false));
+            EntityRenderers.register(ModEntityType.MOD_CHEST_BOAT.get(), pContext -> new ModBoatRenderer(pContext, true));
 
             ItemBlockRenderTypes.setRenderLayer(Fluids.LAVA, RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(Blocks.WATER_CAULDRON, RenderType.translucent());

@@ -12,36 +12,36 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.theobl.extension.Extension;
-import net.theobl.extension.entity.custom.ModBoatEntity;
-import net.theobl.extension.entity.custom.ModChestBoatEntity;
+import net.theobl.extension.entity.custom.ModBoat;
+import net.theobl.extension.entity.custom.ModChestBoat;
 
 import java.util.Map;
 import java.util.stream.Stream;
 
 public class ModBoatRenderer extends BoatRenderer {
-    private final Map<ModBoatEntity.Type, Pair<ResourceLocation, ListModel<Boat>>> boatResources;
+    private final Map<ModBoat.Type, Pair<ResourceLocation, ListModel<Boat>>> boatResources;
 
     public ModBoatRenderer(EntityRendererProvider.Context pContext, boolean pChestBoat) {
         super(pContext, pChestBoat);
-        this.boatResources = Stream.of(ModBoatEntity.Type.values()).collect(ImmutableMap.toImmutableMap(type -> type,
+        this.boatResources = Stream.of(ModBoat.Type.values()).collect(ImmutableMap.toImmutableMap(type -> type,
                 type -> Pair.of(new ResourceLocation(Extension.MOD_ID, getTextureLocation(type, pChestBoat)), this.createBoatModel(pContext, type, pChestBoat))));
     }
 
-    private static String getTextureLocation(ModBoatEntity.Type pType, boolean pChestBoat) {
+    private static String getTextureLocation(ModBoat.Type pType, boolean pChestBoat) {
         return pChestBoat ? "textures/entity/chest_boat/" + pType.getName() + ".png" : "textures/entity/boat/" + pType.getName() + ".png";
     }
 
-    private ListModel<Boat> createBoatModel(EntityRendererProvider.Context pContext, ModBoatEntity.Type pType, boolean pChestBoat) {
+    private ListModel<Boat> createBoatModel(EntityRendererProvider.Context pContext, ModBoat.Type pType, boolean pChestBoat) {
         ModelLayerLocation modellayerlocation = pChestBoat ? ModBoatRenderer.createChestBoatModelName(pType) : ModBoatRenderer.createBoatModelName(pType);
         ModelPart modelpart = pContext.bakeLayer(modellayerlocation);
         return pChestBoat ? new ChestBoatModel(modelpart) : new BoatModel(modelpart);
     }
 
-    public static ModelLayerLocation createBoatModelName(ModBoatEntity.Type pType) {
+    public static ModelLayerLocation createBoatModelName(ModBoat.Type pType) {
         return createLocation("boat/" + pType.getName(), "main");
     }
 
-    public static ModelLayerLocation createChestBoatModelName(ModBoatEntity.Type pType) {
+    public static ModelLayerLocation createChestBoatModelName(ModBoat.Type pType) {
         return createLocation("chest_boat/" + pType.getName(), "main");
     }
 
@@ -50,10 +50,10 @@ public class ModBoatRenderer extends BoatRenderer {
     }
 
     public Pair<ResourceLocation, ListModel<Boat>> getModelWithLocation(Boat boat) {
-        if(boat instanceof ModBoatEntity modBoat) {
+        if(boat instanceof ModBoat modBoat) {
             return this.boatResources.get(modBoat.getModVariant());
-        } else if(boat instanceof ModChestBoatEntity modChestBoatEntity) {
-            return this.boatResources.get(modChestBoatEntity.getModVariant());
+        } else if(boat instanceof ModChestBoat modChestBoat) {
+            return this.boatResources.get(modChestBoat.getModVariant());
         } else {
             return null;
         }

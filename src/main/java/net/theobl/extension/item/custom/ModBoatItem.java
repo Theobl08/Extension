@@ -15,18 +15,18 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.theobl.extension.entity.custom.ModBoatEntity;
-import net.theobl.extension.entity.custom.ModChestBoatEntity;
+import net.theobl.extension.entity.custom.ModBoat;
+import net.theobl.extension.entity.custom.ModChestBoat;
 
 import java.util.List;
 import java.util.function.Predicate;
 
 public class ModBoatItem extends Item {
     private static final Predicate<Entity> ENTITY_PREDICATE = EntitySelector.NO_SPECTATORS.and(Entity::isPickable);
-    private final ModBoatEntity.Type type;
+    private final ModBoat.Type type;
     private final boolean hasChest;
 
-    public ModBoatItem(boolean pHasChest, ModBoatEntity.Type pType, Item.Properties pProperties) {
+    public ModBoatItem(boolean pHasChest, ModBoat.Type pType, Item.Properties pProperties) {
         super(pProperties);
         this.hasChest = pHasChest;
         this.type = pType;
@@ -55,10 +55,10 @@ public class ModBoatItem extends Item {
             if (hitresult.getType() == HitResult.Type.BLOCK) {
                 Boat boat = this.getBoat(pLevel, hitresult);
                 if(this.hasChest) {
-                    ((ModChestBoatEntity)boat).setVariant(this.type);
+                    ((ModChestBoat)boat).setVariant(this.type);
                 }
                 else {
-                    ((ModBoatEntity)boat).setVariant(this.type);
+                    ((ModBoat)boat).setVariant(this.type);
                 }
                 boat.setYRot(pPlayer.getYRot());
                 if (!pLevel.noCollision(boat, boat.getBoundingBox())) {
@@ -83,7 +83,7 @@ public class ModBoatItem extends Item {
     }
 
     private Boat getBoat(Level pLevel, HitResult pHitResult) {
-        return (Boat)(this.hasChest ? new ModChestBoatEntity(pLevel, pHitResult.getLocation().x, pHitResult.getLocation().y, pHitResult.getLocation().z) :
-                new ModBoatEntity(pLevel, pHitResult.getLocation().x, pHitResult.getLocation().y, pHitResult.getLocation().z));
+        return (Boat)(this.hasChest ? new ModChestBoat(pLevel, pHitResult.getLocation().x, pHitResult.getLocation().y, pHitResult.getLocation().z) :
+                new ModBoat(pLevel, pHitResult.getLocation().x, pHitResult.getLocation().y, pHitResult.getLocation().z));
     }
 }

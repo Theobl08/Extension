@@ -1,7 +1,5 @@
 package net.theobl.extension.entity;
 
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -11,9 +9,8 @@ import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.block.entity.ModHangingSignBlockEntity;
 import net.theobl.extension.block.entity.ModSignBlockEntity;
-import net.theobl.extension.item.ModItems;
 
-public class ModBlockEntities {
+public class ModBlockEntityType {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, Extension.MOD_ID);
 

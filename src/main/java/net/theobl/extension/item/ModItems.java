@@ -2,20 +2,14 @@ package net.theobl.extension.item;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.AbstractMinecart;
-import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
-import net.theobl.extension.block.custom.ModHangingSignBlock;
-import net.theobl.extension.entity.custom.ModBoatEntity;
+import net.theobl.extension.entity.custom.ModBoat;
 import net.theobl.extension.item.custom.ModBoatItem;
 
 import java.util.ArrayList;
@@ -100,7 +94,7 @@ public class ModItems {
         for (DyeColor color : ModBlocks.COLORS) {
             int index = ModBlocks.COLORS.indexOf(color);
             RegistryObject<Item> item = ITEMS.register(color.getName() + (hasChest ? "_chest_boat" : "_boat"),
-                    () -> new ModBoatItem(hasChest, ModBoatEntity.Type.byId(index), new Item.Properties().stacksTo(1)));
+                    () -> new ModBoatItem(hasChest, ModBoat.Type.byId(index), new Item.Properties().stacksTo(1)));
             boat.add(item);
         }
         return boat;
@@ -112,13 +106,13 @@ public class ModItems {
 //            () -> new HangingSignItem(ModBlocks.WHITE_HANGING_SIGN.get(), ModBlocks.WHITE_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
 
     public static final RegistryObject<Item> CRIMSON_BOAT = ITEMS.register("crimson_boat",
-            () -> new ModBoatItem(false, ModBoatEntity.Type.CRIMSON, new Item.Properties().stacksTo(1)));
+            () -> new ModBoatItem(false, ModBoat.Type.CRIMSON, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> CRIMSON_CHEST_BOAT = ITEMS.register("crimson_chest_boat",
-            () -> new ModBoatItem(true, ModBoatEntity.Type.CRIMSON, new Item.Properties().stacksTo(1)));
+            () -> new ModBoatItem(true, ModBoat.Type.CRIMSON, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> WARPED_BOAT = ITEMS.register("warped_boat",
-            () -> new ModBoatItem(false, ModBoatEntity.Type.WARPED, new Item.Properties().stacksTo(1)));
+            () -> new ModBoatItem(false, ModBoat.Type.WARPED, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> WARPED_CHEST_BOAT = ITEMS.register("warped_chest_boat",
-            () -> new ModBoatItem(true, ModBoatEntity.Type.WARPED, new Item.Properties().stacksTo(1)));
+            () -> new ModBoatItem(true, ModBoat.Type.WARPED, new Item.Properties().stacksTo(1)));
 
 //    public static final RegistryObject<Item> WHITE_BOAT = ITEMS.register("white_boat",
 //            () -> new ModBoatItem(false, ModBoatEntity.Type.WHITE, new Item.Properties().stacksTo(1)));

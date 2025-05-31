@@ -4,8 +4,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.Item;
@@ -13,28 +11,25 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.extensions.IForgeBoat;
 import net.minecraftforge.fluids.FluidType;
 import net.theobl.extension.block.ModBlocks;
-import net.theobl.extension.entity.ModEntities;
+import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.item.ModItems;
 
 import java.util.Arrays;
-import java.util.Objects;
-import java.util.function.IntFunction;
 
-public class ModBoatEntity extends Boat implements IForgeBoat {
-    private static final EntityDataAccessor<Integer> DATA_ID_TYPE = SynchedEntityData.defineId(ModBoatEntity.class, EntityDataSerializers.INT);
+public class ModBoat extends Boat implements IForgeBoat {
+    private static final EntityDataAccessor<Integer> DATA_ID_TYPE = SynchedEntityData.defineId(ModBoat.class, EntityDataSerializers.INT);
 
-    public ModBoatEntity(EntityType<? extends Boat> pEntityType, Level pLevel) {
+    public ModBoat(EntityType<? extends Boat> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
-    public ModBoatEntity(Level level, double pX, double pY, double pZ) {
-        this(ModEntities.MOD_BOAT.get(), level);
+    public ModBoat(Level level, double pX, double pY, double pZ) {
+        this(ModEntityType.MOD_BOAT.get(), level);
         this.setPos(pX, pY, pZ);
         this.xo = pX;
         this.yo = pY;
@@ -211,7 +206,7 @@ public class ModBoatEntity extends Boat implements IForgeBoat {
                 (type.equals(Fluids.LAVA.getFluidType()) && this.isNetherWood(this.getModVariant()));
     }
 
-    public boolean isNetherWood(ModBoatEntity.Type boatType){
+    public boolean isNetherWood(ModBoat.Type boatType){
         return ((FireBlock) Blocks.FIRE).getBurnOdds(boatType.getPlanks().defaultBlockState()) == 0;
     }
 }
