@@ -1,10 +1,11 @@
-// 1.21.3	2025-05-30T23:31:08.461247	Tags for minecraft:item mod id extension
+// 1.21.4	2025-06-01T22:45:00.3755673	Tags for minecraft:item mod id extension
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks.json
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks/nether.json
 d4dca80551a0d488392912428cdc618c8b8e9197 data/c/tags/item/crops.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/item/fences.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/item/fences/nether_brick.json
 e994b502fa84d2d351afd20245604823cdd325df data/c/tags/item/glass_panes.json
+7ce2c2cf7dc44f759bfcd7aedfa14707797f3c85 data/c/tags/item/pumpkins.json
 ee90fd36ae9a8638d0d8f73aa91314f85ac2e3bd data/c/tags/item/sandstone/blocks.json
 4129d63523084b45c78c6fc8da77ed857f6e6a75 data/c/tags/item/sandstone/slabs.json
 bdef780f9a4c2965de35f74f5eb088150d9f694d data/c/tags/item/sandstone/stairs.json

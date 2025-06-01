@@ -6,17 +6,15 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.*;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
 public class ModBlockTagsProvider extends BlockTagsProvider {
-    public ModBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, Extension.MODID, existingFileHelper);
+    public ModBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, Extension.MODID);
     }
 
     @Override
@@ -39,6 +37,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.CAMPFIRES).add(ModBlocks.REDSTONE_CAMPFIRE.get());
         tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModBlocks.SOUL_O_LANTERN.get());
+        tag(Tags.Blocks.PUMPKINS)
+                .add(ModBlocks.SOUL_O_LANTERN.get())
+                .add(ModBlocks.REDSTONE_O_LANTERN.get());
 
         for(DeferredHolder<Block, ? extends Block> deferredBlock : ModBlocks.BLOCKS.getEntries()){
             if(deferredBlock.get() instanceof StairBlock)

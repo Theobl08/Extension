@@ -7,7 +7,7 @@
       "model": "extension:block/redstone_lantern"
     },
     "hanging=true,lit=false": {
-      "model": "extension:block/redstone_lantern_hanging_off"
+      "model": "extension:block/redstone_lantern_off_hanging"
     },
     "hanging=true,lit=true": {
       "model": "extension:block/redstone_lantern_hanging"

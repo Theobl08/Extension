@@ -13,7 +13,7 @@ public class BlueNetherWartBlock extends NetherWartBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData) {
         return new ItemStack(ModItems.BLUE_NETHER_WART.get());
     }
 }

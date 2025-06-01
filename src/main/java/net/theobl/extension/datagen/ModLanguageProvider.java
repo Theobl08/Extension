@@ -19,8 +19,8 @@ import org.jetbrains.annotations.NotNull;
 import java.lang.reflect.Field;
 
 public class ModLanguageProvider extends LanguageProvider {
-    public ModLanguageProvider(PackOutput output, String locale) {
-        super(output, Extension.MODID, locale);
+    public ModLanguageProvider(PackOutput output) {
+        super(output, Extension.MODID, "en_us");
     }
 
     @Override

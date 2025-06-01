@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "extension:block/nether_brick_tile_stairs"
+  }
+}

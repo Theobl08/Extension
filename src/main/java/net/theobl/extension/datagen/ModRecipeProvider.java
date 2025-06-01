@@ -15,7 +15,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.item.ModItems;
@@ -23,7 +22,9 @@ import net.theobl.extension.item.ModItems;
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
-public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
+import static net.neoforged.neoforge.common.conditions.NeoForgeConditions.*;
+
+public class ModRecipeProvider extends RecipeProvider {
     public ModRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
         super(provider, recipeOutput);
     }
