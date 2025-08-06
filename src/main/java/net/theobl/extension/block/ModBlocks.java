@@ -168,6 +168,11 @@ public class ModBlocks {
             () -> new RedstoneCampfireBlock(false, 1,
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).lightLevel(litBlockEmission(7))));
 
+    public static final DeferredBlock<Block> INVERTED_REDSTONE_TORCH = BLOCKS.register("inverted_redstone_torch",
+            () -> new InvertedRedstoneTorchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_TORCH)));
+    public static final DeferredBlock<Block> INVERTED_REDSTONE_WALL_TORCH = BLOCKS.register("inverted_redstone_wall_torch",
+            () -> new InvertedRedstoneWallTorchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_TORCH)));
+
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return state -> state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
     }

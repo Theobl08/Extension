@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-21T14:38:21.8419607	Loot Tables
+// 1.21.1	2025-08-06T11:04:51.3807664	Loot Tables
 dfca12890ac76762b2974429397142439699a2fb data/extension/loot_table/blocks/blue_nether_bricks.json
 75742c9f09172a27f1c036b6349496847fa6b3a0 data/extension/loot_table/blocks/blue_nether_brick_fence.json
 3237ed18490dd5202e870d4fbb3bc57736e140de data/extension/loot_table/blocks/blue_nether_brick_slab.json
@@ -17,6 +17,8 @@ c24ea39a653d9ec16b6c1605c3d8be9c8d842cc9 data/extension/loot_table/blocks/cracke
 094dc8da693528e1e93238b50822b66fe60299a7 data/extension/loot_table/blocks/cut_soul_sandstone.json
 3c50fb99cbe462fe5ef191f7ec4ae72d4054e6ac data/extension/loot_table/blocks/cut_soul_sandstone_slab.json
 c4ecd553b9b5ba99a2609a0c929a96d8b3e9bafd data/extension/loot_table/blocks/dark_prismarine_wall.json
+c22e394c917c77b4eba27933cd0da28178e9a028 data/extension/loot_table/blocks/inverted_redstone_torch.json
+690b395211513395e091947eda42923f176f60ed data/extension/loot_table/blocks/inverted_redstone_wall_torch.json
 4f55a2c97df78f9a76b5db5b7c07037d2ff9b1b1 data/extension/loot_table/blocks/mossy_cobbled_deepslate.json
 440041a0d5a5525885a091ee8340c3b059180948 data/extension/loot_table/blocks/mossy_cobbled_deepslate_slab.json
 c309fbc48b5b78d8a58b371a472784da5fe1656a data/extension/loot_table/blocks/mossy_cobbled_deepslate_stairs.json

@@ -1,5 +1,6 @@
 package net.theobl.extension.item;
 
+import net.minecraft.core.Direction;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.item.*;
@@ -31,6 +32,9 @@ public class ModItems {
 
     public static final DeferredItem<Item> ILLUSIONER_SPAWN_EGG = ITEMS.register("illusioner_spawn_egg",
             () -> new DeferredSpawnEggItem(() -> EntityType.ILLUSIONER, 9804699, 1267859, new Item.Properties()));
+
+    public static final DeferredItem<Item> INVERTED_REDSTONE_TORCH = ITEMS.register("inverted_redstone_torch",
+            () -> new StandingAndWallBlockItem(ModBlocks.INVERTED_REDSTONE_TORCH.get(), ModBlocks.INVERTED_REDSTONE_WALL_TORCH.get(), new Item.Properties(), Direction.DOWN));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

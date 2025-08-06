@@ -218,6 +218,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_stick", has(Items.STICK))
                 .unlockedBy("has_redstone", has(Tags.Items.DUSTS_REDSTONE))
                 .save(recipeOutput);
+
+        oneToOneConversionRecipe(recipeOutput, ModBlocks.INVERTED_REDSTONE_TORCH, Blocks.REDSTONE_TORCH, "redstone_torch", 1);
+        oneToOneConversionRecipe(recipeOutput, Blocks.REDSTONE_TORCH, ModBlocks.INVERTED_REDSTONE_TORCH, "redstone_torch", 1);
     }
 
     protected void generateForEnabledBlockFamilies(RecipeOutput enabledFeatures, FeatureFlagSet featureFlagSet) {

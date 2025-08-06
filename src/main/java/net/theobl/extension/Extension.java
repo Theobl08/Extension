@@ -103,6 +103,8 @@ public class Extension {
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
 
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TINTED_GLASS_PANE.get(), RenderType.TRANSLUCENT);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.INVERTED_REDSTONE_TORCH.get(), RenderType.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.INVERTED_REDSTONE_WALL_TORCH.get(), RenderType.CUTOUT);
         }
     }
 

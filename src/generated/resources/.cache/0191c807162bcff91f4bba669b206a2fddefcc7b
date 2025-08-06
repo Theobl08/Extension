@@ -1,7 +1,8 @@
-// 1.21.1	2025-04-18T16:23:00.097732	Item Models: extension
+// 1.21.1	2025-08-06T11:04:51.3847661	Item Models: extension
 a21f599e69fb810a6426b5cd312d6cb64b5e4a46 assets/extension/models/item/blue_nether_brick.json
 8beae8cdafd692f0b13f89c9d2bcb43a3c03649d assets/extension/models/item/blue_nether_wart.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/extension/models/item/illusioner_spawn_egg.json
+20f617882b3acc7fea9f825f491d2d6c5806cf8e assets/extension/models/item/inverted_redstone_torch.json
 4792e3d0dbc6e944b7ab9ba7b63700c3f622553b assets/extension/models/item/netherite_horse_armor.json
 a6dc9411195a1f938d5a50d550f69975b0c8e260 assets/extension/models/item/redstone_campfire.json
 75173377e9d907f53cbd32e946008241ed95a725 assets/extension/models/item/redstone_lantern.json

@@ -26,5 +26,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         withExistingParent(ModBlocks.TINTED_GLASS_PANE.getId().getPath(),
                 ResourceLocation.withDefaultNamespace("item/generated")).texture("layer0", mcLoc("block/tinted_glass"));
+
+        withExistingParent(ModItems.INVERTED_REDSTONE_TORCH.getRegisteredName(),
+                ResourceLocation.withDefaultNamespace("item/generated")).texture("layer0", mcLoc("block/redstone_torch_off"));
     }
 }

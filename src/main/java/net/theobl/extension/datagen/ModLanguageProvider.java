@@ -2,10 +2,7 @@ package net.theobl.extension.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.*;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
-import net.minecraft.world.item.MinecartItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CarvedPumpkinBlock;
 import net.neoforged.neoforge.common.ModConfigSpec;
@@ -18,6 +15,7 @@ import net.theobl.extension.item.ModItems;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 public class ModLanguageProvider extends LanguageProvider {
     public ModLanguageProvider(PackOutput output, String locale) {
@@ -29,12 +27,17 @@ public class ModLanguageProvider extends LanguageProvider {
         add("itemGroup.extension", "Extension");
 
         for(DeferredHolder<Block, ? extends Block> block : ModBlocks.BLOCKS.getEntries()) {
-            if(block.get() instanceof CarvedPumpkinBlock)
-                add(block.get(),capitalizeString(filterBlockLang(block.get())).replace(" O ", " o'"));
-            else if(block.get().defaultBlockState().is(ModBlocks.NETHERITE_STAIRS))
-                add(block.get(), "Swaggiest stairs ever");
-            else
-                add(block.get(), capitalizeString(filterBlockLang(block.get())));
+            try {
+                if (block.get() instanceof CarvedPumpkinBlock)
+                    add(block.get(), capitalizeString(filterBlockLang(block.get())).replace(" O ", " o'"));
+                else if (block.get().defaultBlockState().is(ModBlocks.NETHERITE_STAIRS))
+                    add(block.get(), "Swaggiest stairs ever");
+                else
+                    add(block.get(), capitalizeString(filterBlockLang(block.get())));
+            }
+            catch(Exception e) {
+                continue;
+            }
         }
 
         for(DeferredHolder<Item, ? extends Item> item : ModItems.ITEMS.getEntries()) {

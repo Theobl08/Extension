@@ -136,6 +136,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         lantern();
         campfire(ModBlocks.REDSTONE_CAMPFIRE);
+
+        redstoneTorch();
+        redstoneWallTorch();
     }
 
     private ResourceLocation key(Block block) {
@@ -258,5 +261,38 @@ public class ModBlockStateProvider extends BlockStateProvider {
                         .renderType("cutout")
                         .texture("fire", blockTexture(campfire.get()) + "_fire")
                         .texture("lit_log", blockTexture(campfire.get()) + "_log_lit")).addModel();
+    }
+
+    private void redstoneTorch() {
+        DeferredBlock<Block> block = ModBlocks.INVERTED_REDSTONE_TORCH;
+        getVariantBuilder(block.get())
+                .partialState().with(RedstoneTorchBlock.LIT, false)
+                .modelForState().modelFile(models().getExistingFile(mcLoc("minecraft:block/redstone_torch_off"))).addModel()
+                .partialState().with(RedstoneTorchBlock.LIT, true)
+                .modelForState().modelFile(models().getExistingFile(mcLoc("minecraft:block/redstone_torch"))).addModel();
+    }
+
+    private void redstoneWallTorch() {
+        DeferredBlock<Block> block = ModBlocks.INVERTED_REDSTONE_WALL_TORCH;
+        getVariantBuilder(block.get())
+                .partialState().with(WallTorchBlock.FACING, Direction.EAST).with(RedstoneTorchBlock.LIT, false)
+                .modelForState().modelFile(models().getExistingFile(mcLoc("minecraft:block/redstone_wall_torch_off"))).addModel()
+                .partialState().with(WallTorchBlock.FACING, Direction.EAST).with(RedstoneTorchBlock.LIT, true)
+                .modelForState().modelFile(models().getExistingFile(mcLoc("minecraft:block/redstone_wall_torch"))).addModel()
+
+                .partialState().with(WallTorchBlock.FACING, Direction.NORTH).with(RedstoneTorchBlock.LIT, false)
+                .modelForState().rotationY(270).modelFile(models().getExistingFile(mcLoc("minecraft:block/redstone_wall_torch_off"))).addModel()
+                .partialState().with(WallTorchBlock.FACING, Direction.NORTH).with(RedstoneTorchBlock.LIT, true)
+                .modelForState().rotationY(270).modelFile(models().getExistingFile(mcLoc("minecraft:block/redstone_wall_torch"))).addModel()
+
+                .partialState().with(WallTorchBlock.FACING, Direction.SOUTH).with(RedstoneTorchBlock.LIT, false)
+                .modelForState().rotationY(90).modelFile(models().getExistingFile(mcLoc("minecraft:block/redstone_wall_torch_off"))).addModel()
+                .partialState().with(WallTorchBlock.FACING, Direction.SOUTH).with(RedstoneTorchBlock.LIT, true)
+                .modelForState().rotationY(90).modelFile(models().getExistingFile(mcLoc("minecraft:block/redstone_wall_torch"))).addModel()
+
+                .partialState().with(WallTorchBlock.FACING, Direction.WEST).with(RedstoneTorchBlock.LIT, false)
+                .modelForState().rotationY(180).modelFile(models().getExistingFile(mcLoc("minecraft:block/redstone_wall_torch_off"))).addModel()
+                .partialState().with(WallTorchBlock.FACING, Direction.WEST).with(RedstoneTorchBlock.LIT, true)
+                .modelForState().rotationY(180).modelFile(models().getExistingFile(mcLoc("minecraft:block/redstone_wall_torch"))).addModel();
     }
 }

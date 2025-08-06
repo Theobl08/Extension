@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-21T14:17:15.5801185	Block States: extension
+// 1.21.1	2025-08-06T11:45:30.8058311	Block States: extension
 40e9bbf670e7f25d8bb42d81f5255bf006e79c11 assets/extension/blockstates/blue_nether_bricks.json
 00f366a033f154ce112185e74fc9ec9e31ee5285 assets/extension/blockstates/blue_nether_brick_fence.json
 99a1bca5bfd89664f5cc2c4ab926c1f244ba7c69 assets/extension/blockstates/blue_nether_brick_slab.json
@@ -17,6 +17,8 @@ d2492abad953a8054a44649a56309d9e5a286675 assets/extension/blockstates/chiseled_s
 1ecf9253e65986b3f1a33fcdf11c67e75c55d653 assets/extension/blockstates/cut_soul_sandstone.json
 f04c8504b2f4ee9a7da461bbdadd2a4fd9bc0d70 assets/extension/blockstates/cut_soul_sandstone_slab.json
 95f03a1e140aa99a86acdbdcab988ff57dc9f7b1 assets/extension/blockstates/dark_prismarine_wall.json
+62f63ef5704f53d4eea73caebbabf590fd2ebb84 assets/extension/blockstates/inverted_redstone_torch.json
+0cdcc24c5167a2cf8464cc12e94f264bcbc572e6 assets/extension/blockstates/inverted_redstone_wall_torch.json
 8e27688a45ca940de4bbe666c17b5ab69ea7a5b6 assets/extension/blockstates/mossy_cobbled_deepslate.json
 3c7cb29080d6aa280683267018efc5c1360e57ae assets/extension/blockstates/mossy_cobbled_deepslate_slab.json
 4d5ec6d67bcb11d26ac938a30359045ca9ba3f1a assets/extension/blockstates/mossy_cobbled_deepslate_stairs.json
