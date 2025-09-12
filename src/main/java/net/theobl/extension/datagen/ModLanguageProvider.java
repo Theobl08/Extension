@@ -52,7 +52,6 @@ public class ModLanguageProvider extends LanguageProvider {
         translateTags(BannerPatternTags.class);
         translateTags(BiomeTags.class);
         translateTags(BlockTags.class);
-        translateTags(CatVariantTags.class);
         translateTags(DamageTypeTags.class);
         translateTags(EnchantmentTags.class);
         translateTags(EntityTypeTags.class);

@@ -3,7 +3,6 @@
   "addition": "minecraft:netherite_ingot",
   "base": "minecraft:diamond_horse_armor",
   "result": {
-    "count": 1,
     "id": "extension:netherite_horse_armor"
   },
   "template": "minecraft:netherite_upgrade_smithing_template"

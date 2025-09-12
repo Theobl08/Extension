@@ -1,4 +1,4 @@
-// 1.21.4	2025-06-01T18:18:39.4290148	Loot Tables
+// 1.21.5	2025-09-12T15:50:43.0848166	Loot Tables
 dfca12890ac76762b2974429397142439699a2fb data/extension/loot_table/blocks/blue_nether_bricks.json
 75742c9f09172a27f1c036b6349496847fa6b3a0 data/extension/loot_table/blocks/blue_nether_brick_fence.json
 3237ed18490dd5202e870d4fbb3bc57736e140de data/extension/loot_table/blocks/blue_nether_brick_slab.json

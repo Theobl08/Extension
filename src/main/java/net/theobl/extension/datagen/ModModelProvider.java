@@ -7,6 +7,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
+import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.*;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.data.BlockFamily;
@@ -23,6 +24,8 @@ import net.theobl.extension.item.ModItems;
 
 import java.util.List;
 import java.util.Map;
+
+import static net.minecraft.client.data.models.BlockModelGenerators.*;
 
 public class ModModelProvider extends ModelProvider {
     public ModModelProvider(PackOutput output) {
@@ -62,7 +65,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.NETHERITE_HORSE_ARMOR.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.RED_NETHER_BRICK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.BLUE_NETHER_BRICK.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateSpawnEgg(ModItems.ILLUSIONER_SPAWN_EGG.get(), 9804699, 1267859);
+        itemModels.generateFlatItem(ModItems.ILLUSIONER_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
 
         this.createGlassPaneBlocks(Blocks.TINTED_GLASS, ModBlocks.TINTED_GLASS_PANE.get(), blockModels);
 
@@ -100,7 +103,7 @@ public class ModModelProvider extends ModelProvider {
         ResourceLocation resourcelocation = ModelTemplates.WALL_POST.create(wallBlock, mapping, blockModels.modelOutput);
         ResourceLocation resourcelocation1 = ModelTemplates.WALL_LOW_SIDE.create(wallBlock, mapping, blockModels.modelOutput);
         ResourceLocation resourcelocation2 = ModelTemplates.WALL_TALL_SIDE.create(wallBlock, mapping, blockModels.modelOutput);
-        blockModels.blockStateOutput.accept(BlockModelGenerators.createWall(wallBlock, resourcelocation, resourcelocation1, resourcelocation2));
+        blockModels.blockStateOutput.accept(BlockModelGenerators.createWall(wallBlock, plainVariant(resourcelocation), plainVariant(resourcelocation1), plainVariant(resourcelocation2)));
         ResourceLocation resourcelocation3 = ModelTemplates.WALL_INVENTORY.create(wallBlock, mapping, blockModels.modelOutput);
         blockModels.registerSimpleItemModel(wallBlock, resourcelocation3);
     }
@@ -117,26 +120,25 @@ public class ModModelProvider extends ModelProvider {
         blockModels.blockStateOutput
                 .accept(
                         MultiPartGenerator.multiPart(paneBlock)
-                                .with(Variant.variant().with(VariantProperties.MODEL, resourcelocation))
-                                .with(Condition.condition().term(BlockStateProperties.NORTH, true), Variant.variant().with(VariantProperties.MODEL, resourcelocation1))
-                                .with(
-                                        Condition.condition().term(BlockStateProperties.EAST, true),
-                                        Variant.variant().with(VariantProperties.MODEL, resourcelocation1).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)
+                                .with(plainVariant(resourcelocation))
+                                .with(condition().term(BlockStateProperties.NORTH, true), plainVariant(resourcelocation1))
+                                .with(condition().term(BlockStateProperties.EAST, true),
+                                        plainVariant(resourcelocation1).with(Y_ROT_90)
                                 )
-                                .with(Condition.condition().term(BlockStateProperties.SOUTH, true), Variant.variant().with(VariantProperties.MODEL, resourcelocation2))
+                                .with(condition().term(BlockStateProperties.SOUTH, true), plainVariant(resourcelocation2))
                                 .with(
-                                        Condition.condition().term(BlockStateProperties.WEST, true),
-                                        Variant.variant().with(VariantProperties.MODEL, resourcelocation2).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)
+                                        condition().term(BlockStateProperties.WEST, true),
+                                        plainVariant(resourcelocation2).with(Y_ROT_90)
                                 )
-                                .with(Condition.condition().term(BlockStateProperties.NORTH, false), Variant.variant().with(VariantProperties.MODEL, resourcelocation3))
-                                .with(Condition.condition().term(BlockStateProperties.EAST, false), Variant.variant().with(VariantProperties.MODEL, resourcelocation4))
+                                .with(condition().term(BlockStateProperties.NORTH, false), plainVariant(resourcelocation3))
+                                .with(condition().term(BlockStateProperties.EAST, false), plainVariant(resourcelocation4))
                                 .with(
-                                        Condition.condition().term(BlockStateProperties.SOUTH, false),
-                                        Variant.variant().with(VariantProperties.MODEL, resourcelocation4).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)
+                                        condition().term(BlockStateProperties.SOUTH, false),
+                                        plainVariant(resourcelocation4).with(Y_ROT_90)
                                 )
                                 .with(
-                                        Condition.condition().term(BlockStateProperties.WEST, false),
-                                        Variant.variant().with(VariantProperties.MODEL, resourcelocation3).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)
+                                        condition().term(BlockStateProperties.WEST, false),
+                                        plainVariant(resourcelocation3).with(Y_ROT_270)
                                 )
                 );
     }
@@ -159,12 +161,12 @@ public class ModModelProvider extends ModelProvider {
         blockModels.registerSimpleFlatItemModel(lanternBlock.asItem());
         blockModels.blockStateOutput
                 .accept(
-                        MultiVariantGenerator.multiVariant(lanternBlock)
-                                .with(PropertyDispatch.properties(BlockStateProperties.HANGING, BlockStateProperties.LIT)
-                                        .select(false, false, Variant.variant().with(VariantProperties.MODEL, lanternOff))
-                                        .select(false, true, Variant.variant().with(VariantProperties.MODEL, lantern))
-                                        .select(true, false, Variant.variant().with(VariantProperties.MODEL, hangingLanternOff))
-                                        .select(true, true, Variant.variant().with(VariantProperties.MODEL, hangingLantern))
+                        MultiVariantGenerator.dispatch(lanternBlock)
+                                .with(PropertyDispatch.initial(BlockStateProperties.HANGING, BlockStateProperties.LIT)
+                                        .select(false, false, plainVariant(lanternOff))
+                                        .select(false, true, plainVariant(lantern))
+                                        .select(true, false, plainVariant(hangingLanternOff))
+                                        .select(true, true, plainVariant(hangingLantern))
                                 )
                 );
     }
@@ -174,18 +176,18 @@ public class ModModelProvider extends ModelProvider {
             throw new IllegalArgumentException();
         } else {
             Int2ObjectMap<ResourceLocation> int2objectmap = new Int2ObjectOpenHashMap<>();
-            PropertyDispatch propertydispatch = PropertyDispatch.property(ageProperty)
+            PropertyDispatch<MultiVariant> propertydispatch = PropertyDispatch.initial(ageProperty)
                     .generate(
                             p_388091_ -> {
                                 int i = ageToVisualStageMapping[p_388091_];
                                 ResourceLocation resourcelocation = int2objectmap.computeIfAbsent(
                                         i, p_387534_ -> blockModels.createSuffixedVariant(cropBlock, "_stage" + i, ModelTemplates.CROP.extend().renderType("cutout").build(), TextureMapping::crop)
                                 );
-                                return Variant.variant().with(VariantProperties.MODEL, resourcelocation);
+                                return plainVariant(resourcelocation);
                             }
                     );
             blockModels.registerSimpleFlatItemModel(cropBlock.asItem());
-            blockModels.blockStateOutput.accept(MultiVariantGenerator.multiVariant(cropBlock).with(propertydispatch));
+            blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(cropBlock).with(propertydispatch));
         }
     }
 
@@ -197,9 +199,9 @@ public class ModModelProvider extends ModelProvider {
             blockModels.registerSimpleFlatItemModel(block.asItem());
             blockModels.blockStateOutput
                     .accept(
-                            MultiVariantGenerator.multiVariant(block)
-                                    .with(BlockModelGenerators.createBooleanModelDispatch(BlockStateProperties.LIT, resourcelocation1, resourcelocation))
-                                    .with(BlockModelGenerators.createHorizontalFacingDispatchAlt())
+                            MultiVariantGenerator.dispatch(block)
+                                    .with(BlockModelGenerators.createBooleanModelDispatch(BlockStateProperties.LIT, plainVariant(resourcelocation1), plainVariant(resourcelocation)))
+                                    .with(BlockModelGenerators.ROTATION_HORIZONTAL_FACING_ALT)
                     );
         }
     }
@@ -215,7 +217,7 @@ public class ModModelProvider extends ModelProvider {
         public BlockModelGenerators.BlockFamilyProvider fullBlockVariant(Block block) {
             TexturedModel texturedmodel = ModModelProvider.this.texturedModels.getOrDefault(block, TexturedModel.CUBE.get(block));
             ResourceLocation resourcelocation = texturedmodel.create(block, blockModels.modelOutput);
-            blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, resourcelocation));
+            blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, plainVariant(resourcelocation)));
             return this;
         }
     }
