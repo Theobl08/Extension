@@ -64,6 +64,8 @@ public class ModLanguageProvider extends LanguageProvider {
         translateTags(PoiTypeTags.class);
         translateTags(StructureTags.class);
         translateTags(WorldPresetTags.class);
+
+        add("container.fletching", "Fletching");
     }
 
     private static @NotNull String capitalizeString(String string) {

@@ -124,7 +124,7 @@ public class Extension {
                 BlockPos pos = event.getPos();
                 if (!level.isClientSide()) {
                     MenuProvider provider = new SimpleMenuProvider(
-                            (i, inventory, player1) -> new FletchingMenu(i, inventory, ContainerLevelAccess.create(level, pos)), Component.translatable("container.crafting"));
+                            (i, inventory, player1) -> new FletchingMenu(i, inventory, ContainerLevelAccess.create(level, pos)), Component.translatable("container.fletching"));
                     player.openMenu(provider);
                     player.awardStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
                 }

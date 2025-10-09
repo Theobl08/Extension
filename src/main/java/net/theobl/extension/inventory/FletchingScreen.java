@@ -13,6 +13,13 @@ public class FletchingScreen extends AbstractContainerScreen<FletchingMenu> {
 
     public FletchingScreen(FletchingMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
+        this.titleLabelX = 33;
+    }
+
+    @Override
+    public void render(GuiGraphics guiGraphics, int x, int y, float partialTick) {
+        super.render(guiGraphics, x, y, partialTick);
+        this.renderTooltip(guiGraphics, x, y);
     }
 
     @Override
