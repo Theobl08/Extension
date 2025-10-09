@@ -47,6 +47,8 @@ import net.theobl.extension.inventory.FletchingScreen;
 import net.theobl.extension.inventory.ModMenuType;
 import net.theobl.extension.item.ModCreativeModeTabs;
 import net.theobl.extension.item.ModItems;
+import net.theobl.extension.item.crafting.ModRecipeSerializer;
+import net.theobl.extension.item.crafting.ModRecipeType;
 import org.slf4j.Logger;
 
 import java.util.Optional;
@@ -77,6 +79,8 @@ public class Extension {
         ModCreativeModeTabs.register(modEventBus);
 
         ModMenuType.register(modEventBus);
+        ModRecipeType.register(modEventBus);
+        ModRecipeSerializer.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (Extension) to respond directly to events.
