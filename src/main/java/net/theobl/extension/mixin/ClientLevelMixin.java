@@ -16,7 +16,7 @@ public class ClientLevelMixin {
             cir.setReturnValue((double) level.getMinY());
     }
 
-    @Inject(at = @At("RETURN"), method = "getClearColorScale", cancellable = true)
+    @Inject(at = @At("RETURN"), method = "voidDarknessOnsetRange", cancellable = true)
     private void getClearColorScale(CallbackInfoReturnable<Float> cir) {
         if(Config.clearVoid)
             cir.setReturnValue(1.0F);
