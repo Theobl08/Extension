@@ -12,7 +12,6 @@
     "DirtPathBlockMixin",
     "EndIslandDensityFunctionMixin",
     "EntityMixin",
-    "FarmBlockMixin",
     "GossipTypeMixin",
     "ItemStackMixin",
     "MinecartSpawnerMixin",
@@ -24,8 +23,7 @@
     "ClientLevelMixin",
     "FogRendererMixin",
     "LightTextureMixin",
-    "OptionInstanceMixin",
-    "ScreenEffectRendererMixin"
+    "OptionInstanceMixin"
   ],
   "injectors": {
     "defaultRequire": 1

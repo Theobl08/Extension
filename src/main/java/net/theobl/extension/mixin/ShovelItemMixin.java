@@ -1,5 +1,6 @@
 package net.theobl.extension.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -14,8 +15,8 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(ShovelItem.class)
 public class ShovelItemMixin {
-    @WrapOperation(method = "useOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;isAir()Z"))
-    private boolean useUnderNonSolidBlocks(BlockState instance, Operation<Boolean> original, @Local(ordinal = 0) Level level, @Local(ordinal = 0) BlockPos pos) {
-        return !instance.isFaceSturdy(level, pos.above(), Direction.DOWN, SupportType.FULL);
+    @ModifyExpressionValue(method = "useOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;isAir()Z"))
+    private boolean useUnderNonSolidBlocks(boolean original, @Local(ordinal = 0) Level level, @Local(ordinal = 0) BlockPos pos) {
+        return original || !level.getBlockState(pos.above()).isFaceSturdy(level, pos.above(), Direction.DOWN, SupportType.FULL);
     }
 }

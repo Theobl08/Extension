@@ -10,16 +10,22 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.CraftingMenu;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -34,12 +40,15 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.client.event.RenderBlockScreenEffectEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientBlockExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
+import net.neoforged.neoforge.event.entity.EntityInvulnerabilityCheckEvent;
 import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.inventory.FletchingMenu;
@@ -137,6 +146,24 @@ public class Extension {
         }
     }
 
+    @SubscribeEvent
+    public void onFarmlandTrample(BlockEvent.FarmlandTrampleEvent event) {
+        if(!Config.farmlandTrample)
+            event.setCanceled(true);
+        else
+            event.setCanceled(false);
+    }
+
+    @SubscribeEvent
+    public void entityInvulnerabilityCheck(EntityInvulnerabilityCheckEvent event) {
+        Entity entity = event.getEntity();
+        if(entity instanceof ServerPlayer player &&
+                event.getSource().is(DamageTypeTags.IS_FIRE) &&
+                !player.level().getGameRules().getBoolean(GameRules.RULE_FIRE_DAMAGE)) {
+            event.setInvulnerable(true);
+        }
+    }
+
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @EventBusSubscriber(modid = MODID, value = Dist.CLIENT)
     public static class ClientModEvents {
@@ -164,6 +191,22 @@ public class Extension {
                         return false;
                     }
                 }, Blocks.WATER_CAULDRON);
+            }
+        }
+
+        @SubscribeEvent
+        public static void renderBlockScreenEffect(RenderBlockScreenEffectEvent event) {
+            Player player = event.getPlayer();
+            BlockState blockState = event.getBlockState();
+            MobEffectInstance mobEffectInstance = player.getEffect(MobEffects.FIRE_RESISTANCE);
+            if(player.isCreative()) {
+                event.setCanceled(true);
+            } else if (Config.noFireOverlay &&
+                    player.hasEffect(MobEffects.FIRE_RESISTANCE) &&
+                    mobEffectInstance != null && !mobEffectInstance.endsWithin(400) &&
+                    !player.isHolding(Items.MILK_BUCKET) &&
+                    blockState == Blocks.FIRE.defaultBlockState()) {
+                event.setCanceled(true);
             }
         }
     }
