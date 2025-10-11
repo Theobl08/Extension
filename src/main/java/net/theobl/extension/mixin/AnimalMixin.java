@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 public class AnimalMixin {
     @WrapOperation(method = "aiStep", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
     private void fixMC93826(Level instance, ParticleOptions pParticleData, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed, Operation<Void> original) {
-        if(!instance.isClientSide) {
+        if(!instance.isClientSide()) {
             ((ServerLevel) instance).sendParticles(pParticleData, pX, pY, pZ, 1, pXSpeed, pYSpeed, pZSpeed, 0.0);
         }
         else {

@@ -30,7 +30,7 @@ public class RedstoneLanternBlock extends LanternBlock {
     @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
-        if(!level.isClientSide) tick(state, ((ServerLevel) level), pos, level.random);
+        if(!level.isClientSide()) tick(state, ((ServerLevel) level), pos, level.random);
     }
 
     @Override
