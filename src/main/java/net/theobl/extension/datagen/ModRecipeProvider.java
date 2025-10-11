@@ -191,6 +191,13 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("B")
                 .unlockedBy("has_carved_pumpkin", has(Blocks.CARVED_PUMPKIN))
                 .save(output);
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.COPPER_O_LANTERN)
+                .define('A', Blocks.CARVED_PUMPKIN)
+                .define('B', Blocks.COPPER_TORCH)
+                .pattern("A")
+                .pattern("B")
+                .unlockedBy("has_carved_pumpkin", has(Blocks.CARVED_PUMPKIN))
+                .save(output);
         shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.REDSTONE_O_LANTERN)
                 .define('A', Blocks.CARVED_PUMPKIN)
                 .define('B', Blocks.REDSTONE_TORCH)
@@ -218,6 +225,17 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("LLL")
                 .unlockedBy("has_stick", has(Items.STICK))
                 .unlockedBy("has_redstone", has(Tags.Items.DUSTS_REDSTONE))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.COPPER_CAMPFIRE)
+                .define('L', ItemTags.LOGS)
+                .define('S', Items.STICK)
+                .define('C', Items.COPPER_NUGGET)
+                .pattern(" S ")
+                .pattern("SCS")
+                .pattern("LLL")
+                .unlockedBy("has_stick", has(Items.STICK))
+                .unlockedBy("has_redstone", has(Items.COPPER_NUGGET))
                 .save(output);
     }
 

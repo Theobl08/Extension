@@ -32,13 +32,16 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.BLUE_NETHER_WART.get())
                 .add(ModBlocks.SOUL_O_LANTERN.get())
+                .add(ModBlocks.COPPER_O_LANTERN.get())
+                .add(ModBlocks.COPPER_CAMPFIRE.get())
                 .add(ModBlocks.REDSTONE_O_LANTERN.get())
                 .add(ModBlocks.REDSTONE_CAMPFIRE.get());
 
-        tag(BlockTags.CAMPFIRES).add(ModBlocks.REDSTONE_CAMPFIRE.get());
+        tag(BlockTags.CAMPFIRES).add(ModBlocks.COPPER_CAMPFIRE.get(), ModBlocks.REDSTONE_CAMPFIRE.get());
         tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModBlocks.SOUL_O_LANTERN.get());
         tag(Tags.Blocks.PUMPKINS)
                 .add(ModBlocks.SOUL_O_LANTERN.get())
+                .add(ModBlocks.COPPER_O_LANTERN.get())
                 .add(ModBlocks.REDSTONE_O_LANTERN.get());
 
         for(DeferredHolder<Block, ? extends Block> deferredBlock : ModBlocks.BLOCKS.getEntries()){
@@ -57,6 +60,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             }
 
             if(deferredBlock.get().toString().contains("soul_sandstone")) {
+                tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(deferredBlock.get());
                 if(deferredBlock.get() instanceof StairBlock)
                     tag(Tags.Blocks.SANDSTONE_STAIRS).add(deferredBlock.get());
                 else if(deferredBlock.get() instanceof SlabBlock)

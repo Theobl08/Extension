@@ -1,4 +1,4 @@
-// 1.21.6	2025-10-10T11:23:03.3755134	Loot Tables
+// 1.21.9	2025-10-11T15:40:57.0623313	Loot Tables
 dfca12890ac76762b2974429397142439699a2fb data/extension/loot_table/blocks/blue_nether_bricks.json
 75742c9f09172a27f1c036b6349496847fa6b3a0 data/extension/loot_table/blocks/blue_nether_brick_fence.json
 3237ed18490dd5202e870d4fbb3bc57736e140de data/extension/loot_table/blocks/blue_nether_brick_slab.json
@@ -12,6 +12,8 @@ db4127526d6747c930dddb8905038e2074e173a6 data/extension/loot_table/blocks/blue_n
 ff5961106af1c830642758eda946d6896df4d1d8 data/extension/loot_table/blocks/chiseled_blue_nether_bricks.json
 92cbeba9e08e63f8af5a4a534eef62df26e2c5bb data/extension/loot_table/blocks/chiseled_red_nether_bricks.json
 c8612d4c18be9e1e7e6708ad06894e3157c70b5b data/extension/loot_table/blocks/chiseled_soul_sandstone.json
+98788da87080aa80fbb247e78e2af06c1e31697a data/extension/loot_table/blocks/copper_campfire.json
+4a35ac82a3269b75e513076fd4f740559abe1a22 data/extension/loot_table/blocks/copper_o_lantern.json
 c24ea39a653d9ec16b6c1605c3d8be9c8d842cc9 data/extension/loot_table/blocks/cracked_blue_nether_bricks.json
 5af580c222c17c71e329c905b9af9b402e14a6d3 data/extension/loot_table/blocks/cracked_red_nether_bricks.json
 094dc8da693528e1e93238b50822b66fe60299a7 data/extension/loot_table/blocks/cut_soul_sandstone.json
@@ -43,7 +45,7 @@ e5fe705fe3899188f470161103ebe7e227c4c297 data/extension/loot_table/blocks/prisma
 4aa6266cf6e24b7445a93e6d49d65aef43f96aa7 data/extension/loot_table/blocks/quartz_brick_stairs.json
 6864121c03f19b8cfba06422d1e9e70bde2a5a32 data/extension/loot_table/blocks/quartz_brick_wall.json
 9f04761edf697ae0c5b339e78993ae6b90ab94ac data/extension/loot_table/blocks/quartz_wall.json
-2f8d9c188a3533445320bec2c58beb361d004fde data/extension/loot_table/blocks/redstone_campfire.json
+aae2b3d98ab5a61c3931d8fe99cc47738c921159 data/extension/loot_table/blocks/redstone_campfire.json
 abc8cfa12ba8578d6b1a1960b0b7d47a0b3233dc data/extension/loot_table/blocks/redstone_lantern.json
 11981b15154d5a016204fabcc5619297cb148ec6 data/extension/loot_table/blocks/redstone_o_lantern.json
 46e9c903ec8220ed35fa4701449478fb30f09625 data/extension/loot_table/blocks/red_nether_brick_fence.json

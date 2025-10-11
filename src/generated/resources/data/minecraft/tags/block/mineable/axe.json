@@ -2,6 +2,8 @@
   "values": [
     "extension:blue_nether_wart",
     "extension:soul_o_lantern",
+    "extension:copper_o_lantern",
+    "extension:copper_campfire",
     "extension:redstone_o_lantern",
     "extension:redstone_campfire"
   ]

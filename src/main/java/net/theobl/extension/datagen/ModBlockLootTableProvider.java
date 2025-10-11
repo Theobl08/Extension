@@ -55,7 +55,12 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
             else if (block.get().defaultBlockState().is(ModBlocks.REDSTONE_CAMPFIRE.get())) {
                 this.add(block.get(),
                         block1 -> this.createSilkTouchDispatchTable(block1, this.applyExplosionCondition(block1, LootItem.lootTableItem(Items.REDSTONE)
-                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))))));
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))));
+            }
+            else if (block.get().defaultBlockState().is(ModBlocks.COPPER_CAMPFIRE.get())) {
+                this.add(block.get(),
+                        block1 -> this.createSilkTouchDispatchTable(block1, this.applyExplosionCondition(block1, LootItem.lootTableItem(Items.COPPER_NUGGET)
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))));
             }
             else {
                 this.dropSelf(block.get());

@@ -160,12 +160,17 @@ public class ModBlocks {
             CarvedPumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.JACK_O_LANTERN).lightLevel(s -> 10));
     public static final DeferredBlock<Block> REDSTONE_O_LANTERN = registerBlock("redstone_o_lantern",
             RedstoneCarvedPumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.JACK_O_LANTERN).lightLevel(s -> 7));
+    public static final DeferredBlock<Block> COPPER_O_LANTERN = registerBlock("copper_o_lantern",
+            CarvedPumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.JACK_O_LANTERN).lightLevel(s -> 15));
 
     public static final DeferredBlock<Block> REDSTONE_LANTERN = registerBlock("redstone_lantern",
             RedstoneLanternBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN).lightLevel(litBlockEmission(7)));
     public static final DeferredBlock<Block> REDSTONE_CAMPFIRE = registerBlock("redstone_campfire",
             properties -> new RedstoneCampfireBlock(false, 1, properties),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).lightLevel(litBlockEmission(7)));
+    public static final DeferredBlock<Block> COPPER_CAMPFIRE = registerBlock("copper_campfire",
+            properties -> new CampfireBlock(false, 1, properties),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).lightLevel(litBlockEmission(15)));
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return state -> state.getValue(BlockStateProperties.LIT) ? lightValue : 0;

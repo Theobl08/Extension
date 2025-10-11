@@ -89,7 +89,7 @@ public class ModModelProvider extends ModelProvider {
 
         this.createCropBlock(ModBlocks.BLUE_NETHER_WART.get(), BlockStateProperties.AGE_3, blockModels, 0, 1, 1, 2);
         this.createRedStoneLantern(ModBlocks.REDSTONE_LANTERN.get(), blockModels);
-        this.createCampfires(blockModels, ModBlocks.REDSTONE_CAMPFIRE.get());
+        this.createCampfires(blockModels, ModBlocks.REDSTONE_CAMPFIRE.get(), ModBlocks.COPPER_CAMPFIRE.get());
         createPumpkins(blockModels);
     }
 
@@ -147,6 +147,7 @@ public class ModModelProvider extends ModelProvider {
         TextureMapping texturemapping = TextureMapping.column(Blocks.PUMPKIN);
         blockModels.createPumpkinVariant(ModBlocks.SOUL_O_LANTERN.get(), texturemapping);
         blockModels.createPumpkinVariant(ModBlocks.REDSTONE_O_LANTERN.get(), texturemapping);
+        blockModels.createPumpkinVariant(ModBlocks.COPPER_O_LANTERN.get(), texturemapping);
     }
 
     public void createRedStoneLantern(Block lanternBlock, BlockModelGenerators blockModels) {

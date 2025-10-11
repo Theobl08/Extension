@@ -111,6 +111,7 @@ public class Extension {
 
     private void addBlockToBlockEntity(BlockEntityTypeAddBlocksEvent event) {
         event.modify(BlockEntityType.CAMPFIRE, ModBlocks.REDSTONE_CAMPFIRE.get());
+        event.modify(BlockEntityType.CAMPFIRE, ModBlocks.COPPER_CAMPFIRE.get());
     }
 
     @SubscribeEvent

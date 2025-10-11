@@ -1,5 +1,6 @@
 {
   "values": [
+    "extension:copper_campfire",
     "extension:redstone_campfire"
   ]
 }

@@ -1,5 +1,15 @@
 {
   "values": [
-    "extension:soul_o_lantern"
+    "extension:soul_o_lantern",
+    "extension:soul_sandstone",
+    "extension:soul_sandstone_stairs",
+    "extension:soul_sandstone_slab",
+    "extension:soul_sandstone_wall",
+    "extension:chiseled_soul_sandstone",
+    "extension:smooth_soul_sandstone",
+    "extension:smooth_soul_sandstone_stairs",
+    "extension:smooth_soul_sandstone_slab",
+    "extension:cut_soul_sandstone",
+    "extension:cut_soul_sandstone_slab"
   ]
 }
