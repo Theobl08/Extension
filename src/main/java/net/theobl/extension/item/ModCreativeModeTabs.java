@@ -4,6 +4,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -54,15 +55,38 @@ public class ModCreativeModeTabs {
             event.insertAfter(ModBlocks.POLISHED_STONE_STAIRS.toStack(), ModBlocks.POLISHED_STONE_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.POLISHED_STONE_SLAB.toStack(), ModBlocks.POLISHED_STONE_WALL.toStack(), PARENT_AND_SEARCH_TABS);
 
-            event.insertAfter(Items.COBBLED_DEEPSLATE_WALL.getDefaultInstance(), ModBlocks.MOSSY_COBBLED_DEEPSLATE.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModBlocks.MOSSY_COBBLED_DEEPSLATE.toStack(), ModBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS.toStack(), ModBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB.toStack(), ModBlocks.MOSSY_COBBLED_DEEPSLATE_WALL.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.GRANITE_WALL.getDefaultInstance(), ModBlocks.CHISELED_GRANITE.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.POLISHED_GRANITE_WALL.toStack(), ModBlocks.GRANITE_BRICKS.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.GRANITE_BRICKS.toStack(), ModBlocks.GRANITE_BRICK_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.GRANITE_BRICK_STAIRS.toStack(), ModBlocks.GRANITE_BRICK_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.GRANITE_BRICK_SLAB.toStack(), ModBlocks.GRANITE_BRICK_WALL.toStack(), PARENT_AND_SEARCH_TABS);
 
-            event.insertAfter(Items.DEEPSLATE_BRICK_WALL.getDefaultInstance(), ModBlocks.MOSSY_DEEPSLATE_BRICKS.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModBlocks.MOSSY_DEEPSLATE_BRICKS.toStack(), ModBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS.toStack(), ModBlocks.MOSSY_DEEPSLATE_BRICK_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModBlocks.MOSSY_DEEPSLATE_BRICK_SLAB.toStack(), ModBlocks.MOSSY_DEEPSLATE_BRICK_WALL.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.DIORITE_WALL.getDefaultInstance(), ModBlocks.CHISELED_DIORITE.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.POLISHED_DIORITE_WALL.toStack(), ModBlocks.DIORITE_BRICKS.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.DIORITE_BRICKS.toStack(), ModBlocks.DIORITE_BRICK_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.DIORITE_BRICK_STAIRS.toStack(), ModBlocks.DIORITE_BRICK_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.DIORITE_BRICK_SLAB.toStack(), ModBlocks.DIORITE_BRICK_WALL.toStack(), PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(Items.ANDESITE_WALL.getDefaultInstance(), ModBlocks.CHISELED_ANDESITE.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.POLISHED_ANDESITE_WALL.toStack(), ModBlocks.ANDESITE_BRICKS.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.ANDESITE_BRICKS.toStack(), ModBlocks.ANDESITE_BRICK_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.ANDESITE_BRICK_STAIRS.toStack(), ModBlocks.ANDESITE_BRICK_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.ANDESITE_BRICK_SLAB.toStack(), ModBlocks.ANDESITE_BRICK_WALL.toStack(), PARENT_AND_SEARCH_TABS);
+
+            event.insertAfter(Items.BRICK_WALL.getDefaultInstance(), ModBlocks.CHISELED_BRICKS.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.PACKED_MUD.getDefaultInstance(), ModBlocks.CHISELED_MUD_BRICKS.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.PRISMARINE_WALL.getDefaultInstance(), ModBlocks.CHISELED_PRISMARINE.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.END_STONE.getDefaultInstance(), ModBlocks.CHISELED_END_STONE_BRICKS.toStack(), PARENT_AND_SEARCH_TABS);
+
+//            event.insertAfter(Items.COBBLED_DEEPSLATE_WALL.getDefaultInstance(), ModBlocks.MOSSY_COBBLED_DEEPSLATE.toStack(), PARENT_AND_SEARCH_TABS);
+//            event.insertAfter(ModBlocks.MOSSY_COBBLED_DEEPSLATE.toStack(), ModBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
+//            event.insertAfter(ModBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS.toStack(), ModBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
+//            event.insertAfter(ModBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB.toStack(), ModBlocks.MOSSY_COBBLED_DEEPSLATE_WALL.toStack(), PARENT_AND_SEARCH_TABS);
+//
+//            event.insertAfter(Items.DEEPSLATE_BRICK_WALL.getDefaultInstance(), ModBlocks.MOSSY_DEEPSLATE_BRICKS.toStack(), PARENT_AND_SEARCH_TABS);
+//            event.insertAfter(ModBlocks.MOSSY_DEEPSLATE_BRICKS.toStack(), ModBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
+//            event.insertAfter(ModBlocks.MOSSY_DEEPSLATE_BRICK_STAIRS.toStack(), ModBlocks.MOSSY_DEEPSLATE_BRICK_SLAB.toStack(), PARENT_AND_SEARCH_TABS);
+//            event.insertAfter(ModBlocks.MOSSY_DEEPSLATE_BRICK_SLAB.toStack(), ModBlocks.MOSSY_DEEPSLATE_BRICK_WALL.toStack(), PARENT_AND_SEARCH_TABS);
 
             event.insertAfter(Items.SMOOTH_BASALT.getDefaultInstance(), ModBlocks.SMOOTH_BASALT_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.SMOOTH_BASALT_STAIRS.toStack(), ModBlocks.SMOOTH_BASALT_SLAB.toStack(), PARENT_AND_SEARCH_TABS);

@@ -37,6 +37,15 @@ public class ModBlocks {
     public static final DeferredBlock<Block> QUARTZ_WALL = registerBlock("quartz_wall",
             WallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE_BRICK_WALL).forceSolidOn());
 
+    public static final DeferredBlock<Block> CHISELED_BRICKS = registerBlock("chiseled_bricks",
+            Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS));
+    public static final DeferredBlock<Block> CHISELED_MUD_BRICKS = registerBlock("chiseled_mud_bricks",
+            Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICKS));
+    public static final DeferredBlock<Block> CHISELED_PRISMARINE = registerBlock("chiseled_prismarine",
+            Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE_BRICKS));
+    public static final DeferredBlock<Block> CHISELED_END_STONE_BRICKS = registerBlock("chiseled_end_stone_bricks",
+            Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE_BRICKS));
+
     public static final DeferredBlock<Block> TINTED_GLASS_PANE = registerBlock("tinted_glass_pane",
             IronBarsBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.GRAY_STAINED_GLASS_PANE));
 
@@ -53,6 +62,39 @@ public class ModBlocks {
             SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_SLAB));
     public static final DeferredBlock<Block> POLISHED_STONE_WALL = registerBlock("polished_stone_wall",
             WallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE));
+
+    public static final DeferredBlock<Block> CHISELED_GRANITE = registerBlock("chiseled_granite",
+            Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.GRANITE));
+    public static final DeferredBlock<Block> GRANITE_BRICKS = registerBlock("granite_bricks",
+            Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.GRANITE));
+    public static final DeferredBlock<Block> GRANITE_BRICK_STAIRS = registerBlock("granite_brick_stairs",
+            properties -> new StairBlock(ModBlocks.GRANITE_BRICKS.get().defaultBlockState(), properties), BlockBehaviour.Properties.ofFullCopy(Blocks.GRANITE_STAIRS));
+    public static final DeferredBlock<Block> GRANITE_BRICK_SLAB = registerBlock("granite_brick_slab",
+            SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.GRANITE_SLAB));
+    public static final DeferredBlock<Block> GRANITE_BRICK_WALL = registerBlock("granite_brick_wall",
+            WallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.GRANITE_WALL));
+
+    public static final DeferredBlock<Block> CHISELED_DIORITE = registerBlock("chiseled_diorite",
+            Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DIORITE));
+    public static final DeferredBlock<Block> DIORITE_BRICKS = registerBlock("diorite_bricks",
+            Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DIORITE));
+    public static final DeferredBlock<Block> DIORITE_BRICK_STAIRS = registerBlock("diorite_brick_stairs",
+            properties -> new StairBlock(ModBlocks.DIORITE_BRICKS.get().defaultBlockState(), properties), BlockBehaviour.Properties.ofFullCopy(Blocks.DIORITE_STAIRS));
+    public static final DeferredBlock<Block> DIORITE_BRICK_SLAB = registerBlock("diorite_brick_slab",
+            SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DIORITE_SLAB));
+    public static final DeferredBlock<Block> DIORITE_BRICK_WALL = registerBlock("diorite_brick_wall",
+            WallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DIORITE_WALL));
+
+    public static final DeferredBlock<Block> CHISELED_ANDESITE = registerBlock("chiseled_andesite",
+            Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE));
+    public static final DeferredBlock<Block> ANDESITE_BRICKS = registerBlock("andesite_bricks",
+            Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE));
+    public static final DeferredBlock<Block> ANDESITE_BRICK_STAIRS = registerBlock("andesite_brick_stairs",
+            properties -> new StairBlock(ModBlocks.ANDESITE_BRICKS.get().defaultBlockState(), properties), BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE_STAIRS));
+    public static final DeferredBlock<Block> ANDESITE_BRICK_SLAB = registerBlock("andesite_brick_slab",
+            SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE_SLAB));
+    public static final DeferredBlock<Block> ANDESITE_BRICK_WALL = registerBlock("andesite_brick_wall",
+            WallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE_WALL));
 
     public static final DeferredBlock<Block> MOSSY_DEEPSLATE_BRICKS = registerBlock("mossy_deepslate_bricks",
             Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_BRICKS));

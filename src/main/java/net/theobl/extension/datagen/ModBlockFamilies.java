@@ -19,6 +19,24 @@ public class ModBlockFamilies {
             .slab(ModBlocks.POLISHED_STONE_SLAB.get())
             .getFamily();
 
+    public static final BlockFamily GRANITE_BRICKS = familyBuilder(ModBlocks.GRANITE_BRICKS.get())
+            .wall(ModBlocks.GRANITE_BRICK_WALL.get())
+            .stairs(ModBlocks.GRANITE_BRICK_STAIRS.get())
+            .slab(ModBlocks.GRANITE_BRICK_SLAB.get())
+            .getFamily();
+
+    public static final BlockFamily DIORITE_BRICKS = familyBuilder(ModBlocks.DIORITE_BRICKS.get())
+            .wall(ModBlocks.DIORITE_BRICK_WALL.get())
+            .stairs(ModBlocks.DIORITE_BRICK_STAIRS.get())
+            .slab(ModBlocks.DIORITE_BRICK_SLAB.get())
+            .getFamily();
+
+    public static final BlockFamily ANDESITE_BRICKS = familyBuilder(ModBlocks.ANDESITE_BRICKS.get())
+            .wall(ModBlocks.ANDESITE_BRICK_WALL.get())
+            .stairs(ModBlocks.ANDESITE_BRICK_STAIRS.get())
+            .slab(ModBlocks.ANDESITE_BRICK_SLAB.get())
+            .getFamily();
+
     public static final BlockFamily MOSSY_COBBLED_DEEPSLATE = familyBuilder(ModBlocks.MOSSY_COBBLED_DEEPSLATE.get())
             .wall(ModBlocks.MOSSY_COBBLED_DEEPSLATE_WALL.get())
             .stairs(ModBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS.get())

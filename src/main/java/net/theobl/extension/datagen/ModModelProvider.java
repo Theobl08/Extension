@@ -78,6 +78,14 @@ public class ModModelProvider extends ModelProvider {
         createWall(ModBlocks.PURPUR_WALL.get(), TextureMapping.getBlockTexture(Blocks.PURPUR_BLOCK), blockModels);
         createWall(ModBlocks.QUARTZ_WALL.get(), TextureMapping.getBlockTexture(Blocks.QUARTZ_BLOCK, "_top"), blockModels);
 
+        blockModels.createTrivialCube(ModBlocks.CHISELED_GRANITE.get());
+        blockModels.createTrivialCube(ModBlocks.CHISELED_DIORITE.get());
+        blockModels.createTrivialCube(ModBlocks.CHISELED_ANDESITE.get());
+        blockModels.createTrivialCube(ModBlocks.CHISELED_BRICKS.get());
+        blockModels.createTrivialCube(ModBlocks.CHISELED_MUD_BRICKS.get());
+        blockModels.createTrivialCube(ModBlocks.CHISELED_PRISMARINE.get());
+        blockModels.createTrivialCube(ModBlocks.CHISELED_END_STONE_BRICKS.get());
+
         blockModels.familyWithExistingFullBlock(Blocks.SMOOTH_STONE).stairs(ModBlocks.SMOOTH_STONE_STAIRS.get());
         blockModels.familyWithExistingFullBlock(Blocks.NETHERITE_BLOCK).stairs(ModBlocks.NETHERITE_STAIRS.get());
 

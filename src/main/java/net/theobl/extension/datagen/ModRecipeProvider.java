@@ -62,6 +62,14 @@ public class ModRecipeProvider extends RecipeProvider {
         wallRecipes(ModBlocks.PURPUR_WALL.get(), Items.PURPUR_BLOCK);
         wallRecipes(ModBlocks.QUARTZ_WALL.get(), Items.QUARTZ_BLOCK);
 
+        chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_GRANITE, Items.GRANITE_SLAB);
+        chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_DIORITE, Items.DIORITE_SLAB);
+        chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_ANDESITE, Items.ANDESITE_SLAB);
+        chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_BRICKS, Items.BRICK_SLAB);
+        chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_MUD_BRICKS, Items.MUD_BRICK_SLAB);
+        chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_PRISMARINE, Items.PRISMARINE_SLAB);
+        chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_END_STONE_BRICKS, Items.END_STONE_BRICK_SLAB);
+
         stairBuilder(ModBlocks.SMOOTH_STONE_STAIRS, Ingredient.of(Items.SMOOTH_STONE)).unlockedBy(getHasName(Items.SMOOTH_STONE), has(Items.SMOOTH_STONE))
                 .save(output);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_STONE_STAIRS, Blocks.SMOOTH_STONE);
