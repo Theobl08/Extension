@@ -27,7 +27,7 @@ public class ModItems {
             properties -> new BlockItem(ModBlocks.BLUE_NETHER_WART.get(), properties));
 
     public static final DeferredItem<Item> ILLUSIONER_SPAWN_EGG = ITEMS.registerItem("illusioner_spawn_egg",
-            SpawnEggItem::new, new Item.Properties().spawnEgg(EntityType.ILLUSIONER));
+            SpawnEggItem::new, p -> p.spawnEgg(EntityType.ILLUSIONER));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

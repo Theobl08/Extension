@@ -152,7 +152,7 @@ public class ModBlocks {
             WallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.RED_NETHER_BRICK_WALL));
 
     public static final DeferredBlock<Block> BLUE_NETHER_WART = BLOCKS.registerBlock("blue_nether_wart",
-            BlueNetherWartBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_WART).mapColor(MapColor.WARPED_WART_BLOCK));
+            BlueNetherWartBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_WART).mapColor(MapColor.WARPED_WART_BLOCK));
 
     public static final DeferredBlock<Block> BLUE_NETHER_BRICKS = registerBlock("blue_nether_bricks",
             Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_BRICKS));
@@ -223,14 +223,14 @@ public class ModBlocks {
     }
 
     public static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> block, BlockBehaviour.Properties properties) {
-        DeferredBlock<T> deferredBlock = BLOCKS.registerBlock(name, block, properties);
+        DeferredBlock<T> deferredBlock = BLOCKS.registerBlock(name, block, () -> properties);
         ModItems.ITEMS.registerSimpleBlockItem(name, deferredBlock);
         return deferredBlock;
     }
 
     public static <T extends Block> DeferredBlock<T> registerFireResistantBlock(String name, Function<BlockBehaviour.Properties, ? extends T> block, BlockBehaviour.Properties properties){
-        DeferredBlock<T> deferredBlock = BLOCKS.registerBlock(name, block, properties);
-        ModItems.ITEMS.registerSimpleBlockItem(name, deferredBlock, new Item.Properties().fireResistant());
+        DeferredBlock<T> deferredBlock = BLOCKS.registerBlock(name, block, () -> properties);
+        ModItems.ITEMS.registerSimpleBlockItem(name, deferredBlock, Item.Properties::fireResistant);
         return deferredBlock;
     }
 
