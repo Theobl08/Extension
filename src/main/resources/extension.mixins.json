@@ -5,9 +5,10 @@
   "compatibilityLevel": "JAVA_21",
   "refmap": "extension.refmap.json",
   "mixins": [
+    "AbstractBoatMixin",
     "AnimalMixin",
     "BlockMixin",
-    "AbstractBoatMixin",
+    "BlocksMixin",
     "CarvedPumpkinBlockMixin",
     "DirtPathBlockMixin",
     "EndIslandDensityFunctionMixin",
