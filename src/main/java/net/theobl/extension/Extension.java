@@ -19,6 +19,7 @@ import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.CraftingMenu;
@@ -44,12 +45,17 @@ import net.neoforged.neoforge.client.event.RenderBlockScreenEffectEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientBlockExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.common.world.poi.ExtendPoiTypesEvent;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityInvulnerabilityCheckEvent;
 import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.fluids.FluidType;
+import net.neoforged.neoforge.fluids.RegisterCauldronFluidContentEvent;
+import net.theobl.extension.block.ExtendedCauldronInteraction;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.inventory.FletchingMenu;
 import net.theobl.extension.inventory.FletchingScreen;
@@ -80,6 +86,8 @@ public class Extension {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        NeoForgeMod.enableMilkFluid(); // We need this for our milk cauldron
+
         // Register the Deferred Register to the mod event bus so blocks get registered
         ModBlocks.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
@@ -99,6 +107,8 @@ public class Extension {
         // Register the item to a creative tab
         modEventBus.addListener(ModCreativeModeTabs::addCreative);
         modEventBus.addListener(this::addBlockToBlockEntity);
+        modEventBus.addListener(this::extendPoiTypes);
+        modEventBus.addListener(this::registerCauldronFluidContent);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -106,12 +116,21 @@ public class Extension {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
+        //LOGGER.info("HELLO FROM COMMON SETUP");
+        ExtendedCauldronInteraction.bootStrap();
     }
 
     private void addBlockToBlockEntity(BlockEntityTypeAddBlocksEvent event) {
         event.modify(BlockEntityType.CAMPFIRE, ModBlocks.REDSTONE_CAMPFIRE.get());
         event.modify(BlockEntityType.CAMPFIRE, ModBlocks.COPPER_CAMPFIRE.get());
+    }
+
+    private void extendPoiTypes(ExtendPoiTypesEvent event) {
+        event.addBlockToPoi(PoiTypes.LEATHERWORKER, ModBlocks.MILK_CAULDRON.get());
+    }
+
+    private void registerCauldronFluidContent(RegisterCauldronFluidContentEvent event) {
+        event.register(ModBlocks.MILK_CAULDRON.get(), NeoForgeMod.MILK.get(), FluidType.BUCKET_VOLUME, null);
     }
 
     @SubscribeEvent

@@ -1,4 +1,4 @@
-// 1.21.9	2025-10-15T16:39:27.8185336	Model Definitions - extension
+// 1.21.10	2025-11-28T17:13:19.0164623	Model Definitions - extension
 e23b5318f6e68839bb11de0c8e269fa6e25664a3 assets/extension/blockstates/andesite_bricks.json
 6cdc2bb357eca28bb56bad9d33abd2d1591f8772 assets/extension/blockstates/andesite_brick_slab.json
 facb4432604c0ed5acf1ad37f6198ba1ee4967b6 assets/extension/blockstates/andesite_brick_stairs.json
@@ -38,6 +38,7 @@ f86d913ec9d8739bdcc0d72339868be6527c9841 assets/extension/blockstates/diorite_br
 ed846ffb2ed8c60d059fa10244b560d1eb6cbe07 assets/extension/blockstates/granite_brick_slab.json
 e0fc82636ac954cc898f0fd6e3f1cfc013258ac9 assets/extension/blockstates/granite_brick_stairs.json
 2cf4c22440b1ad2cadb76614b2fd9765ddfc69c0 assets/extension/blockstates/granite_brick_wall.json
+7d3d770e8061fa761ae966f583efec030b43f412 assets/extension/blockstates/milk_cauldron.json
 8e27688a45ca940de4bbe666c17b5ab69ea7a5b6 assets/extension/blockstates/mossy_cobbled_deepslate.json
 3c7cb29080d6aa280683267018efc5c1360e57ae assets/extension/blockstates/mossy_cobbled_deepslate_slab.json
 4d5ec6d67bcb11d26ac938a30359045ca9ba3f1a assets/extension/blockstates/mossy_cobbled_deepslate_stairs.json
@@ -253,6 +254,7 @@ e6de2dd070e46d8ed6ee0beb12ae16f70245bb51 assets/extension/models/block/granite_b
 e977d399563ed8634162aa8c79bbb094a8d633d9 assets/extension/models/block/granite_brick_wall_post.json
 263be3eaf682424ca5475d659e696c423dab4ecf assets/extension/models/block/granite_brick_wall_side.json
 45a2d1cb129c9aaf5a388f592bf27da63c6acd55 assets/extension/models/block/granite_brick_wall_side_tall.json
+d9661443d4eecf11c2ad1789197e71408e9518f6 assets/extension/models/block/milk_cauldron.json
 da97a41882167864121cfbf9edcc0e2296e76c2c assets/extension/models/block/mossy_cobbled_deepslate.json
 4b442b756e87fdc8f6e40f282a3de4137721d9bd assets/extension/models/block/mossy_cobbled_deepslate_slab.json
 a71e7c507c3bbf81459632ee301d8b4d2c4fb5a2 assets/extension/models/block/mossy_cobbled_deepslate_slab_top.json

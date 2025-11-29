@@ -199,6 +199,8 @@ public class ModBlocks {
     public static final DeferredBlock<Block> COPPER_CAMPFIRE = registerBlock("copper_campfire",
             properties -> new CampfireBlock(false, 1, properties),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).lightLevel(litBlockEmission(15)));
+    public static final DeferredBlock<Block> MILK_CAULDRON = BLOCKS.registerBlock("milk_cauldron",
+            MilkCauldronBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON));
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return state -> state.getValue(BlockStateProperties.LIT) ? lightValue : 0;

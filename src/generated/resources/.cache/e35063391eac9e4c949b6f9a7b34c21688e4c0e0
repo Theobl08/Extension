@@ -1,4 +1,4 @@
-// 1.21.9	2025-10-15T16:39:27.8225547	Tags for minecraft:block mod id extension
+// 1.21.10	2025-11-29T18:31:58.4849303	Tags for minecraft:block mod id extension
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/block/fences.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/block/fences/nether_brick.json
 e994b502fa84d2d351afd20245604823cdd325df data/c/tags/block/glass_panes.json
@@ -6,7 +6,9 @@ a43ac87ba8bd1441c8c548aa7185c7f702fc032c data/c/tags/block/pumpkins.json
 ee90fd36ae9a8638d0d8f73aa91314f85ac2e3bd data/c/tags/block/sandstone/blocks.json
 4129d63523084b45c78c6fc8da77ed857f6e6a75 data/c/tags/block/sandstone/slabs.json
 bdef780f9a4c2965de35f74f5eb088150d9f694d data/c/tags/block/sandstone/stairs.json
+ca82290a93e5be4503704f6eb31316912bdf3930 data/c/tags/block/villager_job_sites.json
 774150b55d685a73d5d8ed8604b24fb6c50b3992 data/minecraft/tags/block/campfires.json
+ca82290a93e5be4503704f6eb31316912bdf3930 data/minecraft/tags/block/cauldrons.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/minecraft/tags/block/fences.json
 4606b8be8c14776e5cf3697c37f4818194574a3b data/minecraft/tags/block/mineable/axe.json
 c72bd9dcd02e05a1c84adf5cd134d42c760a4893 data/minecraft/tags/block/mineable/pickaxe.json

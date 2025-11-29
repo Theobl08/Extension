@@ -99,6 +99,7 @@ public class ModModelProvider extends ModelProvider {
         this.createRedStoneLantern(ModBlocks.REDSTONE_LANTERN.get(), blockModels);
         this.createCampfires(blockModels, ModBlocks.REDSTONE_CAMPFIRE.get(), ModBlocks.COPPER_CAMPFIRE.get());
         createPumpkins(blockModels);
+        createMilkCauldron(blockModels);
     }
 
     public BlockModelGenerators.BlockFamilyProvider family(Block block, BlockModelGenerators blockModels) {
@@ -213,6 +214,19 @@ public class ModModelProvider extends ModelProvider {
                                     .with(BlockModelGenerators.ROTATION_HORIZONTAL_FACING_ALT)
                     );
         }
+    }
+
+    private void createMilkCauldron(BlockModelGenerators blockModels) {
+        blockModels.blockStateOutput
+                .accept(
+                        createSimpleBlock(
+                                ModBlocks.MILK_CAULDRON.get(),
+                                plainVariant(
+                                        ModelTemplates.CAULDRON_FULL
+                                                .create(ModBlocks.MILK_CAULDRON.get(), TextureMapping.cauldron(ResourceLocation.fromNamespaceAndPath("neoforge", "block/milk_still")), blockModels.modelOutput)
+                                )
+                        )
+                );
     }
 
     public class ModBlockFamilyProvider extends BlockModelGenerators.BlockFamilyProvider {

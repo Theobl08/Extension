@@ -59,6 +59,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 tag(Tags.Blocks.FENCES).add(deferredBlock.get());
             }
 
+            if(deferredBlock.get() instanceof AbstractCauldronBlock) {
+                tag(BlockTags.CAULDRONS).add(deferredBlock.get());
+                tag(Tags.Blocks.VILLAGER_JOB_SITES).add(deferredBlock.get());
+            }
+
             if(deferredBlock.get().toString().contains("soul_sandstone")) {
                 tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(deferredBlock.get());
                 if(deferredBlock.get() instanceof StairBlock)
