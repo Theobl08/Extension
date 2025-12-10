@@ -12,7 +12,7 @@ import net.minecraft.client.data.models.blockstates.*;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -107,47 +107,47 @@ public class ModModelProvider extends ModelProvider {
         return new ModBlockFamilyProvider(texturedmodel.getMapping(), blockModels).fullBlock(block, texturedmodel.getTemplate());
     }
 
-    public void createWall(Block wallBlock, ResourceLocation texture, BlockModelGenerators blockModels) {
+    public void createWall(Block wallBlock, Identifier texture, BlockModelGenerators blockModels) {
         TextureMapping mapping = new TextureMapping().put(TextureSlot.WALL, texture);
-        ResourceLocation resourcelocation = ModelTemplates.WALL_POST.create(wallBlock, mapping, blockModels.modelOutput);
-        ResourceLocation resourcelocation1 = ModelTemplates.WALL_LOW_SIDE.create(wallBlock, mapping, blockModels.modelOutput);
-        ResourceLocation resourcelocation2 = ModelTemplates.WALL_TALL_SIDE.create(wallBlock, mapping, blockModels.modelOutput);
-        blockModels.blockStateOutput.accept(BlockModelGenerators.createWall(wallBlock, plainVariant(resourcelocation), plainVariant(resourcelocation1), plainVariant(resourcelocation2)));
-        ResourceLocation resourcelocation3 = ModelTemplates.WALL_INVENTORY.create(wallBlock, mapping, blockModels.modelOutput);
-        blockModels.registerSimpleItemModel(wallBlock, resourcelocation3);
+        Identifier post = ModelTemplates.WALL_POST.create(wallBlock, mapping, blockModels.modelOutput);
+        Identifier low = ModelTemplates.WALL_LOW_SIDE.create(wallBlock, mapping, blockModels.modelOutput);
+        Identifier high = ModelTemplates.WALL_TALL_SIDE.create(wallBlock, mapping, blockModels.modelOutput);
+        blockModels.blockStateOutput.accept(BlockModelGenerators.createWall(wallBlock, plainVariant(post), plainVariant(low), plainVariant(high)));
+        Identifier inventory = ModelTemplates.WALL_INVENTORY.create(wallBlock, mapping, blockModels.modelOutput);
+        blockModels.registerSimpleItemModel(wallBlock, inventory);
     }
 
     public void createGlassPaneBlocks(Block glassBlock, Block paneBlock, BlockModelGenerators blockModels) {
         TextureMapping texturemapping = TextureMapping.pane(glassBlock, paneBlock);
-        ResourceLocation resourcelocation = ModelTemplates.STAINED_GLASS_PANE_POST.create(paneBlock, texturemapping, blockModels.modelOutput);
-        ResourceLocation resourcelocation1 = ModelTemplates.STAINED_GLASS_PANE_SIDE.create(paneBlock, texturemapping, blockModels.modelOutput);
-        ResourceLocation resourcelocation2 = ModelTemplates.STAINED_GLASS_PANE_SIDE_ALT.create(paneBlock, texturemapping, blockModels.modelOutput);
-        ResourceLocation resourcelocation3 = ModelTemplates.STAINED_GLASS_PANE_NOSIDE.create(paneBlock, texturemapping, blockModels.modelOutput);
-        ResourceLocation resourcelocation4 = ModelTemplates.STAINED_GLASS_PANE_NOSIDE_ALT.create(paneBlock, texturemapping, blockModels.modelOutput);
+        Identifier post = ModelTemplates.STAINED_GLASS_PANE_POST.create(paneBlock, texturemapping, blockModels.modelOutput);
+        Identifier side = ModelTemplates.STAINED_GLASS_PANE_SIDE.create(paneBlock, texturemapping, blockModels.modelOutput);
+        Identifier sideAlt = ModelTemplates.STAINED_GLASS_PANE_SIDE_ALT.create(paneBlock, texturemapping, blockModels.modelOutput);
+        Identifier noSide = ModelTemplates.STAINED_GLASS_PANE_NOSIDE.create(paneBlock, texturemapping, blockModels.modelOutput);
+        Identifier noSideAlt = ModelTemplates.STAINED_GLASS_PANE_NOSIDE_ALT.create(paneBlock, texturemapping, blockModels.modelOutput);
         Item item = paneBlock.asItem();
         blockModels.registerSimpleItemModel(item, blockModels.createFlatItemModelWithBlockTexture(item, glassBlock));
         blockModels.blockStateOutput
                 .accept(
                         MultiPartGenerator.multiPart(paneBlock)
-                                .with(plainVariant(resourcelocation))
-                                .with(condition().term(BlockStateProperties.NORTH, true), plainVariant(resourcelocation1))
+                                .with(plainVariant(post))
+                                .with(condition().term(BlockStateProperties.NORTH, true), plainVariant(side))
                                 .with(condition().term(BlockStateProperties.EAST, true),
-                                        plainVariant(resourcelocation1).with(Y_ROT_90)
+                                        plainVariant(side).with(Y_ROT_90)
                                 )
-                                .with(condition().term(BlockStateProperties.SOUTH, true), plainVariant(resourcelocation2))
+                                .with(condition().term(BlockStateProperties.SOUTH, true), plainVariant(sideAlt))
                                 .with(
                                         condition().term(BlockStateProperties.WEST, true),
-                                        plainVariant(resourcelocation2).with(Y_ROT_90)
+                                        plainVariant(sideAlt).with(Y_ROT_90)
                                 )
-                                .with(condition().term(BlockStateProperties.NORTH, false), plainVariant(resourcelocation3))
-                                .with(condition().term(BlockStateProperties.EAST, false), plainVariant(resourcelocation4))
+                                .with(condition().term(BlockStateProperties.NORTH, false), plainVariant(noSide))
+                                .with(condition().term(BlockStateProperties.EAST, false), plainVariant(noSideAlt))
                                 .with(
                                         condition().term(BlockStateProperties.SOUTH, false),
-                                        plainVariant(resourcelocation4).with(Y_ROT_90)
+                                        plainVariant(noSideAlt).with(Y_ROT_90)
                                 )
                                 .with(
                                         condition().term(BlockStateProperties.WEST, false),
-                                        plainVariant(resourcelocation3).with(Y_ROT_270)
+                                        plainVariant(noSide).with(Y_ROT_270)
                                 )
                 );
     }
@@ -162,12 +162,12 @@ public class ModModelProvider extends ModelProvider {
     public void createRedStoneLantern(Block lanternBlock, BlockModelGenerators blockModels) {
         ModelTemplate lanternTemplate = ModelTemplates.LANTERN.extend().renderType("cutout").build();
         ModelTemplate hangingTemplate = ModelTemplates.HANGING_LANTERN.extend().renderType("cutout").build();
-        ResourceLocation lantern = TexturedModel.LANTERN.updateTemplate(template -> template.extend().renderType("cutout").build()).create(lanternBlock, blockModels.modelOutput);
-        ResourceLocation hangingLantern = TexturedModel.HANGING_LANTERN.updateTemplate(template -> template.extend().renderType("cutout").build()).create(lanternBlock, blockModels.modelOutput);
-        ResourceLocation lanternOff = blockModels.createSuffixedVariant(lanternBlock, "_off", lanternTemplate,
-                location -> new TextureMapping().put(TextureSlot.LANTERN, ResourceLocation.parse("extension:block/redstone_lantern_off")));
-        ResourceLocation hangingLanternOff = blockModels.createSuffixedVariant(lanternBlock, "_off", hangingTemplate,
-                location -> new TextureMapping().put(TextureSlot.LANTERN, ResourceLocation.parse("extension:block/redstone_lantern_off")));
+        Identifier lantern = TexturedModel.LANTERN.updateTemplate(template -> template.extend().renderType("cutout").build()).create(lanternBlock, blockModels.modelOutput);
+        Identifier hangingLantern = TexturedModel.HANGING_LANTERN.updateTemplate(template -> template.extend().renderType("cutout").build()).create(lanternBlock, blockModels.modelOutput);
+        Identifier lanternOff = blockModels.createSuffixedVariant(lanternBlock, "_off", lanternTemplate,
+                location -> new TextureMapping().put(TextureSlot.LANTERN, Identifier.parse("extension:block/redstone_lantern_off")));
+        Identifier hangingLanternOff = blockModels.createSuffixedVariant(lanternBlock, "_off", hangingTemplate,
+                location -> new TextureMapping().put(TextureSlot.LANTERN, Identifier.parse("extension:block/redstone_lantern_off")));
         blockModels.registerSimpleFlatItemModel(lanternBlock.asItem());
         blockModels.blockStateOutput
                 .accept(
@@ -185,15 +185,15 @@ public class ModModelProvider extends ModelProvider {
         if (ageProperty.getPossibleValues().size() != ageToVisualStageMapping.length) {
             throw new IllegalArgumentException();
         } else {
-            Int2ObjectMap<ResourceLocation> int2objectmap = new Int2ObjectOpenHashMap<>();
+            Int2ObjectMap<Identifier> int2objectmap = new Int2ObjectOpenHashMap<>();
             PropertyDispatch<MultiVariant> propertydispatch = PropertyDispatch.initial(ageProperty)
                     .generate(
                             p_388091_ -> {
                                 int i = ageToVisualStageMapping[p_388091_];
-                                ResourceLocation resourcelocation = int2objectmap.computeIfAbsent(
+                                Identifier identifier = int2objectmap.computeIfAbsent(
                                         i, p_387534_ -> blockModels.createSuffixedVariant(cropBlock, "_stage" + i, ModelTemplates.CROP.extend().renderType("cutout").build(), TextureMapping::crop)
                                 );
-                                return plainVariant(resourcelocation);
+                                return plainVariant(identifier);
                             }
                     );
             blockModels.registerSimpleFlatItemModel(cropBlock.asItem());
@@ -202,15 +202,15 @@ public class ModModelProvider extends ModelProvider {
     }
 
     public void createCampfires(BlockModelGenerators blockModels, Block... campfireBlocks) {
-        ResourceLocation resourcelocation = ResourceLocation.parse("campfire_off").withPrefix("block/");
+        Identifier offModel = Identifier.parse("campfire_off").withPrefix("block/");
 
         for (Block block : campfireBlocks) {
-            ResourceLocation resourcelocation1 = ModelTemplates.CAMPFIRE.extend().renderType("cutout").build().create(block, TextureMapping.campfire(block), blockModels.modelOutput);
+            Identifier identifier1 = ModelTemplates.CAMPFIRE.extend().renderType("cutout").build().create(block, TextureMapping.campfire(block), blockModels.modelOutput);
             blockModels.registerSimpleFlatItemModel(block.asItem());
             blockModels.blockStateOutput
                     .accept(
                             MultiVariantGenerator.dispatch(block)
-                                    .with(BlockModelGenerators.createBooleanModelDispatch(BlockStateProperties.LIT, plainVariant(resourcelocation1), plainVariant(resourcelocation)))
+                                    .with(BlockModelGenerators.createBooleanModelDispatch(BlockStateProperties.LIT, plainVariant(identifier1), plainVariant(offModel)))
                                     .with(BlockModelGenerators.ROTATION_HORIZONTAL_FACING_ALT)
                     );
         }
@@ -223,7 +223,7 @@ public class ModModelProvider extends ModelProvider {
                                 ModBlocks.MILK_CAULDRON.get(),
                                 plainVariant(
                                         ModelTemplates.CAULDRON_FULL
-                                                .create(ModBlocks.MILK_CAULDRON.get(), TextureMapping.cauldron(ResourceLocation.fromNamespaceAndPath("neoforge", "block/milk_still")), blockModels.modelOutput)
+                                                .create(ModBlocks.MILK_CAULDRON.get(), TextureMapping.cauldron(Identifier.fromNamespaceAndPath("neoforge", "block/milk_still")), blockModels.modelOutput)
                                 )
                         )
                 );
@@ -239,8 +239,8 @@ public class ModModelProvider extends ModelProvider {
         @Override
         public BlockModelGenerators.BlockFamilyProvider fullBlockVariant(Block block) {
             TexturedModel texturedmodel = ModModelProvider.this.texturedModels.getOrDefault(block, TexturedModel.CUBE.get(block));
-            ResourceLocation resourcelocation = texturedmodel.create(block, blockModels.modelOutput);
-            blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, plainVariant(resourcelocation)));
+            Identifier identifier = texturedmodel.create(block, blockModels.modelOutput);
+            blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, plainVariant(identifier)));
             return this;
         }
     }

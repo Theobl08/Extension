@@ -4,12 +4,12 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import net.theobl.extension.Extension;
 
 public class FletchingScreen extends AbstractContainerScreen<FletchingMenu> {
-    private static final ResourceLocation FLETCHING_TABLE_LOCATION = ResourceLocation.fromNamespaceAndPath(Extension.MODID, "textures/gui/container/fletching_table.png");
+    private static final Identifier FLETCHING_TABLE_LOCATION = Identifier.fromNamespaceAndPath(Extension.MODID, "textures/gui/container/fletching_table.png");
 
     public FletchingScreen(FletchingMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);

@@ -3,7 +3,7 @@ package net.theobl.extension.mixin;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.theobl.extension.Config;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,7 +21,7 @@ public class EntityMixin {
             if (player.isCreative())
                 this.remainingFireTicks = 0;
             if(player.level() instanceof ServerLevel serverLevel) {
-                if (!serverLevel.getGameRules().getBoolean(GameRules.RULE_FIRE_DAMAGE) && Config.noFireOverlay)
+                if (!serverLevel.getGameRules().get(GameRules.FIRE_DAMAGE) && Config.noFireOverlay)
                     this.remainingFireTicks = 0;
             }
         }

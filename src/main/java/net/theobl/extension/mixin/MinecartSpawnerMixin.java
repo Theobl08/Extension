@@ -1,6 +1,6 @@
 package net.theobl.extension.mixin;
 
-import net.minecraft.world.entity.vehicle.MinecartSpawner;
+import net.minecraft.world.entity.vehicle.minecart.MinecartSpawner;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.theobl.extension.item.ModItems;

@@ -26,11 +26,11 @@ import net.minecraft.world.inventory.CraftingMenu;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -179,7 +179,7 @@ public class Extension {
         Entity entity = event.getEntity();
         if(entity instanceof ServerPlayer player &&
                 event.getSource().is(DamageTypeTags.IS_FIRE) &&
-                !player.level().getGameRules().getBoolean(GameRules.RULE_FIRE_DAMAGE)) {
+                !player.level().getGameRules().get(GameRules.FIRE_DAMAGE)) {
             event.setInvulnerable(true);
         }
     }
