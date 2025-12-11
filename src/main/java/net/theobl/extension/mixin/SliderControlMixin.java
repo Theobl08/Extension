@@ -1,9 +1,16 @@
 package net.theobl.extension.mixin;
 
-import net.caffeinemc.mods.sodium.client.gui.options.Option;
-import net.caffeinemc.mods.sodium.client.gui.options.control.ControlValueFormatter;
-import net.caffeinemc.mods.sodium.client.gui.options.control.SliderControl;
+import net.caffeinemc.mods.sodium.api.config.StorageEventHandler;
+import net.caffeinemc.mods.sodium.api.config.option.ControlValueFormatter;
+import net.caffeinemc.mods.sodium.api.config.option.OptionBinding;
+import net.caffeinemc.mods.sodium.api.config.option.OptionImpact;
+import net.caffeinemc.mods.sodium.api.config.option.Range;
+import net.caffeinemc.mods.sodium.client.config.structure.IntegerOption;
+import net.caffeinemc.mods.sodium.client.config.value.ConstantValue;
+import net.caffeinemc.mods.sodium.client.config.value.DependentValue;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
+import net.minecraft.resources.Identifier;
 import net.theobl.extension.Extension;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,29 +20,24 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(SliderControl.class)
+import java.util.Collection;
+import java.util.EnumSet;
+import java.util.function.Function;
+
+@Mixin(IntegerOption.class)
 public class SliderControlMixin {
     @Shadow
     @Final
     @Mutable
-    private int min;
+    private DependentValue<Range> range;
 
-    @Shadow
-    @Final
-    @Mutable
-    private int max;
-
-    @Shadow
-    @Final
-    @Mutable
-    private int interval;
-
-    @Inject(at = @At("RETURN"), method = "<init>", remap = false)
-    public void init(Option<Integer> option, int min, int max, int interval, ControlValueFormatter mode, CallbackInfo info) {
-        if (option.getName().getContents() instanceof TranslatableContents component && component.getKey().equals("options.gamma")) {
-            this.min = (int) (Extension.BRIGHTNESS_MIN * 100);
-            this.max = (int) (Extension.BRIGHTNESS_MAX * 100);
-            this.interval = (int) (Extension.BRIGHTNESS_STEP * 100);
+    @Inject(method = "<init>", at = @At("RETURN"), remap = false)
+    public void init(Identifier id, Collection dependencies, Component name, DependentValue enabled, StorageEventHandler storage, Function tooltipProvider, OptionImpact impact, EnumSet flags, DependentValue defaultValue, OptionBinding binding, DependentValue range, ControlValueFormatter valueFormatter, CallbackInfo ci) {
+        if (((IntegerOption) (Object) this).getName().getContents() instanceof TranslatableContents component && component.getKey().equals("options.gamma")) {
+            int min = (int) (Extension.BRIGHTNESS_MIN * 100);
+            int max = (int) (Extension.BRIGHTNESS_MAX * 100);
+            int interval = (int) (Extension.BRIGHTNESS_STEP * 100);
+            this.range = new ConstantValue<>(new Range(min, max, interval));
         }
     }
 }

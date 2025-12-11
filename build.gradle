@@ -24,6 +24,10 @@ repositories {
         name = "Modrinth"
         url = "https://api.modrinth.com/maven"
     }
+    maven {
+        name = "CaffeineMC Releases"
+        url = "https://maven.caffeinemc.net/releases"
+    }
 }
 
 base {
@@ -119,7 +123,9 @@ dependencies {
 //     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
 //    implementation "maven.modrinth:sodium:mc${minecraft_version}-${sodium_version}-neoforge"
-     compileOnly files("libs/sodium-neoforge-0.7.2-snapshot+mc1.21.10-build.741.jar")
+    compileOnly "net.caffeinemc:sodium-neoforge-api:${sodium_version}+mc${minecraft_version}"
+    compileOnly "net.caffeinemc:sodium-neoforge-mod:${sodium_version}+mc${minecraft_version}"
+    runtimeOnly "net.caffeinemc:sodium-neoforge:${sodium_version}+mc${minecraft_version}"
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
