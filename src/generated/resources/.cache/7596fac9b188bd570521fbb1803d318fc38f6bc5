@@ -1,4 +1,4 @@
-// 1.21.11	2025-12-10T18:06:33.6046897	Model Definitions - extension
+// 1.21.11	2025-12-13T15:55:03.4905767	Model Definitions - extension
 e23b5318f6e68839bb11de0c8e269fa6e25664a3 assets/extension/blockstates/andesite_bricks.json
 6cdc2bb357eca28bb56bad9d33abd2d1591f8772 assets/extension/blockstates/andesite_brick_slab.json
 facb4432604c0ed5acf1ad37f6198ba1ee4967b6 assets/extension/blockstates/andesite_brick_stairs.json
@@ -135,7 +135,6 @@ b55ca12d1975da84c082d40c261b44412a1327f7 assets/extension/items/mossy_deepslate_
 ec4be529817bfaae3ef238c958c83a06202e9da3 assets/extension/items/mossy_deepslate_brick_slab.json
 c51eef5944009010c9a9b111849d3a7f9ddb3aea assets/extension/items/mossy_deepslate_brick_stairs.json
 9448f103b31bba16742b502f4dbc4c467373c9d5 assets/extension/items/mossy_deepslate_brick_wall.json
-6a5726749d3b9c940850e761bb0f17794f2997a1 assets/extension/items/netherite_horse_armor.json
 ab77d20d81e260d40d222d88f21942f4c3793ced assets/extension/items/netherite_stairs.json
 a9e6020552716dbc0458ec1cba836c4820b6bb4f assets/extension/items/nether_brick_tiles.json
 a3299f22e56e7f8eefdb3870da9b59a2dff87e20 assets/extension/items/nether_brick_tile_slab.json
@@ -388,7 +387,6 @@ a21f599e69fb810a6426b5cd312d6cb64b5e4a46 assets/extension/models/item/blue_nethe
 8beae8cdafd692f0b13f89c9d2bcb43a3c03649d assets/extension/models/item/blue_nether_wart.json
 741864dd1e2c123c7fd330ee32b16cf7c2e3da67 assets/extension/models/item/copper_campfire.json
 d3d1f6a682678899c1ea51c4c43d45598f221783 assets/extension/models/item/illusioner_spawn_egg.json
-4792e3d0dbc6e944b7ab9ba7b63700c3f622553b assets/extension/models/item/netherite_horse_armor.json
 a6dc9411195a1f938d5a50d550f69975b0c8e260 assets/extension/models/item/redstone_campfire.json
 75173377e9d907f53cbd32e946008241ed95a725 assets/extension/models/item/redstone_lantern.json
 cdbd7635b738acfd14b6087073d01ea84d81c6c4 assets/extension/models/item/red_nether_brick.json

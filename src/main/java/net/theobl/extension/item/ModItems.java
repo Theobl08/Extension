@@ -16,9 +16,6 @@ public class ModItems {
     public static final DeferredItem<Item> SPAWNER_MINECART = ITEMS.registerItem("spawner_minecart",
             properties -> new MinecartItem(EntityType.SPAWNER_MINECART, properties.stacksTo(1)));
 
-    public static final DeferredItem<Item> NETHERITE_HORSE_ARMOR = ITEMS.registerItem("netherite_horse_armor",
-            properties -> new Item(properties.horseArmor(ArmorMaterials.NETHERITE).fireResistant()));
-
     public static final DeferredItem<Item> RED_NETHER_BRICK = ITEMS.registerSimpleItem("red_nether_brick");
 
     public static final DeferredItem<Item> BLUE_NETHER_BRICK = ITEMS.registerSimpleItem("blue_nether_brick");

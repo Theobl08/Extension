@@ -148,8 +148,6 @@ public class ModCreativeModeTabs {
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
             event.insertAfter(Items.TNT_MINECART.getDefaultInstance(), ModItems.SPAWNER_MINECART.toStack(), PARENT_AND_SEARCH_TABS);
-        if (event.getTabKey() == CreativeModeTabs.COMBAT)
-            event.insertAfter(Items.DIAMOND_HORSE_ARMOR.getDefaultInstance(), ModItems.NETHERITE_HORSE_ARMOR.toStack(), PARENT_AND_SEARCH_TABS);
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.insertAfter(Items.NETHER_BRICK.getDefaultInstance(), ModItems.RED_NETHER_BRICK.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.RED_NETHER_BRICK.toStack(), ModItems.BLUE_NETHER_BRICK.toStack(), PARENT_AND_SEARCH_TABS);

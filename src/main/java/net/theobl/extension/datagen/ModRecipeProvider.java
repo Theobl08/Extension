@@ -33,7 +33,6 @@ public class ModRecipeProvider extends RecipeProvider {
     protected void buildRecipes() {
         generateForEnabledBlockFamilies(FeatureFlagSet.of(FeatureFlags.VANILLA));
 
-        netheriteSmithing(Items.DIAMOND_HORSE_ARMOR, RecipeCategory.COMBAT, ModItems.NETHERITE_HORSE_ARMOR.asItem());
         shapeless(RecipeCategory.TRANSPORTATION, ModItems.SPAWNER_MINECART)
                 .requires(Blocks.SPAWNER)
                 .requires(Items.MINECART)

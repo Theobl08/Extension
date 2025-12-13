@@ -62,7 +62,6 @@ public class ModModelProvider extends ModelProvider {
                 });
 
         itemModels.generateFlatItem(ModItems.SPAWNER_MINECART.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ModItems.NETHERITE_HORSE_ARMOR.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.RED_NETHER_BRICK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.BLUE_NETHER_BRICK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.ILLUSIONER_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);

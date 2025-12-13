@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smithing_transform",
-  "addition": "minecraft:netherite_ingot",
-  "base": "minecraft:diamond_horse_armor",
-  "result": {
-    "id": "extension:netherite_horse_armor"
-  },
-  "template": "minecraft:netherite_upgrade_smithing_template"
-}
