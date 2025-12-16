@@ -98,6 +98,7 @@
   "item.extension.red_nether_brick": "Red Nether Brick",
   "item.extension.spawner_minecart": "Minecart with Monster Spawner",
   "itemGroup.extension": "Extension",
+  "stat.extension.interact_with_fletching_table": "Interactions with Fletching Table",
   "tag.banner_pattern.minecraft.no_item_required": "No Item Required",
   "tag.banner_pattern.minecraft.pattern_item.bordure_indented": "Pattern Item Bordure Indented",
   "tag.banner_pattern.minecraft.pattern_item.creeper": "Pattern Item Creeper",

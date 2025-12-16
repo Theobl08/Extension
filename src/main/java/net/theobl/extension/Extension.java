@@ -12,6 +12,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.stats.StatFormatter;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionResult;
@@ -69,6 +70,7 @@ import net.theobl.extension.item.ModCreativeModeTabs;
 import net.theobl.extension.item.ModItems;
 import net.theobl.extension.item.crafting.ModRecipeSerializer;
 import net.theobl.extension.item.crafting.ModRecipeType;
+import net.theobl.extension.stats.ModStats;
 import org.slf4j.Logger;
 
 import java.util.Optional;
@@ -103,6 +105,7 @@ public class Extension {
         ModMenuType.register(modEventBus);
         ModRecipeType.register(modEventBus);
         ModRecipeSerializer.register(modEventBus);
+        ModStats.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (Extension) to respond directly to events.
@@ -123,6 +126,8 @@ public class Extension {
         // Some common setup code
         //LOGGER.info("HELLO FROM COMMON SETUP");
         ExtendedCauldronInteraction.bootStrap();
+        // For custom stats: add this line if the formatting is different from StatFormatter.DEFAULT to properly display it with the correct unit
+        // Stats.CUSTOM.get(ModStats.INTERACT_WITH_FLETCHING_TABLE, StatFormatter.TIME);
     }
 
     private void addBlockToBlockEntity(BlockEntityTypeAddBlocksEvent event) {
@@ -167,7 +172,7 @@ public class Extension {
                     MenuProvider provider = new SimpleMenuProvider(
                             (i, inventory, player1) -> new FletchingMenu(i, inventory, ContainerLevelAccess.create(level, pos)), Component.translatable("container.fletching"));
                     player.openMenu(provider);
-                    player.awardStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
+                    player.awardStat(ModStats.INTERACT_WITH_FLETCHING_TABLE);
                 }
                 event.cancelWithResult(InteractionResult.SUCCESS);
             }

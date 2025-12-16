@@ -14,6 +14,7 @@ import net.theobl.extension.Config;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.item.ModItems;
+import net.theobl.extension.stats.ModStats;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
@@ -66,6 +67,7 @@ public class ModLanguageProvider extends LanguageProvider {
         translateTags(WorldPresetTags.class);
 
         add("container.fletching", "Fletching");
+        add(ModStats.INTERACT_WITH_FLETCHING_TABLE.toLanguageKey("stat"), "Interactions with Fletching Table");
     }
 
     private static @NotNull String capitalizeString(String string) {
