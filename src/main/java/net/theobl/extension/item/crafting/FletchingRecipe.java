@@ -31,18 +31,17 @@ public class FletchingRecipe implements Recipe<CraftingInput> {
 
     @Override
     public boolean matches(CraftingInput input, Level level) {
+        if (input.ingredientCount() != this.ingredients.size()) {
+            return false;
+        }
         for (int i = 0; i < 3; i++) {
             if (!this.ingredients.get(i).test(input.getItem(i)))
                 return false;
         }
 //        return true;
-        if (input.ingredientCount() != this.ingredients.size()) {
-            return false;
-        } else {
             return input.size() == 1 && this.ingredients.size() == 1
                     ? this.ingredients.getFirst().test(input.getItem(0))
                     : input.stackedContents().canCraft(this, null);
-        }
     }
 
     @Override
