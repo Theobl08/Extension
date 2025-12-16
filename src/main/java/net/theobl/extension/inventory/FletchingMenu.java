@@ -56,14 +56,16 @@ public class FletchingMenu extends AbstractContainerMenu {
 
                 slot.onQuickCraft(itemstack1, itemstack);
             }
-            else if (index >= 4 && index < 31) {
-                if (!this.moveItemStackTo(itemstack1, 31, 40, false)) {
-                    return ItemStack.EMPTY;
-                }
-            }
-            else if (index >= 31 && index < 40) {
-                if (!this.moveItemStackTo(itemstack1, 4, 31, false)) {
-                    return ItemStack.EMPTY;
+            else if (index >= 4 && index < 40) {
+                if (!this.moveItemStackTo(itemstack1, 1, 4, false)) {
+                    if (index < 31) {
+                        if (!this.moveItemStackTo(itemstack1, 31, 40, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    }
+                    else if (!this.moveItemStackTo(itemstack1, 4, 31, false)) {
+                        return ItemStack.EMPTY;
+                    }
                 }
             }
             else if (!this.moveItemStackTo(itemstack1, 4, 40, false)) {
