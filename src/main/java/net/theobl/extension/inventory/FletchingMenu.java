@@ -19,6 +19,13 @@ import javax.annotation.Nullable;
 import java.util.Optional;
 
 public class FletchingMenu extends AbstractContainerMenu {
+    public static final int RESULT_SLOT = 0;
+    private static final int CRAFT_SLOT_START = 1;
+    private static final int CRAFT_SLOT_END = 4;
+    private static final int INV_SLOT_START = 4;
+    private static final int INV_SLOT_END = 31;
+    private static final int USE_ROW_SLOT_START = 31;
+    private static final int USE_ROW_SLOT_END = 40;
     private final ContainerLevelAccess access;
     private final Player player;
     private final Level level;
@@ -36,7 +43,7 @@ public class FletchingMenu extends AbstractContainerMenu {
         this.level = playerInventory.player.level();
         this.addSlot(new ResultSlot(playerInventory.player, this.craftSlots, this.resultSlots, 0, 124, 35));
         for (int i = 0; i < 3; ++i) {
-            this.addSlot(new Slot(this.craftSlots, i, 48, 17 + i * 18));
+            this.addSlot(new Slot(this.craftSlots, i, 48, 17 + i * SLOT_SIZE));
         }
         this.addStandardInventorySlots(playerInventory, 8, 84);
     }
@@ -48,27 +55,27 @@ public class FletchingMenu extends AbstractContainerMenu {
         if (slot != null && slot.hasItem()) {
             ItemStack itemstack1 = slot.getItem();
             itemstack = itemstack1.copy();
-            if (index == 0) {
+            if (index == RESULT_SLOT) {
                 itemstack1.getItem().onCraftedBy(itemstack1, player);
-                if (!this.moveItemStackTo(itemstack1, 4, 40, true)) {
+                if (!this.moveItemStackTo(itemstack1, INV_SLOT_START, USE_ROW_SLOT_END, true)) {
                     return ItemStack.EMPTY;
                 }
 
                 slot.onQuickCraft(itemstack1, itemstack);
             }
-            else if (index >= 4 && index < 40) {
-                if (!this.moveItemStackTo(itemstack1, 1, 4, false)) {
-                    if (index < 31) {
-                        if (!this.moveItemStackTo(itemstack1, 31, 40, false)) {
+            else if (index >= INV_SLOT_START && index < USE_ROW_SLOT_END) {
+                if (!this.moveItemStackTo(itemstack1, CRAFT_SLOT_START, CRAFT_SLOT_END, false)) {
+                    if (index < INV_SLOT_END) {
+                        if (!this.moveItemStackTo(itemstack1, USE_ROW_SLOT_START, USE_ROW_SLOT_END, false)) {
                             return ItemStack.EMPTY;
                         }
                     }
-                    else if (!this.moveItemStackTo(itemstack1, 4, 31, false)) {
+                    else if (!this.moveItemStackTo(itemstack1, INV_SLOT_START, INV_SLOT_END, false)) {
                         return ItemStack.EMPTY;
                     }
                 }
             }
-            else if (!this.moveItemStackTo(itemstack1, 4, 40, false)) {
+            else if (!this.moveItemStackTo(itemstack1, INV_SLOT_START, USE_ROW_SLOT_END, false)) {
                 return ItemStack.EMPTY;
             }
 
@@ -83,7 +90,7 @@ public class FletchingMenu extends AbstractContainerMenu {
             }
 
             slot.onTake(player, itemstack1);
-            if (index == 0) {
+            if (index == RESULT_SLOT) {
                 player.drop(itemstack1, false);
             }
         }
@@ -109,8 +116,8 @@ public class FletchingMenu extends AbstractContainerMenu {
                 FletchingRecipe fletchingRecipe = optional.get().value();
                 itemstack = fletchingRecipe.assemble(craftMatrix, player.level().registryAccess());
             }
-            resultSlots.setItem(0, itemstack);
-            serverPlayer.connection.send(new ClientboundContainerSetSlotPacket(menu.containerId, menu.incrementStateId(), 0, itemstack));
+            resultSlots.setItem(RESULT_SLOT, itemstack);
+            serverPlayer.connection.send(new ClientboundContainerSetSlotPacket(menu.containerId, menu.incrementStateId(), RESULT_SLOT, itemstack));
         }
     }
 
