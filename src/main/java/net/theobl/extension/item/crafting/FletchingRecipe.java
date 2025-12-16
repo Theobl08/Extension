@@ -31,10 +31,10 @@ public class FletchingRecipe implements Recipe<CraftingInput> {
 
     @Override
     public boolean matches(CraftingInput input, Level level) {
-//        for (int i = 0; i < 3; i++) {
-//            if (!this.ingredients.get(i).test(input.getItem(i)))
-//                return false;
-//        }
+        for (int i = 0; i < 3; i++) {
+            if (!this.ingredients.get(i).test(input.getItem(i)))
+                return false;
+        }
 //        return true;
         if (input.ingredientCount() != this.ingredients.size()) {
             return false;
