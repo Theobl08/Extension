@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(LavaFogEnvironment.class)
-public class FogRendererMixin {
+public abstract class FogRendererMixin {
     @WrapOperation(method = "setupFog", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;isSpectator()Z"))
     private static boolean clearLavaAndPowderSnowViewInCreative(Entity instance, Operation<Boolean> original) {
         if(instance instanceof Player player) {

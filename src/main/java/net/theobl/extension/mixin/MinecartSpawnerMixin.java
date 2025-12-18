@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MinecartSpawner.class)
-public class MinecartSpawnerMixin {
+public abstract class MinecartSpawnerMixin {
     @Inject(method = "getDropItem", at = @At("RETURN"), cancellable = true)
     private void dropSpawnerMinecart(CallbackInfoReturnable<Item> cir) {
         cir.setReturnValue(ModItems.SPAWNER_MINECART.asItem());

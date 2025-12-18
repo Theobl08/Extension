@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(Block.class)
-public class BlockMixin {
+public abstract class BlockMixin {
     @ModifyReturnValue(method = "isExceptionForConnection", at = @At("RETURN"))
     private static boolean isExceptionForConnection(boolean original, @Local(argsOnly = true) BlockState state) {
         return original || state.getBlock() instanceof CarvedPumpkinBlock;

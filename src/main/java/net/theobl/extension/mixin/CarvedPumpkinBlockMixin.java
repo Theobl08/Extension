@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import java.util.function.Predicate;
 
 @Mixin(CarvedPumpkinBlock.class)
-public class CarvedPumpkinBlockMixin {
+public abstract class CarvedPumpkinBlockMixin {
     @Shadow
     private static final Predicate<BlockState> PUMPKINS_PREDICATE = state -> state != null
             && (state.getBlock() instanceof CarvedPumpkinBlock);

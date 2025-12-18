@@ -1,5 +1,7 @@
 package net.theobl.extension.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -12,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Entity.class)
-public class EntityMixin {
+public abstract class EntityMixin {
     @Shadow private int remainingFireTicks;
 
     @Inject(method = "setRemainingFireTicks", at = @At("TAIL"))
@@ -25,5 +27,10 @@ public class EntityMixin {
                     this.remainingFireTicks = 0;
             }
         }
+    }
+
+    @WrapMethod(method = "maxUpStep")
+    protected float boatMaxUpStep(Operation<Float> original) {
+        return original.call();
     }
 }

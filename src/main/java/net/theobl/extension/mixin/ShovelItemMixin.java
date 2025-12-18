@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(ShovelItem.class)
-public class ShovelItemMixin {
+public abstract class ShovelItemMixin {
     @ModifyExpressionValue(method = "useOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;isAir()Z"))
     private boolean useUnderNonSolidBlocks(boolean original, @Local(ordinal = 0) Level level, @Local(ordinal = 0) BlockPos pos) {
         return original || !level.getBlockState(pos.above()).isFaceSturdy(level, pos.above(), Direction.DOWN, SupportType.FULL);

@@ -18,7 +18,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 @Mixin(OptionInstance.class)
-public class OptionInstanceMixin {
+public abstract class OptionInstanceMixin {
     @Shadow
     @Final
     public Component caption;

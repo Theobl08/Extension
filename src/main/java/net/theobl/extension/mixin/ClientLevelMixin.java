@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(ClientLevel.ClientLevelData.class)
-public class ClientLevelMixin {
+public abstract class ClientLevelMixin {
     @ModifyReturnValue(at = @At("RETURN"), method = "getHorizonHeight")
     private double getHorizonHeight(double original, @Local(argsOnly = true) LevelHeightAccessor level) {
         return Config.clearVoid ? level.getMinY() : original;

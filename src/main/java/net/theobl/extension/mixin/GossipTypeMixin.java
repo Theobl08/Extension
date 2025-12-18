@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 @Mixin(GossipType.class)
-public class GossipTypeMixin {
+public abstract class GossipTypeMixin {
     @ModifyArgs(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/ai/gossip/GossipType;<init>(Ljava/lang/String;ILjava/lang/String;IIII)V"))
     private static void reintroduceDiscountStacking(Args args) {
         switch (args.<String>get(2)) {

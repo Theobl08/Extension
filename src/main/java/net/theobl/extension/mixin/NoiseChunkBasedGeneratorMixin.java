@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(NoiseBasedChunkGenerator.class)
-public class NoiseChunkBasedGeneratorMixin {
+public abstract class NoiseChunkBasedGeneratorMixin {
     @ModifyReturnValue(method = "createFluidPicker", at = @At("RETURN"))
     private static Aquifer.FluidPicker fixMC237017(Aquifer.FluidPicker original, NoiseGeneratorSettings settings){
         return (x,y,z) -> new Aquifer.FluidStatus(settings.seaLevel(), settings.defaultFluid());

@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.Slice;
 
 @Mixin(targets = "net.minecraft.world.level.levelgen.DensityFunctions$EndIslandDensityFunction")
-public class EndIslandDensityFunctionMixin {
+public abstract class EndIslandDensityFunctionMixin {
     @ModifyExpressionValue(method = "getHeightValue", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;sqrt(F)F"),
             slice = @Slice(to = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(FFF)F")))
     private static float fixMC159283(float value, SimplexNoise simplexNoise, int i, int j) {
