@@ -9,10 +9,7 @@ import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.NetherWartBlock;
-import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -62,7 +59,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                         block1 -> this.createSilkTouchDispatchTable(block1, this.applyExplosionCondition(block1, LootItem.lootTableItem(Items.COPPER_NUGGET)
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))));
             }
-            else {
+            else if(!(block.get() instanceof BaseFireBlock)) {
                 this.dropSelf(block.get());
             }
         }
@@ -77,7 +74,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected Iterable<Block> getKnownBlocks() {
         //return ModBlocks.BLOCKS.getEntries().stream().map(Holder::value)::iterator;
         ArrayList<Block> knownBlocks = new ArrayList<>();
-        ModBlocks.BLOCKS.getEntries().stream().map(Holder::value).forEach(knownBlocks::add);
+        ModBlocks.BLOCKS.getEntries().stream()
+                .filter(block -> !(block.get() instanceof BaseFireBlock))
+                .map(Holder::value)
+                .forEach(knownBlocks::add);
         knownBlocks.add(Blocks.DIRT_PATH);
         knownBlocks.add(Blocks.BUDDING_AMETHYST);
         knownBlocks.add(Blocks.REINFORCED_DEEPSLATE);

@@ -99,6 +99,7 @@ public class ModModelProvider extends ModelProvider {
         this.createCampfires(blockModels, ModBlocks.REDSTONE_CAMPFIRE.get(), ModBlocks.COPPER_CAMPFIRE.get());
         createPumpkins(blockModels);
         createMilkCauldron(blockModels);
+        createFire(ModBlocks.COPPER_FIRE.get(), blockModels);
     }
 
     public BlockModelGenerators.BlockFamilyProvider family(Block block, BlockModelGenerators blockModels) {
@@ -156,6 +157,46 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createPumpkinVariant(ModBlocks.SOUL_O_LANTERN.get(), texturemapping);
         blockModels.createPumpkinVariant(ModBlocks.REDSTONE_O_LANTERN.get(), texturemapping);
         blockModels.createPumpkinVariant(ModBlocks.COPPER_O_LANTERN.get(), texturemapping);
+    }
+
+    public void createFire(Block fireBlock, BlockModelGenerators blockModels) {
+        MultiVariant floorFireModels = variants(
+                plainModel(
+                        ModelTemplates.FIRE_FLOOR.extend().renderType("cutout").build()
+                                .create(ModelLocationUtils.getModelLocation(fireBlock, "_floor0"), TextureMapping.fire0(fireBlock), blockModels.modelOutput)
+                ),
+                plainModel(
+                        ModelTemplates.FIRE_FLOOR.extend().renderType("cutout").build()
+                                .create(ModelLocationUtils.getModelLocation(fireBlock, "_floor1"), TextureMapping.fire1(fireBlock), blockModels.modelOutput)
+                )
+        );
+        MultiVariant sideFireModels = variants(
+                plainModel(
+                        ModelTemplates.FIRE_SIDE.extend().renderType("cutout").build()
+                                .create(ModelLocationUtils.getModelLocation(fireBlock, "_side0"), TextureMapping.fire0(fireBlock), blockModels.modelOutput)
+                ),
+                plainModel(
+                        ModelTemplates.FIRE_SIDE.extend().renderType("cutout").build()
+                                .create(ModelLocationUtils.getModelLocation(fireBlock, "_side1"), TextureMapping.fire1(fireBlock), blockModels.modelOutput)
+                ),
+                plainModel(
+                        ModelTemplates.FIRE_SIDE_ALT.extend().renderType("cutout").build()
+                                .create(ModelLocationUtils.getModelLocation(fireBlock, "_side_alt0"), TextureMapping.fire0(fireBlock), blockModels.modelOutput)
+                ),
+                plainModel(
+                        ModelTemplates.FIRE_SIDE_ALT.extend().renderType("cutout").build()
+                                .create(ModelLocationUtils.getModelLocation(fireBlock, "_side_alt1"), TextureMapping.fire1(fireBlock), blockModels.modelOutput)
+                )
+        );
+        blockModels.blockStateOutput
+                .accept(
+                        MultiPartGenerator.multiPart(fireBlock)
+                                .with(floorFireModels)
+                                .with(sideFireModels)
+                                .with(sideFireModels.with(Y_ROT_90))
+                                .with(sideFireModels.with(Y_ROT_180))
+                                .with(sideFireModels.with(Y_ROT_270))
+                );
     }
 
     public void createRedStoneLantern(Block lanternBlock, BlockModelGenerators blockModels) {

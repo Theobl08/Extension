@@ -9,6 +9,7 @@ import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.tags.ModBlockTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -43,6 +44,61 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.SOUL_O_LANTERN.get())
                 .add(ModBlocks.COPPER_O_LANTERN.get())
                 .add(ModBlocks.REDSTONE_O_LANTERN.get());
+
+        tag(ModBlockTags.COPPER_FIRE_BASE_BLOCKS)
+                .addTag(BlockTags.COPPER)
+                .remove(Blocks.OXIDIZED_COPPER)
+                .add(Blocks.CHISELED_COPPER)
+                .add(Blocks.EXPOSED_CHISELED_COPPER)
+                .add(Blocks.WEATHERED_CHISELED_COPPER)
+                .add(Blocks.WAXED_CHISELED_COPPER)
+                .add(Blocks.WAXED_EXPOSED_CHISELED_COPPER)
+                .add(Blocks.WAXED_WEATHERED_CHISELED_COPPER)
+                .add(Blocks.WAXED_OXIDIZED_CHISELED_COPPER)
+                .add(Blocks.COPPER_GRATE)
+                .add(Blocks.EXPOSED_COPPER_GRATE)
+                .add(Blocks.WEATHERED_COPPER_GRATE)
+                .add(Blocks.WAXED_COPPER_GRATE)
+                .add(Blocks.WAXED_EXPOSED_COPPER_GRATE)
+                .add(Blocks.WAXED_WEATHERED_COPPER_GRATE)
+                .add(Blocks.WAXED_OXIDIZED_COPPER_GRATE)
+                .add(Blocks.CUT_COPPER)
+                .add(Blocks.EXPOSED_CUT_COPPER)
+                .add(Blocks.WEATHERED_CUT_COPPER)
+                .add(Blocks.WAXED_CUT_COPPER)
+                .add(Blocks.WAXED_EXPOSED_CUT_COPPER)
+                .add(Blocks.WAXED_WEATHERED_CUT_COPPER)
+                .add(Blocks.WAXED_OXIDIZED_CUT_COPPER)
+                .add(Blocks.CUT_COPPER_STAIRS)
+                .add(Blocks.EXPOSED_CUT_COPPER_STAIRS)
+                .add(Blocks.WEATHERED_CUT_COPPER_STAIRS)
+                .add(Blocks.WAXED_CUT_COPPER_STAIRS)
+                .add(Blocks.WAXED_EXPOSED_CUT_COPPER_STAIRS)
+                .add(Blocks.WAXED_WEATHERED_CUT_COPPER_STAIRS)
+                .add(Blocks.WAXED_OXIDIZED_CUT_COPPER_STAIRS)
+                .add(Blocks.CUT_COPPER_SLAB)
+                .add(Blocks.EXPOSED_CUT_COPPER_SLAB)
+                .add(Blocks.WEATHERED_CUT_COPPER_SLAB)
+                .add(Blocks.WAXED_CUT_COPPER_SLAB)
+                .add(Blocks.WAXED_EXPOSED_CUT_COPPER_SLAB)
+                .add(Blocks.WAXED_WEATHERED_CUT_COPPER_SLAB)
+                .add(Blocks.WAXED_OXIDIZED_CUT_COPPER_SLAB)
+                .add(Blocks.COPPER_TRAPDOOR)
+                .add(Blocks.EXPOSED_COPPER_TRAPDOOR)
+                .add(Blocks.WEATHERED_COPPER_TRAPDOOR)
+                .add(Blocks.WAXED_COPPER_TRAPDOOR)
+                .add(Blocks.WAXED_EXPOSED_COPPER_TRAPDOOR)
+                .add(Blocks.WAXED_WEATHERED_COPPER_TRAPDOOR)
+                .add(Blocks.WAXED_OXIDIZED_COPPER_TRAPDOOR)
+                .add(Blocks.COPPER_BULB)
+                .add(Blocks.EXPOSED_COPPER_BULB)
+                .add(Blocks.WEATHERED_COPPER_BULB)
+                .add(Blocks.WAXED_COPPER_BULB)
+                .add(Blocks.WAXED_EXPOSED_COPPER_BULB)
+                .add(Blocks.WAXED_WEATHERED_COPPER_BULB)
+                .add(Blocks.WAXED_OXIDIZED_COPPER_BULB)
+                .add(Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE)
+                .add(ModBlocks.COPPER_O_LANTERN.get());
 
         for(DeferredHolder<Block, ? extends Block> deferredBlock : ModBlocks.BLOCKS.getEntries()){
             if(deferredBlock.get() instanceof StairBlock)
