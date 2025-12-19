@@ -54,6 +54,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.common.world.poi.ExtendPoiTypesEvent;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
+import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityInvulnerabilityCheckEvent;
 import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
@@ -195,6 +196,11 @@ public class Extension {
                 !player.level().getGameRules().get(GameRules.FIRE_DAMAGE)) {
             event.setInvulnerable(true);
         }
+    }
+
+    @SubscribeEvent
+    public void datapackSync(OnDatapackSyncEvent event) {
+        event.sendRecipes(ModRecipeType.FLETCHING.get());
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
