@@ -57,14 +57,14 @@ public class RedstoneLanternBlock extends LanternBlock {
 
         if (state.getValue(LIT)) {
             if (flag) {
-                level.setBlock(pos, state.setValue(LIT, Boolean.FALSE), 3);
+                level.setBlock(pos, state.setValue(LIT, Boolean.FALSE), UPDATE_NEIGHBORS | UPDATE_CLIENTS);
                 if (RedstoneTorchBlock.isToggledTooFrequently(level, pos, true)) {
                     level.levelEvent(1502, pos, 0);
                     level.scheduleTick(pos, level.getBlockState(pos).getBlock(), 160);
                 }
             }
         } else if (!flag && !RedstoneTorchBlock.isToggledTooFrequently(level, pos, false)) {
-            level.setBlock(pos, state.setValue(LIT, Boolean.TRUE), 3);
+            level.setBlock(pos, state.setValue(LIT, Boolean.TRUE), UPDATE_NEIGHBORS | UPDATE_CLIENTS);
         }
     }
 
