@@ -1,10 +1,7 @@
 package net.theobl.extension.mixin;
 
 import net.caffeinemc.mods.sodium.api.config.StorageEventHandler;
-import net.caffeinemc.mods.sodium.api.config.option.ControlValueFormatter;
-import net.caffeinemc.mods.sodium.api.config.option.OptionBinding;
-import net.caffeinemc.mods.sodium.api.config.option.OptionImpact;
-import net.caffeinemc.mods.sodium.api.config.option.Range;
+import net.caffeinemc.mods.sodium.api.config.option.*;
 import net.caffeinemc.mods.sodium.client.config.structure.IntegerOption;
 import net.caffeinemc.mods.sodium.client.config.value.ConstantValue;
 import net.caffeinemc.mods.sodium.client.config.value.DependentValue;
@@ -21,7 +18,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Collection;
-import java.util.EnumSet;
+import java.util.Set;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 @Mixin(IntegerOption.class)
@@ -29,15 +27,15 @@ public class SliderControlMixin {
     @Shadow
     @Final
     @Mutable
-    private DependentValue<Range> range;
+    private DependentValue<? extends SteppedValidator> validator;
 
     @Inject(method = "<init>", at = @At("RETURN"), remap = false)
-    public void init(Identifier id, Collection dependencies, Component name, DependentValue enabled, StorageEventHandler storage, Function tooltipProvider, OptionImpact impact, EnumSet flags, DependentValue defaultValue, OptionBinding binding, DependentValue range, ControlValueFormatter valueFormatter, CallbackInfo ci) {
+    public void init(Identifier id, Collection dependencies, Component name, DependentValue enabled, StorageEventHandler storage, Function tooltipProvider, OptionImpact impact, Set flags, DependentValue defaultValue, Boolean controlHiddenWhenDisabled, OptionBinding binding, Consumer applyHook, DependentValue validator, ControlValueFormatter valueFormatter, CallbackInfo ci) {
         if (((IntegerOption) (Object) this).getName().getContents() instanceof TranslatableContents component && component.getKey().equals("options.gamma")) {
             int min = (int) (Extension.BRIGHTNESS_MIN * 100);
             int max = (int) (Extension.BRIGHTNESS_MAX * 100);
             int interval = (int) (Extension.BRIGHTNESS_STEP * 100);
-            this.range = new ConstantValue<>(new Range(min, max, interval));
+            this.validator = new ConstantValue<>(new Range(min, max, interval));
         }
     }
 }
