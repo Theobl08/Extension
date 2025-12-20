@@ -45,6 +45,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.COPPER_O_LANTERN.get())
                 .add(ModBlocks.REDSTONE_O_LANTERN.get());
 
+        tag(BlockTags.FIRE).add(ModBlocks.COPPER_FIRE.get());
+        tag(BlockTags.REPLACEABLE).add(ModBlocks.COPPER_FIRE.get());
+
         tag(ModBlockTags.COPPER_FIRE_BASE_BLOCKS)
                 .addTag(BlockTags.COPPER)
                 .remove(Blocks.OXIDIZED_COPPER)
