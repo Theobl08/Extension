@@ -12,6 +12,7 @@
     "BlocksMixin",
     "CarvedPumpkinBlockMixin",
     "DirtPathBlockMixin",
+    "DoorBlockMixin",
     "EndIslandDensityFunctionMixin",
     "EntityMixin",
     "GossipTypeMixin",
@@ -29,5 +30,8 @@
   ],
   "injectors": {
     "defaultRequire": 1
+  },
+  "mixinextras": {
+    "minVersion": "0.5.0"
   }
 }
