@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.StatFormatter;
 import net.minecraft.stats.Stats;
@@ -60,6 +61,7 @@ import net.neoforged.neoforge.event.entity.EntityInvulnerabilityCheckEvent;
 import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.RegisterCauldronFluidContentEvent;
 import net.theobl.extension.block.ExtendedCauldronInteraction;
@@ -87,6 +89,8 @@ public class Extension {
     public static final double BRIGHTNESS_STEP = 0.05;
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
+
+    private static boolean gamerule_fire_damage = GameRules.FIRE_DAMAGE.defaultValue();
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
@@ -189,6 +193,13 @@ public class Extension {
     }
 
     @SubscribeEvent
+    public void levelTick(LevelTickEvent.Pre event) {
+        if(event.getLevel() instanceof ServerLevel serverLevel) {
+            gamerule_fire_damage = serverLevel.getGameRules().get(GameRules.FIRE_DAMAGE);
+        }
+    }
+
+    @SubscribeEvent
     public void entityInvulnerabilityCheck(EntityInvulnerabilityCheckEvent event) {
         Entity entity = event.getEntity();
         if(entity instanceof ServerPlayer player &&
@@ -246,7 +257,8 @@ public class Extension {
                     !player.isHolding(Items.MILK_BUCKET) &&
                     blockState == Blocks.FIRE.defaultBlockState()) {
                 event.setCanceled(true);
-            }
+            } else if(!gamerule_fire_damage && Config.noFireOverlay && blockState.is(Blocks.FIRE))
+                event.setCanceled(true);
         }
     }
 
