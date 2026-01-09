@@ -1,0 +1,7 @@
+{
+  "parent": "extension:block/template_cauldron_content_level3",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "content": "minecraft:block/water_still"
+  }
+}

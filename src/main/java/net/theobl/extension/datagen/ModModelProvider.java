@@ -10,16 +10,21 @@ import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.*;
 import net.minecraft.client.data.models.model.*;
+import net.minecraft.client.renderer.block.model.SingleVariant;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.neoforged.neoforge.client.model.generators.blockstate.CompositeBlockStateModelBuilder;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.block.PotionCauldronBlock;
 import net.theobl.extension.item.ModItems;
 
 import java.util.List;
@@ -28,6 +33,15 @@ import java.util.Map;
 import static net.minecraft.client.data.models.BlockModelGenerators.*;
 
 public class ModModelProvider extends ModelProvider {
+    static ModelTemplate CAULDRON_CONTENT_LEVEL1 = ModelTemplates.create(
+            Extension.MODID + ":template_cauldron_content_level1", TextureSlot.CONTENT);
+    static ModelTemplate CAULDRON_CONTENT_LEVEL2 = ModelTemplates.create(
+            Extension.MODID + ":template_cauldron_content_level2", TextureSlot.CONTENT);
+    static ModelTemplate CAULDRON_CONTENT_LEVEL3 = ModelTemplates.create(
+            Extension.MODID + ":template_cauldron_content_level3", TextureSlot.CONTENT);
+    static ModelTemplate CAULDRON_CONTENT_FULL = ModelTemplates.create(
+            Extension.MODID + ":template_cauldron_content_full", TextureSlot.CONTENT);
+
     public ModModelProvider(PackOutput output) {
         super(output, Extension.MODID);
     }
@@ -98,7 +112,7 @@ public class ModModelProvider extends ModelProvider {
         this.createRedStoneLantern(ModBlocks.REDSTONE_LANTERN.get(), blockModels);
         this.createCampfires(blockModels, ModBlocks.REDSTONE_CAMPFIRE.get(), ModBlocks.COPPER_CAMPFIRE.get());
         createPumpkins(blockModels);
-        createMilkCauldron(blockModels);
+        createCauldrons(blockModels);
         createFire(ModBlocks.COPPER_FIRE.get(), blockModels);
     }
 
@@ -256,7 +270,7 @@ public class ModModelProvider extends ModelProvider {
         }
     }
 
-    private void createMilkCauldron(BlockModelGenerators blockModels) {
+    private void createCauldrons(BlockModelGenerators blockModels) {
         blockModels.blockStateOutput
                 .accept(
                         createSimpleBlock(
@@ -267,6 +281,44 @@ public class ModModelProvider extends ModelProvider {
                                 )
                         )
                 );
+        Identifier potionLevel1 = CAULDRON_CONTENT_LEVEL1.extend().renderType("translucent").build()
+                .create(Identifier.fromNamespaceAndPath(Extension.MODID, "cauldron_potion_level1").withPrefix("block/"),
+                        new TextureMapping().put(TextureSlot.CONTENT, TextureMapping.getBlockTexture(Blocks.WATER, "_still")),
+                        blockModels.modelOutput);
+        Identifier potionLevel2 = CAULDRON_CONTENT_LEVEL2.extend().renderType("translucent").build()
+                .create(Identifier.fromNamespaceAndPath(Extension.MODID, "cauldron_potion_level2").withPrefix("block/"),
+                        new TextureMapping().put(TextureSlot.CONTENT, TextureMapping.getBlockTexture(Blocks.WATER, "_still")),
+                        blockModels.modelOutput);
+        Identifier potionLevel3 = CAULDRON_CONTENT_LEVEL3.extend().renderType("translucent").build()
+                .create(Identifier.fromNamespaceAndPath(Extension.MODID, "cauldron_potion_level3").withPrefix("block/"),
+                        new TextureMapping().put(TextureSlot.CONTENT, TextureMapping.getBlockTexture(Blocks.WATER, "_still")),
+                        blockModels.modelOutput);
+        Identifier potionFull = CAULDRON_CONTENT_FULL.extend().renderType("translucent").build()
+                .create(Identifier.fromNamespaceAndPath(Extension.MODID, "cauldron_potion_full").withPrefix("block/"),
+                        new TextureMapping().put(TextureSlot.CONTENT, TextureMapping.getBlockTexture(Blocks.WATER, "_still")),
+                        blockModels.modelOutput);
+        Identifier cauldron = ModelLocationUtils.getModelLocation(Blocks.CAULDRON);
+
+        ModBlocks.POTION_CAULDRON.values().forEach(block ->
+                blockModels.blockStateOutput
+                        .accept(
+                                MultiVariantGenerator.dispatch(block.get())
+                                        .with(
+                                                PropertyDispatch.initial(PotionCauldronBlock.LEVEL)
+                                                        .select(1, createLayeredCauldron(cauldron, potionLevel1))
+                                                        .select(2, createLayeredCauldron(cauldron, potionLevel2))
+                                                        .select(3, createLayeredCauldron(cauldron, potionLevel3))
+                                                        .select(4, createLayeredCauldron(cauldron, potionFull))
+                                        )
+                        )
+        );
+    }
+
+    public static MultiVariant createLayeredCauldron(Identifier contentLevel, Identifier emptyCauldron) {
+        CompositeBlockStateModelBuilder compositeBlockStateModelBuilder = new CompositeBlockStateModelBuilder();
+        compositeBlockStateModelBuilder.addPartModel(new SingleVariant.Unbaked(plainModel(emptyCauldron)));
+        compositeBlockStateModelBuilder.addPartModel(new SingleVariant.Unbaked(plainModel(contentLevel)));
+        return MultiVariant.of(compositeBlockStateModelBuilder);
     }
 
     public class ModBlockFamilyProvider extends BlockModelGenerators.BlockFamilyProvider {

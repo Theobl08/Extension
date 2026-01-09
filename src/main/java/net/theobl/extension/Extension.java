@@ -34,6 +34,7 @@ import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -47,6 +48,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RenderBlockScreenEffectEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientBlockExtensions;
@@ -64,6 +66,7 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.RegisterCauldronFluidContentEvent;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.theobl.extension.block.ExtendedCauldronInteraction;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.inventory.FletchingMenu;
@@ -99,6 +102,7 @@ public class Extension {
         modEventBus.addListener(this::commonSetup);
 
         NeoForgeMod.enableMilkFluid(); // We need this for our milk cauldron
+        ExtendedCauldronInteraction.init();
 
         // Register the Deferred Register to the mod event bus so blocks get registered
         ModBlocks.register(modEventBus);
@@ -242,6 +246,34 @@ public class Extension {
                     }
                 }, Blocks.WATER_CAULDRON);
             }
+            event.registerBlock(new IClientBlockExtensions() {
+                @Override
+                public boolean areBreakingParticlesTinted(BlockState state, ClientLevel level, BlockPos pos) {
+                    return false;
+                }
+            }, ModBlocks.POTION_CAULDRON.values().stream().map(DeferredBlock::get).toArray(Block[]::new));
+        }
+
+        @SubscribeEvent
+        public static void registerColorHandlers(RegisterColorHandlersEvent.Block event) {
+//            event.register((state, level, pos, tintIndex) -> {
+//                if(level != null && pos != null && level.getBlockState(pos).is(ModBlocks.FIRE_RESISTANCE_CAULDRON.get())) {
+//                    return PotionContents.getColorOptional(ModBlocks.FIRE_RESISTANCE_CAULDRON.get().getPotion().value().getEffects()).orElse(PotionContents.BASE_POTION_COLOR);
+//                }
+//                else {
+//                    return -1;
+//                }
+//            }, ModBlocks.FIRE_RESISTANCE_CAULDRON.get());
+            ModBlocks.POTION_CAULDRON.values().forEach(block -> {
+                event.register(((state, level, pos, tintIndex) -> {
+                    if(level != null && pos != null && level.getBlockState(pos).is(block.get())) {
+                        return PotionContents.getColorOptional(block.get().getPotion().value().getEffects()).orElse(PotionContents.BASE_POTION_COLOR);
+                    }
+                    else {
+                        return -1;
+                    }
+                }), block.get());
+            });
         }
 
         @SubscribeEvent

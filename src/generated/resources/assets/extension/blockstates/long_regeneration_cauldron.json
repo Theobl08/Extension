@@ -1,0 +1,48 @@
+{
+  "variants": {
+    "level=1": {
+      "type": "neoforge:composite",
+      "models": [
+        {
+          "model": "extension:block/cauldron_potion_level1"
+        },
+        {
+          "model": "minecraft:block/cauldron"
+        }
+      ]
+    },
+    "level=2": {
+      "type": "neoforge:composite",
+      "models": [
+        {
+          "model": "extension:block/cauldron_potion_level2"
+        },
+        {
+          "model": "minecraft:block/cauldron"
+        }
+      ]
+    },
+    "level=3": {
+      "type": "neoforge:composite",
+      "models": [
+        {
+          "model": "extension:block/cauldron_potion_level3"
+        },
+        {
+          "model": "minecraft:block/cauldron"
+        }
+      ]
+    },
+    "level=4": {
+      "type": "neoforge:composite",
+      "models": [
+        {
+          "model": "extension:block/cauldron_potion_full"
+        },
+        {
+          "model": "minecraft:block/cauldron"
+        }
+      ]
+    }
+  }
+}
