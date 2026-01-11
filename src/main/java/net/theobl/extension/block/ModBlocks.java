@@ -212,9 +212,6 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> MILK_CAULDRON = BLOCKS.registerBlock("milk_cauldron",
             MilkCauldronBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON));
-//    public static final DeferredBlock<PotionCauldronBlock> FIRE_RESISTANCE_CAULDRON = BLOCKS.registerBlock("fire_resistance_cauldron",
-//            p -> new PotionCauldronBlock(Potions.FIRE_RESISTANCE, ExtendedCauldronInteraction.FIRE_RESISTANCE, p),
-//            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON));
     public static final Map<Holder<Potion>, DeferredBlock<PotionCauldronBlock>> POTION_CAULDRON = registerPotionCauldrons();
 
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {

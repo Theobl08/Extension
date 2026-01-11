@@ -34,7 +34,6 @@ import static net.minecraft.core.cauldron.CauldronInteraction.*;
 
 public interface ExtendedCauldronInteraction {
     CauldronInteraction.InteractionMap MILK = newInteractionMap("milk");
-    CauldronInteraction.InteractionMap FIRE_RESISTANCE = newInteractionMap("fire_resistance");
     Map<Holder<Potion>, CauldronInteraction.InteractionMap> POTIONS_INTERACTIONS = new HashMap<>();
     List<Holder<Potion>> POTIONS = StreamSupport.stream(BuiltInRegistries.POTION.asHolderIdMap().spliterator(), false)
             .filter(potionHolder -> !potionHolder.is(Potions.WATER)).toList();
@@ -62,46 +61,6 @@ public interface ExtendedCauldronInteraction {
         );
         addDefaultInteractions(milk);
         addMilkInteractions(milk);
-        Map<Item, CauldronInteraction> fireResistance = FIRE_RESISTANCE.map();
-        fireResistance.put(
-                Items.GLASS_BOTTLE,
-                (state, level, pos, player, hand, itemInHand) -> {
-                    if (!level.isClientSide()) {
-                        Item usedItem = itemInHand.getItem();
-                        player.setItemInHand(
-                                hand, ItemUtils.createFilledResult(itemInHand, player, PotionContents.createItemStack(Items.POTION, Potions.FIRE_RESISTANCE))
-                        );
-                        player.awardStat(Stats.USE_CAULDRON);
-                        player.awardStat(Stats.ITEM_USED.get(usedItem));
-                        PotionCauldronBlock.lowerFillLevel(state, level, pos);
-                        level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                        level.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
-                    }
-
-                    return InteractionResult.SUCCESS;
-                }
-        );
-        fireResistance.put(Items.POTION, (state, level, pos, player, hand, itemInHand) -> {
-            if (state.getValue(PotionCauldronBlock.LEVEL) == PotionCauldronBlock.MAX_FILL_LEVEL) {
-                return InteractionResult.TRY_WITH_EMPTY_HAND;
-            } else {
-                PotionContents potion = itemInHand.get(DataComponents.POTION_CONTENTS);
-                if (potion != null && potion.is(Potions.FIRE_RESISTANCE)) {
-                    if (!level.isClientSide()) {
-                        player.setItemInHand(hand, ItemUtils.createFilledResult(itemInHand, player, new ItemStack(Items.GLASS_BOTTLE)));
-                        player.awardStat(Stats.USE_CAULDRON);
-                        player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
-                        level.setBlockAndUpdate(pos, state.cycle(PotionCauldronBlock.LEVEL));
-                        level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-                        level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
-                    }
-
-                    return InteractionResult.SUCCESS;
-                } else {
-                    return InteractionResult.TRY_WITH_EMPTY_HAND;
-                }
-            }
-        });
 
         for(Holder<Potion> potion : POTIONS) {
             Map<Item, CauldronInteraction> map = POTIONS_INTERACTIONS.get(potion).map();

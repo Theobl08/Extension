@@ -256,14 +256,6 @@ public class Extension {
 
         @SubscribeEvent
         public static void registerColorHandlers(RegisterColorHandlersEvent.Block event) {
-//            event.register((state, level, pos, tintIndex) -> {
-//                if(level != null && pos != null && level.getBlockState(pos).is(ModBlocks.FIRE_RESISTANCE_CAULDRON.get())) {
-//                    return PotionContents.getColorOptional(ModBlocks.FIRE_RESISTANCE_CAULDRON.get().getPotion().value().getEffects()).orElse(PotionContents.BASE_POTION_COLOR);
-//                }
-//                else {
-//                    return -1;
-//                }
-//            }, ModBlocks.FIRE_RESISTANCE_CAULDRON.get());
             ModBlocks.POTION_CAULDRON.values().forEach(block -> {
                 event.register(((state, level, pos, tintIndex) -> {
                     if(level != null && pos != null && level.getBlockState(pos).is(block.get())) {
