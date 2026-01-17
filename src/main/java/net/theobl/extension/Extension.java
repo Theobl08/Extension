@@ -134,11 +134,8 @@ public class Extension {
     public void registerBrewingRecipes(RegisterBrewingRecipesEvent event) {
         // Gets the builder to add recipes to
         PotionBrewing.Builder builder = event.getBuilder();
-        builder.addMix(Potions.MUNDANE, ModItems.BLUE_NETHER_WART.asItem(), Potions.AWKWARD);
+        builder.addMix(Potions.WATER, ModItems.BLUE_NETHER_WART.asItem(), Potions.AWKWARD);
         builder.addMix(Potions.AWKWARD, Items.RABBIT_HIDE, Potions.LUCK);
-        ItemStack stack = new ItemStack(Items.POTION);
-        stack.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.AWKWARD));
-        builder.addRecipe(Ingredient.of(Items.POTION), Ingredient.of(ModItems.BLUE_NETHER_WART), stack);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
