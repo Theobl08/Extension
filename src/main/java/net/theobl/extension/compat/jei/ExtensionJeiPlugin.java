@@ -24,7 +24,7 @@ public class ExtensionJeiPlugin implements IModPlugin {
 
     @Override
     public Identifier getPluginUid() {
-        return Identifier.fromNamespaceAndPath(Extension.MODID, "extension_jei");
+        return Extension.asResource("extension_jei");
     }
 
     @Override

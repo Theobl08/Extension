@@ -11,14 +11,12 @@ import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.*;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.model.SingleVariant;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.neoforged.neoforge.client.model.generators.blockstate.CompositeBlockStateModelBuilder;
@@ -282,19 +280,19 @@ public class ModModelProvider extends ModelProvider {
                         )
                 );
         Identifier potionLevel1 = CAULDRON_CONTENT_LEVEL1.extend().renderType("translucent").build()
-                .create(Identifier.fromNamespaceAndPath(Extension.MODID, "cauldron_potion_level1").withPrefix("block/"),
+                .create(Extension.asResource("cauldron_potion_level1").withPrefix("block/"),
                         new TextureMapping().put(TextureSlot.CONTENT, TextureMapping.getBlockTexture(Blocks.WATER, "_still")),
                         blockModels.modelOutput);
         Identifier potionLevel2 = CAULDRON_CONTENT_LEVEL2.extend().renderType("translucent").build()
-                .create(Identifier.fromNamespaceAndPath(Extension.MODID, "cauldron_potion_level2").withPrefix("block/"),
+                .create(Extension.asResource("cauldron_potion_level2").withPrefix("block/"),
                         new TextureMapping().put(TextureSlot.CONTENT, TextureMapping.getBlockTexture(Blocks.WATER, "_still")),
                         blockModels.modelOutput);
         Identifier potionLevel3 = CAULDRON_CONTENT_LEVEL3.extend().renderType("translucent").build()
-                .create(Identifier.fromNamespaceAndPath(Extension.MODID, "cauldron_potion_level3").withPrefix("block/"),
+                .create(Extension.asResource("cauldron_potion_level3").withPrefix("block/"),
                         new TextureMapping().put(TextureSlot.CONTENT, TextureMapping.getBlockTexture(Blocks.WATER, "_still")),
                         blockModels.modelOutput);
         Identifier potionFull = CAULDRON_CONTENT_FULL.extend().renderType("translucent").build()
-                .create(Identifier.fromNamespaceAndPath(Extension.MODID, "cauldron_potion_full").withPrefix("block/"),
+                .create(Extension.asResource("cauldron_potion_full").withPrefix("block/"),
                         new TextureMapping().put(TextureSlot.CONTENT, TextureMapping.getBlockTexture(Blocks.WATER, "_still")),
                         blockModels.modelOutput);
         Identifier cauldron = ModelLocationUtils.getModelLocation(Blocks.CAULDRON);

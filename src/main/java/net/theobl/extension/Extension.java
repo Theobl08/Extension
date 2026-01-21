@@ -5,8 +5,8 @@ import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import net.minecraft.client.OptionInstance;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
@@ -17,12 +17,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
-import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -194,6 +191,10 @@ public class Extension {
     @SubscribeEvent
     public void datapackSync(OnDatapackSyncEvent event) {
         event.sendRecipes(ModRecipeType.FLETCHING.get());
+    }
+
+    public static Identifier asResource(String path) {
+        return Identifier.fromNamespaceAndPath(MODID, path);
     }
 
     public enum BetterSlider implements OptionInstance.SliderableValueSet<Double> {

@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.theobl.extension.Extension;
 
 public class FletchingScreen extends AbstractContainerScreen<FletchingMenu> {
-    private static final Identifier FLETCHING_TABLE_LOCATION = Identifier.fromNamespaceAndPath(Extension.MODID, "textures/gui/container/fletching_table.png");
+    private static final Identifier FLETCHING_TABLE_LOCATION = Extension.asResource("textures/gui/container/fletching_table.png");
 
     public FletchingScreen(FletchingMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
