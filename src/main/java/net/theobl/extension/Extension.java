@@ -52,6 +52,7 @@ import net.theobl.extension.inventory.FletchingMenu;
 import net.theobl.extension.inventory.ModMenuType;
 import net.theobl.extension.item.ModCreativeModeTabs;
 import net.theobl.extension.item.ModItems;
+import net.theobl.extension.item.alchemy.ModPotions;
 import net.theobl.extension.item.crafting.ModRecipeSerializer;
 import net.theobl.extension.item.crafting.ModRecipeType;
 import net.theobl.extension.stats.ModStats;
@@ -78,6 +79,8 @@ public class Extension {
     public Extension(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+
+        ModPotions.register(modEventBus);
 
         NeoForgeMod.enableMilkFluid(); // We need this for our milk cauldron
         ExtendedCauldronInteraction.init();

@@ -1,4 +1,4 @@
-// 1.21.11	2026-01-08T00:19:45.6142832	Loot Tables
+// 1.21.11	2026-01-21T10:18:12.90894	Loot Tables
 77ad9539dffca8dc956252627cdb14feecdbe8a1 data/extension/loot_table/blocks/andesite_bricks.json
 5d7626185b6a57da3470448759615b20232ba4f6 data/extension/loot_table/blocks/andesite_brick_slab.json
 eb6cd02fff8c7a1214b82b80f4f844b3086055ca data/extension/loot_table/blocks/andesite_brick_stairs.json
@@ -31,6 +31,7 @@ c24ea39a653d9ec16b6c1605c3d8be9c8d842cc9 data/extension/loot_table/blocks/cracke
 094dc8da693528e1e93238b50822b66fe60299a7 data/extension/loot_table/blocks/cut_soul_sandstone.json
 3c50fb99cbe462fe5ef191f7ec4ae72d4054e6ac data/extension/loot_table/blocks/cut_soul_sandstone_slab.json
 c4ecd553b9b5ba99a2609a0c929a96d8b3e9bafd data/extension/loot_table/blocks/dark_prismarine_wall.json
+dd7022529328813342b8642f1bb61b287150a6a6 data/extension/loot_table/blocks/decay_cauldron.json
 83f0b28ee9a8dcf1953aac0048ef7271cedf2606 data/extension/loot_table/blocks/diorite_bricks.json
 4e720b6aa9639434fba2c927de115efcc8af33db data/extension/loot_table/blocks/diorite_brick_slab.json
 ac264a4bf9801773493e3bf5bcc93d56d3e80eba data/extension/loot_table/blocks/diorite_brick_stairs.json

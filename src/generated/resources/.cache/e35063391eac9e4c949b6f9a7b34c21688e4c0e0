@@ -1,4 +1,4 @@
-// 1.21.11	2026-01-08T00:19:45.6308587	Tags for minecraft:block mod id extension
+// 1.21.11	2026-01-21T10:18:12.9365515	Tags for minecraft:block mod id extension
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/block/fences.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/block/fences/nether_brick.json
 e994b502fa84d2d351afd20245604823cdd325df data/c/tags/block/glass_panes.json
@@ -6,10 +6,10 @@ a43ac87ba8bd1441c8c548aa7185c7f702fc032c data/c/tags/block/pumpkins.json
 ee90fd36ae9a8638d0d8f73aa91314f85ac2e3bd data/c/tags/block/sandstone/blocks.json
 4129d63523084b45c78c6fc8da77ed857f6e6a75 data/c/tags/block/sandstone/slabs.json
 bdef780f9a4c2965de35f74f5eb088150d9f694d data/c/tags/block/sandstone/stairs.json
-58d0284420e4afec95e2178528ca870e86c60c98 data/c/tags/block/villager_job_sites.json
+25f69372927871bc55fbc9896d0ae7f2155805b7 data/c/tags/block/villager_job_sites.json
 c0434c4e9b5cdc9314107095014bb559626cf0a9 data/extension/tags/block/copper_fire_base_blocks.json
 774150b55d685a73d5d8ed8604b24fb6c50b3992 data/minecraft/tags/block/campfires.json
-58d0284420e4afec95e2178528ca870e86c60c98 data/minecraft/tags/block/cauldrons.json
+25f69372927871bc55fbc9896d0ae7f2155805b7 data/minecraft/tags/block/cauldrons.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/minecraft/tags/block/fences.json
 b3d2c8447c90e1ca8431a1ac4ac31fe666de0bef data/minecraft/tags/block/fire.json
 4606b8be8c14776e5cf3697c37f4818194574a3b data/minecraft/tags/block/mineable/axe.json

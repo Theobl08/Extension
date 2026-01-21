@@ -1,4 +1,4 @@
-// 1.21.11	2026-01-08T00:50:25.6094398	Model Definitions - extension
+// 1.21.11	2026-01-21T10:18:12.9170147	Model Definitions - extension
 e23b5318f6e68839bb11de0c8e269fa6e25664a3 assets/extension/blockstates/andesite_bricks.json
 6cdc2bb357eca28bb56bad9d33abd2d1591f8772 assets/extension/blockstates/andesite_brick_slab.json
 facb4432604c0ed5acf1ad37f6198ba1ee4967b6 assets/extension/blockstates/andesite_brick_stairs.json
@@ -32,6 +32,7 @@ d2492abad953a8054a44649a56309d9e5a286675 assets/extension/blockstates/chiseled_s
 1ecf9253e65986b3f1a33fcdf11c67e75c55d653 assets/extension/blockstates/cut_soul_sandstone.json
 f04c8504b2f4ee9a7da461bbdadd2a4fd9bc0d70 assets/extension/blockstates/cut_soul_sandstone_slab.json
 12a9c60fb6e80f96ce589c24470f4d47d5d6f8bb assets/extension/blockstates/dark_prismarine_wall.json
+4ce9d18ec577d0f82b90d584282ef612584c0c48 assets/extension/blockstates/decay_cauldron.json
 f86d913ec9d8739bdcc0d72339868be6527c9841 assets/extension/blockstates/diorite_bricks.json
 097a1f5bbe394c45724b922e80afa79af56fba99 assets/extension/blockstates/diorite_brick_slab.json
 0c3e67a769ff5ccb3159af9b5cf9614c58004683 assets/extension/blockstates/diorite_brick_stairs.json

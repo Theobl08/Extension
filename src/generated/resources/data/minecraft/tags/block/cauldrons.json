@@ -45,6 +45,7 @@
     "extension:wind_charged_cauldron",
     "extension:weaving_cauldron",
     "extension:oozing_cauldron",
-    "extension:infested_cauldron"
+    "extension:infested_cauldron",
+    "extension:decay_cauldron"
   ]
 }

@@ -1,10 +1,12 @@
 package net.theobl.extension.datagen;
 
+import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.MinecartItem;
+import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CarvedPumpkinBlock;
 import net.neoforged.neoforge.common.ModConfigSpec;
@@ -14,12 +16,16 @@ import net.theobl.extension.Config;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.item.ModItems;
+import net.theobl.extension.item.alchemy.ModPotions;
 import net.theobl.extension.stats.ModStats;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModLanguageProvider extends LanguageProvider {
+    private static final List<String> POTIONS_TYPES = List.of("potion.", "splash_potion.", "lingering_potion.", "tipped_arrow.");
     public ModLanguageProvider(PackOutput output) {
         super(output, Extension.MODID, "en_us");
     }
@@ -42,6 +48,10 @@ public class ModLanguageProvider extends LanguageProvider {
                 add(item.get(),"Minecart with Monster Spawner");
             else if(item.get() == ModItems.BLUE_NETHER_WART.asItem() || !(item.get() instanceof BlockItem))
                 add(item.get(), capitalizeString(filterItemLang(item.get())));
+        }
+
+        for(DeferredHolder<Potion, ? extends Potion> potion : ModPotions.POTIONS.getEntries()) {
+            addPotion(potion);
         }
 
         addConfig(Config.BOAT_STEP_UP);
@@ -96,6 +106,20 @@ public class ModLanguageProvider extends LanguageProvider {
         String path = String.join(".", configValue.getPath());
         String key = "extension.configuration." + path;
         add(key, capitalizeString(path.replaceAll("(?<!_)(?=[A-Z])", " "))); //https://stackoverflow.com/questions/44644827/how-to-insert-space-before-capital-letter-for-a-string-using-java/44644996#44644996
+    }
+
+    private void addPotion(DeferredHolder<Potion, ?> potion) {
+        String name = potion.getId().getPath();
+        String effect = "effect." + name;
+        String prefix = "item.minecraft.";
+        if(!name.startsWith("long_") && !name.startsWith("strong_")) {
+            for(String type : POTIONS_TYPES) {
+                add(prefix + type + effect, capitalizeString(
+                        type.replace("tipped_", "")
+                            .replace(".","")
+                            .replace("_", " ")) + " of " + capitalizeString(name));
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")

@@ -24,19 +24,20 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.neoforged.neoforge.common.NeoForgeMod;
+import net.theobl.extension.item.alchemy.ModPotions;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.StreamSupport;
 
 import static net.minecraft.core.cauldron.CauldronInteraction.*;
 
 public interface ExtendedCauldronInteraction {
     CauldronInteraction.InteractionMap MILK = newInteractionMap("milk");
     Map<Holder<Potion>, CauldronInteraction.InteractionMap> POTIONS_INTERACTIONS = new HashMap<>();
-    List<Holder<Potion>> POTIONS = StreamSupport.stream(BuiltInRegistries.POTION.asHolderIdMap().spliterator(), false)
-            .filter(potionHolder -> !potionHolder.is(Potions.WATER)).toList();
+    List<Holder<Potion>> POTIONS = new ArrayList<>(BuiltInRegistries.POTION.stream().map(BuiltInRegistries.POTION::wrapAsHolder)
+            .filter(p -> !p.is(Potions.WATER)).toList());
 
     static void bootStrap() {
         addMilkInteractions(CauldronInteraction.EMPTY.map());
@@ -186,6 +187,7 @@ public interface ExtendedCauldronInteraction {
     }
 
     static void init() {
+        POTIONS.addAll(ModPotions.POTIONS.getEntries());
         for(Holder<Potion> potionHolder : POTIONS) {
             CauldronInteraction.InteractionMap interactionMap = newInteractionMap(potionHolder.unwrapKey().get().identifier().getPath());
             POTIONS_INTERACTIONS.put(potionHolder, interactionMap);
