@@ -125,53 +125,16 @@ public interface ExtendedCauldronInteraction {
             if(!level.isClientSide()) {
                 ItemStack tippedArrow = PotionContents.createItemStack(Items.TIPPED_ARROW, block.getPotion());
                 int count = itemInHand.getCount();
-                if(count >= 1 && count <= 16) {
-                    tippedArrow.setCount(count);
-                    player.setItemInHand(hand, createFilledResult(itemInHand, player, tippedArrow, true, count));
-                    PotionCauldronBlock.lowerFillLevelArrow(state, level, pos, 1);
-                } else if (count >= 17 && count <= 32) {
-                    if(state.getValue(PotionCauldronBlock.LEVEL) >= 2) {
-                        tippedArrow.setCount(count);
-                        player.setItemInHand(hand, createFilledResult(itemInHand, player, tippedArrow, true, count));
-                        PotionCauldronBlock.lowerFillLevelArrow(state, level, pos, 2);
-                    }
-                    else {
-                        tippedArrow.setCount(16);
-                        player.setItemInHand(hand, createFilledResult(itemInHand, player, tippedArrow, true, 16));
-                        PotionCauldronBlock.lowerFillLevelArrow(state, level, pos, 1);
-                    }
-                } else if (count >= 33 && count <= 48) {
-                    if(state.getValue(PotionCauldronBlock.LEVEL) >= 3) {
-                        tippedArrow.setCount(count);
-                        player.setItemInHand(hand, createFilledResult(itemInHand, player, tippedArrow, true, count));
-                        PotionCauldronBlock.lowerFillLevelArrow(state, level, pos, 3);
-                    } else if (state.getValue(PotionCauldronBlock.LEVEL) == 2) {
-                        tippedArrow.setCount(32);
-                        player.setItemInHand(hand, createFilledResult(itemInHand, player, tippedArrow, true, 32));
-                        PotionCauldronBlock.lowerFillLevelArrow(state, level, pos, 2);
-                    } else {
-                        tippedArrow.setCount(16);
-                        player.setItemInHand(hand, createFilledResult(itemInHand, player, tippedArrow, true, 16));
-                        PotionCauldronBlock.lowerFillLevelArrow(state, level, pos, 1);
-                    }
-                } else if (count >= 49 && count <= 64) {
-                    if(state.getValue(PotionCauldronBlock.LEVEL) >= 4) {
-                        tippedArrow.setCount(count);
-                        player.setItemInHand(hand, createFilledResult(itemInHand, player, tippedArrow, true, count));
-                        PotionCauldronBlock.lowerFillLevelArrow(state, level, pos, 4);
-                    } else if(state.getValue(PotionCauldronBlock.LEVEL) == 3) {
-                        tippedArrow.setCount(48);
-                        player.setItemInHand(hand, createFilledResult(itemInHand, player, tippedArrow, true, 48));
-                        PotionCauldronBlock.lowerFillLevelArrow(state, level, pos, 3);
-                    } else if (state.getValue(PotionCauldronBlock.LEVEL) == 2) {
-                        tippedArrow.setCount(32);
-                        player.setItemInHand(hand, createFilledResult(itemInHand, player, tippedArrow, true, 32));
-                        PotionCauldronBlock.lowerFillLevelArrow(state, level, pos, 2);
-                    } else {
-                        tippedArrow.setCount(16);
-                        player.setItemInHand(hand, createFilledResult(itemInHand, player, tippedArrow, true, 16));
-                        PotionCauldronBlock.lowerFillLevelArrow(state, level, pos, 1);
-                    }
+                int currentLevel = state.getValue(PotionCauldronBlock.LEVEL);
+                if((count >= 1 && count <= 16) || (count >= 17 && count <= 32 && currentLevel >= 2) || (count >= 33 && count <= 48 && currentLevel >= 3)
+                        || (count >= 49 && count <= 64 && currentLevel >= 4)) {
+                    craftTippedArrow(tippedArrow, state, level, pos, player, hand, itemInHand, count);
+                } else if (currentLevel == 1) {
+                    craftTippedArrow(tippedArrow, state, level, pos, player, hand, itemInHand, 16);
+                } else if (currentLevel == 2) {
+                    craftTippedArrow(tippedArrow, state, level, pos, player, hand, itemInHand, 32);
+                } else if (currentLevel == 3) {
+                    craftTippedArrow(tippedArrow, state, level, pos, player, hand, itemInHand, 48);
                 }
                 ModUtil.showPotionInteractParticles((ServerLevel) level, new PotionContents(block.getPotion()), pos, (double) (state.getValue(PotionCauldronBlock.LEVEL) - 1) / 4);
             }
@@ -185,6 +148,13 @@ public interface ExtendedCauldronInteraction {
     private static boolean isUnderWater(Level level, BlockPos pos) {
         FluidState fluidstate = level.getFluidState(pos.above());
         return fluidstate.is(FluidTags.WATER);
+    }
+
+    private static void craftTippedArrow(
+            ItemStack tippedArrow, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack itemInHand, int count) {
+        tippedArrow.setCount(count);
+        player.setItemInHand(hand, createFilledResult(itemInHand, player, tippedArrow, true, count));
+        PotionCauldronBlock.lowerFillLevelArrow(state, level, pos, Mth.ceil((float) count / 16.0F));
     }
 
     static void init() {
