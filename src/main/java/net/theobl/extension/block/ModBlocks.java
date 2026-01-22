@@ -15,6 +15,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.theobl.extension.Extension;
 import net.theobl.extension.item.ModItems;
+import net.theobl.extension.util.ModUtil;
 
 import java.util.*;
 import java.util.function.Function;
@@ -224,8 +225,8 @@ public class ModBlocks {
 
     private static Map<Holder<Potion>, DeferredBlock<PotionCauldronBlock>> registerPotionCauldrons() {
         Map<Holder<Potion>, DeferredBlock<PotionCauldronBlock>> potionCauldrons = new HashMap<>();
-        for (Holder<Potion> potion : ExtendedCauldronInteraction.POTIONS) {
-            String name = potion.getKey().identifier().getPath();
+        for (Holder<Potion> potion : ModUtil.POTIONS) {
+            String name = ModUtil.name(potion);
             DeferredBlock<PotionCauldronBlock> block = BLOCKS.registerBlock(name + "_cauldron",
                     p -> new PotionCauldronBlock(potion, ExtendedCauldronInteraction.POTIONS_INTERACTIONS.get(potion), p),
                     () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON));

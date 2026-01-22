@@ -18,6 +18,7 @@ import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.item.ModItems;
 import net.theobl.extension.item.alchemy.ModPotions;
 import net.theobl.extension.stats.ModStats;
+import net.theobl.extension.util.ModUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
@@ -109,7 +110,7 @@ public class ModLanguageProvider extends LanguageProvider {
     }
 
     private void addPotion(DeferredHolder<Potion, ?> potion) {
-        String name = potion.getId().getPath();
+        String name = ModUtil.name(potion);
         String effect = "effect." + name;
         String prefix = "item.minecraft.";
         if(!name.startsWith("long_") && !name.startsWith("strong_")) {

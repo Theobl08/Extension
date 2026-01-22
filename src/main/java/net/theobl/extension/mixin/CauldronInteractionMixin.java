@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.theobl.extension.block.ExtendedCauldronInteraction;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.util.ModUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -33,7 +34,7 @@ public interface CauldronInteractionMixin {
     @ModifyReturnValue(method = "lambda$bootStrap$1(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/InteractionResult;",
             at = @At("MIXINEXTRAS:EXPRESSION"))
     private static InteractionResult test(InteractionResult original, @Local PotionContents potionContents, @Local(argsOnly = true) BlockState state, @Local(argsOnly = true) Level level, @Local(argsOnly = true) BlockPos pos, @Local(argsOnly = true) Player player, @Local(argsOnly = true) InteractionHand hand, @Local(argsOnly = true) ItemStack itemInHand) {
-        if(potionContents != null && potionContents.potion().isPresent() && ExtendedCauldronInteraction.POTIONS.contains(potionContents.potion().get())) {
+        if(potionContents != null && potionContents.potion().isPresent() && ModUtil.POTIONS.contains(potionContents.potion().get())) {
             if (!level.isClientSide()) {
                 Item usedItem = itemInHand.getItem();
                 player.setItemInHand(hand, ItemUtils.createFilledResult(itemInHand, player, new ItemStack(Items.GLASS_BOTTLE)));

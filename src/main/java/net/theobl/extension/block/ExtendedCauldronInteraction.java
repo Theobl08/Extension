@@ -25,6 +25,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.theobl.extension.item.alchemy.ModPotions;
+import net.theobl.extension.util.ModUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,12 +33,12 @@ import java.util.List;
 import java.util.Map;
 
 import static net.minecraft.core.cauldron.CauldronInteraction.*;
+import static net.theobl.extension.util.ModUtil.createFilledResult;
+import static net.theobl.extension.util.ModUtil.name;
 
 public interface ExtendedCauldronInteraction {
     CauldronInteraction.InteractionMap MILK = newInteractionMap("milk");
     Map<Holder<Potion>, CauldronInteraction.InteractionMap> POTIONS_INTERACTIONS = new HashMap<>();
-    List<Holder<Potion>> POTIONS = new ArrayList<>(BuiltInRegistries.POTION.stream().map(BuiltInRegistries.POTION::wrapAsHolder)
-            .filter(p -> !p.is(Potions.WATER)).toList());
 
     static void bootStrap() {
         addMilkInteractions(CauldronInteraction.EMPTY.map());
@@ -63,7 +64,7 @@ public interface ExtendedCauldronInteraction {
         addDefaultInteractions(milk);
         addMilkInteractions(milk);
 
-        for(Holder<Potion> potion : POTIONS) {
+        for(Holder<Potion> potion : ModUtil.POTIONS) {
             Map<Item, CauldronInteraction> map = POTIONS_INTERACTIONS.get(potion).map();
             map.put(
                     Items.GLASS_BOTTLE,
@@ -187,33 +188,9 @@ public interface ExtendedCauldronInteraction {
     }
 
     static void init() {
-        POTIONS.addAll(ModPotions.POTIONS.getEntries());
-        for(Holder<Potion> potionHolder : POTIONS) {
-            CauldronInteraction.InteractionMap interactionMap = newInteractionMap(potionHolder.unwrapKey().get().identifier().getPath());
+        for(Holder<Potion> potionHolder : ModUtil.POTIONS) {
+            CauldronInteraction.InteractionMap interactionMap = newInteractionMap(name(potionHolder));
             POTIONS_INTERACTIONS.put(potionHolder, interactionMap);
-        }
-    }
-
-    static ItemStack createFilledResult(
-            ItemStack itemStack, Player player, ItemStack newItemStack, boolean limitCreativeStackSize, int consumedAmount) {
-        boolean isCreative = player.hasInfiniteMaterials();
-        if (limitCreativeStackSize && isCreative) {
-            if (!player.getInventory().contains(newItemStack)) {
-                player.getInventory().add(newItemStack);
-            }
-
-            return itemStack;
-        } else {
-            itemStack.consume(consumedAmount, player);
-            if (itemStack.isEmpty()) {
-                return newItemStack;
-            } else {
-                if (!player.getInventory().add(newItemStack)) {
-                    player.drop(newItemStack, false);
-                }
-
-                return itemStack;
-            }
         }
     }
 }
