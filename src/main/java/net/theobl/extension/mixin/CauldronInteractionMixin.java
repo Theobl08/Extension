@@ -6,6 +6,7 @@ import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -43,6 +44,7 @@ public interface CauldronInteractionMixin {
                 level.setBlockAndUpdate(pos, ModBlocks.POTION_CAULDRON.get(potionContents.potion().orElse(Potions.AWKWARD)).get().defaultBlockState());
                 level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
                 level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
+                ModUtil.showPotionInteractParticles((ServerLevel) level, potionContents, pos, 0.5);
             }
             return InteractionResult.SUCCESS;
         }

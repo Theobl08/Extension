@@ -4,11 +4,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -18,18 +19,14 @@ import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.neoforged.neoforge.common.NeoForgeMod;
-import net.theobl.extension.item.alchemy.ModPotions;
 import net.theobl.extension.util.ModUtil;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static net.minecraft.core.cauldron.CauldronInteraction.*;
@@ -79,6 +76,7 @@ public interface ExtendedCauldronInteraction {
                             PotionCauldronBlock.lowerFillLevel(state, level, pos);
                             level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                             level.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
+                            ModUtil.showPotionInteractParticles((ServerLevel) level, new PotionContents(potion), pos, (double) (state.getValue(PotionCauldronBlock.LEVEL) - 1) / 4);
                         }
 
                         return InteractionResult.SUCCESS;
@@ -97,6 +95,7 @@ public interface ExtendedCauldronInteraction {
                             level.setBlockAndUpdate(pos, state.cycle(PotionCauldronBlock.LEVEL));
                             level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
                             level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
+                            ModUtil.showPotionInteractParticles((ServerLevel) level, potionContents, pos, (double) state.getValue(PotionCauldronBlock.LEVEL) / 4);
                         }
 
                         return InteractionResult.SUCCESS;
@@ -174,6 +173,7 @@ public interface ExtendedCauldronInteraction {
                         PotionCauldronBlock.lowerFillLevelArrow(state, level, pos, 1);
                     }
                 }
+                ModUtil.showPotionInteractParticles((ServerLevel) level, new PotionContents(block.getPotion()), pos, (double) (state.getValue(PotionCauldronBlock.LEVEL) - 1) / 4);
             }
             return InteractionResult.SUCCESS;
         }
