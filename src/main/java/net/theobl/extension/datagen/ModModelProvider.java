@@ -17,6 +17,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.neoforged.neoforge.client.model.generators.blockstate.CompositeBlockStateModelBuilder;
@@ -310,6 +311,17 @@ public class ModModelProvider extends ModelProvider {
                                         )
                         )
         );
+
+        blockModels.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.dispatch(Blocks.WATER_CAULDRON)
+                                .with(
+                                        PropertyDispatch.initial(LayeredCauldronBlock.LEVEL)
+                                                .select(1, createLayeredCauldron(cauldron, potionLevel2))
+                                                .select(2, createLayeredCauldron(cauldron, potionLevel3))
+                                                .select(3, createLayeredCauldron(cauldron, potionFull))
+                                )
+                );
     }
 
     public static MultiVariant createLayeredCauldron(Identifier contentLevel, Identifier emptyCauldron) {

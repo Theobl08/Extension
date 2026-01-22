@@ -1,4 +1,4 @@
-// 1.21.11	2026-01-21T10:18:12.9170147	Model Definitions - extension
+// 1.21.11	2026-01-22T10:44:42.3981295	Model Definitions - extension
 e23b5318f6e68839bb11de0c8e269fa6e25664a3 assets/extension/blockstates/andesite_bricks.json
 6cdc2bb357eca28bb56bad9d33abd2d1591f8772 assets/extension/blockstates/andesite_brick_slab.json
 facb4432604c0ed5acf1ad37f6198ba1ee4967b6 assets/extension/blockstates/andesite_brick_stairs.json
@@ -449,3 +449,4 @@ a6dc9411195a1f938d5a50d550f69975b0c8e260 assets/extension/models/item/redstone_c
 cdbd7635b738acfd14b6087073d01ea84d81c6c4 assets/extension/models/item/red_nether_brick.json
 6e84941624d39fdac4099c2cbabdd849ab2f6c35 assets/extension/models/item/spawner_minecart.json
 ba1aa0b816edce004c4985dc84beaa6eaaa5490b assets/extension/models/item/tinted_glass_pane.json
+8c7335297b050dfe776892e7ff5fc9ff386de84f assets/minecraft/blockstates/water_cauldron.json
