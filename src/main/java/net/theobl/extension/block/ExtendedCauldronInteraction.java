@@ -66,20 +66,25 @@ public interface ExtendedCauldronInteraction {
             map.put(
                     Items.GLASS_BOTTLE,
                     (state, level, pos, player, hand, itemInHand) -> {
-                        if (!level.isClientSide()) {
-                            Item usedItem = itemInHand.getItem();
-                            player.setItemInHand(
-                                    hand, ItemUtils.createFilledResult(itemInHand, player, PotionContents.createItemStack(Items.POTION, potion))
-                            );
-                            player.awardStat(Stats.USE_CAULDRON);
-                            player.awardStat(Stats.ITEM_USED.get(usedItem));
-                            PotionCauldronBlock.lowerFillLevel(state, level, pos);
-                            level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                            level.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
-                            ModUtil.showPotionInteractParticles((ServerLevel) level, new PotionContents(potion), pos, (double) (state.getValue(PotionCauldronBlock.LEVEL) - 1) / 4);
-                        }
+                        if(state.getBlock() instanceof PotionCauldronBlock && state.getValue(PotionCauldronBlock.LEVEL) != 1) {
+                            if (!level.isClientSide()) {
+                                Item usedItem = itemInHand.getItem();
+                                player.setItemInHand(
+                                        hand, ItemUtils.createFilledResult(itemInHand, player, PotionContents.createItemStack(Items.POTION, potion))
+                                );
+                                player.awardStat(Stats.USE_CAULDRON);
+                                player.awardStat(Stats.ITEM_USED.get(usedItem));
+                                PotionCauldronBlock.lowerFillLevel(state, level, pos);
+                                level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                                level.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
+                                ModUtil.showPotionInteractParticles((ServerLevel) level, new PotionContents(potion), pos, (double) (state.getValue(PotionCauldronBlock.LEVEL) - 1) / 4);
+                            }
 
-                        return InteractionResult.SUCCESS;
+                            return InteractionResult.SUCCESS;
+                        }
+                        else  {
+                            return InteractionResult.TRY_WITH_EMPTY_HAND;
+                        }
                     }
             );
             map.put(Items.POTION, (state, level, pos, player, hand, itemInHand) -> {
