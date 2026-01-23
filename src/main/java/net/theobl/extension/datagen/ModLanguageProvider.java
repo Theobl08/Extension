@@ -77,6 +77,10 @@ public class ModLanguageProvider extends LanguageProvider {
         translateTags(StructureTags.class);
         translateTags(WorldPresetTags.class);
 
+        add("item.minecraft.tipped_arrow.effect.awkward", "Awkward Tipped Arrow");
+        add("item.minecraft.tipped_arrow.effect.mundane", "Mundane Tipped Arrow");
+        add("item.minecraft.tipped_arrow.effect.thick", "Thick Tipped Arrow");
+
         add("container.fletching", "Fletching");
         add(ModStats.INTERACT_WITH_FLETCHING_TABLE.toLanguageKey("stat"), "Interactions with Fletching Table");
     }
