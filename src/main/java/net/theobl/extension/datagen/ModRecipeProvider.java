@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.datagen.recipe.FletchingRecipeBuilder;
 import net.theobl.extension.item.ModItems;
 
 import javax.annotation.Nullable;
@@ -244,6 +245,14 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_stick", has(Items.STICK))
                 .unlockedBy("has_redstone", has(Items.COPPER_NUGGET))
                 .save(output);
+
+        fletching(RecipeCategory.COMBAT, Items.ARROW, 8)
+                .requires(Items.FLINT)
+                .requires(Items.STICK)
+                .requires(Tags.Items.FEATHERS)
+                .unlockedBy("has_feather", this.has(Items.FEATHER))
+                .unlockedBy("has_flint", this.has(Items.FLINT))
+                .save(this.output, Extension.asResource("arrow").toString());
     }
 
     protected void generateForEnabledBlockFamilies(FeatureFlagSet featureFlagSet) {
@@ -330,6 +339,10 @@ public class ModRecipeProvider extends RecipeProvider {
                 .group(groupName)
                 .unlockedBy("has_moss_block", has(Blocks.MOSS_BLOCK))
                 .save(output, Extension.MODID + ":" + getConversionRecipeName(result, Blocks.MOSS_BLOCK));
+    }
+
+    protected FletchingRecipeBuilder fletching(RecipeCategory category, ItemLike result, int count) {
+        return FletchingRecipeBuilder.fletching(this.items, category, result, count);
     }
 
     public static final class Runner extends RecipeProvider.Runner {

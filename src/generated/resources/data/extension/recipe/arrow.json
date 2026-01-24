@@ -1,12 +1,12 @@
 {
   "type": "extension:fletching",
   "ingredients": [
-      "minecraft:flint",
-      "minecraft:stick",
-      "minecraft:feather"
+    "minecraft:flint",
+    "minecraft:stick",
+    "#c:feathers"
   ],
   "result": {
-    "count": 6,
+    "count": 8,
     "id": "minecraft:arrow"
   }
 }

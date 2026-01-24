@@ -19,12 +19,14 @@ import java.util.List;
 @ParametersAreNonnullByDefault
 @NullMarked
 public class FletchingRecipe implements Recipe<CraftingInput> {
+    final String group;
     protected final ItemStack result;
     protected final List<Ingredient> ingredients;
     @Nullable
     private PlacementInfo placementInfo;
 
-    public FletchingRecipe(ItemStack result, List<Ingredient> ingredients) {
+    public FletchingRecipe(String group, ItemStack result, List<Ingredient> ingredients) {
+        this.group = group;
         this.result = result;
         this.ingredients = ingredients;
     }
@@ -55,6 +57,11 @@ public class FletchingRecipe implements Recipe<CraftingInput> {
     }
 
     @Override
+    public String group() {
+        return this.group;
+    }
+
+    @Override
     public RecipeType<? extends Recipe<CraftingInput>> getType() {
         return ModRecipeType.FLETCHING.get();
     }
@@ -82,12 +89,15 @@ public class FletchingRecipe implements Recipe<CraftingInput> {
 
     public static class Serializer implements RecipeSerializer<FletchingRecipe> {
         public static final MapCodec<FletchingRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
+                Codec.STRING.optionalFieldOf("group", "").forGetter(recipe -> recipe.group),
                 ItemStack.STRICT_CODEC.fieldOf("result").forGetter(FletchingRecipe::getResult),
                 Codec.lazyInitialized(() -> Ingredient.CODEC.listOf(3, 3)).fieldOf("ingredients").forGetter(FletchingRecipe::getIngredients)
         ).apply(inst, FletchingRecipe::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, FletchingRecipe> STREAM_CODEC =
                 StreamCodec.composite(
+                        ByteBufCodecs.STRING_UTF8,
+                        fletchingRecipe -> fletchingRecipe.group,
                         ItemStack.STREAM_CODEC,
                         fletchingRecipe -> fletchingRecipe.result,
                         Ingredient.CONTENTS_STREAM_CODEC.apply(ByteBufCodecs.list()),
