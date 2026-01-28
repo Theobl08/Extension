@@ -11,11 +11,11 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_flint": {
+    "has_glowstone": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:flint"
+            "items": "#c:dusts/glowstone"
           }
         ]
       },
@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:arrow"
+        "recipe": "extension:spectral_arrow"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -32,12 +32,12 @@
     [
       "has_the_recipe",
       "has_feather",
-      "has_flint"
+      "has_glowstone"
     ]
   ],
   "rewards": {
     "recipes": [
-      "extension:arrow"
+      "extension:spectral_arrow"
     ]
   }
 }

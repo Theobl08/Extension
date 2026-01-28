@@ -6,6 +6,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
@@ -246,13 +247,21 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_redstone", has(Items.COPPER_NUGGET))
                 .save(output);
 
-        fletching(RecipeCategory.COMBAT, Items.ARROW, 8)
+        fletching(RecipeCategory.COMBAT, Items.ARROW, 6)
                 .requires(Items.FLINT)
                 .requires(Items.STICK)
                 .requires(Tags.Items.FEATHERS)
-                .unlockedBy("has_feather", this.has(Items.FEATHER))
+                .unlockedBy("has_feather", this.has(Tags.Items.FEATHERS))
                 .unlockedBy("has_flint", this.has(Items.FLINT))
                 .save(this.output, Extension.asResource("arrow").toString());
+
+        fletching(RecipeCategory.COMBAT, Items.SPECTRAL_ARROW, 2)
+                .requires(Tags.Items.DUSTS_GLOWSTONE)
+                .requires(Items.STICK)
+                .requires(Tags.Items.FEATHERS)
+                .unlockedBy("has_feather", this.has(Tags.Items.FEATHERS))
+                .unlockedBy("has_glowstone", this.has(Tags.Items.DUSTS_GLOWSTONE))
+                .save(this.output, Extension.asResource(getItemName(Items.SPECTRAL_ARROW)).toString());
     }
 
     protected void generateForEnabledBlockFamilies(FeatureFlagSet featureFlagSet) {
