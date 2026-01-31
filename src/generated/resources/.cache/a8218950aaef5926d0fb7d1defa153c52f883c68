@@ -1,4 +1,4 @@
-// 1.21.11	2026-01-28T14:12:42.882464	Extension recipes
+// 1.21.11	2026-01-28T15:45:39.0147202	Extension recipes
 5c16416d64e7db080b2c73084b1629491b646d8d data/extension/advancement/recipes/building_blocks/andesite_brick_slab.json
 7f9ca3c4d1a5e8ceb53961e58130aef2dae2544c data/extension/advancement/recipes/building_blocks/andesite_brick_stairs.json
 b6298d6dc6fe9584a3b12dacf468c5399e54eaaf data/extension/advancement/recipes/building_blocks/blue_nether_bricks.json
@@ -303,6 +303,7 @@ f6e2c572c60fd4eba6477986f5b9260e475c5788 data/extension/recipe/spectral_arrow.js
 90afa4c2d7c25b50a658f07433102a6b4a570660 data/extension/recipe/stone_wall_from_stone_stonecutting.json
 3e29ddb2085266b9ef1f6e2809f0c2dd30af39ff data/extension/recipe/tinted_glass_pane.json
 48e5e0edbb3ab5b02263ed67fbc3e02e9114f199 data/extension/recipe/tinted_glass_pane_from_glass_pane.json
+8c9c89dfc7816c65932b4b56e68345beb5003f1a data/extension/recipe/tipped_arrow.json
 fc1a07d35639b07c417076e3ffb498154bab43c3 data/minecraft/advancement/recipes/building_blocks/stone_bricks.json
 76c6324df6ca5ab8aef23d366614226538ba3c25 data/minecraft/advancement/recipes/building_blocks/warped_wart_block.json
 b3a2d3088c3c60f99244b9d2356f9657192d6187 data/minecraft/recipe/stone_bricks.json

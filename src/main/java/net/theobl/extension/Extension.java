@@ -67,7 +67,7 @@ public class Extension {
     public static final double BRIGHTNESS_MAX = 12;
     public static final double BRIGHTNESS_STEP = 0.05;
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     static boolean gamerule_fire_damage = GameRules.FIRE_DAMAGE.defaultValue();
 

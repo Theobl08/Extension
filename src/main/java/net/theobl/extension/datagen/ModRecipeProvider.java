@@ -20,6 +20,7 @@ import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.datagen.recipe.FletchingRecipeBuilder;
 import net.theobl.extension.item.ModItems;
+import net.theobl.extension.item.crafting.TippedArrowFletchingRecipe;
 
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
@@ -262,6 +263,8 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_feather", this.has(Tags.Items.FEATHERS))
                 .unlockedBy("has_glowstone", this.has(Tags.Items.DUSTS_GLOWSTONE))
                 .save(this.output, Extension.asResource(getItemName(Items.SPECTRAL_ARROW)).toString());
+
+        SpecialRecipeBuilder.special(TippedArrowFletchingRecipe::new).save(this.output, Extension.asResource("tipped_arrow").toString());
     }
 
     protected void generateForEnabledBlockFamilies(FeatureFlagSet featureFlagSet) {
