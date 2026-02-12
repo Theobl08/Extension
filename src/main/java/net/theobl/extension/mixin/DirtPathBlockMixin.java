@@ -14,7 +14,8 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(DirtPathBlock.class)
 public class DirtPathBlockMixin {
     @ModifyReturnValue(method = "canSurvive", at = @At("RETURN"))
-    private boolean canSurviveUnderNonFullBlocks(boolean original, @Local(argsOnly = true) LevelReader level, @Local(argsOnly = true) BlockPos pos, @Local(ordinal = 1) BlockState blockState) {
+    private boolean canSurviveUnderNonFullBlocks(boolean original, @Local(argsOnly = true) LevelReader level, @Local(argsOnly = true) BlockPos pos) {
+        BlockState blockState = level.getBlockState(pos.above());
         return original || !blockState.isFaceSturdy(level, pos, Direction.DOWN, SupportType.FULL);
     }
 }
