@@ -19,7 +19,8 @@
     "MinecartSpawnerMixin",
     "NoiseChunkBasedGeneratorMixin",
     "ShovelItemMixin",
-    "SliderControlMixin"
+    "SliderControlMixin",
+    "storagedrawers.DrawerOverlayMixin"
   ],
   "client": [
     "ClientLevelMixin",
