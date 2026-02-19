@@ -152,6 +152,8 @@
   "item.minecraft.tipped_arrow.effect.mundane": "Mundane Tipped Arrow",
   "item.minecraft.tipped_arrow.effect.thick": "Thick Tipped Arrow",
   "itemGroup.extension": "Extension",
+  "potion.longPotion": "Extended",
+  "potion.strongPotion": "Enhanced",
   "stat.extension.interact_with_fletching_table": "Interactions with Fletching Table",
   "tag.banner_pattern.minecraft.no_item_required": "No Item Required",
   "tag.banner_pattern.minecraft.pattern_item.bordure_indented": "Pattern Item Bordure Indented",

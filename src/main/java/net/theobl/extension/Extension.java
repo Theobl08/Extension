@@ -3,8 +3,11 @@ package net.theobl.extension;
 import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.OptionInstance;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
@@ -17,8 +20,12 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.PotionItem;
+import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionBrewing;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -37,6 +44,7 @@ import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityInvulnerabilityCheckEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -55,6 +63,7 @@ import net.theobl.extension.item.crafting.ModRecipeType;
 import net.theobl.extension.stats.ModStats;
 import org.slf4j.Logger;
 
+import java.util.List;
 import java.util.Optional;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -185,6 +194,29 @@ public class Extension {
                 event.getSource().is(DamageTypeTags.IS_FIRE) &&
                 !player.level().getGameRules().get(GameRules.FIRE_DAMAGE)) {
             event.setInvulnerable(true);
+        }
+    }
+
+    @SubscribeEvent
+    public void itemTooltip(ItemTooltipEvent event) {
+        ItemStack stack = event.getItemStack();
+        if(stack.getItem() instanceof PotionItem) {
+            PotionContents potionContents = stack.get(DataComponents.POTION_CONTENTS);
+            if(potionContents != null && potionContents.potion().isPresent()) {
+                Holder<Potion> potion = potionContents.potion().get();
+                String potionName = potion.getKey().identifier().getPath();
+                List<Component> tooltip = event.getToolTip();
+
+                int index = tooltip.size();
+                if(event.getFlags().isAdvanced())
+                    index = index - 2; // Prevent our addition being added after the advanced tooltip
+
+                if(potionName.startsWith("long")) {
+                    tooltip.add(index, Component.translatable("potion.longPotion").withStyle(ChatFormatting.DARK_GRAY));
+                } else if(potionName.startsWith("strong")) {
+                    tooltip.add(index, Component.translatable("potion.strongPotion").withStyle(ChatFormatting.DARK_GRAY));
+                }
+            }
         }
     }
 
