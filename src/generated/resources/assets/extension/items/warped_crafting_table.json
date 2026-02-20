@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "extension:block/warped_crafting_table"
+  }
+}

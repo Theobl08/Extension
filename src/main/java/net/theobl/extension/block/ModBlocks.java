@@ -27,6 +27,8 @@ public class ModBlocks {
     // Create a Deferred Register to hold Blocks which will all be registered under the "extension" namespace
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Extension.MODID);
 
+    private static final List<Block> PLANKS = BuiltInRegistries.BLOCK.stream().filter(block -> ModUtil.name(block).endsWith("planks")).toList();
+
     // Creates a new Block with the id "extension:stone_wall", combining the namespace and path
     public static final DeferredBlock<Block> STONE_WALL = registerBlock("stone_wall",
             WallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE_WALL).forceSolidOn());
@@ -215,6 +217,30 @@ public class ModBlocks {
             MilkCauldronBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON));
     public static final Map<Holder<Potion>, DeferredBlock<PotionCauldronBlock>> POTION_CAULDRON = registerPotionCauldrons();
 
+//    public static final DeferredBlock<Block> SPRUCE_CRAFTING_TABLE = registerBlock("spruce_crafting_table", CraftingTableBlock::new,
+//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE));
+//    public static final DeferredBlock<Block> BIRCH_CRAFTING_TABLE = registerBlock("birch_crafting_table", CraftingTableBlock::new,
+//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE));
+//    public static final DeferredBlock<Block> JUNGLE_CRAFTING_TABLE = registerBlock("jungle_crafting_table", CraftingTableBlock::new,
+//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE));
+//    public static final DeferredBlock<Block> ACACIA_CRAFTING_TABLE = registerBlock("acacia_crafting_table", CraftingTableBlock::new,
+//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE));
+//    public static final DeferredBlock<Block> DARK_OAK_CRAFTING_TABLE = registerBlock("dark_oak_crafting_table", CraftingTableBlock::new,
+//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE));
+//    public static final DeferredBlock<Block> MANGROVE_CRAFTING_TABLE = registerBlock("mangrove_crafting_table", CraftingTableBlock::new,
+//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE));
+//    public static final DeferredBlock<Block> CHERRY_CRAFTING_TABLE = registerBlock("cherry_crafting_table", CraftingTableBlock::new,
+//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE).sound(SoundType.CHERRY_WOOD));
+//    public static final DeferredBlock<Block> PALE_OAK_CRAFTING_TABLE = registerBlock("pale_oak_crafting_table", CraftingTableBlock::new,
+//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE));
+//    public static final DeferredBlock<Block> BAMBOO_CRAFTING_TABLE = registerBlock("bamboo_crafting_table", CraftingTableBlock::new,
+//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE).sound(SoundType.BAMBOO_WOOD));
+//    public static final DeferredBlock<Block> CRIMSON_CRAFTING_TABLE = registerBlock("crimson_crafting_table", CraftingTableBlock::new,
+//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE).sound(SoundType.NETHER_WOOD));
+//    public static final DeferredBlock<Block> WARPED_CRAFTING_TABLE = registerBlock("warped_crafting_table", CraftingTableBlock::new,
+//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE).sound(SoundType.NETHER_WOOD));
+    public static final Map<Block, DeferredBlock<Block>> VARIANTS_CRAFTING_TABLE = registerCraftingTables();
+
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return state -> state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
     }
@@ -233,6 +259,26 @@ public class ModBlocks {
             potionCauldrons.put(potion, block);
         }
         return potionCauldrons;
+    }
+
+    private static Map<Block, DeferredBlock<Block>> registerCraftingTables() {
+        Map<Block, DeferredBlock<Block>> blocks = new HashMap<>();
+        for (Block plank : PLANKS) {
+            if(plank == Blocks.OAK_PLANKS) {
+                continue; // Vanilla crafting table is based of oak planks
+            }
+            String name = ModUtil.name(plank).replace("planks", "crafting_table");
+            BlockBehaviour.Properties properties = BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE);
+            if(name.contains("cherry")) {
+                properties = properties.sound(SoundType.CHERRY_WOOD);
+            } else if(name.contains("bamboo")) {
+                properties = properties.sound(SoundType.BAMBOO_WOOD);
+            } else if(name.contains("crimson") || name.contains("warped")) {
+                properties = properties.sound(SoundType.NETHER_WOOD);
+            }
+            blocks.put(plank, registerBlock(name, CraftingTableBlock::new, properties));
+        }
+        return blocks;
     }
 
     public static <T extends Block> DeferredBlock<Block> registerStair(String name, DeferredBlock<T> baseBlock) {

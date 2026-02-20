@@ -123,6 +123,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 tag(Tags.Blocks.VILLAGER_JOB_SITES).add(deferredBlock.get());
             }
 
+            if(deferredBlock.get() instanceof CraftingTableBlock) {
+                tag(Tags.Blocks.PLAYER_WORKSTATIONS_CRAFTING_TABLES).add(deferredBlock.get());
+            }
+
             if(deferredBlock.get().toString().contains("soul_sandstone")) {
                 tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(deferredBlock.get());
                 if(deferredBlock.get() instanceof StairBlock)
@@ -135,6 +139,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             
             if(mineableWithPickaxe(deferredBlock.get()))
                 tag(BlockTags.MINEABLE_WITH_PICKAXE).add(deferredBlock.get());
+
+            if(mineableWithAxe(deferredBlock.get()))
+                tag(BlockTags.MINEABLE_WITH_AXE).add(deferredBlock.get());
         }
     }
 
@@ -146,5 +153,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                         block.toString().contains("polished") ||
                         block.defaultBlockState().is(ModBlocks.REDSTONE_LANTERN.get()) ||
                         block.defaultBlockState().is(ModBlocks.NETHERITE_STAIRS.get()));
+    }
+
+    private boolean mineableWithAxe(Block block) {
+        return block instanceof CraftingTableBlock;
     }
 }

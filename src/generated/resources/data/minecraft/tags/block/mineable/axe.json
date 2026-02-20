@@ -5,6 +5,17 @@
     "extension:copper_o_lantern",
     "extension:copper_campfire",
     "extension:redstone_o_lantern",
-    "extension:redstone_campfire"
+    "extension:redstone_campfire",
+    "extension:spruce_crafting_table",
+    "extension:birch_crafting_table",
+    "extension:jungle_crafting_table",
+    "extension:acacia_crafting_table",
+    "extension:cherry_crafting_table",
+    "extension:dark_oak_crafting_table",
+    "extension:pale_oak_crafting_table",
+    "extension:mangrove_crafting_table",
+    "extension:bamboo_crafting_table",
+    "extension:crimson_crafting_table",
+    "extension:warped_crafting_table"
   ]
 }

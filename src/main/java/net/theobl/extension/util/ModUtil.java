@@ -11,6 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.block.Block;
 import net.theobl.extension.item.alchemy.ModPotions;
 
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public class ModUtil {
     public static <T> String name(T value) {
         return switch (value) {
             case Holder<?> holder -> holder.getKey() != null ? holder.getKey().identifier().getPath() : holder.toString();
+            case Block block -> BuiltInRegistries.BLOCK.getKey(block).getPath();
             case null, default -> "";
         };
     }

@@ -35,6 +35,9 @@ public class ModLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         add("itemGroup.extension", "Extension");
 
+        add("potion.longPotion", "Extended");
+        add("potion.strongPotion", "Enhanced");
+
         for(DeferredHolder<Block, ? extends Block> block : ModBlocks.BLOCKS.getEntries()) {
             if(block.get() instanceof CarvedPumpkinBlock)
                 add(block.get(),capitalizeString(filterBlockLang(block.get())).replace(" O ", " o'"));
