@@ -25,6 +25,7 @@
     "SliderControlMixin"
   ],
   "client": [
+    "BedRendererMixin",
     "ClientLevelMixin",
     "FogRendererMixin",
     "LightTextureMixin",
