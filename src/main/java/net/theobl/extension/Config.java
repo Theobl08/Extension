@@ -31,6 +31,10 @@ public class Config {
             BUILDER.comment("Whether damageable items becomes unbreakable when the unbreaking enchantment is at max level")
                     .define("unbreakableAtMaxUnbreakingLevel", false);
 
+    public static final ModConfigSpec.BooleanValue PISTONS_CAN_PUSH_BLOCK_ENTITIES =
+            BUILDER.comment("Whether pistons can push block entities")
+                    .define("pistonsPushBlockEntities", false);
+
     static final ModConfigSpec SPEC = BUILDER.build();
 
     public static Boolean clearVoid;
@@ -38,6 +42,7 @@ public class Config {
     public static Boolean boatStepUp;
     public static Boolean farmlandTrample;
     public static Boolean unbreakableAtMaxUnbreakingLevel;
+    public static Boolean pistonsCanPushBlockEntities;
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
@@ -46,5 +51,6 @@ public class Config {
         boatStepUp = BOAT_STEP_UP.get();
         farmlandTrample = FARMLAND_TRAMPLE.get();
         unbreakableAtMaxUnbreakingLevel = UNBREAKABLE_AT_MAX_UNBREAKING_LEVEL.get();
+        pistonsCanPushBlockEntities = PISTONS_CAN_PUSH_BLOCK_ENTITIES.get();
     }
 }

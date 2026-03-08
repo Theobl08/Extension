@@ -1,0 +1,5 @@
+{
+  "net/minecraft/world/level/block/piston/PistonMovingBlockEntity": [
+    "net/theobl/extension/extensions/PistonMovingBlockEntityExtension"
+  ]
+}

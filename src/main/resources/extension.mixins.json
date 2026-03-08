@@ -21,6 +21,8 @@
     "ItemStackMixin",
     "MinecartSpawnerMixin",
     "NoiseChunkBasedGeneratorMixin",
+    "PistonBaseBlockMixin",
+    "PistonMovingBlockEntityMixin",
     "ShovelItemMixin",
     "SliderControlMixin"
   ],
@@ -29,7 +31,8 @@
     "ClientLevelMixin",
     "FogRendererMixin",
     "LightTextureMixin",
-    "OptionInstanceMixin"
+    "OptionInstanceMixin",
+    "PistonHeadBlockRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

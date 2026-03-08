@@ -50,6 +50,8 @@ neoForge {
         file('src/main/resources/META-INF/accesstransformer.cfg')
     }
 
+    interfaceInjectionData.from file("src/main/resources/META-INF/interfaces.json")
+
     // Default run configurations.
     // These can be tweaked, removed, or duplicated as needed.
     runs {

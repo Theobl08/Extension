@@ -1,6 +1,5 @@
 package net.theobl.extension.datagen;
 
-import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.*;
 import net.minecraft.world.item.BlockItem;
@@ -22,7 +21,6 @@ import net.theobl.extension.util.ModUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ModLanguageProvider extends LanguageProvider {
@@ -63,6 +61,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addConfig(Config.NO_FIRE_OVERLAY);
         addConfig(Config.FARMLAND_TRAMPLE);
         addConfig(Config.UNBREAKABLE_AT_MAX_UNBREAKING_LEVEL);
+        addConfig(Config.PISTONS_CAN_PUSH_BLOCK_ENTITIES);
 
         translateTags(BannerPatternTags.class);
         translateTags(BiomeTags.class);
