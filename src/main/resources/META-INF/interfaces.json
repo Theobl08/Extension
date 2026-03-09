@@ -1,5 +1,9 @@
 {
   "net/minecraft/world/level/block/piston/PistonMovingBlockEntity": [
     "net/theobl/extension/extensions/PistonMovingBlockEntityExtension"
+  ],
+
+  "net/minecraft/client/renderer/blockentity/state/PistonHeadRenderState": [
+    "net/theobl/extension/extensions/PistonHeadRenderStateExtension"
   ]
 }

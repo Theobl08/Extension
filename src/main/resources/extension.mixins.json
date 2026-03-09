@@ -32,7 +32,8 @@
     "FogRendererMixin",
     "LightTextureMixin",
     "OptionInstanceMixin",
-    "PistonHeadBlockRendererMixin"
+    "PistonHeadBlockRendererMixin",
+    "PistonHeadRenderStateMixin"
   ],
   "injectors": {
     "defaultRequire": 1
