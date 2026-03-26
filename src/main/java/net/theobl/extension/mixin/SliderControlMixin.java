@@ -9,6 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.Identifier;
 import net.theobl.extension.Extension;
+import net.theobl.extension.ExtensionClient;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
@@ -32,9 +33,9 @@ public class SliderControlMixin {
     @Inject(method = "<init>", at = @At("RETURN"), remap = false)
     public void init(Identifier id, Collection dependencies, Component name, DependentValue enabled, StorageEventHandler storage, Function tooltipProvider, OptionImpact impact, Set flags, DependentValue defaultValue, Boolean controlHiddenWhenDisabled, OptionBinding binding, Consumer applyHook, DependentValue validator, ControlValueFormatter valueFormatter, CallbackInfo ci) {
         if (((IntegerOption) (Object) this).getName().getContents() instanceof TranslatableContents component && component.getKey().equals("options.gamma")) {
-            int min = (int) (Extension.BRIGHTNESS_MIN * 100);
-            int max = (int) (Extension.BRIGHTNESS_MAX * 100);
-            int interval = (int) (Extension.BRIGHTNESS_STEP * 100);
+            int min = (int) (ExtensionClient.BRIGHTNESS_MIN * 100);
+            int max = (int) (ExtensionClient.BRIGHTNESS_MAX * 100);
+            int interval = (int) (ExtensionClient.BRIGHTNESS_STEP * 100);
             this.validator = new ConstantValue<>(new Range(min, max, interval));
         }
     }

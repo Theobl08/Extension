@@ -1,11 +1,8 @@
 package net.theobl.extension;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.OptionInstance;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -68,17 +65,12 @@ import net.theobl.extension.stats.ModStats;
 import org.slf4j.Logger;
 
 import java.util.List;
-import java.util.Optional;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(Extension.MODID)
 public class Extension {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "extension";
-
-    public static final double BRIGHTNESS_MIN = -1;
-    public static final double BRIGHTNESS_MAX = 12;
-    public static final double BRIGHTNESS_STEP = 0.05;
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
@@ -237,30 +229,5 @@ public class Extension {
 
     public static Identifier asResource(String path) {
         return Identifier.fromNamespaceAndPath(MODID, path);
-    }
-
-    public enum BetterSlider implements OptionInstance.SliderableValueSet<Double> {
-        INSTANCE;
-
-        @Override
-        public double toSliderValue(Double value) {
-            return (value - BRIGHTNESS_MIN) / (BRIGHTNESS_MAX - BRIGHTNESS_MIN);
-        }
-
-        @Override
-        public Double fromSliderValue(double value) {
-            return value * (BRIGHTNESS_MAX - BRIGHTNESS_MIN) + BRIGHTNESS_MIN;
-        }
-
-        @Override
-        public Optional<Double> validateValue(Double value) {
-            return value >= BRIGHTNESS_MIN && value <= BRIGHTNESS_MAX ? Optional.of(value) : Optional.empty();
-        }
-
-        @Override
-        public Codec<Double> codec() {
-            return Codec.either(Codec.doubleRange(BRIGHTNESS_MIN, BRIGHTNESS_MAX), Codec.BOOL)
-                    .xmap(either -> either.map(value -> value, value -> value ? 1.0 : 0.0), Either::left);
-        }
     }
 }

@@ -6,6 +6,7 @@ import net.minecraft.client.OptionInstance;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
 import net.theobl.extension.Extension;
+import net.theobl.extension.ExtensionClient;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
@@ -48,7 +49,7 @@ public abstract class OptionInstanceMixin {
         if (this.caption.getContents() instanceof TranslatableContents translatableContents && translatableContents.getKey().equals("options.gamma")) {
             this.onValueUpdate = this::onValueUpdate;
             this.toString = this::toString;
-            this.values = Extension.BetterSlider.INSTANCE;
+            this.values = ExtensionClient.BetterSlider.INSTANCE;
             this.codec = this.values.codec();
         }
     }
@@ -58,7 +59,7 @@ public abstract class OptionInstanceMixin {
     }
 
     private void onValueUpdate(Double brightness) {
-        brightness = Math.round(brightness / Extension.BRIGHTNESS_STEP) * Extension.BRIGHTNESS_STEP;
+        brightness = Math.round(brightness / ExtensionClient.BRIGHTNESS_STEP) * ExtensionClient.BRIGHTNESS_STEP;
         Minecraft.getInstance().options.gamma().set(brightness);
     }
 }
