@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "extension:blue_nether_bricks",
   "result": {
-    "count": 1,
     "id": "extension:blue_nether_brick_tiles"
   }
 }

@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "extension:soul_sandstone",
   "result": {
-    "count": 1,
     "id": "extension:soul_sandstone_stairs"
   }
 }

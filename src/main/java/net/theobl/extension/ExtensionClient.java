@@ -1,16 +1,13 @@
 package net.theobl.extension;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
+import net.minecraft.client.color.block.BlockTintSource;
+import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
@@ -23,16 +20,16 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RenderBlockScreenEffectEvent;
-import net.neoforged.neoforge.client.extensions.common.IClientBlockExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.registries.DeferredBlock;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.compat.jei.ExtensionJeiPlugin;
 import net.theobl.extension.inventory.FletchingScreen;
 import net.theobl.extension.inventory.ModMenuType;
+
+import java.util.List;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
 @Mod(value = Extension.MODID, dist = Dist.CLIENT)
@@ -51,7 +48,6 @@ public class ExtensionClient {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         // Some client setup code
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TINTED_GLASS_PANE.get(), ChunkSectionLayer.TRANSLUCENT);
     }
 
     @SubscribeEvent
@@ -62,31 +58,20 @@ public class ExtensionClient {
     @SubscribeEvent
     public static void registerClientExtension(RegisterClientExtensionsEvent event) {
         // Fix https://bugs.mojang.com/browse/MC/issues/MC-132734
-        if(!event.isBlockRegistered(Blocks.WATER_CAULDRON)) {
-            event.registerBlock(new IClientBlockExtensions() {
-                @Override
-                public boolean areBreakingParticlesTinted(BlockState state, ClientLevel level, BlockPos pos) {
-                    return false;
-                }
-            }, Blocks.WATER_CAULDRON);
-        }
-        event.registerBlock(new IClientBlockExtensions() {
-            @Override
-            public boolean areBreakingParticlesTinted(BlockState state, ClientLevel level, BlockPos pos) {
-                return false;
-            }
-        }, ModBlocks.POTION_CAULDRON.values().stream().map(DeferredBlock::get).toArray(Block[]::new));
     }
 
     @SubscribeEvent
-    public static void registerColorHandlers(RegisterColorHandlersEvent.Block event) {
+    public static void registerColorHandlers(RegisterColorHandlersEvent.BlockTintSources event) {
         ModBlocks.POTION_CAULDRON.values().forEach(block -> {
-            event.register(((state, level, pos, tintIndex) -> {
-                if(level != null && pos != null && level.getBlockState(pos).is(block.get())) {
-                    return PotionContents.getColorOptional(block.get().getPotion().value().getEffects()).orElse(PotionContents.BASE_POTION_COLOR);
-                }
-                else {
+            event.register(List.of(new BlockTintSource() {
+                @Override
+                public int color(BlockState state) {
                     return -1;
+                }
+
+                @Override
+                public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
+                    return PotionContents.getColorOptional(block.get().getPotion().value().getEffects()).orElse(PotionContents.BASE_POTION_COLOR);
                 }
             }), block.get());
         });

@@ -5,7 +5,6 @@
   "experience": 0.1,
   "ingredient": "extension:soul_sandstone",
   "result": {
-    "count": 1,
     "id": "extension:smooth_soul_sandstone"
   }
 }

@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "extension:polished_stone",
   "result": {
-    "count": 1,
     "id": "minecraft:stone_brick_wall"
   }
 }

@@ -3,11 +3,12 @@ package net.theobl.extension.item.crafting;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.jspecify.annotations.NullMarked;
@@ -19,16 +20,51 @@ import java.util.List;
 @ParametersAreNonnullByDefault
 @NullMarked
 public class FletchingRecipe implements Recipe<CraftingInput> {
+    public static final MapCodec<FletchingRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
+            inst -> inst.group(
+                    Codec.STRING.optionalFieldOf("group", "").forGetter(recipe -> recipe.group),
+                    ItemStackTemplate.CODEC.fieldOf("result").forGetter(FletchingRecipe::getResult),
+                    Codec.lazyInitialized(() -> Ingredient.CODEC.listOf(3, 3)).fieldOf("ingredients").forGetter(FletchingRecipe::getIngredients)
+            )
+            .apply(inst, FletchingRecipe::new)
+    );
+    public static final StreamCodec<RegistryFriendlyByteBuf, FletchingRecipe> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.STRING_UTF8,
+            fletchingRecipe -> fletchingRecipe.group,
+            ItemStackTemplate.STREAM_CODEC,
+            fletchingRecipe -> fletchingRecipe.result,
+            Ingredient.CONTENTS_STREAM_CODEC.apply(ByteBufCodecs.list()),
+            fletchingRecipe -> fletchingRecipe.ingredients,
+            FletchingRecipe::new
+    );
+    public static final RecipeSerializer<FletchingRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
+
     final String group;
-    protected final ItemStack result;
+    protected final ItemStackTemplate result;
     protected final List<Ingredient> ingredients;
     @Nullable
     private PlacementInfo placementInfo;
 
-    public FletchingRecipe(String group, ItemStack result, List<Ingredient> ingredients) {
+    public FletchingRecipe(String group, ItemStackTemplate result, List<Ingredient> ingredients) {
         this.group = group;
         this.result = result;
         this.ingredients = ingredients;
+    }
+
+    public NonNullList<ItemStack> getRemainingItems(CraftingInput input) {
+        return defaultCraftingReminder(input);
+    }
+
+    static NonNullList<ItemStack> defaultCraftingReminder(CraftingInput input) {
+        NonNullList<ItemStack> result = NonNullList.withSize(input.size(), ItemStack.EMPTY);
+
+        for (int slot = 0; slot < result.size(); slot++) {
+            var item = input.getItem(slot);
+            ItemStackTemplate remainder = item.getCraftingRemainder();
+            result.set(slot, remainder != null ? remainder.create() : ItemStack.EMPTY);
+        }
+
+        return result;
     }
 
     @Override
@@ -47,13 +83,18 @@ public class FletchingRecipe implements Recipe<CraftingInput> {
     }
 
     @Override
-    public ItemStack assemble(CraftingInput input, HolderLookup.Provider registries) {
-        return this.result.copy();
+    public ItemStack assemble(CraftingInput input) {
+        return this.result.create();
+    }
+
+    @Override
+    public boolean showNotification() {
+        return true;
     }
 
     @Override
     public RecipeSerializer<? extends Recipe<CraftingInput>> getSerializer() {
-        return ModRecipeSerializer.FLETCHING_RECIPE.get();
+        return SERIALIZER;
     }
 
     @Override
@@ -79,39 +120,11 @@ public class FletchingRecipe implements Recipe<CraftingInput> {
         return RecipeBookCategories.CRAFTING_MISC;
     }
 
-    public ItemStack getResult() {
+    public ItemStackTemplate getResult() {
         return result;
     }
 
     public List<Ingredient> getIngredients() {
         return ingredients;
-    }
-
-    public static class Serializer implements RecipeSerializer<FletchingRecipe> {
-        public static final MapCodec<FletchingRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Codec.STRING.optionalFieldOf("group", "").forGetter(recipe -> recipe.group),
-                ItemStack.STRICT_CODEC.fieldOf("result").forGetter(FletchingRecipe::getResult),
-                Codec.lazyInitialized(() -> Ingredient.CODEC.listOf(3, 3)).fieldOf("ingredients").forGetter(FletchingRecipe::getIngredients)
-        ).apply(inst, FletchingRecipe::new));
-
-        public static final StreamCodec<RegistryFriendlyByteBuf, FletchingRecipe> STREAM_CODEC =
-                StreamCodec.composite(
-                        ByteBufCodecs.STRING_UTF8,
-                        fletchingRecipe -> fletchingRecipe.group,
-                        ItemStack.STREAM_CODEC,
-                        fletchingRecipe -> fletchingRecipe.result,
-                        Ingredient.CONTENTS_STREAM_CODEC.apply(ByteBufCodecs.list()),
-                        fletchingRecipe -> fletchingRecipe.ingredients,
-                        FletchingRecipe::new);
-
-        @Override
-        public MapCodec<FletchingRecipe> codec() {
-            return CODEC;
-        }
-
-        @Override
-        public StreamCodec<RegistryFriendlyByteBuf, FletchingRecipe> streamCodec() {
-            return STREAM_CODEC;
-        }
     }
 }

@@ -6,6 +6,7 @@ import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
+import net.minecraft.core.cauldron.CauldronInteractions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -28,11 +29,11 @@ import net.theobl.extension.util.ModUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Mixin(CauldronInteraction.class)
-public interface CauldronInteractionMixin {
+@Mixin(CauldronInteractions.class)
+public abstract class CauldronInteractionMixin {
     @Definition(id = "TRY_WITH_EMPTY_HAND", field = "Lnet/minecraft/world/InteractionResult;TRY_WITH_EMPTY_HAND:Lnet/minecraft/world/InteractionResult$TryEmptyHandInteraction;")
     @Expression("return TRY_WITH_EMPTY_HAND")
-    @ModifyReturnValue(method = "lambda$bootStrap$1(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/InteractionResult;",
+    @ModifyReturnValue(method = "lambda$bootStrap$0(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/InteractionResult;",
             at = @At("MIXINEXTRAS:EXPRESSION"))
     private static InteractionResult test(InteractionResult original, @Local PotionContents potionContents, @Local(argsOnly = true) BlockState state, @Local(argsOnly = true) Level level, @Local(argsOnly = true) BlockPos pos, @Local(argsOnly = true) Player player, @Local(argsOnly = true) InteractionHand hand, @Local(argsOnly = true) ItemStack itemInHand) {
         if(potionContents != null && potionContents.potion().isPresent() && ModUtil.POTIONS.contains(potionContents.potion().get())) {

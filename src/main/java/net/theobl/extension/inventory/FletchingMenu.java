@@ -41,7 +41,7 @@ public class FletchingMenu extends AbstractContainerMenu {
         this.access = access;
         this.player = playerInventory.player;
         this.level = playerInventory.player.level();
-        this.addSlot(new ResultSlot(playerInventory.player, this.craftSlots, this.resultSlots, 0, 124, 35));
+        this.addSlot(new FletchingResultSlot(playerInventory.player, this.craftSlots, this.resultSlots, 0, 124, 35));
         for (int i = 0; i < 3; ++i) {
             this.addSlot(new Slot(this.craftSlots, i, 48, 17 + i * SLOT_SIZE));
         }
@@ -113,10 +113,17 @@ public class FletchingMenu extends AbstractContainerMenu {
                     .getRecipeManager()
                     .getRecipeFor(ModRecipeType.FLETCHING.get(), craftMatrix, level);
             if (optional.isPresent()) {
-                FletchingRecipe fletchingRecipe = optional.get().value();
-                itemstack = fletchingRecipe.assemble(craftMatrix, player.level().registryAccess());
+                RecipeHolder<FletchingRecipe> recipeHolder = optional.get();
+                FletchingRecipe fletchingRecipe = recipeHolder.value();
+                if(resultSlots.setRecipeUsed(serverPlayer, recipeHolder)) {
+                    ItemStack recipeResult = fletchingRecipe.assemble(craftMatrix);
+                    if (recipeResult.isItemEnabled(level.enabledFeatures())) {
+                        itemstack = recipeResult;
+                    }
+                }
             }
             resultSlots.setItem(RESULT_SLOT, itemstack);
+            menu.setRemoteSlot(RESULT_SLOT, itemstack);
             serverPlayer.connection.send(new ClientboundContainerSetSlotPacket(menu.containerId, menu.incrementStateId(), RESULT_SLOT, itemstack));
         }
     }

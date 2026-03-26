@@ -5,7 +5,6 @@
   "experience": 0.1,
   "ingredient": "extension:blue_nether_bricks",
   "result": {
-    "count": 1,
     "id": "extension:cracked_blue_nether_bricks"
   }
 }

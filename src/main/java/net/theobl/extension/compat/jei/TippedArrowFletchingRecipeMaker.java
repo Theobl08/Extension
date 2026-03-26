@@ -8,6 +8,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -32,11 +33,11 @@ public class TippedArrowFletchingRecipeMaker {
             output.setCount(8);
 
 //            Ingredient potionIngredient = new Ingredient(new DataComponentIngredient(HolderSet.direct(input.getItemHolder()), DataComponentExactPredicate.expect(DataComponents.POTION_CONTENTS, new PotionContents(potion.getDelegate())), false));
-            Ingredient potionIngredient = DataComponentIngredient.of(false, DataComponentExactPredicate.expect(DataComponents.POTION_CONTENTS, new PotionContents(potion.getDelegate())), HolderSet.direct(input.getItemHolder()));
+            Ingredient potionIngredient = DataComponentIngredient.of(false, DataComponentExactPredicate.expect(DataComponents.POTION_CONTENTS, new PotionContents(potion.getDelegate())).asPatch(), HolderSet.direct(input.typeHolder()));
             Identifier potionId = potion.key().identifier();
             Identifier recipeId = Extension.asResource("jei.tipped.arrow." + potionId.getNamespace() + "." + potionId.getPath());
             ResourceKey<Recipe<?>> resourceKey = ResourceKey.create(Registries.RECIPE, recipeId);
-            FletchingRecipe recipe = new FletchingRecipe(group, output, List.of(potionIngredient, stickIngredient, featherIngredient));
+            FletchingRecipe recipe = new FletchingRecipe(group, ItemStackTemplate.fromNonEmptyStack(output), List.of(potionIngredient, stickIngredient, featherIngredient));
 
             return new RecipeHolder<>(resourceKey, recipe);
         }).toList();

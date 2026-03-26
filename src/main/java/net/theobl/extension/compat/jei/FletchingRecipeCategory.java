@@ -27,7 +27,7 @@ public class FletchingRecipeCategory extends AbstractRecipeCategory<RecipeHolder
         builder.addInputSlot(1,1).setStandardSlotBackground().add(recipe.value().getIngredients().get(0));
         builder.addInputSlot(1,19).setStandardSlotBackground().add(recipe.value().getIngredients().get(1));
         builder.addInputSlot(1,37).setStandardSlotBackground().add(recipe.value().getIngredients().get(2));
-        builder.addOutputSlot(69,19).setOutputSlotBackground().add(recipe.value().getResult());
+        builder.addOutputSlot(69,19).setOutputSlotBackground().add(recipe.value().getResult().create());
     }
 
     @Override

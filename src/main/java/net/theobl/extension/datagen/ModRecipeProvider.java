@@ -11,6 +11,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
@@ -272,12 +273,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_glowstone", this.has(Tags.Items.DUSTS_GLOWSTONE))
                 .save(this.output, Extension.asResource(getItemName(Items.SPECTRAL_ARROW)).toString());
 
-        SpecialRecipeBuilder.special(TippedArrowFletchingRecipe::new).save(this.output, Extension.asResource("tipped_arrow").toString());
+        SpecialRecipeBuilder.special(
+                        () -> new TippedArrowFletchingRecipe(
+                                Ingredient.of(Items.LINGERING_POTION),
+                                Ingredient.of(Items.STICK),
+                                new ItemStackTemplate(Items.TIPPED_ARROW, 8)
+                        )
+                )
+                .save(this.output, Extension.asResource("tipped_arrow").toString());
     }
 
     protected void generateForEnabledBlockFamilies(FeatureFlagSet featureFlagSet) {
         ModBlockFamilies.getAllFamilies()
-                .filter(BlockFamily::shouldGenerateRecipe)
                 .forEach(family -> generateRecipes(family, featureFlagSet));
     }
 

@@ -3,6 +3,7 @@ package net.theobl.extension.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.cauldron.CauldronInteraction;
+import net.minecraft.core.cauldron.CauldronInteractions;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -29,22 +30,21 @@ import net.theobl.extension.util.ModUtil;
 import java.util.HashMap;
 import java.util.Map;
 
-import static net.minecraft.core.cauldron.CauldronInteraction.*;
+import static net.minecraft.core.cauldron.CauldronInteractions.*;
 import static net.theobl.extension.util.ModUtil.createFilledResult;
 import static net.theobl.extension.util.ModUtil.name;
 
-public interface ExtendedCauldronInteraction {
-    CauldronInteraction.InteractionMap MILK = newInteractionMap("milk");
-    Map<Holder<Potion>, CauldronInteraction.InteractionMap> POTIONS_INTERACTIONS = new HashMap<>();
+public class ExtendedCauldronInteraction {
+    public static CauldronInteraction.Dispatcher MILK = newDispatcher("milk");
+    public static Map<Holder<Potion>, CauldronInteraction.Dispatcher> POTIONS_INTERACTIONS = new HashMap<>();
 
-    static void bootStrap() {
-        addMilkInteractions(CauldronInteraction.EMPTY.map());
-        addMilkInteractions(CauldronInteraction.WATER.map());
-        addMilkInteractions(CauldronInteraction.LAVA.map());
-        addMilkInteractions(CauldronInteraction.POWDER_SNOW.map());
+    public static void bootStrap() {
+        addMilkInteractions(CauldronInteractions.EMPTY);
+        addMilkInteractions(CauldronInteractions.WATER);
+        addMilkInteractions(CauldronInteractions.LAVA);
+        addMilkInteractions(CauldronInteractions.POWDER_SNOW);
 
-        Map<Item, CauldronInteraction> milk = MILK.map();
-        milk.put(
+        MILK.put(
                 Items.BUCKET,
                 (state, level, pos, player, hand, itemInHand) -> fillBucket(
                         state,
@@ -58,11 +58,11 @@ public interface ExtendedCauldronInteraction {
                         NeoForgeMod.BUCKET_FILL_MILK.get()
                 )
         );
-        addDefaultInteractions(milk);
-        addMilkInteractions(milk);
+        addDefaultInteractions(MILK);
+        addMilkInteractions(MILK);
 
         for(Holder<Potion> potion : ModUtil.POTIONS) {
-            Map<Item, CauldronInteraction> map = POTIONS_INTERACTIONS.get(potion).map();
+            CauldronInteraction.Dispatcher map = POTIONS_INTERACTIONS.get(potion);
             map.put(
                     Items.GLASS_BOTTLE,
                     (state, level, pos, player, hand, itemInHand) -> {
@@ -113,7 +113,7 @@ public interface ExtendedCauldronInteraction {
         }
     }
 
-    static void addMilkInteractions(Map<Item, CauldronInteraction> interactionsMap) {
+    static void addMilkInteractions(CauldronInteraction.Dispatcher interactionsMap) {
         interactionsMap.put(Items.MILK_BUCKET, ExtendedCauldronInteraction::fillMilkInteraction);
     }
 
@@ -162,9 +162,9 @@ public interface ExtendedCauldronInteraction {
         PotionCauldronBlock.lowerFillLevelArrow(state, level, pos, Mth.ceil((float) count / 16.0F));
     }
 
-    static void init() {
+    public static void init() {
         for(Holder<Potion> potionHolder : ModUtil.POTIONS) {
-            CauldronInteraction.InteractionMap interactionMap = newInteractionMap(name(potionHolder));
+            CauldronInteraction.Dispatcher interactionMap = newDispatcher(name(potionHolder));
             POTIONS_INTERACTIONS.put(potionHolder, interactionMap);
         }
     }

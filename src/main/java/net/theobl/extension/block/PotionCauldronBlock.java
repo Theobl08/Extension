@@ -7,6 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.cauldron.CauldronInteraction;
+import net.minecraft.core.cauldron.CauldronInteractions;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -39,7 +40,7 @@ public class PotionCauldronBlock extends AbstractCauldronBlock {
     public static final MapCodec<PotionCauldronBlock> CODEC = RecordCodecBuilder.mapCodec(
             i -> i.group(
                     Potion.CODEC.fieldOf("potion").forGetter(b -> b.potion),
-                    CauldronInteraction.CODEC.fieldOf("interactions").forGetter(b -> b.interactions),
+                    CauldronInteractions.CODEC.fieldOf("interactions").forGetter(b -> b.interactions),
                     propertiesCodec()
                     )
                     .apply(i, PotionCauldronBlock::new)
@@ -59,7 +60,7 @@ public class PotionCauldronBlock extends AbstractCauldronBlock {
         return CODEC;
     }
 
-    public PotionCauldronBlock(Holder<Potion> potion, CauldronInteraction.InteractionMap interactions, BlockBehaviour.Properties properties) {
+    public PotionCauldronBlock(Holder<Potion> potion, CauldronInteraction.Dispatcher interactions, BlockBehaviour.Properties properties) {
         super(properties, interactions);
         this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, MIN_FILL_LEVEL + 1));
         this.potion = potion;

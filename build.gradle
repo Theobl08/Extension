@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'idea'
-    id 'net.neoforged.moddev' version '2.0.123'
+    id 'net.neoforged.moddev' version '2.0.141'
 }
 
 version = mod_version
@@ -34,16 +34,16 @@ base {
     archivesName = "${mod_id}-${minecraft_version}"
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 neoForge {
     // Specify the version of NeoForge to use.
     version = project.neo_version
 
-    parchment {
-        mappingsVersion = project.parchment_mappings_version
-        minecraftVersion = project.parchment_minecraft_version
-    }
+//    parchment {
+//        mappingsVersion = project.parchment_mappings_version
+//        minecraftVersion = project.parchment_minecraft_version
+//    }
 
     // This line is optional. Access Transformers are automatically detected
     accessTransformers {
@@ -120,14 +120,14 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 dependencies {
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
-    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
-    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
-    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-pre-3-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-pre-3-neoforge-api:${jei_version}"
+//    runtimeOnly "mezz.jei:jei-${minecraft_version}-pre-3-neoforge:${jei_version}"
 
 //    implementation "maven.modrinth:sodium:mc${minecraft_version}-${sodium_version}-neoforge"
     compileOnly "net.caffeinemc:sodium-neoforge-api:${sodium_version}+mc${minecraft_version}"
     compileOnly "net.caffeinemc:sodium-neoforge-mod:${sodium_version}+mc${minecraft_version}"
-    runtimeOnly "net.caffeinemc:sodium-neoforge:${sodium_version}+mc${minecraft_version}"
+//    runtimeOnly "net.caffeinemc:sodium-neoforge:${sodium_version}+mc${minecraft_version}"
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar

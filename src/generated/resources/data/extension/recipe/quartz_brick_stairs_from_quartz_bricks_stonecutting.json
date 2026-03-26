@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:quartz_bricks",
   "result": {
-    "count": 1,
     "id": "extension:quartz_brick_stairs"
   }
 }

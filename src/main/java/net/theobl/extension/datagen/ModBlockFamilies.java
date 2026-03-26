@@ -93,7 +93,7 @@ public class ModBlockFamilies {
             .slab(ModBlocks.SOUL_SANDSTONE_SLAB.get())
             .chiseled(ModBlocks.CHISELED_SOUL_SANDSTONE.get())
             .cut(ModBlocks.CUT_SOUL_SANDSTONE.get())
-            .dontGenerateRecipe()
+            .dontGenerateCraftingRecipe()
             .getFamily();
     public static final BlockFamily CUT_SOUL_SANDSTONE = familyBuilder(ModBlocks.CUT_SOUL_SANDSTONE.get())
             .slab(ModBlocks.CUT_SOUL_SANDSTONE_SLAB.get())

@@ -13,6 +13,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
@@ -24,19 +25,19 @@ import java.util.*;
 public class FletchingRecipeBuilder implements RecipeBuilder {
     private final HolderGetter<Item> items;
     private final RecipeCategory category;
-    private final ItemStack result;
+    private final ItemStackTemplate result;
     private final List<Ingredient> ingredients = new ArrayList<>();
     private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
     private @Nullable String group;
 
-    private FletchingRecipeBuilder(HolderGetter<Item> items, RecipeCategory category, ItemStack result) {
+    private FletchingRecipeBuilder(HolderGetter<Item> items, RecipeCategory category, ItemStackTemplate result) {
         this.items = items;
         this.category = category;
         this.result = result;
     }
 
     public static FletchingRecipeBuilder fletching(HolderGetter<Item> items, RecipeCategory category, ItemLike result, int count) {
-        return new FletchingRecipeBuilder(items, category, result.asItem().getDefaultInstance().copyWithCount(count));
+        return new FletchingRecipeBuilder(items, category, new ItemStackTemplate(result.asItem(), count));
     }
 
     public FletchingRecipeBuilder requires(TagKey<Item> tag) {
@@ -68,8 +69,8 @@ public class FletchingRecipeBuilder implements RecipeBuilder {
     }
 
     @Override
-    public Item getResult() {
-        return this.result.getItem();
+    public ResourceKey<Recipe<?>> defaultId() {
+        return RecipeBuilder.getDefaultRecipeId(this.result);
     }
 
     @Override

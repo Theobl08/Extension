@@ -13,9 +13,9 @@ public class ModRecipeSerializer {
             DeferredRegister.create(Registries.RECIPE_SERIALIZER, Extension.MODID);
 
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<FletchingRecipe>> FLETCHING_RECIPE =
-            RECIPE_SERIALIZERS.register("fletching", FletchingRecipe.Serializer::new);
+            RECIPE_SERIALIZERS.register("fletching", () -> FletchingRecipe.SERIALIZER);
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<TippedArrowFletchingRecipe>> TIPPED_ARROW =
-            RECIPE_SERIALIZERS.register("fletching_special_tippedarrow", TippedArrowFletchingRecipe.Serializer::new);
+            RECIPE_SERIALIZERS.register("fletching_special_tippedarrow", () -> TippedArrowFletchingRecipe.SERIALIZER);
 
     public static void register(IEventBus eventBus) {
         RECIPE_SERIALIZERS.register(eventBus);
