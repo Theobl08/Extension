@@ -24,7 +24,8 @@
     "PistonBaseBlockMixin",
     "PistonMovingBlockEntityMixin",
     "ShovelItemMixin",
-    "SliderControlMixin"
+    "SliderControlMixin",
+    "SoulFireBlockMixin"
   ],
   "client": [
     "BedRendererMixin",
