@@ -1,4 +1,4 @@
-// 26.1	2026-03-26T13:10:06.5157372	Model Definitions - extension
+// 26.1	2026-03-28T18:29:16.1792838	Model Definitions - extension
 f336845af32a7e8cd7c8dd4a777944b3cb3f56b0 assets/extension/blockstates/acacia_crafting_table.json
 e23b5318f6e68839bb11de0c8e269fa6e25664a3 assets/extension/blockstates/andesite_bricks.json
 6cdc2bb357eca28bb56bad9d33abd2d1591f8772 assets/extension/blockstates/andesite_brick_slab.json
@@ -102,6 +102,7 @@ b12ef815cab1e73db015dae54e4691351f739c5a assets/extension/blockstates/quartz_bri
 5181c8f4cc8e67f90759641cdc65ed36d94f8fe3 assets/extension/blockstates/quartz_brick_wall.json
 03894e441b118a62b71d1e9e4a976da3cc97ad36 assets/extension/blockstates/quartz_wall.json
 2c87db0bfbd44aee5753844871bf8450bf9dabc6 assets/extension/blockstates/redstone_campfire.json
+dd0f9d3042b788f0136220cb16536af0d6569b91 assets/extension/blockstates/redstone_fire.json
 6480fd12855b7299831950b7fbf95ac3a2830fa8 assets/extension/blockstates/redstone_lantern.json
 ba9e96c995c2db749b13ff4bc6d5aa570f1652b2 assets/extension/blockstates/redstone_o_lantern.json
 0632395d0b4a7e35ca0c0d4f9087e314ee88d705 assets/extension/blockstates/red_nether_brick_fence.json
@@ -419,6 +420,12 @@ f8276f3db108902d4b9c4dd0ce7898aab3587633 assets/extension/models/block/quartz_br
 39535735263f2476642837f1115554f15bf01dba assets/extension/models/block/quartz_wall_side.json
 e1af9343260c35fba47aa872ac3d2fed32c4af87 assets/extension/models/block/quartz_wall_side_tall.json
 b5630e252424ce0311443a56c8030e041911037c assets/extension/models/block/redstone_campfire.json
+b35b08356b703e26b2f5179f0c1f9e30262c6ccd assets/extension/models/block/redstone_fire_floor0.json
+9411d6af8c3451a4fe22f2a007bf43198e560844 assets/extension/models/block/redstone_fire_floor1.json
+7065146fe4aabdadacedc32485fad95eedcfaa0e assets/extension/models/block/redstone_fire_side0.json
+3d275bf387ee366d8b4e5d69e3b45c17706c6764 assets/extension/models/block/redstone_fire_side1.json
+37e488585240b4608f95a05a8089dba40aecb210 assets/extension/models/block/redstone_fire_side_alt0.json
+b0a8dc6a146e2c428f0bac5049eddb21c4e4f596 assets/extension/models/block/redstone_fire_side_alt1.json
 fd070fa2c7ff7260fc27a81565d6e79ef92d601a assets/extension/models/block/redstone_lantern.json
 6b3b0d55f345911968e4f5d9c3956d4294304692 assets/extension/models/block/redstone_lantern_hanging.json
 8bae2246c04c790d478196c585296cf24f522b73 assets/extension/models/block/redstone_lantern_off.json

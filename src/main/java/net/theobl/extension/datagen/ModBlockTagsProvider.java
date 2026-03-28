@@ -45,8 +45,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.COPPER_O_LANTERN.get())
                 .add(ModBlocks.REDSTONE_O_LANTERN.get());
 
-        tag(BlockTags.FIRE).add(ModBlocks.COPPER_FIRE.get());
-        tag(BlockTags.REPLACEABLE).add(ModBlocks.COPPER_FIRE.get());
+        tag(BlockTags.FIRE).add(ModBlocks.COPPER_FIRE.get(), ModBlocks.REDSTONE_FIRE.get());
+        tag(BlockTags.REPLACEABLE).add(ModBlocks.COPPER_FIRE.get(), ModBlocks.REDSTONE_FIRE.get());
 
         tag(ModBlockTags.COPPER_FIRE_BASE_BLOCKS)
                 .addTag(BlockTags.COPPER)
@@ -102,6 +102,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(Blocks.WAXED_OXIDIZED_COPPER_BULB)
                 .add(Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE)
                 .add(ModBlocks.COPPER_O_LANTERN.get());
+
+        tag(ModBlockTags.REDSTONE_FIRE_BASE_BLOCKS)
+                .addTag(BlockTags.REDSTONE_ORES)
+                .add(Blocks.REDSTONE_BLOCK)
+                .add(ModBlocks.REDSTONE_O_LANTERN.get());
 
         for(DeferredHolder<Block, ? extends Block> deferredBlock : ModBlocks.BLOCKS.getEntries()){
             if(deferredBlock.get() instanceof StairBlock)

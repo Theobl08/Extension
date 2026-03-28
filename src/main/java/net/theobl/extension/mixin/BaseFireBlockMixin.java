@@ -6,6 +6,7 @@ import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.theobl.extension.block.CopperFireBlock;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.block.RedstoneFireBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -15,6 +16,8 @@ public abstract class BaseFireBlockMixin {
     private static BlockState getCopperFireState(BlockState original, @Local BlockState belowState) {
         if(CopperFireBlock.canSurviveOnBlock(belowState)) {
             return ModBlocks.COPPER_FIRE.get().defaultBlockState();
+        } else if (RedstoneFireBlock.canSurviveOnBlock(belowState)) {
+            return ModBlocks.REDSTONE_FIRE.get().defaultBlockState();
         } else {
             return original;
         }

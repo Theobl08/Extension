@@ -111,6 +111,7 @@ public class ModModelProvider extends ModelProvider {
         createPumpkins(blockModels);
         createCauldrons(blockModels);
         createFire(ModBlocks.COPPER_FIRE.get(), blockModels);
+        createFire(ModBlocks.REDSTONE_FIRE.get(), blockModels);
 
 //        blockModels.createCraftingTableLike(ModBlocks.SPRUCE_CRAFTING_TABLE.get(), Blocks.SPRUCE_PLANKS, TextureMapping::craftingTable);
 //        blockModels.createCraftingTableLike(ModBlocks.BIRCH_CRAFTING_TABLE.get(), Blocks.BIRCH_PLANKS, TextureMapping::craftingTable);

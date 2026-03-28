@@ -212,6 +212,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> COPPER_FIRE = BLOCKS.registerBlock("copper_fire",
             CopperFireBlock::new,
             () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FIRE).mapColor(MapColor.COLOR_LIGHT_GREEN));
+    public static final DeferredBlock<Block> REDSTONE_FIRE = BLOCKS.registerBlock("redstone_fire",
+            RedstoneFireBlock::new,
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FIRE));
 
     public static final DeferredBlock<Block> MILK_CAULDRON = BLOCKS.registerBlock("milk_cauldron",
             MilkCauldronBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON));
