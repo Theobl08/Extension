@@ -12,8 +12,8 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(BaseFireBlock.class)
 public abstract class BaseFireBlockMixin {
     @ModifyReturnValue(method = "getState", at = @At("RETURN"))
-    private static BlockState test(BlockState original, @Local BlockState blockState) {
-        if(CopperFireBlock.canSurviveOnBlock(blockState)) {
+    private static BlockState getCopperFireState(BlockState original, @Local BlockState belowState) {
+        if(CopperFireBlock.canSurviveOnBlock(belowState)) {
             return ModBlocks.COPPER_FIRE.get().defaultBlockState();
         } else {
             return original;
