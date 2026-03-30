@@ -2,6 +2,7 @@
   "values": [
     "extension:soul_o_lantern",
     "extension:copper_o_lantern",
-    "extension:redstone_o_lantern"
+    "extension:redstone_o_lantern",
+    "extension:ender_o_lantern"
   ]
 }

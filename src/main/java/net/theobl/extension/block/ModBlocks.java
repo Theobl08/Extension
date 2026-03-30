@@ -1,6 +1,7 @@
 package net.theobl.extension.block;
 
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.alchemy.Potion;
@@ -10,11 +11,13 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.theobl.extension.Extension;
 import net.theobl.extension.item.ModItems;
+import net.theobl.extension.particles.ModParticleTypes;
 import net.theobl.extension.util.ModUtil;
 
 import java.util.*;
@@ -199,13 +202,40 @@ public class ModBlocks {
             RedstoneCarvedPumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.JACK_O_LANTERN).lightLevel(s -> 7));
     public static final DeferredBlock<Block> COPPER_O_LANTERN = registerBlock("copper_o_lantern",
             CarvedPumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.JACK_O_LANTERN).lightLevel(s -> 15));
+    public static final DeferredBlock<Block> ENDER_O_LANTERN = registerBlock("ender_o_lantern",
+            CarvedPumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.JACK_O_LANTERN).lightLevel(s -> 15));
+
+    public static final DeferredBlock<Block> ENDER_TORCH = BLOCKS.registerBlock(
+            "ender_torch",
+            p -> new TorchBlock(ModParticleTypes.ENDER_FIRE_FLAME.get(), p),
+            () -> BlockBehaviour.Properties.of().noCollision().instabreak().lightLevel(_ -> 14).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY)
+    );
+    public static final DeferredBlock<Block> ENDER_WALL_TORCH = BLOCKS.registerBlock(
+            "ender_wall_torch",
+            p -> new WallTorchBlock(ModParticleTypes.ENDER_FIRE_FLAME.get(), p),
+            () -> BlockBehaviour.Properties.of()
+                    .overrideLootTable(ENDER_TORCH.get().getLootTable())
+                    .overrideDescription(ENDER_TORCH.get().getDescriptionId())
+                    .noCollision()
+                    .instabreak()
+                    .lightLevel(_ -> 14)
+                    .sound(SoundType.WOOD)
+                    .pushReaction(PushReaction.DESTROY)
+    );
 
     public static final DeferredBlock<Block> REDSTONE_LANTERN = registerBlock("redstone_lantern",
             RedstoneLanternBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN).lightLevel(litBlockEmission(7)));
+    public static final DeferredBlock<Block> ENDER_LANTERN = registerBlock("ender_lantern",
+            LanternBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN).lightLevel(state -> 15));
+
+
     public static final DeferredBlock<Block> REDSTONE_CAMPFIRE = registerBlock("redstone_campfire",
             properties -> new RedstoneCampfireBlock(false, 1, properties),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).lightLevel(litBlockEmission(7)));
     public static final DeferredBlock<Block> COPPER_CAMPFIRE = registerBlock("copper_campfire",
+            properties -> new CampfireBlock(false, 1, properties),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).lightLevel(litBlockEmission(15)));
+    public static final DeferredBlock<Block> ENDER_CAMPFIRE = registerBlock("ender_campfire",
             properties -> new CampfireBlock(false, 1, properties),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).lightLevel(litBlockEmission(15)));
 
@@ -214,6 +244,9 @@ public class ModBlocks {
             () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FIRE).mapColor(MapColor.COLOR_LIGHT_GREEN));
     public static final DeferredBlock<Block> REDSTONE_FIRE = BLOCKS.registerBlock("redstone_fire",
             RedstoneFireBlock::new,
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FIRE));
+    public static final DeferredBlock<Block> ENDER_FIRE = BLOCKS.registerBlock("ender_fire",
+            EnderFireBlock::new,
             () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FIRE));
 
     public static final DeferredBlock<Block> MILK_CAULDRON = BLOCKS.registerBlock("milk_cauldron",

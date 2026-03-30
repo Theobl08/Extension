@@ -203,6 +203,16 @@ public class ModRecipeProvider extends RecipeProvider {
         }
         craftingTable(Blocks.CRAFTING_TABLE, Blocks.OAK_PLANKS);
 
+        this.shaped(RecipeCategory.DECORATIONS, ModBlocks.ENDER_TORCH, 4)
+                .define('X', Ingredient.of(Items.COAL, Items.CHARCOAL))
+                .define('#', Items.STICK)
+                .define('C', Tags.Items.END_STONES)
+                .pattern("X")
+                .pattern("#")
+                .pattern("C")
+                .unlockedBy("has_end_stone", this.has(Tags.Items.END_STONES))
+                .save(this.output);
+
         shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_O_LANTERN)
                 .define('A', Blocks.CARVED_PUMPKIN)
                 .define('B', Blocks.SOUL_TORCH)
@@ -224,9 +234,26 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("B")
                 .unlockedBy("has_carved_pumpkin", has(Blocks.CARVED_PUMPKIN))
                 .save(output);
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ENDER_O_LANTERN)
+                .define('A', Blocks.CARVED_PUMPKIN)
+                .define('B', ModBlocks.ENDER_TORCH)
+                .pattern("A")
+                .pattern("B")
+                .unlockedBy("has_carved_pumpkin", has(Blocks.CARVED_PUMPKIN))
+                .save(output);
 
         shaped(RecipeCategory.DECORATIONS, ModBlocks.REDSTONE_LANTERN)
                 .define('#', Items.REDSTONE_TORCH)
+                .define('X', Items.IRON_NUGGET)
+                .pattern("XXX")
+                .pattern("X#X")
+                .pattern("XXX")
+                .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
+                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.ENDER_LANTERN)
+                .define('#', ModItems.ENDER_TORCH)
                 .define('X', Items.IRON_NUGGET)
                 .pattern("XXX")
                 .pattern("X#X")
@@ -254,7 +281,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("SCS")
                 .pattern("LLL")
                 .unlockedBy("has_stick", has(Items.STICK))
-                .unlockedBy("has_redstone", has(Items.COPPER_NUGGET))
+                .unlockedBy("has_copper_nugget", has(Items.COPPER_NUGGET))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.ENDER_CAMPFIRE)
+                .define('L', ItemTags.LOGS)
+                .define('S', Items.STICK)
+                .define('C', Tags.Items.END_STONES)
+                .pattern(" S ")
+                .pattern("SCS")
+                .pattern("LLL")
+                .unlockedBy("has_stick", has(Items.STICK))
+                .unlockedBy("has_end_stone", has(Tags.Items.END_STONES))
                 .save(output);
 
         fletching(RecipeCategory.COMBAT, Items.ARROW, 6)

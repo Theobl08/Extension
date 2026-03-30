@@ -59,6 +59,11 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                         block1 -> this.createSilkTouchDispatchTable(block1, this.applyExplosionCondition(block1, LootItem.lootTableItem(Items.COPPER_NUGGET)
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))));
             }
+            else if (block.get().defaultBlockState().is(ModBlocks.ENDER_CAMPFIRE.get())) {
+                this.add(block.get(),
+                        block1 -> this.createSilkTouchDispatchTable(block1, this.applyExplosionCondition(block1, LootItem.lootTableItem(Items.END_STONE)
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))));
+            }
             else if(!(block.get() instanceof BaseFireBlock)) {
                 this.dropSelf(block.get());
             }

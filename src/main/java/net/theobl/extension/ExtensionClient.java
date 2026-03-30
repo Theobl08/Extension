@@ -4,6 +4,7 @@ import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import net.minecraft.client.OptionInstance;
 import net.minecraft.client.color.block.BlockTintSource;
+import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -22,6 +23,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.RenderBlockScreenEffectEvent;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
@@ -31,6 +33,7 @@ import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.compat.jei.ExtensionJeiPlugin;
 import net.theobl.extension.inventory.FletchingScreen;
 import net.theobl.extension.inventory.ModMenuType;
+import net.theobl.extension.particles.ModParticleTypes;
 
 import java.util.List;
 import java.util.Optional;
@@ -96,6 +99,11 @@ public class ExtensionClient {
             event.setCanceled(true);
         } else if(!Extension.gamerule_fire_damage && Config.noFireOverlay && blockState.is(Blocks.FIRE))
             event.setCanceled(true);
+    }
+
+    @SubscribeEvent
+    public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(ModParticleTypes.ENDER_FIRE_FLAME.get(), FlameParticle.Provider::new);
     }
 
     public static final double BRIGHTNESS_MIN = -1;

@@ -133,12 +133,16 @@ public class ModCreativeModeTabs {
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.insertAfter(Items.SOUL_SAND.getDefaultInstance(), ModBlocks.SOUL_SANDSTONE.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.JACK_O_LANTERN.getDefaultInstance(), ModBlocks.SOUL_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModBlocks.SOUL_O_LANTERN.toStack(), ModBlocks.COPPER_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.SOUL_O_LANTERN.toStack(), ModBlocks.ENDER_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.ENDER_O_LANTERN.toStack(), ModBlocks.COPPER_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.COPPER_O_LANTERN.toStack(), ModBlocks.REDSTONE_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
         }
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.insertAfter(Items.SOUL_TORCH.getDefaultInstance(), ModItems.ENDER_TORCH.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.SOUL_LANTERN.getDefaultInstance(), ModBlocks.ENDER_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.COPPER_LANTERN.waxedOxidized().getDefaultInstance(), ModBlocks.REDSTONE_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(Items.SOUL_CAMPFIRE.getDefaultInstance(), ModBlocks.COPPER_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.SOUL_CAMPFIRE.getDefaultInstance(), ModBlocks.ENDER_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.ENDER_CAMPFIRE.toStack(), ModBlocks.COPPER_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.COPPER_CAMPFIRE.toStack(), ModBlocks.REDSTONE_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);
         }
         if(event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {

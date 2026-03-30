@@ -1,0 +1,17 @@
+{
+  "values": [
+    "#c:end_stones",
+    "minecraft:end_stone_bricks",
+    "minecraft:end_stone_brick_stairs",
+    "minecraft:end_stone_brick_slab",
+    "minecraft:end_stone_brick_wall",
+    "minecraft:purpur_block",
+    "minecraft:purpur_stairs",
+    "minecraft:purpur_slab",
+    "minecraft:purpur_slab",
+    "minecraft:purpur_pillar",
+    "extension:chiseled_end_stone_bricks",
+    "extension:purpur_wall",
+    "extension:ender_o_lantern"
+  ]
+}

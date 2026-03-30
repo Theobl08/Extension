@@ -42,7 +42,11 @@ public class ModLanguageProvider extends LanguageProvider {
             else if(block.get().defaultBlockState().is(ModBlocks.NETHERITE_STAIRS))
                 add(block.get(), "Swaggiest stairs ever");
             else
-                add(block.get(), capitalizeString(filterBlockLang(block.get())));
+                try {
+                    add(block.get(), capitalizeString(filterBlockLang(block.get())));
+                } catch(Exception _) {
+                    Extension.LOGGER.warn("{} is already translated, skipping", block.getId());
+                }
         }
 
         for(DeferredHolder<Item, ? extends Item> item : ModItems.ITEMS.getEntries()) {

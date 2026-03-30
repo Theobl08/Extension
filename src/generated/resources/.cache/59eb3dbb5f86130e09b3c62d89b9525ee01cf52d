@@ -1,4 +1,4 @@
-// 26.1	2026-03-26T13:10:06.5109148	Loot Tables
+// 26.1	2026-03-30T17:15:22.5728731	Loot Tables
 aa6f91052111f4bf3434cc3736181ccd49ecb402 data/extension/loot_table/blocks/acacia_crafting_table.json
 77ad9539dffca8dc956252627cdb14feecdbe8a1 data/extension/loot_table/blocks/andesite_bricks.json
 5d7626185b6a57da3470448759615b20232ba4f6 data/extension/loot_table/blocks/andesite_brick_slab.json
@@ -42,6 +42,10 @@ dd7022529328813342b8642f1bb61b287150a6a6 data/extension/loot_table/blocks/decay_
 4e720b6aa9639434fba2c927de115efcc8af33db data/extension/loot_table/blocks/diorite_brick_slab.json
 ac264a4bf9801773493e3bf5bcc93d56d3e80eba data/extension/loot_table/blocks/diorite_brick_stairs.json
 4eda6ee4ed40eddd3452eedcd3c0072382eca0dc data/extension/loot_table/blocks/diorite_brick_wall.json
+d89637970ec6fe3dc393bd00d4597cccdb623246 data/extension/loot_table/blocks/ender_campfire.json
+e2fdc1abef10edb4b8cecf66cafb77a0e9f5237a data/extension/loot_table/blocks/ender_lantern.json
+7f10f057993494001892a92f312adb4ff44c0b9f data/extension/loot_table/blocks/ender_o_lantern.json
+de86c54fec877b6c8544c1b40a8126fb986591eb data/extension/loot_table/blocks/ender_torch.json
 4362807b4b13dad434ebadbc3876e3d78907ecb5 data/extension/loot_table/blocks/fire_resistance_cauldron.json
 f74a4ab6d95c3d3ea9e234d5cd49ca85fd52a483 data/extension/loot_table/blocks/granite_bricks.json
 5392b736e576588c714c91a699ce58145db4d635 data/extension/loot_table/blocks/granite_brick_slab.json

@@ -61,6 +61,7 @@ import net.theobl.extension.item.ModItems;
 import net.theobl.extension.item.alchemy.ModPotions;
 import net.theobl.extension.item.crafting.ModRecipeSerializer;
 import net.theobl.extension.item.crafting.ModRecipeType;
+import net.theobl.extension.particles.ModParticleTypes;
 import net.theobl.extension.stats.ModStats;
 import org.slf4j.Logger;
 
@@ -99,6 +100,8 @@ public class Extension {
         ModRecipeSerializer.register(modEventBus);
         ModStats.register(modEventBus);
 
+        ModParticleTypes.register(modEventBus);
+
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (Extension) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
@@ -125,6 +128,7 @@ public class Extension {
     private void addBlockToBlockEntity(BlockEntityTypeAddBlocksEvent event) {
         event.modify(BlockEntityType.CAMPFIRE, ModBlocks.REDSTONE_CAMPFIRE.get());
         event.modify(BlockEntityType.CAMPFIRE, ModBlocks.COPPER_CAMPFIRE.get());
+        event.modify(BlockEntityType.CAMPFIRE, ModBlocks.ENDER_CAMPFIRE.get());
     }
 
     private void extendPoiTypes(ExtendPoiTypesEvent event) {

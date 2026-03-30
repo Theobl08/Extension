@@ -1,4 +1,4 @@
-// 26.1	2026-03-26T13:10:06.5257376	Tags for minecraft:item mod id extension
+// 26.1	2026-03-30T20:28:12.0401272	Tags for minecraft:item mod id extension
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks.json
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks/nether.json
 d4dca80551a0d488392912428cdc618c8b8e9197 data/c/tags/item/crops.json
@@ -6,11 +6,12 @@ d4dca80551a0d488392912428cdc618c8b8e9197 data/c/tags/item/crops.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/item/fences/nether_brick.json
 e994b502fa84d2d351afd20245604823cdd325df data/c/tags/item/glass_panes.json
 4899cc570cfee4d3b36234ba944fb70c7b9e5493 data/c/tags/item/player_workstations/crafting_tables.json
-a43ac87ba8bd1441c8c548aa7185c7f702fc032c data/c/tags/item/pumpkins.json
+4f53cb5679c9e707a8afdb5e981da3b9abea243f data/c/tags/item/pumpkins.json
 ee90fd36ae9a8638d0d8f73aa91314f85ac2e3bd data/c/tags/item/sandstone/blocks.json
 4129d63523084b45c78c6fc8da77ed857f6e6a75 data/c/tags/item/sandstone/slabs.json
 bdef780f9a4c2965de35f74f5eb088150d9f694d data/c/tags/item/sandstone/stairs.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/minecraft/tags/item/fences.json
+3486cb571e4d7f4403ec590dfafb6972d44ae7da data/minecraft/tags/item/piglin_repellents.json
 17b2a535104b336541d841f5925bde9140f245e1 data/minecraft/tags/item/slabs.json
 7c05ffbca25c048919d4100d7919450945c54578 data/minecraft/tags/item/soul_fire_base_blocks.json
 9eaa144aee484dcca16535d874e4cd51d5978f45 data/minecraft/tags/item/stairs.json

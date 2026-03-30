@@ -6,6 +6,8 @@
     "extension:copper_campfire",
     "extension:redstone_o_lantern",
     "extension:redstone_campfire",
+    "extension:ender_o_lantern",
+    "extension:ender_campfire",
     "extension:spruce_crafting_table",
     "extension:birch_crafting_table",
     "extension:jungle_crafting_table",

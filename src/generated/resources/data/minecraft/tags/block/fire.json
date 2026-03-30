@@ -1,6 +1,7 @@
 {
   "values": [
     "extension:copper_fire",
-    "extension:redstone_fire"
+    "extension:redstone_fire",
+    "extension:ender_fire"
   ]
 }

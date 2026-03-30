@@ -106,12 +106,16 @@ public class ModModelProvider extends ModelProvider {
         blockModels.familyWithExistingFullBlock(ModBlocks.BLUE_NETHER_BRICKS.get()).fence(ModBlocks.BLUE_NETHER_BRICK_FENCE.get());
 
         blockModels.createCropBlock(ModBlocks.BLUE_NETHER_WART.get(), BlockStateProperties.AGE_3, 0, 1, 1, 2);
+
+        blockModels.createNormalTorch(ModBlocks.ENDER_TORCH.get(), ModBlocks.ENDER_WALL_TORCH.get());
         this.createRedStoneLantern(ModBlocks.REDSTONE_LANTERN.get(), blockModels);
-        blockModels.createCampfires(ModBlocks.REDSTONE_CAMPFIRE.get(), ModBlocks.COPPER_CAMPFIRE.get());
+        blockModels.createLantern(ModBlocks.ENDER_LANTERN.get());
+        blockModels.createCampfires(ModBlocks.REDSTONE_CAMPFIRE.get(), ModBlocks.COPPER_CAMPFIRE.get(), ModBlocks.ENDER_CAMPFIRE.get());
         createPumpkins(blockModels);
         createCauldrons(blockModels);
         createFire(ModBlocks.COPPER_FIRE.get(), blockModels);
         createFire(ModBlocks.REDSTONE_FIRE.get(), blockModels);
+        createFire(ModBlocks.ENDER_FIRE.get(), blockModels);
 
 //        blockModels.createCraftingTableLike(ModBlocks.SPRUCE_CRAFTING_TABLE.get(), Blocks.SPRUCE_PLANKS, TextureMapping::craftingTable);
 //        blockModels.createCraftingTableLike(ModBlocks.BIRCH_CRAFTING_TABLE.get(), Blocks.BIRCH_PLANKS, TextureMapping::craftingTable);
@@ -185,6 +189,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createPumpkinVariant(ModBlocks.SOUL_O_LANTERN.get(), texturemapping);
         blockModels.createPumpkinVariant(ModBlocks.REDSTONE_O_LANTERN.get(), texturemapping);
         blockModels.createPumpkinVariant(ModBlocks.COPPER_O_LANTERN.get(), texturemapping);
+        blockModels.createPumpkinVariant(ModBlocks.ENDER_O_LANTERN.get(), texturemapping);
     }
 
     public void createFire(Block fireBlock, BlockModelGenerators blockModels) {

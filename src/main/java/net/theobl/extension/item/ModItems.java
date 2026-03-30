@@ -1,5 +1,6 @@
 package net.theobl.extension.item;
 
+import net.minecraft.core.Direction;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorMaterials;
@@ -22,6 +23,10 @@ public class ModItems {
 
     public static final DeferredItem<Item> BLUE_NETHER_WART = ITEMS.registerItem("blue_nether_wart",
             properties -> new BlockItem(ModBlocks.BLUE_NETHER_WART.get(), properties));
+
+    public static final DeferredItem<Item> ENDER_TORCH = ITEMS.registerItem("ender_torch",
+            p -> new StandingAndWallBlockItem(ModBlocks.ENDER_TORCH.get(), ModBlocks.ENDER_WALL_TORCH.get(), Direction.DOWN, p),
+            Item.Properties::useBlockDescriptionPrefix);
 
     public static final DeferredItem<Item> ILLUSIONER_SPAWN_EGG = ITEMS.registerItem("illusioner_spawn_egg",
             SpawnEggItem::new, p -> p.spawnEgg(EntityType.ILLUSIONER));
