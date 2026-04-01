@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "extension:block/potato_hyphae",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "extension:block/potato_hyphae"
+    },
+    "axis=z": {
+      "model": "extension:block/potato_hyphae",
+      "x": 90
+    }
+  }
+}

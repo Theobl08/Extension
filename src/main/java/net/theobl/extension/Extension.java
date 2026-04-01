@@ -54,6 +54,7 @@ import net.neoforged.neoforge.fluids.RegisterCauldronFluidContentEvent;
 import net.theobl.extension.block.ExtendedCauldronInteraction;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.commands.HeldItemNameCommand;
+import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.inventory.FletchingMenu;
 import net.theobl.extension.inventory.ModMenuType;
 import net.theobl.extension.item.ModCreativeModeTabs;
@@ -63,6 +64,8 @@ import net.theobl.extension.item.crafting.ModRecipeSerializer;
 import net.theobl.extension.item.crafting.ModRecipeType;
 import net.theobl.extension.particles.ModParticleTypes;
 import net.theobl.extension.stats.ModStats;
+import net.theobl.extension.worldgen.ModTreeDecoratorType;
+import net.theobl.extension.worldgen.ModTrunkPlacerType;
 import org.slf4j.Logger;
 
 import java.util.List;
@@ -102,6 +105,10 @@ public class Extension {
 
         ModParticleTypes.register(modEventBus);
 
+        ModEntityType.register(modEventBus);
+        ModTreeDecoratorType.register(modEventBus);
+        ModTrunkPlacerType.register(modEventBus);
+
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (Extension) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
@@ -129,6 +136,8 @@ public class Extension {
         event.modify(BlockEntityType.CAMPFIRE, ModBlocks.REDSTONE_CAMPFIRE.get());
         event.modify(BlockEntityType.CAMPFIRE, ModBlocks.COPPER_CAMPFIRE.get());
         event.modify(BlockEntityType.CAMPFIRE, ModBlocks.ENDER_CAMPFIRE.get());
+        event.modify(BlockEntityType.SIGN, ModBlocks.POTATO_SIGN.get(), ModBlocks.POTATO_WALL_SIGN.get());
+        event.modify(BlockEntityType.HANGING_SIGN, ModBlocks.POTATO_HANGING_SIGN.get(), ModBlocks.POTATO_WALL_HANGING_SIGN.get());
     }
 
     private void extendPoiTypes(ExtendPoiTypesEvent event) {

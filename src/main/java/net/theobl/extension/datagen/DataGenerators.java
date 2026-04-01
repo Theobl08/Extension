@@ -30,5 +30,7 @@ public class DataGenerators {
         event.createProvider(ModLanguageProvider::new);
 
         event.createProvider(ModParticleDescriptionProvider::new);
+
+        event.createProvider(ModDatapackBuiltInEntriesProvider::new);
     }
 }

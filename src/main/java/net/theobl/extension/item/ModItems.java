@@ -4,11 +4,13 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorMaterials;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.entity.ModEntityType;
 
 public class ModItems {
     // Create a Deferred Register to hold Items which will all be registered under the "extension" namespace
@@ -30,6 +32,17 @@ public class ModItems {
 
     public static final DeferredItem<Item> ILLUSIONER_SPAWN_EGG = ITEMS.registerItem("illusioner_spawn_egg",
             SpawnEggItem::new, p -> p.spawnEgg(EntityType.ILLUSIONER));
+
+    public static final DeferredItem<Item> POTATO_SIGN = ITEMS.registerItem(
+            "potato_sign", p -> new SignItem(ModBlocks.POTATO_SIGN.get(), ModBlocks.POTATO_WALL_SIGN.get(), p.stacksTo(23).useBlockDescriptionPrefix())
+    );
+    public static final DeferredItem<Item> POTATO_HANGING_SIGN = ITEMS.registerItem(
+            "potato_hanging_sign", p -> new HangingSignItem(ModBlocks.POTATO_HANGING_SIGN.get(), ModBlocks.POTATO_WALL_HANGING_SIGN.get(), p.stacksTo(13).useBlockDescriptionPrefix())
+    );
+    public static final DeferredItem<Item> POTATO_RAFT = ITEMS.registerItem("potato_raft", p -> new BoatItem(ModEntityType.POTATO_RAFT.get(), p), p -> p.stacksTo(1));
+    public static final DeferredItem<Item> POTATO_CHEST_RAFT = ITEMS.registerItem(
+            "potato_chest_raft", p -> new BoatItem(ModEntityType.POTATO_CHEST_RAFT.get(), p), p -> p.stacksTo(1)
+    );
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

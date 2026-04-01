@@ -4,8 +4,11 @@ import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import net.minecraft.client.OptionInstance;
 import net.minecraft.client.color.block.BlockTintSource;
+import net.minecraft.client.color.block.BlockTintSources;
+import net.minecraft.client.model.object.boat.RaftModel;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
+import net.minecraft.client.renderer.entity.RaftRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -21,16 +24,15 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
-import net.neoforged.neoforge.client.event.RenderBlockScreenEffectEvent;
+import net.neoforged.neoforge.client.event.*;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.client.ModModelLayers;
 import net.theobl.extension.compat.jei.ExtensionJeiPlugin;
+import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.inventory.FletchingScreen;
 import net.theobl.extension.inventory.ModMenuType;
 import net.theobl.extension.particles.ModParticleTypes;
@@ -82,6 +84,7 @@ public class ExtensionClient {
                 }
             }), block.get());
         });
+        event.register(List.of(BlockTintSources.foliage()), ModBlocks.POTATO_LEAVES.get());
     }
 
     @SubscribeEvent
@@ -104,6 +107,18 @@ public class ExtensionClient {
     @SubscribeEvent
     public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ModParticleTypes.ENDER_FIRE_FLAME.get(), FlameParticle.Provider::new);
+    }
+
+    @SubscribeEvent
+    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(ModModelLayers.POTATO_RAFT, RaftModel::createRaftModel);
+        event.registerLayerDefinition(ModModelLayers.POTATO_CHEST_RAFT, RaftModel::createChestRaftModel);
+    }
+
+    @SubscribeEvent
+    public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(ModEntityType.POTATO_RAFT.get(), context -> new RaftRenderer(context, ModModelLayers.POTATO_RAFT));
+        event.registerEntityRenderer(ModEntityType.POTATO_CHEST_RAFT.get(), context -> new RaftRenderer(context, ModModelLayers.POTATO_CHEST_RAFT));
     }
 
     public static final double BRIGHTNESS_MIN = -1;

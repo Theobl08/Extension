@@ -14,6 +14,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.theobl.extension.Config;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.item.ModItems;
 import net.theobl.extension.item.alchemy.ModPotions;
 import net.theobl.extension.stats.ModStats;
@@ -52,6 +53,8 @@ public class ModLanguageProvider extends LanguageProvider {
         for(DeferredHolder<Item, ? extends Item> item : ModItems.ITEMS.getEntries()) {
             if(item.get() instanceof MinecartItem)
                 add(item.get(),"Minecart with Monster Spawner");
+            else if(item == ModItems.POTATO_CHEST_RAFT)
+                add(item.get(), "Potato Raft with Chest");
             else if(item.get() == ModItems.BLUE_NETHER_WART.asItem() || !(item.get() instanceof BlockItem))
                 add(item.get(), capitalizeString(filterItemLang(item.get())));
         }
@@ -59,6 +62,9 @@ public class ModLanguageProvider extends LanguageProvider {
         for(DeferredHolder<Potion, ? extends Potion> potion : ModPotions.POTIONS.getEntries()) {
             addPotion(potion);
         }
+
+        add(ModEntityType.POTATO_RAFT.get(), "Potato Raft");
+        add(ModEntityType.POTATO_CHEST_RAFT.get(), "Potato Raft with Chest");
 
         addConfig(Config.BOAT_STEP_UP);
         addConfig(Config.CLEAR_VOID);

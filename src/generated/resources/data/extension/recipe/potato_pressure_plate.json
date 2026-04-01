@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_pressure_plate",
+  "key": {
+    "#": "extension:potato_planks"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "extension:potato_pressure_plate"
+  }
+}

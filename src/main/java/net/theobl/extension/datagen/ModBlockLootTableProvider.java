@@ -38,6 +38,12 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
             if(block.get() instanceof SlabBlock) {
                 this.add(block.get(), this::createSlabItemTable);
             }
+            else if(block.get() instanceof DoorBlock) {
+                this.add(block.get(), this::createDoorTable);
+            }
+            else if(block.is(ModBlocks.POTATO_LEAVES.getId())) {
+                this.add(ModBlocks.POTATO_LEAVES.get(), leaves -> this.createLeavesDrops(leaves, ModBlocks.POTATO_SPROUTS.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+            }
             else if (block.get().defaultBlockState().is(ModBlocks.BLUE_NETHER_WART.get())) {
                 LootItemCondition.Builder lootItemConditionBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block.get())
                         .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(NetherWartBlock.AGE, 3));

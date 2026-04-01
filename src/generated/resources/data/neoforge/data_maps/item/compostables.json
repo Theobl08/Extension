@@ -2,6 +2,18 @@
   "values": {
     "extension:blue_nether_wart": {
       "chance": 0.65
+    },
+    "extension:potato_fruit": {
+      "chance": 0.3
+    },
+    "extension:potato_leaves": {
+      "chance": 0.3
+    },
+    "extension:potato_pedicule": {
+      "chance": 0.3
+    },
+    "extension:potato_sprouts": {
+      "chance": 0.3
     }
   }
 }

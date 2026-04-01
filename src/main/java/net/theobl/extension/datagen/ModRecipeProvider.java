@@ -319,6 +319,16 @@ public class ModRecipeProvider extends RecipeProvider {
                         )
                 )
                 .save(this.output, Extension.asResource("tipped_arrow").toString());
+
+        hangingSign(ModItems.POTATO_HANGING_SIGN, ModBlocks.POTATO_PLANKS);
+        woodenBoat(ModItems.POTATO_RAFT, ModBlocks.POTATO_PLANKS);
+        chestBoat(ModItems.POTATO_CHEST_RAFT, ModItems.POTATO_RAFT);
+        this.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POTATO_PLANKS, 4)
+                .requires(Ingredient.of(ModBlocks.POTATO_STEM, ModBlocks.POTATO_HYPHAE))
+                .group("planks")
+                .unlockedBy("has_log", this.has(ModBlocks.POTATO_STEM))
+                .unlockedBy("has_logs", this.has(ModBlocks.POTATO_HYPHAE))
+                .save(this.output);
     }
 
     protected void generateForEnabledBlockFamilies(FeatureFlagSet featureFlagSet) {

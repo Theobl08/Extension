@@ -1,6 +1,7 @@
 {
   "values": [
     "extension:red_nether_brick_fence",
-    "extension:blue_nether_brick_fence"
+    "extension:blue_nether_brick_fence",
+    "extension:potato_fence"
   ]
 }

@@ -1,15 +1,20 @@
 package net.theobl.extension.block;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
@@ -277,12 +282,203 @@ public class ModBlocks {
 //            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE).sound(SoundType.NETHER_WOOD));
     public static final Map<Block, DeferredBlock<Block>> VARIANTS_CRAFTING_TABLE = registerCraftingTables();
 
+    public static final DeferredBlock<Block> POTATO_FRUIT = registerBlock(
+            "potato_fruit",
+            Block::new,
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
+                    .strength(1.0F)
+                    .sound(SoundType.NETHER_WOOD)
+                    .pushReaction(PushReaction.DESTROY)
+                    .lightLevel(blockstate -> 15)
+    );
+    public static final DeferredBlock<Block> POTATO_PEDICULE = registerBlock(
+            "potato_pedicule",
+            ChainBlock::new,
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
+                    .strength(0.2F)
+                    .sound(SoundType.NETHER_WOOD)
+                    .pushReaction(PushReaction.DESTROY)
+    );
+    public static final DeferredBlock<Block> POTATO_SPROUTS = registerBlock(
+            "potato_sprouts",
+            p -> new SaplingBlock(ModTreeGrower.POTATO, p),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.TERRACOTTA_WHITE)
+                    .sound(SoundType.NETHER_SPROUTS)
+                    .noOcclusion()
+                    .randomTicks()
+                    .instabreak()
+                    .dynamicShape()
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)
+    );
+    public static final DeferredBlock<Block> POTATO_LEAVES = registerBlock(
+            "potato_leaves",
+            p -> new TintedParticleLeavesBlock(0.01F, p),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
+                    .strength(0.2F)
+                    .randomTicks()
+                    .sound(SoundType.GRASS)
+                    .noOcclusion()
+                    .isValidSpawn(Blocks::ocelotOrParrot)
+                    .isSuffocating(ModBlocks::never)
+                    .isViewBlocking(ModBlocks::never)
+                    .ignitedByLava()
+                    .pushReaction(PushReaction.DESTROY)
+                    .isRedstoneConductor(ModBlocks::never)
+    );
+    public static final DeferredBlock<Block> POTATO_STEM = registerBlock(
+            "potato_stem",
+            RotatedPillarBlock::new,
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.EMERALD)
+                    .instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F)
+                    .sound(SoundType.STEM)
+    );
+    public static final DeferredBlock<Block> POTATO_HYPHAE = registerBlock(
+            "potato_hyphae",
+            RotatedPillarBlock::new,
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.EMERALD)
+                    .instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F)
+                    .sound(SoundType.STEM)
+    );
+    public static final DeferredBlock<Block> POTATO_PLANKS = registerBlock(
+            "potato_planks",
+            Block::new,
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.EMERALD)
+                    .instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)
+    );
+    public static final DeferredBlock<Block> POTATO_STAIRS = registerStair("potato_stairs", POTATO_PLANKS);
+    public static final DeferredBlock<Block> POTATO_SLAB = registerBlock(
+            "potato_slab",
+            SlabBlock::new,
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(POTATO_PLANKS.get().defaultMapColor())
+                    .instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)
+    );
+    public static final DeferredBlock<Block> POTATO_FENCE = registerBlock(
+            "potato_fence",
+            FenceBlock::new,
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(POTATO_PLANKS.get().defaultMapColor())
+                    .instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F, 3.0F)
+                    .sound(SoundType.NETHER_WOOD)
+    );
+    public static final DeferredBlock<Block> POTATO_FENCE_GATE = registerBlock(
+            "potato_fence_gate",
+            p -> new FenceGateBlock(ModWoodType.POTATO, p),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(POTATO_PLANKS.get().defaultMapColor())
+                    .forceSolidOn()
+                    .instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F, 3.0F)
+    );
+    public static final DeferredBlock<Block> POTATO_DOOR = registerBlock(
+            "potato_door",
+            p -> new DoorBlock(BlockSetType.CRIMSON, p),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(POTATO_PLANKS.get().defaultMapColor())
+                    .instrument(NoteBlockInstrument.BASS)
+                    .strength(3.0F)
+                    .noOcclusion()
+                    .pushReaction(PushReaction.DESTROY)
+    );
+    public static final DeferredBlock<Block> POTATO_TRAPDOOR = registerBlock(
+            "potato_trapdoor",
+            p -> new TrapDoorBlock(BlockSetType.CRIMSON, p),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(POTATO_PLANKS.get().defaultMapColor())
+                    .instrument(NoteBlockInstrument.BASS)
+                    .strength(3.0F)
+                    .noOcclusion()
+                    .isValidSpawn(Blocks::never)
+    );
+    public static final DeferredBlock<Block> POTATO_PRESSURE_PLATE = registerBlock(
+            "potato_pressure_plate",
+            p -> new PressurePlateBlock(BlockSetType.CRIMSON, p),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(POTATO_PLANKS.get().defaultMapColor())
+                    .forceSolidOn()
+                    .instrument(NoteBlockInstrument.BASS)
+                    .noCollision()
+                    .strength(0.5F)
+                    .pushReaction(PushReaction.DESTROY)
+    );
+    public static final DeferredBlock<Block> POTATO_BUTTON = registerBlock(
+            "potato_button",
+            p -> new ButtonBlock(BlockSetType.CRIMSON, 30, p),
+            () -> BlockBehaviour.Properties.of()
+                    .noCollision()
+                    .strength(0.5F)
+                    .pushReaction(PushReaction.DESTROY)
+    );
+    public static final DeferredBlock<Block> POTATO_SIGN = BLOCKS.registerBlock(
+            "potato_sign",
+            p -> new StandingSignBlock(ModWoodType.POTATO, p),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(POTATO_PLANKS.get().defaultMapColor())
+                    .instrument(NoteBlockInstrument.BASS)
+                    .forceSolidOn()
+                    .noCollision()
+                    .strength(1.0F)
+    );
+    public static final DeferredBlock<Block> POTATO_WALL_SIGN = BLOCKS.registerBlock(
+            "potato_wall_sign",
+            p -> new WallSignBlock(ModWoodType.POTATO, p),
+            () -> BlockBehaviour.Properties.of()
+                    .overrideLootTable(POTATO_SIGN.get().getLootTable())
+                    .overrideDescription(POTATO_SIGN.get().getDescriptionId())
+                    .mapColor(POTATO_PLANKS.get().defaultMapColor())
+                    .instrument(NoteBlockInstrument.BASS)
+                    .forceSolidOn()
+                    .noCollision()
+                    .strength(1.0F)
+    );
+    public static final DeferredBlock<Block> POTATO_HANGING_SIGN = BLOCKS.registerBlock(
+            "potato_hanging_sign",
+            p -> new CeilingHangingSignBlock(ModWoodType.POTATO, p),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.EMERALD)
+                    .forceSolidOn()
+                    .instrument(NoteBlockInstrument.BASS)
+                    .noCollision()
+                    .strength(1.0F)
+    );
+    public static final DeferredBlock<Block> POTATO_WALL_HANGING_SIGN = BLOCKS.registerBlock(
+            "potato_wall_hanging_sign",
+            p-> new WallHangingSignBlock(ModWoodType.POTATO, p),
+            () -> BlockBehaviour.Properties.of()
+                    .overrideLootTable(POTATO_HANGING_SIGN.get().getLootTable())
+                    .overrideDescription(POTATO_HANGING_SIGN.get().getDescriptionId())
+                    .mapColor(MapColor.WOOD)
+                    .forceSolidOn()
+                    .instrument(NoteBlockInstrument.BASS)
+                    .noCollision()
+                    .strength(1.0F)
+    );
+
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return state -> state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
     }
 
     private static BlockBehaviour.Properties soulSandstoneProperties() {
         return BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE).mapColor(MapColor.COLOR_BROWN);
+    }
+
+    private static boolean never(BlockState state, BlockGetter blockGetter, BlockPos blockPos) {
+        return false;
     }
 
     private static Map<Holder<Potion>, DeferredBlock<PotionCauldronBlock>> registerPotionCauldrons() {

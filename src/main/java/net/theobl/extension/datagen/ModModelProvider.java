@@ -14,6 +14,7 @@ import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
@@ -76,6 +77,8 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.RED_NETHER_BRICK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.BLUE_NETHER_BRICK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.ILLUSIONER_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.POTATO_RAFT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.POTATO_CHEST_RAFT.get(), ModelTemplates.FLAT_ITEM);
 
         this.createGlassPaneBlocks(Blocks.TINTED_GLASS, ModBlocks.TINTED_GLASS_PANE.get(), blockModels);
 
@@ -132,6 +135,14 @@ public class ModModelProvider extends ModelProvider {
             // value is crafting table, key is planks
             blockModels.createCraftingTableLike(entry.getValue().get(), entry.getKey(), TextureMapping::craftingTable);
         }
+
+        blockModels.createTrivialBlock(ModBlocks.POTATO_FRUIT.get(), TexturedModel.CUBE_TOP_BOTTOM);
+        blockModels.createAxisAlignedPillarBlockCustomModel(ModBlocks.POTATO_PEDICULE.get(), plainVariant(ModelLocationUtils.getModelLocation(ModBlocks.POTATO_PEDICULE.get())));
+        blockModels.registerSimpleFlatItemModel(ModBlocks.POTATO_PEDICULE.asItem());
+        blockModels.createCrossBlockWithDefaultItem(ModBlocks.POTATO_SPROUTS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createTintedLeaves(ModBlocks.POTATO_LEAVES.get(), TexturedModel.LEAVES, -12012264);
+        blockModels.woodProvider(ModBlocks.POTATO_STEM.get()).log(ModBlocks.POTATO_STEM.get()).wood(ModBlocks.POTATO_HYPHAE.get());
+        blockModels.createHangingSign(ModBlocks.POTATO_STEM.get(), ModBlocks.POTATO_HANGING_SIGN.get(), ModBlocks.POTATO_WALL_HANGING_SIGN.get());
     }
 
     public BlockModelGenerators.BlockFamilyProvider family(Block block, BlockModelGenerators blockModels) {

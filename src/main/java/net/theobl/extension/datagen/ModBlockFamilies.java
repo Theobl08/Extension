@@ -12,6 +12,19 @@ import java.util.stream.Stream;
 
 public class ModBlockFamilies {
     private static final Map<Block, BlockFamily> MAP = Maps.newHashMap();
+    public static final BlockFamily POTATO_PLANKS = familyBuilder(ModBlocks.POTATO_PLANKS.get())
+            .button(ModBlocks.POTATO_BUTTON.get())
+            .fence(ModBlocks.POTATO_FENCE.get())
+            .fenceGate(ModBlocks.POTATO_FENCE_GATE.get())
+            .pressurePlate(ModBlocks.POTATO_PRESSURE_PLATE.get())
+            .sign(ModBlocks.POTATO_SIGN.get(), ModBlocks.POTATO_WALL_SIGN.get())
+            .slab(ModBlocks.POTATO_SLAB.get())
+            .stairs(ModBlocks.POTATO_STAIRS.get())
+            .door(ModBlocks.POTATO_DOOR.get())
+            .trapdoor(ModBlocks.POTATO_TRAPDOOR.get())
+            .recipeGroupPrefix("wooden")
+            .recipeUnlockedBy("has_planks")
+            .getFamily();
 
     public static final BlockFamily POLISHED_STONE = familyBuilder(ModBlocks.POLISHED_STONE.get())
             .wall(ModBlocks.POLISHED_STONE_WALL.get())
