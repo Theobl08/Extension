@@ -1,7 +1,6 @@
 package net.theobl.extension.block;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.core.cauldron.CauldronInteractions;
 import net.minecraft.core.component.DataComponents;
@@ -18,25 +17,21 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.neoforged.neoforge.common.NeoForgeMod;
+import net.theobl.extension.block.entity.PotionCauldronBlockEntity;
 import net.theobl.extension.util.ModUtil;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static net.minecraft.core.cauldron.CauldronInteractions.*;
 import static net.theobl.extension.util.ModUtil.createFilledResult;
-import static net.theobl.extension.util.ModUtil.name;
 
 public class ExtendedCauldronInteraction {
     public static CauldronInteraction.Dispatcher MILK = newDispatcher("milk");
-    public static Map<Holder<Potion>, CauldronInteraction.Dispatcher> POTIONS_INTERACTIONS = new HashMap<>();
+    public static CauldronInteraction.Dispatcher POTION = newDispatcher("potion");
 
     public static void bootStrap() {
         addMilkInteractions(CauldronInteractions.EMPTY);
@@ -61,23 +56,21 @@ public class ExtendedCauldronInteraction {
         addDefaultInteractions(MILK);
         addMilkInteractions(MILK);
 
-        for(Holder<Potion> potion : ModUtil.POTIONS) {
-            CauldronInteraction.Dispatcher map = POTIONS_INTERACTIONS.get(potion);
-            map.put(
+            POTION.put(
                     Items.GLASS_BOTTLE,
                     (state, level, pos, player, hand, itemInHand) -> {
-                        if(state.getBlock() instanceof PotionCauldronBlock && state.getValue(PotionCauldronBlock.LEVEL) != 1) {
+                        if(level.getBlockEntity(pos) instanceof PotionCauldronBlockEntity blockEntity && state.getValue(PotionCauldronBlock.LEVEL) != 1) {
                             if (!level.isClientSide()) {
                                 Item usedItem = itemInHand.getItem();
                                 player.setItemInHand(
-                                        hand, ItemUtils.createFilledResult(itemInHand, player, PotionContents.createItemStack(Items.POTION, potion))
+                                        hand, ItemUtils.createFilledResult(itemInHand, player, PotionContents.createItemStack(Items.POTION, blockEntity.getPotion()))
                                 );
                                 player.awardStat(Stats.USE_CAULDRON);
                                 player.awardStat(Stats.ITEM_USED.get(usedItem));
                                 PotionCauldronBlock.lowerFillLevel(state, level, pos);
                                 level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                                 level.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
-                                ModUtil.showPotionInteractParticles((ServerLevel) level, new PotionContents(potion), pos, (double) (state.getValue(PotionCauldronBlock.LEVEL) - 1) / 4);
+                                ModUtil.showPotionInteractParticles((ServerLevel) level, new PotionContents(blockEntity.getPotion()), pos, (double) (state.getValue(PotionCauldronBlock.LEVEL) - 1) / 4);
                             }
 
                             return InteractionResult.SUCCESS;
@@ -87,12 +80,13 @@ public class ExtendedCauldronInteraction {
                         }
                     }
             );
-            map.put(Items.POTION, (state, level, pos, player, hand, itemInHand) -> {
+            POTION.put(Items.POTION, (state, level, pos, player, hand, itemInHand) -> {
                 if (state.getValue(PotionCauldronBlock.LEVEL) == PotionCauldronBlock.MAX_FILL_LEVEL) {
                     return InteractionResult.TRY_WITH_EMPTY_HAND;
                 } else {
                     PotionContents potionContents = itemInHand.get(DataComponents.POTION_CONTENTS);
-                    if (potionContents != null && potionContents.is(potion)) {
+                    PotionCauldronBlockEntity blockEntity = (PotionCauldronBlockEntity) level.getBlockEntity(pos);
+                    if (potionContents != null && blockEntity != null && potionContents.is(blockEntity.getPotion())) {
                         if (!level.isClientSide()) {
                             player.setItemInHand(hand, ItemUtils.createFilledResult(itemInHand, player, new ItemStack(Items.GLASS_BOTTLE)));
                             player.awardStat(Stats.USE_CAULDRON);
@@ -109,9 +103,8 @@ public class ExtendedCauldronInteraction {
                     }
                 }
             });
-            map.put(Items.ARROW, ExtendedCauldronInteraction::arrowInteraction);
+            POTION.put(Items.ARROW, ExtendedCauldronInteraction::arrowInteraction);
         }
-    }
 
     static void addMilkInteractions(CauldronInteraction.Dispatcher interactionsMap) {
         interactionsMap.put(Items.MILK_BUCKET, ExtendedCauldronInteraction::fillMilkInteraction);
@@ -126,7 +119,7 @@ public class ExtendedCauldronInteraction {
     }
 
     private static InteractionResult arrowInteraction(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack itemInHand) {
-        if(state.getBlock() instanceof PotionCauldronBlock block) {
+        if(level.getBlockEntity(pos) instanceof PotionCauldronBlockEntity block) {
             if(!level.isClientSide()) {
                 ItemStack tippedArrow = PotionContents.createItemStack(Items.TIPPED_ARROW, block.getPotion());
                 int count = itemInHand.getCount();
@@ -160,12 +153,5 @@ public class ExtendedCauldronInteraction {
         tippedArrow.setCount(count);
         player.setItemInHand(hand, createFilledResult(itemInHand, player, tippedArrow, true, count));
         PotionCauldronBlock.lowerFillLevelArrow(state, level, pos, Mth.ceil((float) count / 16.0F));
-    }
-
-    public static void init() {
-        for(Holder<Potion> potionHolder : ModUtil.POTIONS) {
-            CauldronInteraction.Dispatcher interactionMap = newDispatcher(name(potionHolder));
-            POTIONS_INTERACTIONS.put(potionHolder, interactionMap);
-        }
     }
 }

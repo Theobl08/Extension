@@ -5,28 +5,22 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.core.cauldron.CauldronInteractions;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Util;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.InsideBlockEffectType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractCauldronBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -35,11 +29,15 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.theobl.extension.block.entity.PotionCauldronBlockEntity;
+import net.theobl.extension.util.ModUtil;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
-public class PotionCauldronBlock extends AbstractCauldronBlock {
+@NullMarked
+public class PotionCauldronBlock extends AbstractCauldronBlock implements EntityBlock {
     public static final MapCodec<PotionCauldronBlock> CODEC = RecordCodecBuilder.mapCodec(
             i -> i.group(
-                    Potion.CODEC.fieldOf("potion").forGetter(b -> b.potion),
                     CauldronInteractions.CODEC.fieldOf("interactions").forGetter(b -> b.interactions),
                     propertiesCodec()
                     )
@@ -53,17 +51,15 @@ public class PotionCauldronBlock extends AbstractCauldronBlock {
     private static final VoxelShape[] FILLED_SHAPES = Util.make(
             () -> Block.boxes(3, level -> Shapes.or(AbstractCauldronBlock.SHAPE, Block.column(12.0, 4.0, getPixelContentHeight(level + 1))))
     );
-    protected final Holder<Potion> potion;
 
     @Override
     protected MapCodec<? extends AbstractCauldronBlock> codec() {
         return CODEC;
     }
 
-    public PotionCauldronBlock(Holder<Potion> potion, CauldronInteraction.Dispatcher interactions, BlockBehaviour.Properties properties) {
+    public PotionCauldronBlock(CauldronInteraction.Dispatcher interactions, BlockBehaviour.Properties properties) {
         super(properties, interactions);
         this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, MIN_FILL_LEVEL + 1));
-        this.potion = potion;
     }
 
     @Override
@@ -97,9 +93,10 @@ public class PotionCauldronBlock extends AbstractCauldronBlock {
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         super.animateTick(state, level, pos, random);
+        PotionCauldronBlockEntity blockEntity = (PotionCauldronBlockEntity) level.getBlockEntity(pos);
         if (random.nextInt(10) % 5 == 0) {
             Minecraft.getInstance().particleEngine.createParticle(
-                    ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, PotionContents.getColorOptional(potion.value().getEffects()).orElse(PotionContents.BASE_POTION_COLOR)),
+                    ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, ModUtil.getPotionColor(blockEntity.getPotion())),
                     pos.getX() + 0.45 + random.nextDouble() * 0.2,
                     pos.getY() + (double) state.getValue(LEVEL) / MAX_FILL_LEVEL,
                     pos.getZ() + 0.45 + random.nextDouble() * 0.2,
@@ -134,12 +131,13 @@ public class PotionCauldronBlock extends AbstractCauldronBlock {
         builder.add(LEVEL);
     }
 
-    public Holder<Potion> getPotion() {
-        return potion;
-    }
-
     @Override
     public Item asItem() {
         return Items.CAULDRON;
+    }
+
+    @Override
+    public @Nullable BlockEntity newBlockEntity(BlockPos worldPosition, BlockState blockState) {
+        return new PotionCauldronBlockEntity(worldPosition, blockState);
     }
 }

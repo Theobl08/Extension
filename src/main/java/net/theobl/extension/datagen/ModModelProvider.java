@@ -268,19 +268,7 @@ public class ModModelProvider extends ModelProvider {
                         blockModels.modelOutput);
         Identifier cauldron = ModelLocationUtils.getModelLocation(Blocks.CAULDRON);
 
-        ModBlocks.POTION_CAULDRON.values().forEach(block ->
-                blockModels.blockStateOutput
-                        .accept(
-                                MultiVariantGenerator.dispatch(block.get())
-                                        .with(
-                                                PropertyDispatch.initial(PotionCauldronBlock.LEVEL)
-                                                        .select(1, createLayeredCauldron(cauldron, potionLevel1))
-                                                        .select(2, createLayeredCauldron(cauldron, potionLevel2))
-                                                        .select(3, createLayeredCauldron(cauldron, potionLevel3))
-                                                        .select(4, createLayeredCauldron(cauldron, potionFull))
-                                        )
-                        )
-        );
+        blockModels.createNonTemplateModelBlock(ModBlocks.POTION_CAULDRON.get(), Blocks.CAULDRON);
 
         blockModels.blockStateOutput
                 .accept(

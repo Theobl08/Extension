@@ -18,11 +18,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.block.entity.PotionCauldronBlockEntity;
 import net.theobl.extension.util.ModUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -40,10 +39,14 @@ public abstract class CauldronInteractionMixin {
                 player.setItemInHand(hand, ItemUtils.createFilledResult(itemInHand, player, new ItemStack(Items.GLASS_BOTTLE)));
                 player.awardStat(Stats.USE_CAULDRON);
                 player.awardStat(Stats.ITEM_USED.get(usedItem));
-                level.setBlockAndUpdate(pos, ModBlocks.POTION_CAULDRON.get(potionContents.potion().orElse(Potions.AWKWARD)).get().defaultBlockState());
-                level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-                level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
-                ModUtil.showPotionInteractParticles((ServerLevel) level, potionContents, pos, 0.5);
+                level.setBlockAndUpdate(pos, ModBlocks.POTION_CAULDRON.get().defaultBlockState());
+                PotionCauldronBlockEntity blockEntity = (PotionCauldronBlockEntity) level.getBlockEntity(pos);
+                if(blockEntity != null) {
+                    blockEntity.setPotion(potionContents.potion().get());
+                    level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
+                    ModUtil.showPotionInteractParticles((ServerLevel) level, potionContents, pos, 0.5);
+                }
             }
             return InteractionResult.SUCCESS;
         }

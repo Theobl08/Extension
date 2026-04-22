@@ -53,6 +53,7 @@ import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.RegisterCauldronFluidContentEvent;
 import net.theobl.extension.block.ExtendedCauldronInteraction;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.block.entity.ModBlockEntityType;
 import net.theobl.extension.commands.HeldItemNameCommand;
 import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.inventory.FletchingMenu;
@@ -89,7 +90,6 @@ public class Extension {
         ModPotions.register(modEventBus);
 
         NeoForgeMod.enableMilkFluid(); // We need this for our milk cauldron
-        ExtendedCauldronInteraction.init();
 
         // Register the Deferred Register to the mod event bus so blocks get registered
         ModBlocks.register(modEventBus);
@@ -105,6 +105,7 @@ public class Extension {
 
         ModParticleTypes.register(modEventBus);
 
+        ModBlockEntityType.register(modEventBus);
         ModEntityType.register(modEventBus);
         ModTreeDecoratorType.register(modEventBus);
         ModTrunkPlacerType.register(modEventBus);

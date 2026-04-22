@@ -9,13 +9,13 @@ cdd8f93d18a5b42ca2ff27d578b6292c88a725e6 data/c/tags/block/natural_woods.json
 ee90fd36ae9a8638d0d8f73aa91314f85ac2e3bd data/c/tags/block/sandstone/blocks.json
 4129d63523084b45c78c6fc8da77ed857f6e6a75 data/c/tags/block/sandstone/slabs.json
 bdef780f9a4c2965de35f74f5eb088150d9f694d data/c/tags/block/sandstone/stairs.json
-25f69372927871bc55fbc9896d0ae7f2155805b7 data/c/tags/block/villager_job_sites.json
+e6fb5ccafd35ae058e2e0678279b45d06c7864fc data/c/tags/block/villager_job_sites.json
 c0434c4e9b5cdc9314107095014bb559626cf0a9 data/extension/tags/block/copper_fire_base_blocks.json
 d99571dd999197a557ddfc133b298006e5d660e3 data/extension/tags/block/ender_fire_base_blocks.json
 b2300135caa494a27cb7a1bbf1427da73ffa8c63 data/extension/tags/block/redstone_fire_base_blocks.json
 c2b25de3136547dc1ae29b20e9c2ec38656ae6fa data/minecraft/tags/block/campfires.json
-25f69372927871bc55fbc9896d0ae7f2155805b7 data/minecraft/tags/block/cauldrons.json
 3901932dd4baa8584b0697e9fe0cd9018240f781 data/minecraft/tags/block/ceiling_hanging_signs.json
+e6fb5ccafd35ae058e2e0678279b45d06c7864fc data/minecraft/tags/block/cauldrons.json
 6af7f26669e374797e819a720298b940f77a2c18 data/minecraft/tags/block/fences.json
 61900762df51fe88cdf2c4c845cfcb40811f156f data/minecraft/tags/block/fence_gates.json
 dda2b9f854f882316a5f1fc960987e325fa9d68c data/minecraft/tags/block/fire.json

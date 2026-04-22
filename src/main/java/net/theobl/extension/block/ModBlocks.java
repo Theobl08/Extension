@@ -1,12 +1,8 @@
 package net.theobl.extension.block;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -14,7 +10,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
@@ -29,7 +24,6 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
-import java.util.stream.StreamSupport;
 
 public class ModBlocks {
     // Create a Deferred Register to hold Blocks which will all be registered under the "extension" namespace
@@ -256,7 +250,11 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> MILK_CAULDRON = BLOCKS.registerBlock("milk_cauldron",
             MilkCauldronBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON));
-    public static final Map<Holder<Potion>, DeferredBlock<PotionCauldronBlock>> POTION_CAULDRON = registerPotionCauldrons();
+    public static final DeferredBlock<PotionCauldronBlock> POTION_CAULDRON = BLOCKS.registerBlock(
+            "potion_cauldron",
+        p -> new PotionCauldronBlock(ExtendedCauldronInteraction.POTION, p),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON)
+    );
 
 //    public static final DeferredBlock<Block> SPRUCE_CRAFTING_TABLE = registerBlock("spruce_crafting_table", CraftingTableBlock::new,
 //            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE));
@@ -479,18 +477,6 @@ public class ModBlocks {
 
     private static boolean never(BlockState state, BlockGetter blockGetter, BlockPos blockPos) {
         return false;
-    }
-
-    private static Map<Holder<Potion>, DeferredBlock<PotionCauldronBlock>> registerPotionCauldrons() {
-        Map<Holder<Potion>, DeferredBlock<PotionCauldronBlock>> potionCauldrons = new HashMap<>();
-        for (Holder<Potion> potion : ModUtil.POTIONS) {
-            String name = ModUtil.name(potion);
-            DeferredBlock<PotionCauldronBlock> block = BLOCKS.registerBlock(name + "_cauldron",
-                    p -> new PotionCauldronBlock(potion, ExtendedCauldronInteraction.POTIONS_INTERACTIONS.get(potion), p),
-                    () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON));
-            potionCauldrons.put(potion, block);
-        }
-        return potionCauldrons;
     }
 
     private static Map<Block, DeferredBlock<Block>> registerCraftingTables() {

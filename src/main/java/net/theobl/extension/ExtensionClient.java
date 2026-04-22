@@ -3,18 +3,14 @@ package net.theobl.extension;
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import net.minecraft.client.OptionInstance;
-import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.client.color.block.BlockTintSources;
 import net.minecraft.client.model.object.boat.RaftModel;
 import net.minecraft.client.particle.FlameParticle;
-import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.client.renderer.entity.RaftRenderer;
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
@@ -30,7 +26,9 @@ import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.block.entity.ModBlockEntityType;
 import net.theobl.extension.client.ModModelLayers;
+import net.theobl.extension.client.renderer.blockentity.PotionCauldronRenderer;
 import net.theobl.extension.compat.jei.ExtensionJeiPlugin;
 import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.inventory.FletchingScreen;
@@ -71,19 +69,6 @@ public class ExtensionClient {
 
     @SubscribeEvent
     public static void registerColorHandlers(RegisterColorHandlersEvent.BlockTintSources event) {
-        ModBlocks.POTION_CAULDRON.values().forEach(block -> {
-            event.register(List.of(new BlockTintSource() {
-                @Override
-                public int color(BlockState state) {
-                    return -1;
-                }
-
-                @Override
-                public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
-                    return PotionContents.getColorOptional(block.get().getPotion().value().getEffects()).orElse(PotionContents.BASE_POTION_COLOR);
-                }
-            }), block.get());
-        });
         event.register(List.of(BlockTintSources.foliage()), ModBlocks.POTATO_LEAVES.get());
     }
 
@@ -119,6 +104,7 @@ public class ExtensionClient {
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntityType.POTATO_RAFT.get(), context -> new RaftRenderer(context, ModModelLayers.POTATO_RAFT));
         event.registerEntityRenderer(ModEntityType.POTATO_CHEST_RAFT.get(), context -> new RaftRenderer(context, ModModelLayers.POTATO_CHEST_RAFT));
+        event.registerBlockEntityRenderer(ModBlockEntityType.POTION_CAULDRON.get(), context -> new PotionCauldronRenderer());
     }
 
     public static final double BRIGHTNESS_MIN = -1;

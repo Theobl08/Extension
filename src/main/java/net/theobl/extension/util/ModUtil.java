@@ -59,6 +59,10 @@ public class ModUtil {
         };
     }
 
+    public static int getPotionColor(Holder<Potion> potion) {
+        return PotionContents.getColorOptional(potion.value().getEffects()).orElse(PotionContents.BASE_POTION_COLOR);
+    }
+
     public static void showPotionInteractParticles(ServerLevel level, PotionContents potionContents, BlockPos pos, double yOffset) {
         level.sendParticles(
                 ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, potionContents.getColorOr(PotionContents.BASE_POTION_COLOR)),
