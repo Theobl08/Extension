@@ -131,6 +131,25 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.PURPUR_WALL.get())
                 .add(ModBlocks.ENDER_O_LANTERN.get());
 
+        tag(BlockTags.SWORD_EFFICIENT).add(ModBlocks.POTATO_FRUIT.get());
+        tag(BlockTags.LOGS).add(ModBlocks.POTATO_STEM.get(), ModBlocks.POTATO_HYPHAE.get());
+        tag(BlockTags.OVERWORLD_NATURAL_LOGS).add(ModBlocks.POTATO_STEM.get());
+        tag(Tags.Blocks.NATURAL_WOODS).add(ModBlocks.POTATO_HYPHAE.get());
+        tag(BlockTags.PLANKS).add(ModBlocks.POTATO_PLANKS.get());
+        tag(BlockTags.WOODEN_STAIRS).add(ModBlocks.POTATO_STAIRS.get());
+        tag(BlockTags.WOODEN_SLABS).add(ModBlocks.POTATO_SLAB.get());
+        tag(BlockTags.WOODEN_FENCES).add(ModBlocks.POTATO_FENCE.get());
+        tag(BlockTags.FENCE_GATES).add(ModBlocks.POTATO_FENCE_GATE.get());
+        tag(Tags.Blocks.FENCE_GATES_WOODEN).add(ModBlocks.POTATO_FENCE_GATE.get());
+        tag(BlockTags.WOODEN_DOORS).add(ModBlocks.POTATO_DOOR.get());
+        tag(BlockTags.WOODEN_TRAPDOORS).add(ModBlocks.POTATO_TRAPDOOR.get());
+        tag(BlockTags.WOODEN_PRESSURE_PLATES).add(ModBlocks.POTATO_PRESSURE_PLATE.get());
+        tag(BlockTags.WOODEN_BUTTONS).add(ModBlocks.POTATO_BUTTON.get());
+        tag(BlockTags.STANDING_SIGNS).add(ModBlocks.POTATO_SIGN.get());
+        tag(BlockTags.WALL_SIGNS).add(ModBlocks.POTATO_WALL_SIGN.get());
+        tag(BlockTags.CEILING_HANGING_SIGNS).add(ModBlocks.POTATO_HANGING_SIGN.get());
+        tag(BlockTags.WALL_HANGING_SIGNS).add(ModBlocks.POTATO_WALL_HANGING_SIGN.get());
+
         for(DeferredHolder<Block, ? extends Block> deferredBlock : ModBlocks.BLOCKS.getEntries()){
             if(deferredBlock.get() instanceof StairBlock)
                 tag(BlockTags.STAIRS).add(deferredBlock.get());
@@ -160,25 +179,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
             if(deferredBlock.get() instanceof LeavesBlock)
                 tag(BlockTags.LEAVES).add(deferredBlock.get());
-
-            tag(BlockTags.SWORD_EFFICIENT).add(ModBlocks.POTATO_FRUIT.get());
-            tag(BlockTags.LOGS).add(ModBlocks.POTATO_STEM.get(), ModBlocks.POTATO_HYPHAE.get());
-            tag(BlockTags.OVERWORLD_NATURAL_LOGS).add(ModBlocks.POTATO_STEM.get());
-            tag(Tags.Blocks.NATURAL_WOODS).add(ModBlocks.POTATO_HYPHAE.get());
-            tag(BlockTags.PLANKS).add(ModBlocks.POTATO_PLANKS.get());
-            tag(BlockTags.WOODEN_STAIRS).add(ModBlocks.POTATO_STAIRS.get());
-            tag(BlockTags.WOODEN_SLABS).add(ModBlocks.POTATO_SLAB.get());
-            tag(BlockTags.WOODEN_FENCES).add(ModBlocks.POTATO_FENCE.get());
-            tag(BlockTags.FENCE_GATES).add(ModBlocks.POTATO_FENCE_GATE.get());
-            tag(Tags.Blocks.FENCE_GATES_WOODEN).add(ModBlocks.POTATO_FENCE_GATE.get());
-            tag(BlockTags.WOODEN_DOORS).add(ModBlocks.POTATO_DOOR.get());
-            tag(BlockTags.WOODEN_TRAPDOORS).add(ModBlocks.POTATO_TRAPDOOR.get());
-            tag(BlockTags.WOODEN_PRESSURE_PLATES).add(ModBlocks.POTATO_PRESSURE_PLATE.get());
-            tag(BlockTags.WOODEN_BUTTONS).add(ModBlocks.POTATO_BUTTON.get());
-            tag(BlockTags.STANDING_SIGNS).add(ModBlocks.POTATO_SIGN.get());
-            tag(BlockTags.WALL_SIGNS).add(ModBlocks.POTATO_WALL_SIGN.get());
-            tag(BlockTags.CEILING_HANGING_SIGNS).add(ModBlocks.POTATO_HANGING_SIGN.get());
-            tag(BlockTags.WALL_HANGING_SIGNS).add(ModBlocks.POTATO_WALL_HANGING_SIGN.get());
 
             if(deferredBlock.get().toString().contains("soul_sandstone")) {
                 tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(deferredBlock.get());
