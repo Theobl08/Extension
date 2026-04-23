@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all_tinted_overlay",
+  "textures": {
+    "all": "minecraft:block/moss_block",
+    "overlay": "minecraft:block/moss_block_overlay"
+  }
+}

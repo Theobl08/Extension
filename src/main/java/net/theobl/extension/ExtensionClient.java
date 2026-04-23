@@ -7,6 +7,10 @@ import net.minecraft.client.color.block.BlockTintSources;
 import net.minecraft.client.model.object.boat.RaftModel;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.renderer.entity.RaftRenderer;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
@@ -25,6 +29,7 @@ import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsE
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.block.entity.ModBlockEntityType;
 import net.theobl.extension.client.ModModelLayers;
@@ -70,6 +75,13 @@ public class ExtensionClient {
     @SubscribeEvent
     public static void registerColorHandlers(RegisterColorHandlersEvent.BlockTintSources event) {
         event.register(List.of(BlockTintSources.foliage()), ModBlocks.POTATO_LEAVES.get());
+        event.register(List.of(BlockTintSources.grassBlock()), Blocks.MOSS_BLOCK);
+    }
+
+    @SubscribeEvent
+    public static void addPackFinders(AddPackFindersEvent event) {
+        event.addPackFinders(Extension.asResource("resourcepacks/biome_tinted_moss_blocks"), PackType.CLIENT_RESOURCES,
+                Component.literal("Biome Tinted Moss Blocks"), PackSource.DEFAULT, false, Pack.Position.TOP);
     }
 
     @SubscribeEvent

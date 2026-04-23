@@ -1,0 +1,9 @@
+{
+  "pack": {
+    "pack_format": 34,
+    "min_format": 15,
+    "max_format": 99,
+    "supported_formats": [15, 99],
+    "description": "Tint Moss and Mossy blocks like Grass block"
+  }
+}
