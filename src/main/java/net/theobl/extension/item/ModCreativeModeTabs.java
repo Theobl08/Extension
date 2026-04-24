@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.theobl.extension.Extension;
@@ -24,10 +25,12 @@ public class ModCreativeModeTabs {
                     .withTabsBefore(CreativeModeTabs.COMBAT)
                     .icon(() -> ModItems.SPAWNER_MINECART.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
-                        for (DeferredHolder<Item, ? extends Item> deferredItem : ModItems.ITEMS.getEntries()) {
-                            if(deferredItem.get() instanceof BlockItem && !(deferredItem.get() == ModItems.BLUE_NETHER_WART.asItem()))
+                        for (DeferredHolder<Block, ? extends Block> deferredItem : ModBlocks.BLOCKS.getEntries()) {
+                            if(((DeferredBlock<?>) deferredItem).asItem() instanceof BlockItem item && item != Items.CAULDRON && deferredItem != ModBlocks.BLUE_NETHER_WART)
                                 output.accept(deferredItem.get());
                         }
+                        output.accept(ModItems.POTATO_RAFT);
+                        output.accept(ModItems.POTATO_CHEST_RAFT);
                         for (DeferredHolder<Item, ? extends Item> deferredItem : ModItems.ITEMS.getEntries()) {
                             if(!(deferredItem.get() instanceof BlockItem))
                                 output.accept(deferredItem.get());
