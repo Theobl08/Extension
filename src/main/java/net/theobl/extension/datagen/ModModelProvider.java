@@ -14,15 +14,15 @@ import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.neoforge.client.model.generators.blockstate.CompositeBlockStateModelBuilder;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
-import net.theobl.extension.block.PotionCauldronBlock;
+import net.theobl.extension.block.WoodTypeCollection;
 import net.theobl.extension.item.ModItems;
 
 import java.util.List;
@@ -120,21 +120,13 @@ public class ModModelProvider extends ModelProvider {
         createFire(ModBlocks.REDSTONE_FIRE.get(), blockModels);
         createFire(ModBlocks.ENDER_FIRE.get(), blockModels);
 
-//        blockModels.createCraftingTableLike(ModBlocks.SPRUCE_CRAFTING_TABLE.get(), Blocks.SPRUCE_PLANKS, TextureMapping::craftingTable);
-//        blockModels.createCraftingTableLike(ModBlocks.BIRCH_CRAFTING_TABLE.get(), Blocks.BIRCH_PLANKS, TextureMapping::craftingTable);
-//        blockModels.createCraftingTableLike(ModBlocks.JUNGLE_CRAFTING_TABLE.get(), Blocks.JUNGLE_PLANKS, TextureMapping::craftingTable);
-//        blockModels.createCraftingTableLike(ModBlocks.ACACIA_CRAFTING_TABLE.get(), Blocks.ACACIA_PLANKS, TextureMapping::craftingTable);
-//        blockModels.createCraftingTableLike(ModBlocks.DARK_OAK_CRAFTING_TABLE.get(), Blocks.DARK_OAK_PLANKS, TextureMapping::craftingTable);
-//        blockModels.createCraftingTableLike(ModBlocks.CRIMSON_CRAFTING_TABLE.get(), Blocks.CRIMSON_PLANKS, TextureMapping::craftingTable);
-//        blockModels.createCraftingTableLike(ModBlocks.WARPED_CRAFTING_TABLE.get(), Blocks.WARPED_PLANKS, TextureMapping::craftingTable);
-//        blockModels.createCraftingTableLike(ModBlocks.MANGROVE_CRAFTING_TABLE.get(), Blocks.MANGROVE_PLANKS, TextureMapping::craftingTable);
-//        blockModels.createCraftingTableLike(ModBlocks.BAMBOO_CRAFTING_TABLE.get(), Blocks.BAMBOO_PLANKS, TextureMapping::craftingTable);
-//        blockModels.createCraftingTableLike(ModBlocks.CHERRY_CRAFTING_TABLE.get(), Blocks.CHERRY_PLANKS, TextureMapping::craftingTable);
-//        blockModels.createCraftingTableLike(ModBlocks.PALE_OAK_CRAFTING_TABLE.get(), Blocks.PALE_OAK_PLANKS, TextureMapping::craftingTable);
-        for (var entry : ModBlocks.VARIANTS_CRAFTING_TABLE.entrySet()) {
-            // value is crafting table, key is planks
-            blockModels.createCraftingTableLike(entry.getValue().get(), entry.getKey(), TextureMapping::craftingTable);
-        }
+        WoodTypeCollection.TYPES.forEach(woodType -> {
+            if (woodType == WoodType.OAK) return;
+            blockModels.createCraftingTableLike(
+                    ModBlocks.CRAFTING_TABLES.pick(woodType).get(),
+                    WoodTypeCollection.BASE.pick(woodType),
+                    TextureMapping::craftingTable);
+        });
 
         blockModels.createTrivialBlock(ModBlocks.POTATO_FRUIT.get(), TexturedModel.CUBE_TOP_BOTTOM);
         blockModels.createAxisAlignedPillarBlockCustomModel(ModBlocks.POTATO_PEDICULE.get(), plainVariant(ModelLocationUtils.getModelLocation(ModBlocks.POTATO_PEDICULE.get())));

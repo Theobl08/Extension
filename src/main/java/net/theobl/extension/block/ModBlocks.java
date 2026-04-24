@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
@@ -256,29 +257,15 @@ public class ModBlocks {
             () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON)
     );
 
-//    public static final DeferredBlock<Block> SPRUCE_CRAFTING_TABLE = registerBlock("spruce_crafting_table", CraftingTableBlock::new,
-//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE));
-//    public static final DeferredBlock<Block> BIRCH_CRAFTING_TABLE = registerBlock("birch_crafting_table", CraftingTableBlock::new,
-//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE));
-//    public static final DeferredBlock<Block> JUNGLE_CRAFTING_TABLE = registerBlock("jungle_crafting_table", CraftingTableBlock::new,
-//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE));
-//    public static final DeferredBlock<Block> ACACIA_CRAFTING_TABLE = registerBlock("acacia_crafting_table", CraftingTableBlock::new,
-//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE));
-//    public static final DeferredBlock<Block> DARK_OAK_CRAFTING_TABLE = registerBlock("dark_oak_crafting_table", CraftingTableBlock::new,
-//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE));
-//    public static final DeferredBlock<Block> MANGROVE_CRAFTING_TABLE = registerBlock("mangrove_crafting_table", CraftingTableBlock::new,
-//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE));
-//    public static final DeferredBlock<Block> CHERRY_CRAFTING_TABLE = registerBlock("cherry_crafting_table", CraftingTableBlock::new,
-//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE).sound(SoundType.CHERRY_WOOD));
-//    public static final DeferredBlock<Block> PALE_OAK_CRAFTING_TABLE = registerBlock("pale_oak_crafting_table", CraftingTableBlock::new,
-//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE));
-//    public static final DeferredBlock<Block> BAMBOO_CRAFTING_TABLE = registerBlock("bamboo_crafting_table", CraftingTableBlock::new,
-//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE).sound(SoundType.BAMBOO_WOOD));
-//    public static final DeferredBlock<Block> CRIMSON_CRAFTING_TABLE = registerBlock("crimson_crafting_table", CraftingTableBlock::new,
-//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE).sound(SoundType.NETHER_WOOD));
-//    public static final DeferredBlock<Block> WARPED_CRAFTING_TABLE = registerBlock("warped_crafting_table", CraftingTableBlock::new,
-//            BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE).sound(SoundType.NETHER_WOOD));
-    public static final Map<Block, DeferredBlock<Block>> VARIANTS_CRAFTING_TABLE = registerCraftingTables();
+    public static final WoodTypeCollection<DeferredBlock<Block>> CRAFTING_TABLES = WoodTypeCollection.registerBlocksWithExistingVanillaBlock(
+            "crafting_table",
+            ModBlocks::registerBlock,
+            ((woodType, properties) -> new CraftingTableBlock(properties)),
+            woodType -> BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
+                    .mapColor(WoodTypeCollection.BASE.pick(woodType).defaultMapColor())
+                    .sound(woodType.soundType()),
+            Blocks.CRAFTING_TABLE, WoodType.OAK
+    );
 
     public static final DeferredBlock<Block> POTATO_FRUIT = registerBlock(
             "potato_fruit",
@@ -477,26 +464,6 @@ public class ModBlocks {
 
     private static boolean never(BlockState state, BlockGetter blockGetter, BlockPos blockPos) {
         return false;
-    }
-
-    private static Map<Block, DeferredBlock<Block>> registerCraftingTables() {
-        Map<Block, DeferredBlock<Block>> blocks = new HashMap<>();
-        for (Block plank : PLANKS) {
-            if(plank == Blocks.OAK_PLANKS) {
-                continue; // Vanilla crafting table is based of oak planks
-            }
-            String name = ModUtil.name(plank).replace("planks", "crafting_table");
-            BlockBehaviour.Properties properties = BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE);
-            if(name.contains("cherry")) {
-                properties = properties.sound(SoundType.CHERRY_WOOD);
-            } else if(name.contains("bamboo")) {
-                properties = properties.sound(SoundType.BAMBOO_WOOD);
-            } else if(name.contains("crimson") || name.contains("warped")) {
-                properties = properties.sound(SoundType.NETHER_WOOD);
-            }
-            blocks.put(plank, registerBlock(name, CraftingTableBlock::new, properties));
-        }
-        return blocks;
     }
 
     public static <T extends Block> DeferredBlock<Block> registerStair(String name, DeferredBlock<T> baseBlock) {

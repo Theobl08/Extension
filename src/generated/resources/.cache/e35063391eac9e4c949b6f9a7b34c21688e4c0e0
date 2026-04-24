@@ -1,10 +1,10 @@
-// 26.1	2026-04-22T16:20:23.9746855	Tags for minecraft:block mod id extension
+// 26.1	2026-04-23T15:52:02.1267896	Tags for minecraft:block mod id extension
 6af7f26669e374797e819a720298b940f77a2c18 data/c/tags/block/fences.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/block/fences/nether_brick.json
 e425c47578377de2388a2a345e79caccab792af8 data/c/tags/block/fence_gates/wooden.json
 e994b502fa84d2d351afd20245604823cdd325df data/c/tags/block/glass_panes.json
 d41ede5f1302b43f5dbd755f9f7deaf12f9bafa3 data/c/tags/block/natural_woods.json
-4899cc570cfee4d3b36234ba944fb70c7b9e5493 data/c/tags/block/player_workstations/crafting_tables.json
+ddbcdb56cb17913d4552b1f686d2b6a530c9cab3 data/c/tags/block/player_workstations/crafting_tables.json
 4f53cb5679c9e707a8afdb5e981da3b9abea243f data/c/tags/block/pumpkins.json
 ee90fd36ae9a8638d0d8f73aa91314f85ac2e3bd data/c/tags/block/sandstone/blocks.json
 4129d63523084b45c78c6fc8da77ed857f6e6a75 data/c/tags/block/sandstone/slabs.json
@@ -21,7 +21,7 @@ e425c47578377de2388a2a345e79caccab792af8 data/minecraft/tags/block/fence_gates.j
 dda2b9f854f882316a5f1fc960987e325fa9d68c data/minecraft/tags/block/fire.json
 096ddd7892a9f24bf58d25dccf95160736b6bee4 data/minecraft/tags/block/leaves.json
 4737b983b9cab361c9d355611cdc43645e329274 data/minecraft/tags/block/logs.json
-9deb252b7b9e7f92f94b17816eed88910dac3b38 data/minecraft/tags/block/mineable/axe.json
+60333ac0650398c2d5ba12daf1e789fd9a231c1e data/minecraft/tags/block/mineable/axe.json
 06545b09f0354446b4ed6617d46632ea81fb2319 data/minecraft/tags/block/mineable/pickaxe.json
 45d7047b9d3567131955bd6cd85d4b295042277a data/minecraft/tags/block/overworld_natural_logs.json
 3486cb571e4d7f4403ec590dfafb6972d44ae7da data/minecraft/tags/block/piglin_repellents.json

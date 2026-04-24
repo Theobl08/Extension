@@ -2,12 +2,10 @@ package net.theobl.extension.datagen;
 
 import net.minecraft.advancements.criterion.PlayerTrigger;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
@@ -18,15 +16,14 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.registries.DeferredBlock;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.block.WoodTypeCollection;
 import net.theobl.extension.datagen.recipe.FletchingRecipeBuilder;
 import net.theobl.extension.item.ModItems;
 import net.theobl.extension.item.crafting.TippedArrowFletchingRecipe;
 
 import javax.annotation.Nullable;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import static net.neoforged.neoforge.common.conditions.NeoForgeConditions.*;
@@ -198,10 +195,7 @@ public class ModRecipeProvider extends RecipeProvider {
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SOUL_SANDSTONE_SLAB, ModBlocks.SOUL_SANDSTONE, 2);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SOUL_SANDSTONE_SLAB, ModBlocks.CUT_SOUL_SANDSTONE, 2);
 
-        for(Map.Entry<Block, DeferredBlock<Block>> entry : ModBlocks.VARIANTS_CRAFTING_TABLE.entrySet()) {
-            craftingTable(entry.getValue(), entry.getKey());
-        }
-        craftingTable(Blocks.CRAFTING_TABLE, Blocks.OAK_PLANKS);
+        WoodTypeCollection.TYPES.forEach(woodType -> craftingTable(ModBlocks.CRAFTING_TABLES.pick(woodType), WoodTypeCollection.BASE.pick(woodType)));
 
         this.shaped(RecipeCategory.DECORATIONS, ModBlocks.ENDER_TORCH, 4)
                 .define('X', Ingredient.of(Items.COAL, Items.CHARCOAL))
