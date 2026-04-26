@@ -1,4 +1,4 @@
-// 26.1	2026-04-23T15:52:02.1257716	Tags for minecraft:item mod id extension
+// 26.1	2026-04-25T22:27:06.0457007	Tags for minecraft:item mod id extension
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks.json
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks/nether.json
 d4dca80551a0d488392912428cdc618c8b8e9197 data/c/tags/item/crops.json
@@ -12,6 +12,7 @@ ddbcdb56cb17913d4552b1f686d2b6a530c9cab3 data/c/tags/item/player_workstations/cr
 ee90fd36ae9a8638d0d8f73aa91314f85ac2e3bd data/c/tags/item/sandstone/blocks.json
 4129d63523084b45c78c6fc8da77ed857f6e6a75 data/c/tags/item/sandstone/slabs.json
 bdef780f9a4c2965de35f74f5eb088150d9f694d data/c/tags/item/sandstone/stairs.json
+e05f960a6a9bd49162b86a764990d68c221d4c69 data/c/tags/item/villager_job_sites.json
 9a5bb3514d2243eed0f824e7c5e538aea4b5b315 data/minecraft/tags/item/boats.json
 681d080a826815ff2651b6cae9249c1b7582f955 data/minecraft/tags/item/chest_boats.json
 6af7f26669e374797e819a720298b940f77a2c18 data/minecraft/tags/item/fences.json

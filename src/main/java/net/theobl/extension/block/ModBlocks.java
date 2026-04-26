@@ -267,6 +267,16 @@ public class ModBlocks {
             Blocks.CRAFTING_TABLE, WoodType.OAK
     );
 
+    public static final WoodTypeCollection<DeferredBlock<Block>> CARTOGRAPHY_TABLES = WoodTypeCollection.registerBlocksWithExistingVanillaBlock(
+            "cartography_table",
+            ModBlocks::registerBlock,
+            ((woodType, properties) -> new CartographyTableBlock(properties)),
+            woodType -> BlockBehaviour.Properties.ofFullCopy(Blocks.CARTOGRAPHY_TABLE)
+                    .mapColor(WoodTypeCollection.BASE.pick(woodType).defaultMapColor())
+                    .sound(woodType.soundType()),
+            Blocks.CARTOGRAPHY_TABLE, WoodType.DARK_OAK
+    );
+
     public static final DeferredBlock<Block> POTATO_FRUIT = registerBlock(
             "potato_fruit",
             Block::new,

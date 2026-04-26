@@ -29,6 +29,7 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.gamerules.GameRules;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -53,6 +54,7 @@ import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.RegisterCauldronFluidContentEvent;
 import net.theobl.extension.block.ExtendedCauldronInteraction;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.block.WoodTypeCollection;
 import net.theobl.extension.block.entity.ModBlockEntityType;
 import net.theobl.extension.commands.HeldItemNameCommand;
 import net.theobl.extension.entity.ModEntityType;
@@ -143,6 +145,9 @@ public class Extension {
 
     private void extendPoiTypes(ExtendPoiTypesEvent event) {
         event.addBlockToPoi(PoiTypes.LEATHERWORKER, ModBlocks.MILK_CAULDRON.get());
+        WoodTypeCollection.TYPES.forEach(woodType -> {
+            if(woodType != WoodType.DARK_OAK) event.addBlockToPoi(PoiTypes.CARTOGRAPHER, ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get());
+        });
     }
 
     private void registerCauldronFluidContent(RegisterCauldronFluidContentEvent event) {

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:bamboo_planks",
+    "@": "minecraft:paper"
+  },
+  "pattern": [
+    "@@",
+    "##",
+    "##"
+  ],
+  "result": {
+    "id": "extension:bamboo_cartography_table"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "minecraft:block/pale_oak_planks",
+    "east": "extension:block/pale_oak_cartography_table_side3",
+    "north": "extension:block/pale_oak_cartography_table_side3",
+    "particle": "extension:block/pale_oak_cartography_table_side3",
+    "south": "extension:block/pale_oak_cartography_table_side1",
+    "up": "extension:block/pale_oak_cartography_table_top",
+    "west": "extension:block/pale_oak_cartography_table_side2"
+  }
+}

@@ -195,7 +195,10 @@ public class ModRecipeProvider extends RecipeProvider {
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SOUL_SANDSTONE_SLAB, ModBlocks.SOUL_SANDSTONE, 2);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SOUL_SANDSTONE_SLAB, ModBlocks.CUT_SOUL_SANDSTONE, 2);
 
-        WoodTypeCollection.TYPES.forEach(woodType -> craftingTable(ModBlocks.CRAFTING_TABLES.pick(woodType), WoodTypeCollection.BASE.pick(woodType)));
+        WoodTypeCollection.TYPES.forEach(woodType -> {
+            craftingTable(ModBlocks.CRAFTING_TABLES.pick(woodType), WoodTypeCollection.BASE.pick(woodType));
+            cartographyTable(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType), WoodTypeCollection.BASE.pick(woodType));
+        });
 
         this.shaped(RecipeCategory.DECORATIONS, ModBlocks.ENDER_TORCH, 4)
                 .define('X', Ingredient.of(Items.COAL, Items.CHARCOAL))
@@ -417,6 +420,17 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("##")
                 .unlockedBy("unlock_right_away", PlayerTrigger.TriggerInstance.tick())
                 .showNotification(false)
+                .save(this.output);
+    }
+
+    protected void cartographyTable(ItemLike result, ItemLike planks) {
+        this.shaped(RecipeCategory.DECORATIONS, result)
+                .define('#', planks)
+                .define('@', Items.PAPER)
+                .pattern("@@")
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy("has_paper", this.has(Items.PAPER))
                 .save(this.output);
     }
 

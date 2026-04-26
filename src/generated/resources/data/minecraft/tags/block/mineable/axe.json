@@ -18,6 +18,17 @@
     "extension:mangrove_crafting_table",
     "extension:bamboo_crafting_table",
     "extension:cherry_crafting_table",
-    "extension:pale_oak_crafting_table"
+    "extension:pale_oak_crafting_table",
+    "extension:oak_cartography_table",
+    "extension:spruce_cartography_table",
+    "extension:birch_cartography_table",
+    "extension:jungle_cartography_table",
+    "extension:acacia_cartography_table",
+    "extension:crimson_cartography_table",
+    "extension:warped_cartography_table",
+    "extension:mangrove_cartography_table",
+    "extension:bamboo_cartography_table",
+    "extension:cherry_cartography_table",
+    "extension:pale_oak_cartography_table"
   ]
 }

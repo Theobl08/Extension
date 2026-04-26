@@ -121,11 +121,24 @@ public class ModModelProvider extends ModelProvider {
         createFire(ModBlocks.ENDER_FIRE.get(), blockModels);
 
         WoodTypeCollection.TYPES.forEach(woodType -> {
-            if (woodType == WoodType.OAK) return;
-            blockModels.createCraftingTableLike(
-                    ModBlocks.CRAFTING_TABLES.pick(woodType).get(),
-                    WoodTypeCollection.BASE.pick(woodType),
-                    TextureMapping::craftingTable);
+            if (woodType != WoodType.OAK) {
+                blockModels.createCraftingTableLike(
+                        ModBlocks.CRAFTING_TABLES.pick(woodType).get(),
+                        WoodTypeCollection.BASE.pick(woodType),
+                        TextureMapping::craftingTable);
+            }
+            if (woodType != WoodType.DARK_OAK) {
+                TextureMapping mapping = new TextureMapping()
+                        .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get(), "_side3"))
+                        .put(TextureSlot.DOWN, TextureMapping.getBlockTexture(WoodTypeCollection.BASE.pick(woodType)))
+                        .put(TextureSlot.UP, TextureMapping.getBlockTexture(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get(), "_top"))
+                        .put(TextureSlot.NORTH, TextureMapping.getBlockTexture(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get(), "_side3"))
+                        .put(TextureSlot.EAST, TextureMapping.getBlockTexture(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get(), "_side3"))
+                        .put(TextureSlot.SOUTH, TextureMapping.getBlockTexture(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get(), "_side1"))
+                        .put(TextureSlot.WEST, TextureMapping.getBlockTexture(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get(), "_side2"));
+                blockModels.blockStateOutput
+                        .accept(createSimpleBlock(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get(), plainVariant(ModelTemplates.CUBE.create(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get(), mapping, blockModels.modelOutput))));
+            }
         });
 
         blockModels.createTrivialBlock(ModBlocks.POTATO_FRUIT.get(), TexturedModel.CUBE_TOP_BOTTOM);

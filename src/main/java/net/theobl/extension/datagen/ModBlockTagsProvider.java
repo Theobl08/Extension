@@ -173,6 +173,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             if(deferredBlock.get() instanceof CraftingTableBlock) {
                 tag(Tags.Blocks.PLAYER_WORKSTATIONS_CRAFTING_TABLES).add(deferredBlock.get());
             }
+            if(deferredBlock.get() instanceof CartographyTableBlock) {
+                tag(Tags.Blocks.VILLAGER_JOB_SITES).add(deferredBlock.get());
+            }
 
             if(deferredBlock.get() instanceof SaplingBlock)
                 tag(BlockTags.SAPLINGS).add(deferredBlock.get());
@@ -209,6 +212,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     }
 
     private boolean mineableWithAxe(Block block) {
-        return block instanceof CraftingTableBlock;
+        return block instanceof CraftingTableBlock
+                || block instanceof CartographyTableBlock;
     }
 }

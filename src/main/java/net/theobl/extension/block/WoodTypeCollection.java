@@ -1,5 +1,6 @@
 package net.theobl.extension.block;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -8,6 +9,7 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import org.apache.commons.lang3.function.TriFunction;
 
+import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -65,6 +67,12 @@ public record WoodTypeCollection<T>(
 
     public static WoodTypeCollection<String> prefixWithWood(String id) {
         return NAMES.map(name -> name + "_" + id);
+    }
+
+    public List<T> asList() {
+        ImmutableList.Builder<T> builder = ImmutableList.builderWithExpectedSize(16);
+        this.forEach(builder::add);
+        return builder.build();
     }
 
     public void forEach(Consumer<T> consumer) {
