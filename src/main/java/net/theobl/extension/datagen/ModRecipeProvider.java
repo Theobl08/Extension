@@ -15,6 +15,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.neoforge.common.Tags;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
@@ -196,8 +197,8 @@ public class ModRecipeProvider extends RecipeProvider {
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SOUL_SANDSTONE_SLAB, ModBlocks.CUT_SOUL_SANDSTONE, 2);
 
         WoodTypeCollection.TYPES.forEach(woodType -> {
-            craftingTable(ModBlocks.CRAFTING_TABLES.pick(woodType), WoodTypeCollection.BASE.pick(woodType));
-            cartographyTable(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType), WoodTypeCollection.BASE.pick(woodType));
+            if(woodType != WoodType.OAK) craftingTable(ModBlocks.CRAFTING_TABLES.pick(woodType), WoodTypeCollection.BASE.pick(woodType));
+            if(woodType != WoodType.DARK_OAK) cartographyTable(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType), WoodTypeCollection.BASE.pick(woodType));
         });
 
         this.shaped(RecipeCategory.DECORATIONS, ModBlocks.ENDER_TORCH, 4)

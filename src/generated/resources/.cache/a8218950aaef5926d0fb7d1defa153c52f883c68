@@ -1,4 +1,4 @@
-// 26.1	2026-04-25T22:27:06.0182848	Extension recipes
+// 26.1	2026-05-06T15:23:33.7779202	Extension recipes
 5c16416d64e7db080b2c73084b1629491b646d8d data/extension/advancement/recipes/building_blocks/andesite_brick_slab.json
 7f9ca3c4d1a5e8ceb53961e58130aef2dae2544c data/extension/advancement/recipes/building_blocks/andesite_brick_stairs.json
 b6298d6dc6fe9584a3b12dacf468c5399e54eaaf data/extension/advancement/recipes/building_blocks/blue_nether_bricks.json
@@ -384,9 +384,5 @@ d59ec2ee5b14e4a7dd1f8523f905416c77961d4b data/extension/recipe/spruce_cartograph
 d3c4c368ae3f171e608bf53bb676922fd4f37dde data/extension/recipe/warped_crafting_table.json
 fc1a07d35639b07c417076e3ffb498154bab43c3 data/minecraft/advancement/recipes/building_blocks/stone_bricks.json
 76c6324df6ca5ab8aef23d366614226538ba3c25 data/minecraft/advancement/recipes/building_blocks/warped_wart_block.json
-19a2a1e6676216afa479947a21b66d3916987873 data/minecraft/advancement/recipes/decorations/cartography_table.json
-a011224545d3682a375d5adff39ba879f4732c24 data/minecraft/advancement/recipes/decorations/crafting_table.json
-1c0a30076de9bf7cc66f28630a92b37f079b38bc data/minecraft/recipe/cartography_table.json
-de23480542104b15afe8eaea649773b07d1de84b data/minecraft/recipe/crafting_table.json
 b3a2d3088c3c60f99244b9d2356f9657192d6187 data/minecraft/recipe/stone_bricks.json
 27f64dbe37cae7fc3f0606b0d90437c9639c417d data/minecraft/recipe/warped_wart_block.json
