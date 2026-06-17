@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "extension:diorite_bricks",
+  "result": {
+    "id": "extension:diorite_brick_stairs"
+  }
+}
