@@ -147,7 +147,6 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.POTATO_SPROUTS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createTintedLeaves(ModBlocks.POTATO_LEAVES.get(), TexturedModel.LEAVES, -12012264);
         blockModels.woodProvider(ModBlocks.POTATO_STEM.get()).log(ModBlocks.POTATO_STEM.get()).wood(ModBlocks.POTATO_HYPHAE.get());
-        blockModels.createHangingSign(ModBlocks.POTATO_STEM.get(), ModBlocks.POTATO_HANGING_SIGN.get(), ModBlocks.POTATO_WALL_HANGING_SIGN.get());
     }
 
     public BlockModelGenerators.BlockFamilyProvider family(Block block, BlockModelGenerators blockModels) {

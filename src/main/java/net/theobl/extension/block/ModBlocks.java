@@ -60,7 +60,7 @@ public class ModBlocks {
             Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE_BRICKS));
 
     public static final DeferredBlock<Block> TINTED_GLASS_PANE = registerBlock("tinted_glass_pane",
-            IronBarsBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.GRAY_STAINED_GLASS_PANE));
+            IronBarsBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STAINED_GLASS_PANE.gray()));
 
     public static final DeferredBlock<Block> SMOOTH_STONE_STAIRS = registerStair("smooth_stone_stairs", Blocks.SMOOTH_STONE);
     public static final DeferredBlock<Block> NETHERITE_STAIRS = registerFireResistantBlock("netherite_stairs",

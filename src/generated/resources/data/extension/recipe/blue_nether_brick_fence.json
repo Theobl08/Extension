@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "#": "extension:blue_nether_brick",
     "W": "extension:blue_nether_bricks"

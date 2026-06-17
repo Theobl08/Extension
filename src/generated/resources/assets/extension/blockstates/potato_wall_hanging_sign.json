@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
-      "model": "extension:block/potato_hanging_sign"
+    "facing=east": {
+      "model": "extension:block/potato_wall_hanging_sign",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "extension:block/potato_wall_hanging_sign",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "extension:block/potato_wall_hanging_sign"
+    },
+    "facing=west": {
+      "model": "extension:block/potato_wall_hanging_sign",
+      "y": 90
     }
   }
 }

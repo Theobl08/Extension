@@ -40,7 +40,7 @@ public class PistonHeadBlockRendererMixin {
                 BlockEntityRenderDispatcher dispatcher = Minecraft.getInstance().getBlockEntityRenderDispatcher();
                 BlockEntityRenderer<? extends BlockEntity, ? extends BlockEntityRenderState> blockEntityRenderer = dispatcher.getRenderer(blockEntity);
                 if(blockEntityRenderer != null) {
-                    BlockEntityRenderState renderState = dispatcher.tryExtractRenderState(blockEntity, this.extension$partialTick, state.breakProgress, null);
+                    BlockEntityRenderState renderState = dispatcher.tryExtractRenderState(blockEntity, this.extension$partialTick, state.breakProgress, blockEntityRenderer.shouldRenderOffScreen(), null);
                     if(renderState != null) {
                         poseStack.pushPose();
                         poseStack.translate(state.xOffset, state.yOffset, state.zOffset);

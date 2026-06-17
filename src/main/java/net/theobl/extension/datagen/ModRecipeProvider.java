@@ -1,6 +1,6 @@
 package net.theobl.extension.datagen;
 
-import net.minecraft.advancements.criterion.PlayerTrigger;
+import net.minecraft.advancements.triggers.PlayerTrigger;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -318,7 +318,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 )
                 .save(this.output, Extension.asResource("tipped_arrow").toString());
 
-        hangingSign(ModItems.POTATO_HANGING_SIGN, ModBlocks.POTATO_PLANKS);
         woodenBoat(ModItems.POTATO_RAFT, ModBlocks.POTATO_PLANKS);
         chestBoat(ModItems.POTATO_CHEST_RAFT, ModItems.POTATO_RAFT);
         this.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POTATO_PLANKS, 4)

@@ -28,7 +28,7 @@ import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BlockEntityTypes;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.gamerules.GameRules;
 import net.neoforged.bus.api.IEventBus;
@@ -136,11 +136,11 @@ public class Extension {
     }
 
     private void addBlockToBlockEntity(BlockEntityTypeAddBlocksEvent event) {
-        event.modify(BlockEntityType.CAMPFIRE, ModBlocks.REDSTONE_CAMPFIRE.get());
-        event.modify(BlockEntityType.CAMPFIRE, ModBlocks.COPPER_CAMPFIRE.get());
-        event.modify(BlockEntityType.CAMPFIRE, ModBlocks.ENDER_CAMPFIRE.get());
-        event.modify(BlockEntityType.SIGN, ModBlocks.POTATO_SIGN.get(), ModBlocks.POTATO_WALL_SIGN.get());
-        event.modify(BlockEntityType.HANGING_SIGN, ModBlocks.POTATO_HANGING_SIGN.get(), ModBlocks.POTATO_WALL_HANGING_SIGN.get());
+        event.modify(BlockEntityTypes.CAMPFIRE, ModBlocks.REDSTONE_CAMPFIRE.get());
+        event.modify(BlockEntityTypes.CAMPFIRE, ModBlocks.COPPER_CAMPFIRE.get());
+        event.modify(BlockEntityTypes.CAMPFIRE, ModBlocks.ENDER_CAMPFIRE.get());
+        event.modify(BlockEntityTypes.SIGN, ModBlocks.POTATO_SIGN.get(), ModBlocks.POTATO_WALL_SIGN.get());
+        event.modify(BlockEntityTypes.HANGING_SIGN, ModBlocks.POTATO_HANGING_SIGN.get(), ModBlocks.POTATO_WALL_HANGING_SIGN.get());
     }
 
     private void extendPoiTypes(ExtendPoiTypesEvent event) {

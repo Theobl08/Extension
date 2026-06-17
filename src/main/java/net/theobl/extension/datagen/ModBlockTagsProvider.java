@@ -2,6 +2,8 @@ package net.theobl.extension.datagen;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.references.BlockItemIds;
+import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.*;
 import net.neoforged.neoforge.common.Tags;
@@ -18,186 +20,187 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         super(output, lookupProvider, Extension.MODID);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(Tags.Blocks.FENCES_NETHER_BRICK)
-                .add(ModBlocks.RED_NETHER_BRICK_FENCE.get())
-                .add(ModBlocks.BLUE_NETHER_BRICK_FENCE.get());
+                .add(ModBlocks.RED_NETHER_BRICK_FENCE.getKey())
+                .add(ModBlocks.BLUE_NETHER_BRICK_FENCE.getKey());
 
-        tag(Tags.Blocks.GLASS_PANES).add(ModBlocks.TINTED_GLASS_PANE.get());
+        tag(Tags.Blocks.GLASS_PANES).add(ModBlocks.TINTED_GLASS_PANE.getKey());
         tag(BlockTags.SWORD_EFFICIENT)
-                .add(ModBlocks.BLUE_NETHER_WART.get())
-                .add(ModBlocks.SOUL_O_LANTERN.get())
-                .add(ModBlocks.REDSTONE_O_LANTERN.get())
-                .add(ModBlocks.COPPER_O_LANTERN.get())
-                .add(ModBlocks.ENDER_O_LANTERN.get());
+                .add(ModBlocks.BLUE_NETHER_WART.getKey())
+                .add(ModBlocks.SOUL_O_LANTERN.getKey())
+                .add(ModBlocks.REDSTONE_O_LANTERN.getKey())
+                .add(ModBlocks.COPPER_O_LANTERN.getKey())
+                .add(ModBlocks.ENDER_O_LANTERN.getKey());
 
         tag(BlockTags.MINEABLE_WITH_AXE)
-                .add(ModBlocks.BLUE_NETHER_WART.get())
-                .add(ModBlocks.SOUL_O_LANTERN.get())
-                .add(ModBlocks.COPPER_O_LANTERN.get())
-                .add(ModBlocks.COPPER_CAMPFIRE.get())
-                .add(ModBlocks.REDSTONE_O_LANTERN.get())
-                .add(ModBlocks.REDSTONE_CAMPFIRE.get())
-                .add(ModBlocks.ENDER_O_LANTERN.get())
-                .add(ModBlocks.ENDER_CAMPFIRE.get());
+                .add(ModBlocks.BLUE_NETHER_WART.getKey())
+                .add(ModBlocks.SOUL_O_LANTERN.getKey())
+                .add(ModBlocks.COPPER_O_LANTERN.getKey())
+                .add(ModBlocks.COPPER_CAMPFIRE.getKey())
+                .add(ModBlocks.REDSTONE_O_LANTERN.getKey())
+                .add(ModBlocks.REDSTONE_CAMPFIRE.getKey())
+                .add(ModBlocks.ENDER_O_LANTERN.getKey())
+                .add(ModBlocks.ENDER_CAMPFIRE.getKey());
 
-        tag(BlockTags.WALL_POST_OVERRIDE).add(ModBlocks.ENDER_TORCH.get());
-        tag(BlockTags.CAMPFIRES).add(ModBlocks.COPPER_CAMPFIRE.get(), ModBlocks.REDSTONE_CAMPFIRE.get(), ModBlocks.ENDER_CAMPFIRE.get());
-        tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModBlocks.SOUL_O_LANTERN.get());
+        tag(BlockTags.WALL_POST_OVERRIDE).add(ModBlocks.ENDER_TORCH.getKey());
+        tag(BlockTags.CAMPFIRES).add(ModBlocks.COPPER_CAMPFIRE.getKey(), ModBlocks.REDSTONE_CAMPFIRE.getKey(), ModBlocks.ENDER_CAMPFIRE.getKey());
+        tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModBlocks.SOUL_O_LANTERN.getKey());
         tag(Tags.Blocks.PUMPKINS)
-                .add(ModBlocks.SOUL_O_LANTERN.get())
-                .add(ModBlocks.COPPER_O_LANTERN.get())
-                .add(ModBlocks.REDSTONE_O_LANTERN.get())
-                .add(ModBlocks.ENDER_O_LANTERN.get());
+                .add(ModBlocks.SOUL_O_LANTERN.getKey())
+                .add(ModBlocks.COPPER_O_LANTERN.getKey())
+                .add(ModBlocks.REDSTONE_O_LANTERN.getKey())
+                .add(ModBlocks.ENDER_O_LANTERN.getKey());
 
-        tag(BlockTags.PIGLIN_REPELLENTS).add(ModBlocks.SOUL_O_LANTERN.get());
+        tag(BlockTags.PIGLIN_REPELLENTS).add(ModBlocks.SOUL_O_LANTERN.getKey());
 
-        tag(BlockTags.FIRE).add(ModBlocks.COPPER_FIRE.get(), ModBlocks.REDSTONE_FIRE.get(), ModBlocks.ENDER_FIRE.get());
-        tag(BlockTags.REPLACEABLE).add(ModBlocks.COPPER_FIRE.get(), ModBlocks.REDSTONE_FIRE.get(), ModBlocks.ENDER_FIRE.get());
+        tag(BlockTags.FIRE).add(ModBlocks.COPPER_FIRE.getKey(), ModBlocks.REDSTONE_FIRE.getKey(), ModBlocks.ENDER_FIRE.getKey());
+        tag(BlockTags.REPLACEABLE).add(ModBlocks.COPPER_FIRE.getKey(), ModBlocks.REDSTONE_FIRE.getKey(), ModBlocks.ENDER_FIRE.getKey());
 
         tag(ModBlockTags.COPPER_FIRE_BASE_BLOCKS)
                 .addTag(BlockTags.COPPER)
-                .remove(Blocks.OXIDIZED_COPPER)
-                .add(Blocks.CHISELED_COPPER)
-                .add(Blocks.EXPOSED_CHISELED_COPPER)
-                .add(Blocks.WEATHERED_CHISELED_COPPER)
-                .add(Blocks.WAXED_CHISELED_COPPER)
-                .add(Blocks.WAXED_EXPOSED_CHISELED_COPPER)
-                .add(Blocks.WAXED_WEATHERED_CHISELED_COPPER)
-                .add(Blocks.WAXED_OXIDIZED_CHISELED_COPPER)
-                .add(Blocks.COPPER_GRATE)
-                .add(Blocks.EXPOSED_COPPER_GRATE)
-                .add(Blocks.WEATHERED_COPPER_GRATE)
-                .add(Blocks.WAXED_COPPER_GRATE)
-                .add(Blocks.WAXED_EXPOSED_COPPER_GRATE)
-                .add(Blocks.WAXED_WEATHERED_COPPER_GRATE)
-                .add(Blocks.WAXED_OXIDIZED_COPPER_GRATE)
-                .add(Blocks.CUT_COPPER)
-                .add(Blocks.EXPOSED_CUT_COPPER)
-                .add(Blocks.WEATHERED_CUT_COPPER)
-                .add(Blocks.WAXED_CUT_COPPER)
-                .add(Blocks.WAXED_EXPOSED_CUT_COPPER)
-                .add(Blocks.WAXED_WEATHERED_CUT_COPPER)
-                .add(Blocks.WAXED_OXIDIZED_CUT_COPPER)
-                .add(Blocks.CUT_COPPER_STAIRS)
-                .add(Blocks.EXPOSED_CUT_COPPER_STAIRS)
-                .add(Blocks.WEATHERED_CUT_COPPER_STAIRS)
-                .add(Blocks.WAXED_CUT_COPPER_STAIRS)
-                .add(Blocks.WAXED_EXPOSED_CUT_COPPER_STAIRS)
-                .add(Blocks.WAXED_WEATHERED_CUT_COPPER_STAIRS)
-                .add(Blocks.WAXED_OXIDIZED_CUT_COPPER_STAIRS)
-                .add(Blocks.CUT_COPPER_SLAB)
-                .add(Blocks.EXPOSED_CUT_COPPER_SLAB)
-                .add(Blocks.WEATHERED_CUT_COPPER_SLAB)
-                .add(Blocks.WAXED_CUT_COPPER_SLAB)
-                .add(Blocks.WAXED_EXPOSED_CUT_COPPER_SLAB)
-                .add(Blocks.WAXED_WEATHERED_CUT_COPPER_SLAB)
-                .add(Blocks.WAXED_OXIDIZED_CUT_COPPER_SLAB)
-                .add(Blocks.COPPER_TRAPDOOR)
-                .add(Blocks.EXPOSED_COPPER_TRAPDOOR)
-                .add(Blocks.WEATHERED_COPPER_TRAPDOOR)
-                .add(Blocks.WAXED_COPPER_TRAPDOOR)
-                .add(Blocks.WAXED_EXPOSED_COPPER_TRAPDOOR)
-                .add(Blocks.WAXED_WEATHERED_COPPER_TRAPDOOR)
-                .add(Blocks.WAXED_OXIDIZED_COPPER_TRAPDOOR)
-                .add(Blocks.COPPER_BULB)
-                .add(Blocks.EXPOSED_COPPER_BULB)
-                .add(Blocks.WEATHERED_COPPER_BULB)
-                .add(Blocks.WAXED_COPPER_BULB)
-                .add(Blocks.WAXED_EXPOSED_COPPER_BULB)
-                .add(Blocks.WAXED_WEATHERED_COPPER_BULB)
-                .add(Blocks.WAXED_OXIDIZED_COPPER_BULB)
-                .add(Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE)
-                .add(ModBlocks.COPPER_O_LANTERN.get());
+                .remove(BlockItemIds.COPPER_BLOCK.weathering().oxidized().block())
+                .add(BlockItemIds.CHISELED_COPPER.weathering().unaffected().block())
+                .add(BlockItemIds.CHISELED_COPPER.weathering().exposed().block())
+                .add(BlockItemIds.CHISELED_COPPER.weathering().weathered().block())
+                .add(BlockItemIds.CHISELED_COPPER.waxed().unaffected().block())
+                .add(BlockItemIds.CHISELED_COPPER.waxed().exposed().block())
+                .add(BlockItemIds.CHISELED_COPPER.waxed().weathered().block())
+                .add(BlockItemIds.CHISELED_COPPER.waxed().oxidized().block())
+                .add(BlockItemIds.COPPER_GRATE.weathering().unaffected().block())
+                .add(BlockItemIds.COPPER_GRATE.weathering().exposed().block())
+                .add(BlockItemIds.COPPER_GRATE.weathering().weathered().block())
+                .add(BlockItemIds.COPPER_GRATE.waxed().unaffected().block())
+                .add(BlockItemIds.COPPER_GRATE.waxed().exposed().block())
+                .add(BlockItemIds.COPPER_GRATE.waxed().weathered().block())
+                .add(BlockItemIds.COPPER_GRATE.waxed().oxidized().block())
+                .add(BlockItemIds.CUT_COPPER.weathering().unaffected().block())
+                .add(BlockItemIds.CUT_COPPER.weathering().exposed().block())
+                .add(BlockItemIds.CUT_COPPER.weathering().weathered().block())
+                .add(BlockItemIds.CUT_COPPER.waxed().unaffected().block())
+                .add(BlockItemIds.CUT_COPPER.waxed().exposed().block())
+                .add(BlockItemIds.CUT_COPPER.waxed().weathered().block())
+                .add(BlockItemIds.CUT_COPPER.waxed().oxidized().block())
+                .add(BlockItemIds.CUT_COPPER_STAIRS.weathering().unaffected().block())
+                .add(BlockItemIds.CUT_COPPER_STAIRS.weathering().exposed().block())
+                .add(BlockItemIds.CUT_COPPER_STAIRS.weathering().weathered().block())
+                .add(BlockItemIds.CUT_COPPER_STAIRS.waxed().unaffected().block())
+                .add(BlockItemIds.CUT_COPPER_STAIRS.waxed().exposed().block())
+                .add(BlockItemIds.CUT_COPPER_STAIRS.waxed().weathered().block())
+                .add(BlockItemIds.CUT_COPPER_STAIRS.waxed().oxidized().block())
+                .add(BlockItemIds.CUT_COPPER_SLAB.weathering().unaffected().block())
+                .add(BlockItemIds.CUT_COPPER_SLAB.weathering().exposed().block())
+                .add(BlockItemIds.CUT_COPPER_SLAB.weathering().weathered().block())
+                .add(BlockItemIds.CUT_COPPER_SLAB.waxed().unaffected().block())
+                .add(BlockItemIds.CUT_COPPER_SLAB.waxed().exposed().block())
+                .add(BlockItemIds.CUT_COPPER_SLAB.waxed().weathered().block())
+                .add(BlockItemIds.CUT_COPPER_SLAB.waxed().oxidized().block())
+                .add(BlockItemIds.COPPER_TRAPDOOR.weathering().unaffected().block())
+                .add(BlockItemIds.COPPER_TRAPDOOR.weathering().exposed().block())
+                .add(BlockItemIds.COPPER_TRAPDOOR.weathering().weathered().block())
+                .add(BlockItemIds.COPPER_TRAPDOOR.waxed().unaffected().block())
+                .add(BlockItemIds.COPPER_TRAPDOOR.waxed().exposed().block())
+                .add(BlockItemIds.COPPER_TRAPDOOR.waxed().weathered().block())
+                .add(BlockItemIds.COPPER_TRAPDOOR.waxed().oxidized().block())
+                .add(BlockItemIds.COPPER_BULB.weathering().unaffected().block())
+                .add(BlockItemIds.COPPER_BULB.weathering().exposed().block())
+                .add(BlockItemIds.COPPER_BULB.weathering().weathered().block())
+                .add(BlockItemIds.COPPER_BULB.waxed().unaffected().block())
+                .add(BlockItemIds.COPPER_BULB.waxed().exposed().block())
+                .add(BlockItemIds.COPPER_BULB.waxed().weathered().block())
+                .add(BlockItemIds.COPPER_BULB.waxed().oxidized().block())
+                .add(BlockItemIds.COPPER_ORE.block(), BlockItemIds.DEEPSLATE_COPPER_ORE.block())
+                .add(ModBlocks.COPPER_O_LANTERN.getKey());
 
         tag(ModBlockTags.REDSTONE_FIRE_BASE_BLOCKS)
-                .addTag(BlockTags.REDSTONE_ORES)
-                .add(Blocks.REDSTONE_BLOCK)
-                .add(ModBlocks.REDSTONE_O_LANTERN.get());
+                .addTag(BlockItemTags.REDSTONE_ORES.block())
+                .add(BlockItemIds.REDSTONE_BLOCK.block())
+                .add(ModBlocks.REDSTONE_O_LANTERN.getKey());
 
         tag(ModBlockTags.ENDER_FIRE_BASE_BLOCKS)
                 .addTag(Tags.Blocks.END_STONES)
-                .add(Blocks.END_STONE_BRICKS)
-                .add(Blocks.END_STONE_BRICK_STAIRS)
-                .add(Blocks.END_STONE_BRICK_SLAB)
-                .add(Blocks.END_STONE_BRICK_WALL)
-                .add(Blocks.PURPUR_BLOCK)
-                .add(Blocks.PURPUR_STAIRS)
-                .add(Blocks.PURPUR_SLAB)
-                .add(Blocks.PURPUR_SLAB)
-                .add(Blocks.PURPUR_PILLAR)
-                .add(ModBlocks.CHISELED_END_STONE_BRICKS.get())
-                .add(ModBlocks.PURPUR_WALL.get())
-                .add(ModBlocks.ENDER_O_LANTERN.get());
+                .add(BlockItemIds.END_STONE_BRICKS.block())
+                .add(BlockItemIds.END_STONE_BRICK_STAIRS.block())
+                .add(BlockItemIds.END_STONE_BRICK_SLAB.block())
+                .add(BlockItemIds.END_STONE_BRICK_WALL.block())
+                .add(BlockItemIds.PURPUR_BLOCK.block())
+                .add(BlockItemIds.PURPUR_STAIRS.block())
+                .add(BlockItemIds.PURPUR_SLAB.block())
+                .add(BlockItemIds.PURPUR_SLAB.block())
+                .add(BlockItemIds.PURPUR_PILLAR.block())
+                .add(ModBlocks.CHISELED_END_STONE_BRICKS.getKey())
+                .add(ModBlocks.PURPUR_WALL.getKey())
+                .add(ModBlocks.ENDER_O_LANTERN.getKey());
 
-        tag(BlockTags.SWORD_EFFICIENT).add(ModBlocks.POTATO_FRUIT.get());
-        tag(BlockTags.LOGS).add(ModBlocks.POTATO_STEM.get(), ModBlocks.POTATO_HYPHAE.get());
-        tag(BlockTags.OVERWORLD_NATURAL_LOGS).add(ModBlocks.POTATO_STEM.get());
-        tag(Tags.Blocks.NATURAL_WOODS).add(ModBlocks.POTATO_HYPHAE.get());
-        tag(BlockTags.PLANKS).add(ModBlocks.POTATO_PLANKS.get());
-        tag(BlockTags.WOODEN_STAIRS).add(ModBlocks.POTATO_STAIRS.get());
-        tag(BlockTags.WOODEN_SLABS).add(ModBlocks.POTATO_SLAB.get());
-        tag(BlockTags.WOODEN_FENCES).add(ModBlocks.POTATO_FENCE.get());
-        tag(BlockTags.FENCE_GATES).add(ModBlocks.POTATO_FENCE_GATE.get());
-        tag(Tags.Blocks.FENCE_GATES_WOODEN).add(ModBlocks.POTATO_FENCE_GATE.get());
-        tag(BlockTags.WOODEN_DOORS).add(ModBlocks.POTATO_DOOR.get());
-        tag(BlockTags.WOODEN_TRAPDOORS).add(ModBlocks.POTATO_TRAPDOOR.get());
-        tag(BlockTags.WOODEN_PRESSURE_PLATES).add(ModBlocks.POTATO_PRESSURE_PLATE.get());
-        tag(BlockTags.WOODEN_BUTTONS).add(ModBlocks.POTATO_BUTTON.get());
-        tag(BlockTags.STANDING_SIGNS).add(ModBlocks.POTATO_SIGN.get());
-        tag(BlockTags.WALL_SIGNS).add(ModBlocks.POTATO_WALL_SIGN.get());
-        tag(BlockTags.CEILING_HANGING_SIGNS).add(ModBlocks.POTATO_HANGING_SIGN.get());
-        tag(BlockTags.WALL_HANGING_SIGNS).add(ModBlocks.POTATO_WALL_HANGING_SIGN.get());
+        tag(BlockTags.SWORD_EFFICIENT).add(ModBlocks.POTATO_FRUIT.getKey());
+        tag(BlockTags.LOGS).add(ModBlocks.POTATO_STEM.getKey(), ModBlocks.POTATO_HYPHAE.getKey());
+        tag(BlockTags.OVERWORLD_NATURAL_LOGS).add(ModBlocks.POTATO_STEM.getKey());
+        tag(Tags.Blocks.NATURAL_WOODS).add(ModBlocks.POTATO_HYPHAE.getKey());
+        tag(BlockTags.PLANKS).add(ModBlocks.POTATO_PLANKS.getKey());
+        tag(BlockTags.WOODEN_STAIRS).add(ModBlocks.POTATO_STAIRS.getKey());
+        tag(BlockTags.WOODEN_SLABS).add(ModBlocks.POTATO_SLAB.getKey());
+        tag(BlockTags.WOODEN_FENCES).add(ModBlocks.POTATO_FENCE.getKey());
+        tag(BlockTags.FENCE_GATES).add(ModBlocks.POTATO_FENCE_GATE.getKey());
+        tag(Tags.Blocks.FENCE_GATES_WOODEN).add(ModBlocks.POTATO_FENCE_GATE.getKey());
+        tag(BlockTags.WOODEN_DOORS).add(ModBlocks.POTATO_DOOR.getKey());
+        tag(BlockTags.WOODEN_TRAPDOORS).add(ModBlocks.POTATO_TRAPDOOR.getKey());
+        tag(BlockTags.WOODEN_PRESSURE_PLATES).add(ModBlocks.POTATO_PRESSURE_PLATE.getKey());
+        tag(BlockTags.WOODEN_BUTTONS).add(ModBlocks.POTATO_BUTTON.getKey());
+        tag(BlockTags.STANDING_SIGNS).add(ModBlocks.POTATO_SIGN.getKey());
+        tag(BlockTags.WALL_SIGNS).add(ModBlocks.POTATO_WALL_SIGN.getKey());
+        tag(BlockTags.CEILING_HANGING_SIGNS).add(ModBlocks.POTATO_HANGING_SIGN.getKey());
+        tag(BlockTags.WALL_HANGING_SIGNS).add(ModBlocks.POTATO_WALL_HANGING_SIGN.getKey());
 
         for(DeferredHolder<Block, ? extends Block> deferredBlock : ModBlocks.BLOCKS.getEntries()){
             if(deferredBlock.get() instanceof StairBlock)
-                tag(BlockTags.STAIRS).add(deferredBlock.get());
+                tag(BlockTags.STAIRS).add(deferredBlock.getKey());
 
             if(deferredBlock.get() instanceof SlabBlock)
-                tag(BlockTags.SLABS).add(deferredBlock.get());
+                tag(BlockTags.SLABS).add(deferredBlock.getKey());
 
             if(deferredBlock.get() instanceof WallBlock)
-                tag(BlockTags.WALLS).add(deferredBlock.get());
+                tag(BlockTags.WALLS).add(deferredBlock.getKey());
 
             if(deferredBlock.get() instanceof FenceBlock) {
-                tag(BlockTags.FENCES).add(deferredBlock.get());
-                tag(Tags.Blocks.FENCES).add(deferredBlock.get());
+                tag(BlockTags.FENCES).add(deferredBlock.getKey());
+                tag(Tags.Blocks.FENCES).add(deferredBlock.getKey());
             }
 
             if(deferredBlock.get() instanceof AbstractCauldronBlock) {
-                tag(BlockTags.CAULDRONS).add(deferredBlock.get());
-                tag(Tags.Blocks.VILLAGER_JOB_SITES).add(deferredBlock.get());
+                tag(BlockTags.CAULDRONS).add(deferredBlock.getKey());
+                tag(Tags.Blocks.VILLAGER_JOB_SITES).add(deferredBlock.getKey());
             }
 
             if(deferredBlock.get() instanceof CraftingTableBlock) {
-                tag(Tags.Blocks.PLAYER_WORKSTATIONS_CRAFTING_TABLES).add(deferredBlock.get());
+                tag(Tags.Blocks.PLAYER_WORKSTATIONS_CRAFTING_TABLES).add(deferredBlock.getKey());
             }
             if(deferredBlock.get() instanceof CartographyTableBlock) {
-                tag(Tags.Blocks.VILLAGER_JOB_SITES).add(deferredBlock.get());
+                tag(Tags.Blocks.VILLAGER_JOB_SITES).add(deferredBlock.getKey());
             }
 
             if(deferredBlock.get() instanceof SaplingBlock)
-                tag(BlockTags.SAPLINGS).add(deferredBlock.get());
+                tag(BlockItemTags.SAPLINGS.block()).add(deferredBlock.getKey());
 
             if(deferredBlock.get() instanceof LeavesBlock)
-                tag(BlockTags.LEAVES).add(deferredBlock.get());
+                tag(BlockTags.LEAVES).add(deferredBlock.getKey());
 
             if(deferredBlock.get().toString().contains("soul_sandstone")) {
-                tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(deferredBlock.get());
+                tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(deferredBlock.getKey());
                 if(deferredBlock.get() instanceof StairBlock)
-                    tag(Tags.Blocks.SANDSTONE_STAIRS).add(deferredBlock.get());
+                    tag(Tags.Blocks.SANDSTONE_STAIRS).add(deferredBlock.getKey());
                 else if(deferredBlock.get() instanceof SlabBlock)
-                    tag(Tags.Blocks.SANDSTONE_SLABS).add(deferredBlock.get());
+                    tag(Tags.Blocks.SANDSTONE_SLABS).add(deferredBlock.getKey());
                 else if(!(deferredBlock.get() instanceof WallBlock))
-                    tag(Tags.Blocks.SANDSTONE_BLOCKS).add(deferredBlock.get());
+                    tag(Tags.Blocks.SANDSTONE_BLOCKS).add(deferredBlock.getKey());
             }
             
             if(mineableWithPickaxe(deferredBlock.get()))
-                tag(BlockTags.MINEABLE_WITH_PICKAXE).add(deferredBlock.get());
+                tag(BlockTags.MINEABLE_WITH_PICKAXE).add(deferredBlock.getKey());
 
             if(mineableWithAxe(deferredBlock.get()))
-                tag(BlockTags.MINEABLE_WITH_AXE).add(deferredBlock.get());
+                tag(BlockTags.MINEABLE_WITH_AXE).add(deferredBlock.getKey());
         }
     }
 

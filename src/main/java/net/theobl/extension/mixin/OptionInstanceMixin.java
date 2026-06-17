@@ -19,7 +19,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 @Mixin(OptionInstance.class)
-public abstract class OptionInstanceMixin {
+public abstract class OptionInstanceMixin<T> {
     @Shadow
     @Final
     public Component caption;
@@ -42,12 +42,12 @@ public abstract class OptionInstanceMixin {
     @Shadow
     @Final
     @Mutable
-    private Consumer<Double> onValueUpdate;
+    private OptionInstance.ValueUpdateListener<? super T> onValueUpdate;
 
     @Inject(at = @At("RETURN"), method = "<init>*", remap = false)
     protected void init(CallbackInfo info) {
         if (this.caption.getContents() instanceof TranslatableContents translatableContents && translatableContents.getKey().equals("options.gamma")) {
-            this.onValueUpdate = this::onValueUpdate;
+            this.onValueUpdate = newValue -> this.onValueUpdate((Double) newValue);
             this.toString = this::toString;
             this.values = ExtensionClient.BetterSlider.INSTANCE;
             this.codec = this.values.codec();

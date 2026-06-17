@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_attached_hanging_sign_rot_3",
+  "textures": {
+    "all": "extension:block/potato_hanging_sign",
+    "particle": "extension:block/potato_stem"
+  }
+}

@@ -29,7 +29,6 @@
     "SoulFireBlockMixin"
   ],
   "client": [
-    "BedRendererMixin",
     "ClientLevelMixin",
     "FogRendererMixin",
     "LightmapRenderStateExtractorMixin",

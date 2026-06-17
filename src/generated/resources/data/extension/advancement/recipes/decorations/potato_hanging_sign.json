@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_stripped_logs": {
+    "has_stripped_log": {
       "conditions": {
         "items": [
           {
-            "items": "extension:potato_planks"
+            "items": "extension:potato_stem"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_stripped_logs"
+      "has_stripped_log"
     ]
   ],
   "rewards": {

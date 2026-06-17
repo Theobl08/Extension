@@ -1,10 +1,8 @@
 package net.theobl.extension.item;
 
 import net.minecraft.core.Direction;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.equipment.ArmorMaterials;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -17,7 +15,7 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Extension.MODID);
 
     public static final DeferredItem<Item> SPAWNER_MINECART = ITEMS.registerItem("spawner_minecart",
-            properties -> new MinecartItem(EntityType.SPAWNER_MINECART, properties.stacksTo(1)));
+            properties -> new MinecartItem(EntityTypes.SPAWNER_MINECART, properties.stacksTo(1)));
 
     public static final DeferredItem<Item> RED_NETHER_BRICK = ITEMS.registerSimpleItem("red_nether_brick");
 
@@ -31,7 +29,7 @@ public class ModItems {
             Item.Properties::useBlockDescriptionPrefix);
 
     public static final DeferredItem<Item> ILLUSIONER_SPAWN_EGG = ITEMS.registerItem("illusioner_spawn_egg",
-            SpawnEggItem::new, p -> p.spawnEgg(EntityType.ILLUSIONER));
+            SpawnEggItem::new, p -> p.spawnEgg(EntityTypes.ILLUSIONER));
 
     public static final DeferredItem<Item> POTATO_SIGN = ITEMS.registerItem(
             "potato_sign", p -> new SignItem(ModBlocks.POTATO_SIGN.get(), ModBlocks.POTATO_WALL_SIGN.get(), p.stacksTo(23).useBlockDescriptionPrefix())

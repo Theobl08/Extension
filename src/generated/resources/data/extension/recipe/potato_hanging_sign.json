@@ -1,9 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
-  "group": "hanging_sign",
+  "group": "wooden_hanging_sign",
   "key": {
-    "#": "extension:potato_planks",
+    "#": "extension:potato_stem",
     "X": "minecraft:iron_chain"
   },
   "pattern": [

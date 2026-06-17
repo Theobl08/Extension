@@ -143,7 +143,7 @@ public class ModCreativeModeTabs {
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.insertAfter(Items.SOUL_TORCH.getDefaultInstance(), ModItems.ENDER_TORCH.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.SOUL_LANTERN.getDefaultInstance(), ModBlocks.ENDER_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(Items.COPPER_LANTERN.waxedOxidized().getDefaultInstance(), ModBlocks.REDSTONE_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.COPPER_LANTERN.waxed().oxidized().getDefaultInstance(), ModBlocks.REDSTONE_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.SOUL_CAMPFIRE.getDefaultInstance(), ModBlocks.ENDER_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.ENDER_CAMPFIRE.toStack(), ModBlocks.COPPER_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.COPPER_CAMPFIRE.toStack(), ModBlocks.REDSTONE_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);

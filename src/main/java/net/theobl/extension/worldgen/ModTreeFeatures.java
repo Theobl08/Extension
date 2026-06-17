@@ -10,6 +10,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -36,6 +37,8 @@ public class ModTreeFeatures {
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
+        HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
+        BlockStateProvider belowTrunkProvider = TreeConfiguration.defaultPlaceBelowTreeTrunkProvider(biomes);
         BeehiveDecorator beehive001 = new BeehiveDecorator(0.01F);
         BeehiveDecorator beehive05 = new BeehiveDecorator(0.5F);
         BeehiveDecorator beehive = new BeehiveDecorator(1.0F);
@@ -48,7 +51,8 @@ public class ModTreeFeatures {
                         new PotatoTrunkPlacer(32, 1, 20, UniformInt.of(1, 10), 0.4F, UniformInt.of(0, 1), blocks.getOrThrow(BlockTags.LOGS), false),
                         BlockStateProvider.simple(ModBlocks.POTATO_LEAVES.get()),
                         new AcaciaFoliagePlacer(UniformInt.of(3, 4), ConstantInt.of(0)),
-                        new TwoLayersFeatureSize(3, 0, 2)
+                        new TwoLayersFeatureSize(3, 0, 2),
+                        belowTrunkProvider
                 )
                         .decorators(
                                 List.of(
@@ -97,7 +101,8 @@ public class ModTreeFeatures {
                         new PotatoTrunkPlacer(4, 20, 20, UniformInt.of(1, 8), 0.4F, UniformInt.of(0, 1), blocks.getOrThrow(BlockTags.LOGS), false),
                         BlockStateProvider.simple(ModBlocks.POTATO_LEAVES.get()),
                         new AcaciaFoliagePlacer(UniformInt.of(2, 4), ConstantInt.of(0)),
-                        new TwoLayersFeatureSize(3, 0, 2)
+                        new TwoLayersFeatureSize(3, 0, 2),
+                        belowTrunkProvider
                 )
                         .decorators(
                                 List.of(
@@ -140,7 +145,8 @@ public class ModTreeFeatures {
                         new PotatoTrunkPlacer(2, 1, 12, UniformInt.of(1, 6), 0.5F, UniformInt.of(0, 1), blocks.getOrThrow(BlockTags.LOGS), false),
                         BlockStateProvider.simple(ModBlocks.POTATO_LEAVES.get()),
                         new AcaciaFoliagePlacer(UniformInt.of(2, 3), ConstantInt.of(0)),
-                        new TwoLayersFeatureSize(3, 0, 2)
+                        new TwoLayersFeatureSize(3, 0, 2),
+                        belowTrunkProvider
                 )
                         .decorators(
                                 List.of(
