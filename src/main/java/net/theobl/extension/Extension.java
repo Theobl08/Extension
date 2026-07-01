@@ -139,6 +139,7 @@ public class Extension {
         event.modify(BlockEntityTypes.CAMPFIRE, ModBlocks.REDSTONE_CAMPFIRE.get());
         event.modify(BlockEntityTypes.CAMPFIRE, ModBlocks.COPPER_CAMPFIRE.get());
         event.modify(BlockEntityTypes.CAMPFIRE, ModBlocks.ENDER_CAMPFIRE.get());
+        event.modify(BlockEntityTypes.SHELF, ModBlocks.POTATO_SHELF.get());
         event.modify(BlockEntityTypes.SIGN, ModBlocks.POTATO_SIGN.get(), ModBlocks.POTATO_WALL_SIGN.get());
         event.modify(BlockEntityTypes.HANGING_SIGN, ModBlocks.POTATO_HANGING_SIGN.get(), ModBlocks.POTATO_WALL_HANGING_SIGN.get());
     }

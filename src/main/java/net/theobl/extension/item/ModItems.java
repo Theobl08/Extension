@@ -1,8 +1,10 @@
 package net.theobl.extension.item;
 
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.ItemContainerContents;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -30,6 +32,10 @@ public class ModItems {
 
     public static final DeferredItem<Item> ILLUSIONER_SPAWN_EGG = ITEMS.registerItem("illusioner_spawn_egg",
             SpawnEggItem::new, p -> p.spawnEgg(EntityTypes.ILLUSIONER));
+
+    public static final DeferredItem<BlockItem> POTATO_SHELF = ITEMS.registerItem("potato_shelf",
+            p -> new BlockItem(ModBlocks.POTATO_SHELF.get(), p), p -> p.component(DataComponents.CONTAINER, ItemContainerContents.EMPTY).useBlockDescriptionPrefix()
+    );
 
     public static final DeferredItem<Item> POTATO_SIGN = ITEMS.registerItem(
             "potato_sign", p -> new SignItem(ModBlocks.POTATO_SIGN.get(), ModBlocks.POTATO_WALL_SIGN.get(), p.stacksTo(23).useBlockDescriptionPrefix())

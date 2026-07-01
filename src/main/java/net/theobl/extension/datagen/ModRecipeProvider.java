@@ -283,6 +283,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 )
                 .save(this.output, Extension.asResource("tipped_arrow").toString());
 
+        shelf(ModBlocks.POTATO_SHELF, ModBlocks.POTATO_PLANKS);
         woodenBoat(ModItems.POTATO_RAFT, ModBlocks.POTATO_PLANKS);
         chestBoat(ModItems.POTATO_CHEST_RAFT, ModItems.POTATO_RAFT);
         this.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POTATO_PLANKS, 4)

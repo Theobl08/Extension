@@ -419,6 +419,16 @@ public class ModBlocks {
                     .strength(0.5F)
                     .pushReaction(PushReaction.DESTROY)
     );
+    public static final DeferredBlock<Block> POTATO_SHELF = BLOCKS.registerBlock(
+            "potato_shelf",
+            ShelfBlock::new,
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(POTATO_PLANKS.get().defaultMapColor())
+                    .instrument(NoteBlockInstrument.BASS)
+                    .sound(SoundType.SHELF)
+                    .ignitedByLava()
+                    .strength(2.0F, 3.0F)
+    );
     public static final DeferredBlock<Block> POTATO_SIGN = BLOCKS.registerBlock(
             "potato_sign",
             p -> new StandingSignBlock(ModWoodType.POTATO, p),
