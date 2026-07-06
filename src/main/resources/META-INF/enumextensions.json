@@ -1,0 +1,17 @@
+{
+  "entries": [
+    {
+      // The enum class the entry should be added to
+      "enum": "net/minecraft/world/item/Rarity",
+      // The field name of the new entry, must be prefixed with the mod ID
+      "name": "EXTENSION_POTATO",
+      // The constructor to be used
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      // The parameters to be used, provided as a reference to an EnumProxy<Rarity> field in the given class
+      "parameters": {
+        "class": "net/theobl/extension/ModEnumProxy",
+        "field": "POTATO_RARITY"
+      }
+    }
+  ]
+}

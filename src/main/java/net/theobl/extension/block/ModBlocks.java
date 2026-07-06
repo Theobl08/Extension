@@ -3,6 +3,7 @@ package net.theobl.extension.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -17,6 +18,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.theobl.extension.Extension;
+import net.theobl.extension.ModEnumProxy;
 import net.theobl.extension.item.ModItems;
 import net.theobl.extension.particles.ModParticleTypes;
 import net.theobl.extension.util.ModUtil;
@@ -280,21 +282,23 @@ public class ModBlocks {
     public static final DeferredBlock<Block> POTATO_FRUIT = registerBlock(
             "potato_fruit",
             Block::new,
-            BlockBehaviour.Properties.of()
+            () -> BlockBehaviour.Properties.of()
                     .mapColor(MapColor.PLANT)
                     .strength(1.0F)
                     .sound(SoundType.NETHER_WOOD)
                     .pushReaction(PushReaction.DESTROY)
-                    .lightLevel(blockstate -> 15)
+                    .lightLevel(blockstate -> 15),
+            ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_PEDICULE = registerBlock(
             "potato_pedicule",
             ChainBlock::new,
-            BlockBehaviour.Properties.of()
+            () -> BlockBehaviour.Properties.of()
                     .mapColor(MapColor.PLANT)
                     .strength(0.2F)
                     .sound(SoundType.NETHER_WOOD)
-                    .pushReaction(PushReaction.DESTROY)
+                    .pushReaction(PushReaction.DESTROY),
+            ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_SPROUTS = registerBlock(
             "potato_sprouts",
@@ -307,7 +311,8 @@ public class ModBlocks {
                     .instabreak()
                     .dynamicShape()
                     .offsetType(BlockBehaviour.OffsetType.XZ)
-                    .pushReaction(PushReaction.DESTROY)
+                    .pushReaction(PushReaction.DESTROY),
+            ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_LEAVES = registerBlock(
             "potato_leaves",
@@ -323,7 +328,8 @@ public class ModBlocks {
                     .isViewBlocking(ModBlocks::never)
                     .ignitedByLava()
                     .pushReaction(PushReaction.DESTROY)
-                    .isRedstoneConductor(ModBlocks::never)
+                    .isRedstoneConductor(ModBlocks::never),
+            ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_STEM = registerBlock(
             "potato_stem",
@@ -332,7 +338,8 @@ public class ModBlocks {
                     .mapColor(MapColor.EMERALD)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F)
-                    .sound(SoundType.STEM)
+                    .sound(SoundType.STEM),
+            ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_HYPHAE = registerBlock(
             "potato_hyphae",
@@ -341,7 +348,8 @@ public class ModBlocks {
                     .mapColor(MapColor.EMERALD)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F)
-                    .sound(SoundType.STEM)
+                    .sound(SoundType.STEM),
+            ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_PLANKS = registerBlock(
             "potato_planks",
@@ -350,9 +358,15 @@ public class ModBlocks {
                     .mapColor(MapColor.EMERALD)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F, 3.0F)
-                    .sound(SoundType.NETHER_WOOD)
+                    .sound(SoundType.NETHER_WOOD),
+            ModEnumProxy.POTATO_RARITY.getValue()
     );
-    public static final DeferredBlock<Block> POTATO_STAIRS = registerStair("potato_stairs", POTATO_PLANKS);
+    public static final DeferredBlock<Block> POTATO_STAIRS = registerBlock(
+            "potato_stairs",
+            p -> new StairBlock(POTATO_PLANKS.get().defaultBlockState(), p),
+            () -> BlockBehaviour.Properties.ofFullCopy(POTATO_PLANKS.get()),
+            ModEnumProxy.POTATO_RARITY.getValue()
+    );
     public static final DeferredBlock<Block> POTATO_SLAB = registerBlock(
             "potato_slab",
             SlabBlock::new,
@@ -360,7 +374,8 @@ public class ModBlocks {
                     .mapColor(POTATO_PLANKS.get().defaultMapColor())
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F, 3.0F)
-                    .sound(SoundType.NETHER_WOOD)
+                    .sound(SoundType.NETHER_WOOD),
+            ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_FENCE = registerBlock(
             "potato_fence",
@@ -369,7 +384,8 @@ public class ModBlocks {
                     .mapColor(POTATO_PLANKS.get().defaultMapColor())
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F, 3.0F)
-                    .sound(SoundType.NETHER_WOOD)
+                    .sound(SoundType.NETHER_WOOD),
+            ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_FENCE_GATE = registerBlock(
             "potato_fence_gate",
@@ -378,7 +394,8 @@ public class ModBlocks {
                     .mapColor(POTATO_PLANKS.get().defaultMapColor())
                     .forceSolidOn()
                     .instrument(NoteBlockInstrument.BASS)
-                    .strength(2.0F, 3.0F)
+                    .strength(2.0F, 3.0F),
+            ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_DOOR = registerBlock(
             "potato_door",
@@ -388,7 +405,8 @@ public class ModBlocks {
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(3.0F)
                     .noOcclusion()
-                    .pushReaction(PushReaction.DESTROY)
+                    .pushReaction(PushReaction.DESTROY),
+            ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_TRAPDOOR = registerBlock(
             "potato_trapdoor",
@@ -398,7 +416,8 @@ public class ModBlocks {
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(3.0F)
                     .noOcclusion()
-                    .isValidSpawn(Blocks::never)
+                    .isValidSpawn(Blocks::never),
+            ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_PRESSURE_PLATE = registerBlock(
             "potato_pressure_plate",
@@ -409,7 +428,8 @@ public class ModBlocks {
                     .instrument(NoteBlockInstrument.BASS)
                     .noCollision()
                     .strength(0.5F)
-                    .pushReaction(PushReaction.DESTROY)
+                    .pushReaction(PushReaction.DESTROY),
+            ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_BUTTON = registerBlock(
             "potato_button",
@@ -417,7 +437,8 @@ public class ModBlocks {
             () -> BlockBehaviour.Properties.of()
                     .noCollision()
                     .strength(0.5F)
-                    .pushReaction(PushReaction.DESTROY)
+                    .pushReaction(PushReaction.DESTROY),
+            ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_SHELF = BLOCKS.registerBlock(
             "potato_shelf",
@@ -497,6 +518,12 @@ public class ModBlocks {
     public static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> block, Supplier<BlockBehaviour.Properties> properties) {
         DeferredBlock<T> deferredBlock = BLOCKS.registerBlock(name, block, properties);
         ModItems.ITEMS.registerSimpleBlockItem(name, deferredBlock);
+        return deferredBlock;
+    }
+
+    public static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> block, Supplier<BlockBehaviour.Properties> properties, Rarity rarity) {
+        DeferredBlock<T> deferredBlock = BLOCKS.registerBlock(name, block, properties);
+        ModItems.ITEMS.registerSimpleBlockItem(deferredBlock, p -> p.rarity(rarity));
         return deferredBlock;
     }
 

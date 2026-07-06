@@ -9,6 +9,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.theobl.extension.Extension;
+import net.theobl.extension.ModEnumProxy;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.entity.ModEntityType;
 
@@ -34,18 +35,28 @@ public class ModItems {
             SpawnEggItem::new, p -> p.spawnEgg(EntityTypes.ILLUSIONER));
 
     public static final DeferredItem<BlockItem> POTATO_SHELF = ITEMS.registerItem("potato_shelf",
-            p -> new BlockItem(ModBlocks.POTATO_SHELF.get(), p), p -> p.component(DataComponents.CONTAINER, ItemContainerContents.EMPTY).useBlockDescriptionPrefix()
+            p -> new BlockItem(ModBlocks.POTATO_SHELF.get(), p), p -> p.rarity(ModEnumProxy.POTATO_RARITY.getValue()).component(DataComponents.CONTAINER, ItemContainerContents.EMPTY).useBlockDescriptionPrefix()
     );
 
     public static final DeferredItem<Item> POTATO_SIGN = ITEMS.registerItem(
-            "potato_sign", p -> new SignItem(ModBlocks.POTATO_SIGN.get(), ModBlocks.POTATO_WALL_SIGN.get(), p.stacksTo(23).useBlockDescriptionPrefix())
+            "potato_sign",
+            p -> new SignItem(ModBlocks.POTATO_SIGN.get(), ModBlocks.POTATO_WALL_SIGN.get(), p),
+            () -> new Item.Properties()
+                    .rarity(ModEnumProxy.POTATO_RARITY.getValue())
+                    .stacksTo(23)
+                    .useBlockDescriptionPrefix()
     );
     public static final DeferredItem<Item> POTATO_HANGING_SIGN = ITEMS.registerItem(
-            "potato_hanging_sign", p -> new HangingSignItem(ModBlocks.POTATO_HANGING_SIGN.get(), ModBlocks.POTATO_WALL_HANGING_SIGN.get(), p.stacksTo(13).useBlockDescriptionPrefix())
+            "potato_hanging_sign",
+            p -> new HangingSignItem(ModBlocks.POTATO_HANGING_SIGN.get(), ModBlocks.POTATO_WALL_HANGING_SIGN.get(), p),
+            () -> new Item.Properties()
+                    .rarity(ModEnumProxy.POTATO_RARITY.getValue())
+                    .stacksTo(13)
+                    .useBlockDescriptionPrefix()
     );
-    public static final DeferredItem<Item> POTATO_RAFT = ITEMS.registerItem("potato_raft", p -> new BoatItem(ModEntityType.POTATO_RAFT.get(), p), p -> p.stacksTo(1));
+    public static final DeferredItem<Item> POTATO_RAFT = ITEMS.registerItem("potato_raft", p -> new BoatItem(ModEntityType.POTATO_RAFT.get(), p), p -> p.rarity(ModEnumProxy.POTATO_RARITY.getValue()).stacksTo(1));
     public static final DeferredItem<Item> POTATO_CHEST_RAFT = ITEMS.registerItem(
-            "potato_chest_raft", p -> new BoatItem(ModEntityType.POTATO_CHEST_RAFT.get(), p), p -> p.stacksTo(1)
+            "potato_chest_raft", p -> new BoatItem(ModEntityType.POTATO_CHEST_RAFT.get(), p), p -> p.rarity(ModEnumProxy.POTATO_RARITY.getValue()).stacksTo(1)
     );
 
     public static void register(IEventBus eventBus) {
