@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": "minecraft:stone"
+    "S": "minecraft:polished_diorite"
   },
   "pattern": [
     "SS",
@@ -10,6 +10,6 @@
   ],
   "result": {
     "count": 4,
-    "id": "extension:polished_stone"
+    "id": "extension:diorite_bricks"
   }
 }

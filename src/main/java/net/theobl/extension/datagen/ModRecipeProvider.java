@@ -94,6 +94,8 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_tinted_glass", has(Blocks.TINTED_GLASS))
                 .save(output);
 
+        polished(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE, Blocks.STONE);
+        polished(RecipeCategory.BUILDING_BLOCKS, Blocks.STONE_BRICKS, ModBlocks.POLISHED_STONE);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.STONE_BRICKS, ModBlocks.POLISHED_STONE);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE, Blocks.STONE);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE_STAIRS, Blocks.STONE);
@@ -108,20 +110,46 @@ public class ModRecipeProvider extends RecipeProvider {
 
         mossyRecipes(ModBlocks.MOSSY_DEEPSLATE_BRICKS, Blocks.DEEPSLATE_BRICKS, "mossy_deepslate_bricks");
 
-        shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.STONE_BRICKS, 4)
-                .define('#', ModBlocks.POLISHED_STONE)
-                .pattern("##")
-                .pattern("##")
-                .unlockedBy("has_polished_stone", has(ModBlocks.POLISHED_STONE))
-                .save(output);
-        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE, 4)
-                .define('#', Blocks.STONE)
-                .pattern("##")
-                .pattern("##")
-                .unlockedBy("has_stone", has(Blocks.STONE))
-                .save(output);
+//        shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.STONE_BRICKS, 4)
+//                .define('#', ModBlocks.POLISHED_STONE)
+//                .pattern("##")
+//                .pattern("##")
+//                .unlockedBy("has_polished_stone", has(ModBlocks.POLISHED_STONE))
+//                .save(output);
+//        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE, 4)
+//                .define('#', Blocks.STONE)
+//                .pattern("##")
+//                .pattern("##")
+//                .unlockedBy("has_stone", has(Blocks.STONE))
+//                .save(output);
 
+        polished(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE, Blocks.END_STONE);
+        polished(RecipeCategory.BUILDING_BLOCKS, Blocks.END_STONE_BRICKS, ModBlocks.POLISHED_END_STONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE, Blocks.END_STONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE_STAIRS, Blocks.END_STONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE_SLAB, Blocks.END_STONE, 2);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, ModBlocks.POLISHED_END_STONE_WALL, Blocks.END_STONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.END_STONE_BRICKS, ModBlocks.POLISHED_END_STONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.END_STONE_BRICK_STAIRS, ModBlocks.POLISHED_END_STONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.END_STONE_BRICK_SLAB, ModBlocks.POLISHED_END_STONE, 2);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, Blocks.END_STONE_BRICK_WALL, ModBlocks.POLISHED_END_STONE);
+
+        brickVariantRecipes(Blocks.MUD_BRICKS, Blocks.MUD_BRICK_STAIRS, Blocks.MUD_BRICK_SLAB, Blocks.MUD_BRICK_WALL, Blocks.PACKED_MUD, ModBlocks.POLISHED_PACKED_MUD);
         polished(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_PACKED_MUD, Blocks.PACKED_MUD);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_PACKED_MUD, Blocks.PACKED_MUD);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_PACKED_MUD_STAIRS, Blocks.PACKED_MUD);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_PACKED_MUD_SLAB, Blocks.PACKED_MUD, 2);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, ModBlocks.POLISHED_PACKED_MUD_WALL, Blocks.PACKED_MUD);
+
+        polished(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_PRISMARINE, Blocks.PRISMARINE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_PRISMARINE, Blocks.PRISMARINE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_PRISMARINE_STAIRS, Blocks.PRISMARINE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_PRISMARINE_SLAB, Blocks.PRISMARINE, 2);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, ModBlocks.POLISHED_PRISMARINE_WALL, Blocks.PRISMARINE);
+
+        brickVariantRecipes(ModBlocks.GRANITE_BRICKS, ModBlocks.GRANITE_BRICK_STAIRS, ModBlocks.GRANITE_BRICK_SLAB, ModBlocks.GRANITE_BRICK_WALL, Blocks.GRANITE, Blocks.POLISHED_GRANITE);
+        brickVariantRecipes(ModBlocks.DIORITE_BRICKS, ModBlocks.DIORITE_BRICK_STAIRS, ModBlocks.DIORITE_BRICK_SLAB, ModBlocks.DIORITE_BRICK_WALL, Blocks.DIORITE, Blocks.POLISHED_DIORITE);
+        brickVariantRecipes(ModBlocks.ANDESITE_BRICKS, ModBlocks.ANDESITE_BRICK_STAIRS, ModBlocks.ANDESITE_BRICK_SLAB, ModBlocks.ANDESITE_BRICK_WALL, Blocks.ANDESITE, Blocks.POLISHED_ANDESITE);
 
         tilesRecipes(ModBlocks.NETHER_BRICK_TILES, Blocks.NETHER_BRICKS);
 
@@ -357,6 +385,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(material), has(material))
                 .save(output);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, tiles, material);
+    }
+
+    protected void brickVariantRecipes(ItemLike bricks, ItemLike brickStairs, ItemLike brickSlab, ItemLike brickWall, ItemLike base, ItemLike polished) {
+        polished(RecipeCategory.BUILDING_BLOCKS, bricks, polished);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, bricks, base);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, brickStairs, base);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, brickSlab, base);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, brickWall, base);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, bricks, polished);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, brickStairs, polished);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, brickSlab, polished);
+        stonecutterResultFromBase(RecipeCategory.DECORATIONS, brickWall, polished);
     }
 
     protected void mossyRecipes(ItemLike result, ItemLike material, String groupName) {
