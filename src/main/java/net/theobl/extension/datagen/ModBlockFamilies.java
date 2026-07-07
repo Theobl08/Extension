@@ -29,6 +29,13 @@ public class ModBlockFamilies {
             .recipeUnlockedBy("has_planks")
             .getFamily();
 
+    public static final BlockFamily POLISHED_PACKED_MUD = familyBuilder(ModBlocks.POLISHED_PACKED_MUD.get())
+            .wall(ModBlocks.POLISHED_PACKED_MUD_WALL.get())
+            .stairs(ModBlocks.POLISHED_PACKED_MUD_STAIRS.get())
+            .slab(ModBlocks.POLISHED_PACKED_MUD_SLAB.get())
+            .generateStonecutterRecipe()
+            .getFamily();
+
     public static final BlockFamily POLISHED_STONE = familyBuilder(ModBlocks.POLISHED_STONE.get())
             .wall(ModBlocks.POLISHED_STONE_WALL.get())
             .stairs(ModBlocks.POLISHED_STONE_STAIRS.get())
@@ -54,6 +61,13 @@ public class ModBlockFamilies {
             .wall(ModBlocks.ANDESITE_BRICK_WALL.get())
             .stairs(ModBlocks.ANDESITE_BRICK_STAIRS.get())
             .slab(ModBlocks.ANDESITE_BRICK_SLAB.get())
+            .generateStonecutterRecipe()
+            .getFamily();
+
+    public static final BlockFamily POLISHED_END_STONE = familyBuilder(ModBlocks.POLISHED_END_STONE.get())
+            .wall(ModBlocks.POLISHED_END_STONE_WALL.get())
+            .stairs(ModBlocks.POLISHED_END_STONE_STAIRS.get())
+            .slab(ModBlocks.POLISHED_END_STONE_SLAB.get())
             .generateStonecutterRecipe()
             .getFamily();
 
@@ -112,6 +126,13 @@ public class ModBlockFamilies {
             .slab(ModBlocks.BLUE_NETHER_BRICK_TILE_SLAB.get())
             .stairs(ModBlocks.BLUE_NETHER_BRICK_TILE_STAIRS.get())
             .wall(ModBlocks.BLUE_NETHER_BRICK_TILE_WALL.get())
+            .generateStonecutterRecipe()
+            .getFamily();
+
+    public static final BlockFamily POLISHED_PRISMARINE = familyBuilder(ModBlocks.POLISHED_PRISMARINE.get())
+            .wall(ModBlocks.POLISHED_PRISMARINE_WALL.get())
+            .stairs(ModBlocks.POLISHED_PRISMARINE_STAIRS.get())
+            .slab(ModBlocks.POLISHED_PRISMARINE_SLAB.get())
             .generateStonecutterRecipe()
             .getFamily();
 

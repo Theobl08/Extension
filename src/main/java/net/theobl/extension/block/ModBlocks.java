@@ -46,12 +46,30 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> CHISELED_BRICKS = registerBlock("chiseled_bricks",
             Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS));
+
     public static final DeferredBlock<Block> CHISELED_MUD_BRICKS = registerBlock("chiseled_mud_bricks",
             Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICKS));
+    public static final DeferredBlock<Block> POLISHED_PACKED_MUD = registerBlock("polished_packed_mud",
+            Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD));
+    public static final DeferredBlock<Block> POLISHED_PACKED_MUD_STAIRS = registerStair("polished_packed_mud_stairs", POLISHED_PACKED_MUD);
+    public static final DeferredBlock<Block> POLISHED_PACKED_MUD_SLAB = registerSlab("polished_packed_mud_slab", POLISHED_PACKED_MUD);
+    public static final DeferredBlock<Block> POLISHED_PACKED_MUD_WALL = registerWall("polished_packed_mud_wall", POLISHED_PACKED_MUD);
+
     public static final DeferredBlock<Block> CHISELED_PRISMARINE = registerBlock("chiseled_prismarine",
             Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE_BRICKS));
+    public static final DeferredBlock<Block> POLISHED_PRISMARINE = registerBlock("polished_prismarine",
+            Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD));
+    public static final DeferredBlock<Block> POLISHED_PRISMARINE_STAIRS = registerStair("polished_prismarine_stairs", POLISHED_PRISMARINE);
+    public static final DeferredBlock<Block> POLISHED_PRISMARINE_SLAB = registerSlab("polished_prismarine_slab", POLISHED_PRISMARINE);
+    public static final DeferredBlock<Block> POLISHED_PRISMARINE_WALL = registerWall("polished_prismarine_mud_wall", POLISHED_PRISMARINE);
+
     public static final DeferredBlock<Block> CHISELED_END_STONE_BRICKS = registerBlock("chiseled_end_stone_bricks",
             Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE_BRICKS));
+    public static final DeferredBlock<Block> POLISHED_END_STONE = registerBlock("polished_end_stone",
+            Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE));
+    public static final DeferredBlock<Block> POLISHED_END_STONE_STAIRS = registerStair("polished_end_stone_stairs", POLISHED_END_STONE);
+    public static final DeferredBlock<Block> POLISHED_END_STONE_SLAB = registerSlab("polished_end_stone_slab", POLISHED_END_STONE);
+    public static final DeferredBlock<Block> POLISHED_END_STONE_WALL = registerWall("polished_end_stone_wall", POLISHED_END_STONE);
 
     public static final DeferredBlock<Block> TINTED_GLASS_PANE = registerBlock("tinted_glass_pane",
             IronBarsBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STAINED_GLASS_PANE.gray()));

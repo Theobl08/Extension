@@ -128,9 +128,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(BlockItemIds.PURPUR_BLOCK.block())
                 .add(BlockItemIds.PURPUR_STAIRS.block())
                 .add(BlockItemIds.PURPUR_SLAB.block())
-                .add(BlockItemIds.PURPUR_SLAB.block())
                 .add(BlockItemIds.PURPUR_PILLAR.block())
                 .add(ModBlocks.CHISELED_END_STONE_BRICKS.getKey())
+                .add(ModBlocks.POLISHED_END_STONE.getKey())
+                .add(ModBlocks.POLISHED_END_STONE_STAIRS.getKey())
+                .add(ModBlocks.POLISHED_END_STONE_SLAB.getKey())
+                .add(ModBlocks.POLISHED_END_STONE_WALL.getKey())
                 .add(ModBlocks.PURPUR_WALL.getKey())
                 .add(ModBlocks.ENDER_O_LANTERN.getKey());
 
@@ -210,6 +213,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                         block.toString().contains("brick") ||
                         block.toString().contains("smooth") ||
                         block.toString().contains("polished") ||
+                        block.toString().contains("chiseled") ||
                         block instanceof LanternBlock ||
                         block.defaultBlockState().is(ModBlocks.NETHERITE_STAIRS.get()));
     }

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "extension:block/polished_packed_mud",
+    "side": "extension:block/polished_packed_mud",
+    "top": "extension:block/polished_packed_mud"
+  }
+}

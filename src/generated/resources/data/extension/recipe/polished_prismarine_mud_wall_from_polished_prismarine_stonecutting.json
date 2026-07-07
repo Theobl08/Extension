@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "extension:polished_prismarine",
+  "result": {
+    "id": "extension:polished_prismarine_mud_wall"
+  }
+}

@@ -121,6 +121,8 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_stone", has(Blocks.STONE))
                 .save(output);
 
+        polished(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_PACKED_MUD, Blocks.PACKED_MUD);
+
         tilesRecipes(ModBlocks.NETHER_BRICK_TILES, Blocks.NETHER_BRICKS);
 
         smeltingResultFromBase(ModBlocks.CRACKED_RED_NETHER_BRICKS, Items.RED_NETHER_BRICKS);

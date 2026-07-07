@@ -8,9 +8,12 @@
     "minecraft:purpur_block",
     "minecraft:purpur_stairs",
     "minecraft:purpur_slab",
-    "minecraft:purpur_slab",
     "minecraft:purpur_pillar",
     "extension:chiseled_end_stone_bricks",
+    "extension:polished_end_stone",
+    "extension:polished_end_stone_stairs",
+    "extension:polished_end_stone_slab",
+    "extension:polished_end_stone_wall",
     "extension:purpur_wall",
     "extension:ender_o_lantern"
   ]

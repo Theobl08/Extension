@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "extension:polished_end_stone",
+  "result": {
+    "id": "extension:polished_end_stone_stairs"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "extension:polished_packed_mud",
+  "result": {
+    "id": "extension:polished_packed_mud_wall"
+  }
+}
