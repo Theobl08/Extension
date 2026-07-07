@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:polished_prismarine_mud_wall_from_polished_prismarine_stonecutting"
+        "recipe": "extension:polished_prismarine_wall_from_polished_prismarine_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "extension:polished_prismarine_mud_wall_from_polished_prismarine_stonecutting"
+      "extension:polished_prismarine_wall_from_polished_prismarine_stonecutting"
     ]
   }
 }

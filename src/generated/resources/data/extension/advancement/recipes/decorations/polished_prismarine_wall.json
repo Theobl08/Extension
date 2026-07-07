@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:polished_prismarine_mud_wall"
+        "recipe": "extension:polished_prismarine_wall"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "extension:polished_prismarine_mud_wall"
+      "extension:polished_prismarine_wall"
     ]
   }
 }

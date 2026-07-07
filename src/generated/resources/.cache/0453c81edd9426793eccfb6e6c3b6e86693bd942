@@ -1,4 +1,4 @@
-// 26.2	2026-07-07T14:53:16.6820783	Tags for minecraft:item mod id extension
+// 26.2	2026-07-07T17:33:52.9880207	Tags for minecraft:item mod id extension
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks.json
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks/nether.json
 d4dca80551a0d488392912428cdc618c8b8e9197 data/c/tags/item/crops.json
@@ -27,7 +27,7 @@ fb08e79ad6a72de180b1d4b584fe8db7ed01bb10 data/minecraft/tags/item/planks.json
 0e3139b247b37247d9322ff679c5f2b4db9a7340 data/minecraft/tags/item/slabs.json
 7c05ffbca25c048919d4100d7919450945c54578 data/minecraft/tags/item/soul_fire_base_blocks.json
 50831fb3f976b4a251122759400169cb9afeb268 data/minecraft/tags/item/stairs.json
-cee0c0aea62b648703bee0785262996248689b2f data/minecraft/tags/item/walls.json
+4a35feacbc6f72c4a203d2dcb08dd4a143200af0 data/minecraft/tags/item/walls.json
 05463d3307b5cf48def4b2e9168575393570e9c6 data/minecraft/tags/item/wooden_buttons.json
 9dc2e3835f586ad0fcbc3ac9706d3b02285677fe data/minecraft/tags/item/wooden_doors.json
 3bee9c193ad3617ab20672b4914ffe1247278077 data/minecraft/tags/item/wooden_fences.json

@@ -1,4 +1,4 @@
-// 26.2	2026-07-07T14:53:16.6830768	Tags for minecraft:block mod id extension
+// 26.2	2026-07-07T17:33:52.989023	Tags for minecraft:block mod id extension
 6af7f26669e374797e819a720298b940f77a2c18 data/c/tags/block/fences.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/block/fences/nether_brick.json
 e425c47578377de2388a2a345e79caccab792af8 data/c/tags/block/fence_gates/wooden.json
@@ -33,7 +33,7 @@ dda2b9f854f882316a5f1fc960987e325fa9d68c data/minecraft/tags/block/replaceable.j
 50831fb3f976b4a251122759400169cb9afeb268 data/minecraft/tags/block/stairs.json
 42d88003cb1227da4cf4d1f01dd8ad1504a65b89 data/minecraft/tags/block/standing_signs.json
 34eaa462ea39124fc0306bbd59d830339224754d data/minecraft/tags/block/sword_efficient.json
-cee0c0aea62b648703bee0785262996248689b2f data/minecraft/tags/block/walls.json
+4a35feacbc6f72c4a203d2dcb08dd4a143200af0 data/minecraft/tags/block/walls.json
 f2d60b7a511e060a6392a3cd33de9c6a5f403b8e data/minecraft/tags/block/wall_hanging_signs.json
 09e5394208db8dd2a9449329937e41c0e21a71e0 data/minecraft/tags/block/wall_post_override.json
 ad2d74147d85cf9bb73d521f6f8f2e58d61ac787 data/minecraft/tags/block/wall_signs.json

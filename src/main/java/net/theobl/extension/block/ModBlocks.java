@@ -61,7 +61,7 @@ public class ModBlocks {
             Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_MUD));
     public static final DeferredBlock<Block> POLISHED_PRISMARINE_STAIRS = registerStair("polished_prismarine_stairs", POLISHED_PRISMARINE);
     public static final DeferredBlock<Block> POLISHED_PRISMARINE_SLAB = registerSlab("polished_prismarine_slab", POLISHED_PRISMARINE);
-    public static final DeferredBlock<Block> POLISHED_PRISMARINE_WALL = registerWall("polished_prismarine_mud_wall", POLISHED_PRISMARINE);
+    public static final DeferredBlock<Block> POLISHED_PRISMARINE_WALL = registerWall("polished_prismarine_wall", POLISHED_PRISMARINE);
 
     public static final DeferredBlock<Block> CHISELED_END_STONE_BRICKS = registerBlock("chiseled_end_stone_bricks",
             Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE_BRICKS));
