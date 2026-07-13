@@ -1,4 +1,4 @@
-// 26.2	2026-07-07T17:33:52.989023	Tags for minecraft:block mod id extension
+// 26.2	2026-07-13T14:05:26.7964637	Tags for minecraft:block mod id extension
 6af7f26669e374797e819a720298b940f77a2c18 data/c/tags/block/fences.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/block/fences/nether_brick.json
 e425c47578377de2388a2a345e79caccab792af8 data/c/tags/block/fence_gates/wooden.json
@@ -22,7 +22,7 @@ dda2b9f854f882316a5f1fc960987e325fa9d68c data/minecraft/tags/block/fire.json
 096ddd7892a9f24bf58d25dccf95160736b6bee4 data/minecraft/tags/block/leaves.json
 4737b983b9cab361c9d355611cdc43645e329274 data/minecraft/tags/block/logs.json
 21a6d3feb3de987ff0d407eb79cf595e3e693052 data/minecraft/tags/block/mineable/axe.json
-b6139498a091961564c379f913448bc7216a8069 data/minecraft/tags/block/mineable/pickaxe.json
+084d1c620f52c0e482e028b456fdfe5ebb486971 data/minecraft/tags/block/mineable/pickaxe.json
 45d7047b9d3567131955bd6cd85d4b295042277a data/minecraft/tags/block/overworld_natural_logs.json
 3486cb571e4d7f4403ec590dfafb6972d44ae7da data/minecraft/tags/block/piglin_repellents.json
 fb08e79ad6a72de180b1d4b584fe8db7ed01bb10 data/minecraft/tags/block/planks.json

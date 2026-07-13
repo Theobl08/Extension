@@ -151,13 +151,11 @@ public class ModRecipeProvider extends RecipeProvider {
         brickVariantRecipes(ModBlocks.DIORITE_BRICKS, ModBlocks.DIORITE_BRICK_STAIRS, ModBlocks.DIORITE_BRICK_SLAB, ModBlocks.DIORITE_BRICK_WALL, Blocks.DIORITE, Blocks.POLISHED_DIORITE);
         brickVariantRecipes(ModBlocks.ANDESITE_BRICKS, ModBlocks.ANDESITE_BRICK_STAIRS, ModBlocks.ANDESITE_BRICK_SLAB, ModBlocks.ANDESITE_BRICK_WALL, Blocks.ANDESITE, Blocks.POLISHED_ANDESITE);
 
-        tilesRecipes(ModBlocks.NETHER_BRICK_TILES, Blocks.NETHER_BRICKS);
 
         smeltingResultFromBase(ModBlocks.CRACKED_RED_NETHER_BRICKS, Items.RED_NETHER_BRICKS);
         fence(ModBlocks.RED_NETHER_BRICK_FENCE.get(), Blocks.RED_NETHER_BRICKS, ModItems.RED_NETHER_BRICK.get());
         chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICK_SLAB);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICKS);
-        tilesRecipes(ModBlocks.RED_NETHER_BRICK_TILES, Blocks.RED_NETHER_BRICKS);
 
         shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLUE_NETHER_BRICKS)
                 .define('W', ModItems.BLUE_NETHER_WART)
@@ -167,7 +165,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_blue_nether_wart", has(ModItems.BLUE_NETHER_WART))
                 .save(output);
         fence(ModBlocks.BLUE_NETHER_BRICK_FENCE.get(), ModBlocks.BLUE_NETHER_BRICKS, ModItems.BLUE_NETHER_BRICK.get());
-        tilesRecipes(ModBlocks.BLUE_NETHER_BRICK_TILES, ModBlocks.BLUE_NETHER_BRICKS);
 
         shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_SANDSTONE, 1)
                 .define('#', Items.SOUL_SAND)
@@ -375,16 +372,6 @@ public class ModRecipeProvider extends RecipeProvider {
     protected void chiseledRecipes(ItemLike result, ItemLike slab, ItemLike base) {
         chiseled(RecipeCategory.BUILDING_BLOCKS, result, slab);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, result, base);
-    }
-
-    protected void tilesRecipes(ItemLike tiles, ItemLike material) {
-        shaped(RecipeCategory.BUILDING_BLOCKS, tiles, 4)
-                .define('S', material)
-                .pattern("SS")
-                .pattern("SS")
-                .unlockedBy(getHasName(material), has(material))
-                .save(output);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, tiles, material);
     }
 
     protected void brickVariantRecipes(ItemLike bricks, ItemLike brickStairs, ItemLike brickSlab, ItemLike brickWall, ItemLike base, ItemLike polished) {

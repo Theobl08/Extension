@@ -44,7 +44,15 @@ public class ModModelProvider extends ModelProvider {
         super(output, Extension.MODID);
     }
 
-    public final List<BlockFamily> familyWithExistingFullBlock = ImmutableList.of(ModBlockFamilies.QUARTZ_BRICKS, ModBlockFamilies.SMOOTH_BASALT);
+    public final List<BlockFamily> familyWithExistingFullBlock = ImmutableList.of(
+            ModBlockFamilies.QUARTZ_BRICKS,
+            ModBlockFamilies.SMOOTH_BASALT,
+            ModBlockFamilies.NETHER_BRICKS,
+            ModBlockFamilies.NETHER_BRICK_TILES, // Full block generated in the previous family
+            ModBlockFamilies.RED_NETHER_BRICKS,
+            ModBlockFamilies.RED_NETHER_BRICK_TILES, // Full block generated in the previous family
+            ModBlockFamilies.BLUE_NETHER_BRICK_TILES
+    );
 
     public final Map<Block, TexturedModel> texturedModels = ImmutableMap.<Block, TexturedModel>builder()
             .put(ModBlocks.SOUL_SANDSTONE.get(), TexturedModel.TOP_BOTTOM_WITH_WALL.get(ModBlocks.SOUL_SANDSTONE.get()))

@@ -133,6 +133,11 @@ public class ModBlocks {
     public static final DeferredBlock<Block> NETHER_BRICK_TILE_STAIRS = registerStair("nether_brick_tile_stairs", NETHER_BRICK_TILES);
     public static final DeferredBlock<Block> NETHER_BRICK_TILE_SLAB = registerSlab("nether_brick_tile_slab", NETHER_BRICK_TILES);
     public static final DeferredBlock<Block> NETHER_BRICK_TILE_WALL = registerWall("nether_brick_tile_wall", NETHER_BRICK_TILES);
+    public static final DeferredBlock<Block> NETHER_BRICK_PILLAR = registerBlock(
+            "nether_brick_pillar",
+            RotatedPillarBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_BRICKS)
+    );
 
     public static final DeferredBlock<Block> CRACKED_RED_NETHER_BRICKS = registerBlock("cracked_red_nether_bricks",
             Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.RED_NETHER_BRICKS));
@@ -145,6 +150,11 @@ public class ModBlocks {
     public static final DeferredBlock<Block> RED_NETHER_BRICK_TILE_STAIRS = registerStair("red_nether_brick_tile_stairs", RED_NETHER_BRICK_TILES);
     public static final DeferredBlock<Block> RED_NETHER_BRICK_TILE_SLAB = registerSlab("red_nether_brick_tile_slab", RED_NETHER_BRICK_TILES);
     public static final DeferredBlock<Block> RED_NETHER_BRICK_TILE_WALL = registerWall("red_nether_brick_tile_wall", RED_NETHER_BRICK_TILES);
+    public static final DeferredBlock<Block> RED_NETHER_BRICK_PILLAR = registerBlock(
+            "red_nether_brick_pillar",
+            RotatedPillarBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.RED_NETHER_BRICKS)
+    );
 
     public static final DeferredBlock<Block> BLUE_NETHER_WART = BLOCKS.registerBlock("blue_nether_wart",
             BlueNetherWartBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_WART).mapColor(MapColor.WARPED_WART_BLOCK));
@@ -165,6 +175,11 @@ public class ModBlocks {
     public static final DeferredBlock<Block> BLUE_NETHER_BRICK_TILE_STAIRS = registerStair("blue_nether_brick_tile_stairs", BLUE_NETHER_BRICK_TILES);
     public static final DeferredBlock<Block> BLUE_NETHER_BRICK_TILE_SLAB = registerSlab("blue_nether_brick_tile_slab", BLUE_NETHER_BRICK_TILES);
     public static final DeferredBlock<Block> BLUE_NETHER_BRICK_TILE_WALL = registerWall("blue_nether_brick_tile_wall", BLUE_NETHER_BRICK_TILES);
+    public static final DeferredBlock<Block> BLUE_NETHER_BRICK_PILLAR = registerBlock(
+            "blue_nether_brick_pillar",
+            RotatedPillarBlock::new,
+            () -> BlockBehaviour.Properties.ofFullCopy(BLUE_NETHER_BRICKS.get())
+    );
 
     public static final DeferredBlock<Block> SOUL_SANDSTONE = registerBlock("soul_sandstone",
             Block::new, soulSandstoneProperties());

@@ -5,11 +5,11 @@
     "#": "minecraft:nether_bricks"
   },
   "pattern": [
-    "##",
-    "##"
+    "#",
+    "#"
   ],
   "result": {
-    "count": 4,
-    "id": "extension:nether_brick_tiles"
+    "count": 2,
+    "id": "extension:nether_brick_pillar"
   }
 }

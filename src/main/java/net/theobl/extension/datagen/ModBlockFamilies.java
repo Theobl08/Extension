@@ -98,10 +98,22 @@ public class ModBlockFamilies {
             .generateStonecutterRecipe()
             .getFamily();
 
+    public static final BlockFamily NETHER_BRICKS = familyBuilder(Blocks.NETHER_BRICKS)
+            .tiles(ModBlocks.NETHER_BRICK_TILES.get())
+            .pillar(ModBlocks.NETHER_BRICK_PILLAR.get())
+            .generateStonecutterRecipe()
+            .getFamily();
+
     public static final BlockFamily NETHER_BRICK_TILES = familyBuilder(ModBlocks.NETHER_BRICK_TILES.get())
             .slab(ModBlocks.NETHER_BRICK_TILE_SLAB.get())
             .stairs(ModBlocks.NETHER_BRICK_TILE_STAIRS.get())
             .wall(ModBlocks.NETHER_BRICK_TILE_WALL.get())
+            .generateStonecutterRecipe()
+            .getFamily();
+
+    public static final BlockFamily RED_NETHER_BRICKS = familyBuilder(Blocks.RED_NETHER_BRICKS)
+            .tiles(ModBlocks.RED_NETHER_BRICK_TILES.get())
+            .pillar(ModBlocks.RED_NETHER_BRICK_PILLAR.get())
             .generateStonecutterRecipe()
             .getFamily();
 
@@ -119,6 +131,8 @@ public class ModBlockFamilies {
             .slab(ModBlocks.BLUE_NETHER_BRICK_SLAB.get())
             .chiseled(ModBlocks.CHISELED_BLUE_NETHER_BRICKS.get())
             .cracked(ModBlocks.CRACKED_BLUE_NETHER_BRICKS.get())
+            .tiles(ModBlocks.BLUE_NETHER_BRICK_TILES.get())
+            .pillar(ModBlocks.BLUE_NETHER_BRICK_PILLAR.get())
             .generateStonecutterRecipe()
             .getFamily();
 
