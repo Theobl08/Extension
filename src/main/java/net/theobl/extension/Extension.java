@@ -16,6 +16,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
@@ -29,6 +30,7 @@ import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.theobl.extension.block.ExtendedCauldronInteraction;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.compat.create.CreateCompat;
 import net.theobl.extension.item.ModCreativeModeTabs;
 import net.theobl.extension.item.ModItems;
 import org.slf4j.Logger;
@@ -74,6 +76,10 @@ public class Extension {
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        if(ModList.get().isLoaded("create")) {
+            LOGGER.info("Loading Create compat");
+            CreateCompat.init(modEventBus);
+        }
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

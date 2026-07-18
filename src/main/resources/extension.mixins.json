@@ -2,6 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "net.theobl.extension.mixin",
+  "plugin": "net.theobl.extension.mixin.ExtensionMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "refmap": "extension.refmap.json",
   "mixins": [
@@ -20,6 +21,7 @@
     "NoiseChunkBasedGeneratorMixin",
     "ShovelItemMixin",
     "SliderControlMixin",
+    "create.VanillaFluidTargetsMixin",
     "storagedrawers.DrawerOverlayMixin"
   ],
   "client": [
@@ -31,5 +33,8 @@
   ],
   "injectors": {
     "defaultRequire": 1
+  },
+  "mixinextras": {
+    "minVersion": "0.5.0"
   }
 }
