@@ -173,6 +173,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> INVERTED_REDSTONE_WALL_TORCH = BLOCKS.register("inverted_redstone_wall_torch",
             () -> new InvertedRedstoneWallTorchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_TORCH)));
 
+    public static final DeferredBlock<Block> MILK_CAULDRON = BLOCKS.registerBlock("milk_cauldron",
+            MilkCauldronBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON));
+
     private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
         return state -> state.getValue(BlockStateProperties.LIT) ? lightValue : 0;
     }

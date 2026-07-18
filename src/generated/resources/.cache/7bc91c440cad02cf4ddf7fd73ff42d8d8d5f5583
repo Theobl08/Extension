@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-06T11:45:30.8058311	Block States: extension
+// 1.21.1	2026-07-18T13:51:57.0548401	Block States: extension
 40e9bbf670e7f25d8bb42d81f5255bf006e79c11 assets/extension/blockstates/blue_nether_bricks.json
 00f366a033f154ce112185e74fc9ec9e31ee5285 assets/extension/blockstates/blue_nether_brick_fence.json
 99a1bca5bfd89664f5cc2c4ab926c1f244ba7c69 assets/extension/blockstates/blue_nether_brick_slab.json
@@ -19,6 +19,7 @@ f04c8504b2f4ee9a7da461bbdadd2a4fd9bc0d70 assets/extension/blockstates/cut_soul_s
 95f03a1e140aa99a86acdbdcab988ff57dc9f7b1 assets/extension/blockstates/dark_prismarine_wall.json
 62f63ef5704f53d4eea73caebbabf590fd2ebb84 assets/extension/blockstates/inverted_redstone_torch.json
 0cdcc24c5167a2cf8464cc12e94f264bcbc572e6 assets/extension/blockstates/inverted_redstone_wall_torch.json
+7d3d770e8061fa761ae966f583efec030b43f412 assets/extension/blockstates/milk_cauldron.json
 8e27688a45ca940de4bbe666c17b5ab69ea7a5b6 assets/extension/blockstates/mossy_cobbled_deepslate.json
 3c7cb29080d6aa280683267018efc5c1360e57ae assets/extension/blockstates/mossy_cobbled_deepslate_slab.json
 4d5ec6d67bcb11d26ac938a30359045ca9ba3f1a assets/extension/blockstates/mossy_cobbled_deepslate_stairs.json
@@ -104,6 +105,7 @@ fd57a41f0cab28ce74c552ee2baa1c311e5ac8b5 assets/extension/models/block/cut_soul_
 5e836951b01f721b3a869083686e9b7d4186d8f6 assets/extension/models/block/dark_prismarine_wall_post.json
 558dd1cc92f8f5768f8cc1f74f002d9d0bc82038 assets/extension/models/block/dark_prismarine_wall_side.json
 e574401057b7068ceabd03f58356c520bfa5c291 assets/extension/models/block/dark_prismarine_wall_side_tall.json
+6aaaf939cad5a9dc9fea60fdeca1d5f1169ae093 assets/extension/models/block/milk_cauldron.json
 da97a41882167864121cfbf9edcc0e2296e76c2c assets/extension/models/block/mossy_cobbled_deepslate.json
 4b442b756e87fdc8f6e40f282a3de4137721d9bd assets/extension/models/block/mossy_cobbled_deepslate_slab.json
 a71e7c507c3bbf81459632ee301d8b4d2c4fb5a2 assets/extension/models/block/mossy_cobbled_deepslate_slab_top.json

@@ -139,6 +139,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         redstoneTorch();
         redstoneWallTorch();
+
+        getVariantBuilder(ModBlocks.MILK_CAULDRON.get())
+                .partialState()
+                .setModels(
+                        new ConfiguredModel(
+                                models().withExistingParent("milk_cauldron", mcLoc("block/template_cauldron_full"))
+                                        .texture("content", ResourceLocation.fromNamespaceAndPath("neoforge", "block/milk_still"))
+                        )
+                );
     }
 
     private ResourceLocation key(Block block) {

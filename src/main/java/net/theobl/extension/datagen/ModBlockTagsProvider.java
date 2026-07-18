@@ -37,6 +37,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.REDSTONE_O_LANTERN.get())
                 .add(ModBlocks.REDSTONE_CAMPFIRE.get());
 
+        tag(BlockTags.CAULDRONS).add(ModBlocks.MILK_CAULDRON.get());
+        tag(Tags.Blocks.VILLAGER_JOB_SITES).add(ModBlocks.MILK_CAULDRON.get());
+
         tag(BlockTags.CAMPFIRES).add(ModBlocks.REDSTONE_CAMPFIRE.get());
         tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModBlocks.SOUL_O_LANTERN.get());
         tag(Tags.Blocks.PUMPKINS)
@@ -79,6 +82,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                         block.toString().contains("smooth") ||
                         block.toString().contains("polished") ||
                         block.defaultBlockState().is(ModBlocks.REDSTONE_LANTERN.get()) ||
+                        block.defaultBlockState().is(ModBlocks.MILK_CAULDRON.get()) ||
                         block.defaultBlockState().is(ModBlocks.NETHERITE_STAIRS.get()));
     }
 }
