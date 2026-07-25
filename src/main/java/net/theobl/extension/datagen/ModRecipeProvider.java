@@ -66,6 +66,8 @@ public class ModRecipeProvider extends RecipeProvider {
         wallRecipes(ModBlocks.PURPUR_WALL.get(), Items.PURPUR_BLOCK);
         wallRecipes(ModBlocks.QUARTZ_WALL.get(), Items.QUARTZ_BLOCK);
 
+        woodFromLogs(ModBlocks.BAMBOO_WOOD, Blocks.BAMBOO_BLOCK);
+
         chiseledRecipes(ModBlocks.CHISELED_GRANITE, Items.GRANITE_SLAB, Blocks.GRANITE);
         chiseledRecipes(ModBlocks.CHISELED_DIORITE, Items.DIORITE_SLAB, Blocks.DIORITE);
         chiseledRecipes(ModBlocks.CHISELED_ANDESITE, Items.ANDESITE_SLAB, Blocks.ANDESITE);

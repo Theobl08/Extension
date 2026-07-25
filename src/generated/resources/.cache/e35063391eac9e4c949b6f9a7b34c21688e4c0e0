@@ -1,4 +1,4 @@
-// 26.2	2026-07-13T14:05:26.7964637	Tags for minecraft:block mod id extension
+// 26.2	2026-07-25T18:34:46.0857729	Tags for minecraft:block mod id extension
 6af7f26669e374797e819a720298b940f77a2c18 data/c/tags/block/fences.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/block/fences/nether_brick.json
 e425c47578377de2388a2a345e79caccab792af8 data/c/tags/block/fence_gates/wooden.json
@@ -13,6 +13,7 @@ bdef780f9a4c2965de35f74f5eb088150d9f694d data/c/tags/block/sandstone/stairs.json
 c0434c4e9b5cdc9314107095014bb559626cf0a9 data/extension/tags/block/copper_fire_base_blocks.json
 5100ac8a910d42428c75205d145bb249574ca2c1 data/extension/tags/block/ender_fire_base_blocks.json
 b2300135caa494a27cb7a1bbf1427da73ffa8c63 data/extension/tags/block/redstone_fire_base_blocks.json
+4adf5b941cac85c0ee24f444633aa2c07e620ef0 data/minecraft/tags/block/bamboo_blocks.json
 c2b25de3136547dc1ae29b20e9c2ec38656ae6fa data/minecraft/tags/block/campfires.json
 e6fb5ccafd35ae058e2e0678279b45d06c7864fc data/minecraft/tags/block/cauldrons.json
 c1b0f3bc5074bdb8f2518e78819094ab859167f2 data/minecraft/tags/block/ceiling_hanging_signs.json

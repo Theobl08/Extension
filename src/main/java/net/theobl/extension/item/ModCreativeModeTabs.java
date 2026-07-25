@@ -41,6 +41,8 @@ public class ModCreativeModeTabs {
     // Add blocks to the vanilla tabs
     public static void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.insertAfter(Items.BAMBOO_BLOCK.getDefaultInstance(), ModBlocks.BAMBOO_WOOD.toStack(), PARENT_AND_SEARCH_TABS);
+
             event.insertAfter(Items.SMOOTH_STONE.getDefaultInstance(), ModBlocks.SMOOTH_STONE_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.NETHERITE_BLOCK.getDefaultInstance(), ModBlocks.NETHERITE_STAIRS.toStack(), PARENT_AND_SEARCH_TABS);
 

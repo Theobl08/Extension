@@ -156,6 +156,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.CEILING_HANGING_SIGNS).add(ModBlocks.POTATO_HANGING_SIGN.getKey());
         tag(BlockTags.WALL_HANGING_SIGNS).add(ModBlocks.POTATO_WALL_HANGING_SIGN.getKey());
 
+        tag(BlockTags.BAMBOO_BLOCKS).add(ModBlocks.BAMBOO_WOOD.getKey());
+
         for(DeferredHolder<Block, ? extends Block> deferredBlock : ModBlocks.BLOCKS.getEntries()){
             if(deferredBlock.get() instanceof StairBlock)
                 tag(BlockTags.STAIRS).add(deferredBlock.getKey());

@@ -1,4 +1,4 @@
-// 26.2	2026-07-13T14:05:26.7869347	Loot Tables
+// 26.2	2026-07-25T18:34:46.0757728	Loot Tables
 1721fe4ae3679c4a0accf03085c8af852442fa3d data/extension/loot_table/blocks/acacia_cartography_table.json
 789b6b2393d65196354e68583b775359a55ef30b data/extension/loot_table/blocks/acacia_crafting_table.json
 8db6bef1e29604b2a33ae3eae325e0d2c3772c17 data/extension/loot_table/blocks/andesite_bricks.json
@@ -7,6 +7,7 @@ c2c14f0a8d0b0f635f5355efb890685b67bb8f44 data/extension/loot_table/blocks/andesi
 78dd346d34f4bb6e8b474744de9c9a8073cd10eb data/extension/loot_table/blocks/andesite_brick_wall.json
 a2b1179184bb3a1ade860582eb7a7c4da12d1f83 data/extension/loot_table/blocks/bamboo_cartography_table.json
 3a6fe92fb4ab4d83ef4697256370206d20c28a5b data/extension/loot_table/blocks/bamboo_crafting_table.json
+6c3c8a185d1cbb5bac4dbdf4c09f4ee27160d6cc data/extension/loot_table/blocks/bamboo_wood.json
 0d829454777de41a5ec5e13e28dc9db9a61ad958 data/extension/loot_table/blocks/birch_cartography_table.json
 adc03a9516c164b420edf9d6d1afcea269614b62 data/extension/loot_table/blocks/birch_crafting_table.json
 3d4ea73e53853cb2a4c7b006789a2d1860382f98 data/extension/loot_table/blocks/blue_nether_bricks.json

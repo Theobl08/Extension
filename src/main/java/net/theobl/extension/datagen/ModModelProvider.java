@@ -99,6 +99,8 @@ public class ModModelProvider extends ModelProvider {
         createWall(ModBlocks.PURPUR_WALL.get(), TextureMapping.getBlockTexture(Blocks.PURPUR_BLOCK), blockModels);
         createWall(ModBlocks.QUARTZ_WALL.get(), TextureMapping.getBlockTexture(Blocks.QUARTZ_BLOCK, "_top"), blockModels);
 
+        blockModels.woodProvider(Blocks.BAMBOO_BLOCK).wood(ModBlocks.BAMBOO_WOOD.get());
+
         blockModels.createTrivialCube(ModBlocks.CHISELED_GRANITE.get());
         blockModels.createTrivialCube(ModBlocks.CHISELED_DIORITE.get());
         blockModels.createTrivialCube(ModBlocks.CHISELED_ANDESITE.get());

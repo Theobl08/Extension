@@ -48,6 +48,8 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
         copy(BlockTags.STANDING_SIGNS, ItemTags.SIGNS);
         copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
 
+        copy(BlockTags.BAMBOO_BLOCKS, ItemTags.BAMBOO_BLOCKS);
+
         copy(BlockTags.STAIRS, BlockItemTags.STAIRS.item());
         copy(BlockTags.SLABS, BlockItemTags.SLABS.item());
         copy(BlockTags.WALLS, ItemTags.WALLS);
