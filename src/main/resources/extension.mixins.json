@@ -35,7 +35,8 @@
     "LightTextureMixin",
     "OptionInstanceMixin",
     "PistonHeadBlockRendererMixin",
-    "PistonHeadRenderStateMixin"
+    "PistonHeadRenderStateMixin",
+    "StitcherMixin"
   ],
   "injectors": {
     "defaultRequire": 1
