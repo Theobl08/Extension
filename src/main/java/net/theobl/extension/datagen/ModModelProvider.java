@@ -85,6 +85,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.RED_NETHER_BRICK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.BLUE_NETHER_BRICK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.ILLUSIONER_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.EMPTY_POTTERY_SHERD.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.POTATO_RAFT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.POTATO_CHEST_RAFT.get(), ModelTemplates.FLAT_ITEM);
 

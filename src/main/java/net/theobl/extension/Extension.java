@@ -56,6 +56,7 @@ import net.theobl.extension.block.ExtendedCauldronInteraction;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.block.WoodTypeCollection;
 import net.theobl.extension.block.entity.ModBlockEntityType;
+import net.theobl.extension.block.entity.ModDecoratedPotPatterns;
 import net.theobl.extension.commands.HeldItemNameCommand;
 import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.inventory.FletchingMenu;
@@ -108,6 +109,7 @@ public class Extension {
         ModParticleTypes.register(modEventBus);
 
         ModBlockEntityType.register(modEventBus);
+        ModDecoratedPotPatterns.register(modEventBus);
         ModEntityType.register(modEventBus);
         ModTreeDecoratorType.register(modEventBus);
         ModTrunkPlacerType.register(modEventBus);

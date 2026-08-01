@@ -31,6 +31,8 @@ public class ModItems {
             p -> new StandingAndWallBlockItem(ModBlocks.ENDER_TORCH.get(), ModBlocks.ENDER_WALL_TORCH.get(), Direction.DOWN, p),
             Item.Properties::useBlockDescriptionPrefix);
 
+    public static final DeferredItem<Item> EMPTY_POTTERY_SHERD = ITEMS.registerSimpleItem("empty_pottery_sherd", p -> p.rarity(Rarity.UNCOMMON));
+
     public static final DeferredItem<Item> ILLUSIONER_SPAWN_EGG = ITEMS.registerItem("illusioner_spawn_egg",
             SpawnEggItem::new, p -> p.spawnEgg(EntityTypes.ILLUSIONER));
 

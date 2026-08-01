@@ -1,4 +1,4 @@
-// 26.2	2026-07-25T18:34:46.0767708	Model Definitions - extension
+// 26.2	2026-08-01T00:54:19.3547594	Model Definitions - extension
 67af02300af8de520bea8100bbe459f833ee4590 assets/extension/blockstates/acacia_cartography_table.json
 f336845af32a7e8cd7c8dd4a777944b3cb3f56b0 assets/extension/blockstates/acacia_crafting_table.json
 e23b5318f6e68839bb11de0c8e269fa6e25664a3 assets/extension/blockstates/andesite_bricks.json
@@ -202,6 +202,7 @@ bbbe2a1b847a30db49cb1127473d1589895e801f assets/extension/items/diorite_bricks.j
 1f40bc0b7fdd5f01ff51f7cd84661fc7743980cb assets/extension/items/diorite_brick_slab.json
 ad8dfedb7575304cb9e92cd1cbfc3b20f1937dd6 assets/extension/items/diorite_brick_stairs.json
 c530b893ca5b928e4311f15f41e897308bb396f5 assets/extension/items/diorite_brick_wall.json
+dba36e9adb0c641a0125f6e537453f53c8f0ca0e assets/extension/items/empty_pottery_sherd.json
 2de027256d666f6f207be6546c36d6148eaeb855 assets/extension/items/ender_campfire.json
 2ef938f6ce3c8a2129ab055f2d88ac401f5cfaad assets/extension/items/ender_lantern.json
 f66a9786ff0baaad7f1bd9a5924b9008ac7de346 assets/extension/items/ender_o_lantern.json
@@ -657,6 +658,7 @@ d18304f15825ee080025ca8f7f7a96d3da42cdfc assets/extension/models/block/warped_cr
 a21f599e69fb810a6426b5cd312d6cb64b5e4a46 assets/extension/models/item/blue_nether_brick.json
 8beae8cdafd692f0b13f89c9d2bcb43a3c03649d assets/extension/models/item/blue_nether_wart.json
 741864dd1e2c123c7fd330ee32b16cf7c2e3da67 assets/extension/models/item/copper_campfire.json
+1ddc14f8ddac26aaf42fcf08224e5b9f59e796a7 assets/extension/models/item/empty_pottery_sherd.json
 ade46277190386b4a415a0323e8ad52d85980e18 assets/extension/models/item/ender_campfire.json
 dd2e91cd0ef671bc02c4ea036fdae9a5c1eee543 assets/extension/models/item/ender_lantern.json
 cf4ba7fb755911fb1eb8b28144c1ccb60183a4eb assets/extension/models/item/ender_torch.json

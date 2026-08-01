@@ -1,4 +1,4 @@
-// 26.2	2026-07-25T18:34:46.084768	Tags for minecraft:item mod id extension
+// 26.2	2026-08-01T00:54:19.3678097	Tags for minecraft:item mod id extension
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks.json
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks/nether.json
 d4dca80551a0d488392912428cdc618c8b8e9197 data/c/tags/item/crops.json
@@ -16,6 +16,7 @@ e05f960a6a9bd49162b86a764990d68c221d4c69 data/c/tags/item/villager_job_sites.jso
 4adf5b941cac85c0ee24f444633aa2c07e620ef0 data/minecraft/tags/item/bamboo_blocks.json
 9a5bb3514d2243eed0f824e7c5e538aea4b5b315 data/minecraft/tags/item/boats.json
 681d080a826815ff2651b6cae9249c1b7582f955 data/minecraft/tags/item/chest_boats.json
+f1b85978c2c8b9f8de74c451178076fb6048de33 data/minecraft/tags/item/decorated_pot_sherds.json
 6af7f26669e374797e819a720298b940f77a2c18 data/minecraft/tags/item/fences.json
 e425c47578377de2388a2a345e79caccab792af8 data/minecraft/tags/item/fence_gates.json
 c1b0f3bc5074bdb8f2518e78819094ab859167f2 data/minecraft/tags/item/hanging_signs.json
