@@ -66,6 +66,7 @@ import net.theobl.extension.item.ModItems;
 import net.theobl.extension.item.alchemy.ModPotions;
 import net.theobl.extension.item.crafting.ModRecipeSerializer;
 import net.theobl.extension.item.crafting.ModRecipeType;
+import net.theobl.extension.loot.ModLootModifiers;
 import net.theobl.extension.particles.ModParticleTypes;
 import net.theobl.extension.stats.ModStats;
 import net.theobl.extension.worldgen.ModTreeDecoratorType;
@@ -113,6 +114,8 @@ public class Extension {
         ModEntityType.register(modEventBus);
         ModTreeDecoratorType.register(modEventBus);
         ModTrunkPlacerType.register(modEventBus);
+
+        ModLootModifiers.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (Extension) to respond directly to events.

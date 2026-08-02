@@ -19,6 +19,7 @@ public class DataGenerators {
         event.createProvider(ModRecipeProvider.Runner::new);
         event.createProvider(ModRecipePrioritiesProvider::new);
         event.createProvider(ModDataMapProvider::new);
+        event.createProvider(ModGlobalLootModifierProvider::new);
 
         event.createBlockAndItemTags(ModBlockTagsProvider::new, ModItemTagsProvider::new);
 

@@ -1,0 +1,12 @@
+{
+  "type": "extension:add_archaeology_item",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:archaeology/desert_well"
+    }
+  ],
+  "item": "extension:empty_pottery_sherd",
+  "table": "minecraft:archaeology/desert_well",
+  "weight": 2
+}
