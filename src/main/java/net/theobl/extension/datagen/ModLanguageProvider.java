@@ -32,6 +32,8 @@ public class ModLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("config.jade.plugin_extension.potion_cauldron", "Cauldron's Potion Info");
+
         add("itemGroup.extension", "Extension");
 
         add("potion.longPotion", "Extended");

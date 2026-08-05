@@ -150,6 +150,7 @@
   "block.extension.tinted_glass_pane": "Tinted Glass Pane",
   "block.extension.warped_cartography_table": "Warped Cartography Table",
   "block.extension.warped_crafting_table": "Warped Crafting Table",
+  "config.jade.plugin_extension.potion_cauldron": "Cauldron's Potion Info",
   "container.fletching": "Fletching",
   "entity.extension.potato_chest_raft": "Potato Raft with Chest",
   "entity.extension.potato_raft": "Potato Raft",
