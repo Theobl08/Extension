@@ -3,6 +3,8 @@ package net.theobl.extension.util;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.dispenser.BoatDispenseItemBehavior;
+import net.minecraft.core.dispenser.MinecartDispenseItemBehavior;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -10,6 +12,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -17,6 +20,9 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DispenserBlock;
+import net.theobl.extension.entity.ModEntityType;
+import net.theobl.extension.item.ModItems;
 import net.theobl.extension.item.alchemy.ModPotions;
 
 import java.util.ArrayList;
@@ -28,6 +34,12 @@ public class ModUtil {
     @SuppressWarnings("deprecation")
     public static List<Holder<Potion>> POTIONS = new ArrayList<>(BuiltInRegistries.POTION.stream().map(BuiltInRegistries.POTION::wrapAsHolder)
             .filter(p -> !p.is(Potions.WATER)).toList());
+
+    public static void bootstrap() {
+        DispenserBlock.registerBehavior(ModItems.POTATO_RAFT, new BoatDispenseItemBehavior(ModEntityType.POTATO_RAFT.get()));
+        DispenserBlock.registerBehavior(ModItems.POTATO_CHEST_RAFT, new BoatDispenseItemBehavior(ModEntityType.POTATO_CHEST_RAFT.get()));
+        DispenserBlock.registerBehavior(ModItems.SPAWNER_MINECART, new MinecartDispenseItemBehavior(EntityTypes.SPAWNER_MINECART));
+    }
 
     public static ItemStack createFilledResult(ItemStack itemStack, Player player, ItemStack newItemStack, boolean limitCreativeStackSize, int consumedAmount) {
         boolean isCreative = player.hasInfiniteMaterials();

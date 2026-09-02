@@ -69,6 +69,7 @@ import net.theobl.extension.item.crafting.ModRecipeType;
 import net.theobl.extension.loot.ModLootModifiers;
 import net.theobl.extension.particles.ModParticleTypes;
 import net.theobl.extension.stats.ModStats;
+import net.theobl.extension.util.ModUtil;
 import net.theobl.extension.worldgen.ModTreeDecoratorType;
 import net.theobl.extension.worldgen.ModTrunkPlacerType;
 import org.slf4j.Logger;
@@ -135,6 +136,7 @@ public class Extension {
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
         //LOGGER.info("HELLO FROM COMMON SETUP");
+        event.enqueueWork(ModUtil::bootstrap);
         ExtendedCauldronInteraction.bootStrap();
         // For custom stats: add this line if the formatting is different from StatFormatter.DEFAULT to properly display it with the correct unit
         // Stats.CUSTOM.get(ModStats.INTERACT_WITH_FLETCHING_TABLE, StatFormatter.TIME);
