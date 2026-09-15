@@ -3,6 +3,7 @@ package net.theobl.extension.item;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
@@ -27,13 +28,13 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         for (DeferredHolder<Block, ? extends Block> deferredItem : ModBlocks.BLOCKS.getEntries()) {
                             if(((DeferredBlock<?>) deferredItem).asItem() instanceof BlockItem item && item != Items.CAULDRON && deferredItem != ModBlocks.BLUE_NETHER_WART)
-                                output.accept(deferredItem.get());
+                                acceptWithoutThrowing(output, deferredItem.get());
                         }
                         output.accept(ModItems.POTATO_RAFT);
                         output.accept(ModItems.POTATO_CHEST_RAFT);
                         for (DeferredHolder<Item, ? extends Item> deferredItem : ModItems.ITEMS.getEntries()) {
                             if(!(deferredItem.get() instanceof BlockItem))
-                                output.accept(deferredItem.get());
+                                acceptWithoutThrowing(output, deferredItem.get());
                         }
                         output.accept(ModItems.BLUE_NETHER_WART); // Add the example item to the tab. For your own tabs, this method is preferred over the event
                     }).build());
@@ -164,6 +165,12 @@ public class ModCreativeModeTabs {
         }
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS)
             event.insertAfter(new ItemStack(Items.HUSK_SPAWN_EGG), new ItemStack(ModItems.ILLUSIONER_SPAWN_EGG.asItem()), PARENT_AND_SEARCH_TABS);
+    }
+
+    private static void acceptWithoutThrowing(CreativeModeTab.Output output, ItemLike item) {
+        try {
+            output.accept(item);
+        } catch (Exception _) {}
     }
 
     public static void register(IEventBus eventBus) {
