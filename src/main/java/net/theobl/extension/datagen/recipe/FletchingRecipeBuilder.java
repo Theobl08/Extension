@@ -10,6 +10,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.RecipeUnlockAdvancementBuilder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -27,7 +28,7 @@ public class FletchingRecipeBuilder implements RecipeBuilder {
     private final RecipeCategory category;
     private final ItemStackTemplate result;
     private final List<Ingredient> ingredients = new ArrayList<>();
-    private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
+    private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
     private @Nullable String group;
 
     private FletchingRecipeBuilder(HolderGetter<Item> items, RecipeCategory category, ItemStackTemplate result) {
@@ -58,7 +59,7 @@ public class FletchingRecipeBuilder implements RecipeBuilder {
 
     @Override
     public RecipeBuilder unlockedBy(String name, Criterion<?> criterion) {
-        this.criteria.put(name, criterion);
+        this.advancementBuilder.unlockedBy(name, criterion);
         return this;
     }
 
@@ -75,21 +76,9 @@ public class FletchingRecipeBuilder implements RecipeBuilder {
 
     @Override
     public void save(RecipeOutput output, ResourceKey<Recipe<?>> resourceKey) {
-        this.ensureValid(resourceKey);
-        // Build the advancement.
-        Advancement.Builder advancement = output.advancement()
-                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(output.lookup(Registries.RECIPE).getOrThrow(resourceKey)))
-                .rewards(AdvancementRewards.Builder.recipe(resourceKey))
-                .requirements(AdvancementRequirements.Strategy.OR);
-        this.criteria.forEach(advancement::addCriterion);
+        // Create the recipe.
         FletchingRecipe fletchingRecipe = new FletchingRecipe(Objects.requireNonNullElse(this.group, ""), result, ingredients);
         // Pass the id, the recipe, and the recipe advancement into the RecipeOutput.
-        output.accept(resourceKey, fletchingRecipe, advancement.build(resourceKey.identifier().withPrefix("recipes/" + this.category.getFolderName() + "/")));
-    }
-
-    private void ensureValid(ResourceKey<Recipe<?>> recipe) {
-        if (this.criteria.isEmpty()) {
-            throw new IllegalStateException("No way of obtaining recipe " + recipe.identifier());
-        }
+        output.accept(resourceKey, fletchingRecipe, advancementBuilder.build(output, resourceKey, this.category));
     }
 }
