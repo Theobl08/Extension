@@ -10,6 +10,7 @@
     "extension:mangrove_crafting_table",
     "extension:bamboo_crafting_table",
     "extension:cherry_crafting_table",
-    "extension:pale_oak_crafting_table"
+    "extension:pale_oak_crafting_table",
+    "extension:poplar_crafting_table"
   ]
 }

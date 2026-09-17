@@ -15,7 +15,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 public record WoodTypeCollection<T>(
-        T oak, T spruce, T birch, T jungle, T acacia, T dark_oak, T crimson, T warped, T mangrove, T bamboo, T cherry, T pale_oak
+        T oak, T spruce, T birch, T jungle, T acacia, T dark_oak, T crimson, T warped, T mangrove, T bamboo, T cherry, T pale_oak, T poplar
 ) {
     public static final WoodTypeCollection<WoodType> TYPES = new WoodTypeCollection<>(
             WoodType.OAK,
@@ -29,7 +29,8 @@ public record WoodTypeCollection<T>(
             WoodType.MANGROVE,
             WoodType.BAMBOO,
             WoodType.CHERRY,
-            WoodType.PALE_OAK
+            WoodType.PALE_OAK,
+            WoodType.POPLAR
     );
     public static final WoodTypeCollection<String> NAMES = TYPES.map(WoodType::name);
     public static final WoodTypeCollection<Block> BASE = new WoodTypeCollection<>(
@@ -44,7 +45,8 @@ public record WoodTypeCollection<T>(
             Blocks.MANGROVE_PLANKS,
             Blocks.BAMBOO_PLANKS,
             Blocks.CHERRY_PLANKS,
-            Blocks.PALE_OAK_PLANKS
+            Blocks.PALE_OAK_PLANKS,
+            Blocks.POPLAR_PLANKS
     );
 
     public static <B extends Block> WoodTypeCollection<DeferredBlock<B>> registerBlocksWithExistingVanillaBlock(
@@ -88,6 +90,7 @@ public record WoodTypeCollection<T>(
         consumer.accept(this.bamboo);
         consumer.accept(this.cherry);
         consumer.accept(this.pale_oak);
+        consumer.accept(this.poplar);
     }
 
     public T pick(WoodType woodType) {
@@ -128,6 +131,9 @@ public record WoodTypeCollection<T>(
         else if(woodType == WoodType.PALE_OAK) {
             t = pale_oak;
         }
+        else if(woodType == WoodType.POPLAR) {
+            t = poplar;
+        }
         else {
             t = oak;
         }
@@ -147,7 +153,8 @@ public record WoodTypeCollection<T>(
                 mapper.apply(this.mangrove),
                 mapper.apply(this.bamboo),
                 mapper.apply(this.cherry),
-                mapper.apply(this.pale_oak)
+                mapper.apply(this.pale_oak),
+                mapper.apply(this.poplar)
         );
     }
 
@@ -164,7 +171,8 @@ public record WoodTypeCollection<T>(
                 operation.apply(first.mangrove, second.mangrove),
                 operation.apply(first.bamboo, second.bamboo),
                 operation.apply(first.cherry, second.cherry),
-                operation.apply(first.pale_oak, second.pale_oak)
+                operation.apply(first.pale_oak, second.pale_oak),
+                operation.apply(first.poplar, second.poplar)
         );
     }
 }
