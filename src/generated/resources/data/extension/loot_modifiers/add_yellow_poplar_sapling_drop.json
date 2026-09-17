@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_table",
+  "condition": {
+    "type": "neoforge:loot_table_id",
+    "loot_table_id": "minecraft:blocks/yellow_poplar_leaves"
+  },
+  "table": "extension:add_tables/drop_yellow_poplar_sapling"
+}

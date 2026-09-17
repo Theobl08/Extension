@@ -11,18 +11,25 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
+import net.minecraft.world.level.storage.loot.entries.UniformContainerBase;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
+import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchBlock;
 import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.loot.ModLootTables;
 
 import java.util.ArrayList;
 import java.util.Set;
 
 public class ModBlockLootTableProvider extends BlockLootSubProvider {
+    private static final float[] NORMAL_LEAVES_STICK_CHANCES = new float[]{0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
+
     protected ModBlockLootTableProvider(LootTableSubProvider.Context context) {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), context);
     }
@@ -73,10 +80,56 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
             }
         }
 
+        // Create loot tables that will be passed in the "Add Table" Neoforge loot table modifier
+        output.accept(
+                ModLootTables.DROP_RED_POPLAR_SAPLING,
+                createAdditionalLeavesDrops(Blocks.RED_POPLAR_LEAVES, ModBlocks.RED_POPLAR_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES)
+        );
+        output.accept(
+                ModLootTables.DROP_ORANGE_POPLAR_SAPLING,
+                createAdditionalLeavesDrops(Blocks.ORANGE_POPLAR_LEAVES, ModBlocks.ORANGE_POPLAR_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES)
+        );
+        output.accept(
+                ModLootTables.DROP_YELLOW_POPLAR_SAPLING,
+                createAdditionalLeavesDrops(Blocks.YELLOW_POPLAR_LEAVES, ModBlocks.YELLOW_POPLAR_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES)
+        );
+
         // Modify some minecraft loot tables
         this.add(Blocks.DIRT_PATH, block -> this.createSingleItemTableWithSilkTouch(block, Blocks.DIRT));
         this.dropWhenSilkTouch(Blocks.BUDDING_AMETHYST);
         this.dropWhenSilkTouch(Blocks.REINFORCED_DEEPSLATE);
+    }
+
+    protected LootTable.Builder createAdditionalLeavesDrops(Block original, Block sapling, float... saplingChances) {
+//        return this.createSilkTouchOrShearsDispatchTable(
+//                        original,
+//                        this.applyExplosionCondition(original, LootItem.lootTableItem(sapling))
+//                                .when(BonusLevelTableCondition.bonusLevelFlatChance(this.enchantments.getOrThrow(Enchantments.FORTUNE), saplingChances))
+//                )
+        return LootTable.lootTable()
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ContextIntProviders.exactly(1))
+                                .when(new AnyOfCondition.Builder().or(this.hasShears()).or(this.hasSilkTouch()).invert())
+                                .add(
+                                        this.applyExplosionCondition(original, LootItem.lootTableItem(sapling))
+                                                .when(BonusLevelTableCondition.bonusLevelFlatChance(this.enchantments.getOrThrow(Enchantments.FORTUNE), saplingChances))
+
+                                )
+                )
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ContextIntProviders.exactly(1))
+                                .when(new AnyOfCondition.Builder().or(this.hasShears()).or(this.hasSilkTouch()).invert())
+                                .add(
+                                        this.applyExplosionDecay(
+                                                original, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2)))
+                                        )
+                                                .when(
+                                                        BonusLevelTableCondition.bonusLevelFlatChance(this.enchantments.getOrThrow(Enchantments.FORTUNE), NORMAL_LEAVES_STICK_CHANCES)
+                                                )
+                                )
+                );
     }
 
     @Override

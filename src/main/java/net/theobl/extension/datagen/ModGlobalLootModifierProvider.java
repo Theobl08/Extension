@@ -3,14 +3,17 @@ package net.theobl.extension.datagen;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
+import net.neoforged.neoforge.common.loot.AddTableLootModifier;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 import net.theobl.extension.Extension;
 import net.theobl.extension.item.ModItems;
 import net.theobl.extension.loot.AddArchaeologyItemLootModifier;
+import net.theobl.extension.loot.ModLootTables;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -31,6 +34,30 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
                         IGlobalLootModifier.DEFAULT_PRIORITY,
                         ModItems.EMPTY_POTTERY_SHERD.asItem(),
                         2
+                )
+        );
+        this.add(
+                "add_red_poplar_sapling_drop",
+                new AddTableLootModifier(
+                        Optional.of(Holder.direct(LootTableIdCondition.builder(Blocks.RED_POPLAR_LEAVES.getLootTable().orElseThrow().identifier()).build())),
+                        IGlobalLootModifier.DEFAULT_PRIORITY,
+                        ModLootTables.DROP_RED_POPLAR_SAPLING
+                )
+        );
+        this.add(
+                "add_orange_poplar_sapling_drop",
+                new AddTableLootModifier(
+                        Optional.of(Holder.direct(LootTableIdCondition.builder(Blocks.ORANGE_POPLAR_LEAVES.getLootTable().orElseThrow().identifier()).build())),
+                        IGlobalLootModifier.DEFAULT_PRIORITY,
+                        ModLootTables.DROP_ORANGE_POPLAR_SAPLING
+                )
+        );
+        this.add(
+                "add_yellow_poplar_sapling_drop",
+                new AddTableLootModifier(
+                        Optional.of(Holder.direct(LootTableIdCondition.builder(Blocks.YELLOW_POPLAR_LEAVES.getLootTable().orElseThrow().identifier()).build())),
+                        IGlobalLootModifier.DEFAULT_PRIORITY,
+                        ModLootTables.DROP_YELLOW_POPLAR_SAPLING
                 )
         );
     }

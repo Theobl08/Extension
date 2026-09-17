@@ -1,2 +1,5 @@
-// 26.3	2026-09-16T23:29:26.6189151	Global Loot Modifiers : extension
+// 26.3	2026-09-17T19:28:01.7638062	Global Loot Modifiers : extension
 721aec142fb455b20795b34b0e41694b28f345f3 data/extension/loot_modifiers/add_empty_pottery_sherd.json
+e534514f93d9cb42d1e1511901d3d3bb4e7387ec data/extension/loot_modifiers/add_orange_poplar_sapling_drop.json
+2c69fedbd11cb69ebeab1c49ebbe327822875653 data/extension/loot_modifiers/add_red_poplar_sapling_drop.json
+4dc28e9a6785e14aef2b383eb2b131a5bdc5ef44 data/extension/loot_modifiers/add_yellow_poplar_sapling_drop.json
