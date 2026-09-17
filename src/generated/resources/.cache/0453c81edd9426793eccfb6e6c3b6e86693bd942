@@ -1,4 +1,4 @@
-// 26.3	2026-09-17T13:34:20.3641258	Tags for minecraft:item mod id extension
+// 26.3	2026-09-17T19:10:31.5715396	Tags for minecraft:item mod id extension
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks.json
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks/nether.json
 d4dca80551a0d488392912428cdc618c8b8e9197 data/c/tags/item/crops.json
@@ -24,7 +24,7 @@ c1b0f3bc5074bdb8f2518e78819094ab859167f2 data/minecraft/tags/item/hanging_signs.
 4737b983b9cab361c9d355611cdc43645e329274 data/minecraft/tags/item/logs.json
 3486cb571e4d7f4403ec590dfafb6972d44ae7da data/minecraft/tags/item/piglin_repellents.json
 fb08e79ad6a72de180b1d4b584fe8db7ed01bb10 data/minecraft/tags/item/planks.json
-4eac1aa80f4c5c83e83afa4ebfa8e1743f95b675 data/minecraft/tags/item/saplings.json
+82905b1536acc588b4f6d9ea2228be5838d67774 data/minecraft/tags/item/saplings.json
 42d88003cb1227da4cf4d1f01dd8ad1504a65b89 data/minecraft/tags/item/signs.json
 0e3139b247b37247d9322ff679c5f2b4db9a7340 data/minecraft/tags/item/slabs.json
 7c05ffbca25c048919d4100d7919450945c54578 data/minecraft/tags/item/soul_fire_base_blocks.json

@@ -1,4 +1,4 @@
-// 26.3	2026-09-17T13:34:20.365124	Tags for minecraft:block mod id extension
+// 26.3	2026-09-17T19:10:31.5725396	Tags for minecraft:block mod id extension
 6af7f26669e374797e819a720298b940f77a2c18 data/c/tags/block/fences.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/block/fences/nether_brick.json
 e425c47578377de2388a2a345e79caccab792af8 data/c/tags/block/fence_gates/wooden.json
@@ -28,7 +28,7 @@ cf56f541742b03711b7f74b9a7477750d7e96246 data/minecraft/tags/block/mineable/axe.
 3486cb571e4d7f4403ec590dfafb6972d44ae7da data/minecraft/tags/block/piglin_repellents.json
 fb08e79ad6a72de180b1d4b584fe8db7ed01bb10 data/minecraft/tags/block/planks.json
 dda2b9f854f882316a5f1fc960987e325fa9d68c data/minecraft/tags/block/replaceable.json
-4eac1aa80f4c5c83e83afa4ebfa8e1743f95b675 data/minecraft/tags/block/saplings.json
+82905b1536acc588b4f6d9ea2228be5838d67774 data/minecraft/tags/block/saplings.json
 0e3139b247b37247d9322ff679c5f2b4db9a7340 data/minecraft/tags/block/slabs.json
 7c05ffbca25c048919d4100d7919450945c54578 data/minecraft/tags/block/soul_fire_base_blocks.json
 50831fb3f976b4a251122759400169cb9afeb268 data/minecraft/tags/block/stairs.json

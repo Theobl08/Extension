@@ -65,6 +65,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                         block1 -> this.createSilkTouchDispatchTable(block1, this.applyExplosionCondition(block1, LootItem.lootTableItem(Items.END_STONE)
                                 .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1))))));
             }
+            else if(block.get() instanceof FlowerPotBlock) {
+                this.dropPottedContents(block.get());
+            }
             else if(!(block.get() instanceof BaseFireBlock)) {
                 this.dropSelf(block.get());
             }

@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -279,6 +280,39 @@ public class ModBlocks {
                     .sound(woodType.soundType()),
             Blocks.CARTOGRAPHY_TABLE, WoodType.DARK_OAK
     );
+    public static final DeferredBlock<Block> RED_POPLAR_SAPLING = registerBlock(
+            "red_poplar_sapling",
+            p -> new SaplingBlock(ModTreeGrower.RED_POPLAR, p),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.POPLAR_SAPLING),
+            () -> new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_LOW).cookingFuel(ContextIntProviders.COOKING_TIME_DRY_PLANTS)
+    );
+    public static final DeferredBlock<Block> ORANGE_POPLAR_SAPLING = registerBlock(
+            "orange_poplar_sapling",
+            p -> new SaplingBlock(ModTreeGrower.ORANGE_POPLAR, p),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.POPLAR_SAPLING),
+            () -> new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_LOW).cookingFuel(ContextIntProviders.COOKING_TIME_DRY_PLANTS)
+    );
+    public static final DeferredBlock<Block> YELLOW_POPLAR_SAPLING = registerBlock(
+            "yellow_poplar_sapling",
+            p -> new SaplingBlock(ModTreeGrower.YELLOW_POPLAR, p),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.POPLAR_SAPLING),
+            () -> new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_LOW).cookingFuel(ContextIntProviders.COOKING_TIME_DRY_PLANTS)
+    );
+    public static final DeferredBlock<Block> POTTED_RED_POPLAR_SAPLING = BLOCKS.registerBlock(
+            "potted_red_poplar_sapling",
+            p -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, RED_POPLAR_SAPLING, p),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.POPLAR_SAPLING)
+    );
+    public static final DeferredBlock<Block> POTTED_ORANGE_POPLAR_SAPLING = BLOCKS.registerBlock(
+            "potted_orange_poplar_sapling",
+            p -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, ORANGE_POPLAR_SAPLING, p),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.POPLAR_SAPLING)
+    );
+    public static final DeferredBlock<Block> POTTED_YELLOW_POPLAR_SAPLING = BLOCKS.registerBlock(
+            "potted_yellow_poplar_sapling",
+            p -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, YELLOW_POPLAR_SAPLING, p),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.POPLAR_SAPLING)
+    );
 
     public static final DeferredBlock<Block> POTATO_FRUIT = registerBlock(
             "potato_fruit",
@@ -521,6 +555,12 @@ public class ModBlocks {
 
     private static <T extends Block> DeferredBlock<Block> registerWall(String name, Supplier<T> base) {
         return registerBlock(name, WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(base.get()).forceSolidOn());
+    }
+
+    public static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> block, Supplier<BlockBehaviour.Properties> properties, Supplier<Item.Properties> itemProperties) {
+        DeferredBlock<T> deferredBlock = BLOCKS.registerBlock(name, block, properties);
+        ModItems.ITEMS.registerSimpleBlockItem(deferredBlock, itemProperties);
+        return deferredBlock;
     }
 
     public static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> block, Supplier<BlockBehaviour.Properties> properties) {

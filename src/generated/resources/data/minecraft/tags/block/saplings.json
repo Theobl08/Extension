@@ -1,5 +1,8 @@
 {
   "values": [
+    "extension:red_poplar_sapling",
+    "extension:orange_poplar_sapling",
+    "extension:yellow_poplar_sapling",
     "extension:potato_sprouts"
   ]
 }
