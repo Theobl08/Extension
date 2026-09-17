@@ -5,13 +5,18 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
@@ -24,10 +29,14 @@ import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.component.Compostable;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SupportType;
 import net.minecraft.world.level.block.entity.BlockEntityTypes;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import net.neoforged.bus.api.IEventBus;
@@ -169,11 +178,12 @@ public class Extension {
 
     @SubscribeEvent
     public void useItemOnBlock(UseItemOnBlockEvent event) {
+        Player player = event.getPlayer();
+        Level level = event.getLevel();
+        BlockPos pos = event.getPos();
+        UseOnContext context = event.getUseOnContext();
         if(event.getLevel().getBlockState(event.getPos()).getBlock() == Blocks.FLETCHING_TABLE && event.getPlayer() != null) {
             if(event.getUsePhase() == UseItemOnBlockEvent.UsePhase.BLOCK) {
-                Player player = event.getPlayer();
-                Level level = event.getLevel();
-                BlockPos pos = event.getPos();
                 if (!level.isClientSide()) {
                     MenuProvider provider = new SimpleMenuProvider(
                             (i, inventory, player1) -> new FletchingMenu(i, inventory, ContainerLevelAccess.create(level, pos)), Component.translatable("container.fletching"));
@@ -181,6 +191,21 @@ public class Extension {
                     player.awardStat(ModStats.INTERACT_WITH_FLETCHING_TABLE);
                 }
                 event.cancelWithResult(InteractionResult.SUCCESS);
+            }
+        }
+        if(level.getBlockState(pos).is(BlockTags.TURNS_INTO_DIRT_PATH) && event.getItemStack().is(ItemTags.SHOVELS) && event.getFace() != Direction.DOWN) {
+            if(event.getUsePhase() == UseItemOnBlockEvent.UsePhase.ITEM_AFTER_BLOCK) {
+                if(!level.getBlockState(pos.above()).isFaceSturdy(level, pos, Direction.DOWN, SupportType.FULL)) {
+                    level.playSound(player, pos, SoundEvents.SHOVEL_FLATTEN.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                    if(!level.isClientSide()) {
+                        level.setBlock(pos, Blocks.DIRT_PATH.defaultBlockState(), Block.UPDATE_NEIGHBORS | Block.UPDATE_CLIENTS | Block.UPDATE_IMMEDIATE);
+                        level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, Blocks.DIRT_PATH.defaultBlockState()));
+                        if(player != null) {
+                            context.getItemInHand().hurtAndBreak(1, player, context.getHand().asEquipmentSlot());
+                        }
+                    }
+                    event.cancelWithResult(InteractionResult.SUCCESS);
+                }
             }
         }
     }
