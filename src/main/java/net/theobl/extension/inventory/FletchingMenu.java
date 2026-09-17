@@ -50,53 +50,53 @@ public class FletchingMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public ItemStack quickMoveStack(Player player, int index) {
-        ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = this.slots.get(index);
+    public ItemStack quickMoveStack(Player player, int slotIndex) {
+        ItemStack clicked = ItemStack.EMPTY;
+        Slot slot = this.slots.get(slotIndex);
         if (slot != null && slot.hasItem()) {
-            ItemStack itemstack1 = slot.getItem();
-            itemstack = itemstack1.copy();
-            if (index == RESULT_SLOT) {
-                itemstack1.getItem().onCraftedBy(itemstack1, player);
-                if (!this.moveItemStackTo(itemstack1, INV_SLOT_START, USE_ROW_SLOT_END, true)) {
+            ItemStack stack = slot.getItem();
+            clicked = stack.copy();
+            if (slotIndex == RESULT_SLOT) {
+                stack.getItem().onCraftedBy(stack, player);
+                if (!this.moveItemStackTo(stack, INV_SLOT_START, USE_ROW_SLOT_END, true)) {
                     return ItemStack.EMPTY;
                 }
 
-                slot.onQuickCraft(itemstack1, itemstack);
+                slot.onQuickCraft(stack, clicked);
             }
-            else if (index >= INV_SLOT_START && index < USE_ROW_SLOT_END) {
-                if (!this.moveItemStackTo(itemstack1, CRAFT_SLOT_START, CRAFT_SLOT_END, false)) {
-                    if (index < INV_SLOT_END) {
-                        if (!this.moveItemStackTo(itemstack1, USE_ROW_SLOT_START, USE_ROW_SLOT_END, false)) {
+            else if (slotIndex >= INV_SLOT_START && slotIndex < USE_ROW_SLOT_END) {
+                if (!this.moveItemStackTo(stack, CRAFT_SLOT_START, CRAFT_SLOT_END, false)) {
+                    if (slotIndex < INV_SLOT_END) {
+                        if (!this.moveItemStackTo(stack, USE_ROW_SLOT_START, USE_ROW_SLOT_END, false)) {
                             return ItemStack.EMPTY;
                         }
                     }
-                    else if (!this.moveItemStackTo(itemstack1, INV_SLOT_START, INV_SLOT_END, false)) {
+                    else if (!this.moveItemStackTo(stack, INV_SLOT_START, INV_SLOT_END, false)) {
                         return ItemStack.EMPTY;
                     }
                 }
             }
-            else if (!this.moveItemStackTo(itemstack1, INV_SLOT_START, USE_ROW_SLOT_END, false)) {
+            else if (!this.moveItemStackTo(stack, INV_SLOT_START, USE_ROW_SLOT_END, false)) {
                 return ItemStack.EMPTY;
             }
 
-            if (itemstack1.isEmpty()) {
+            if (stack.isEmpty()) {
                 slot.setByPlayer(ItemStack.EMPTY);
             } else {
                 slot.setChanged();
             }
 
-            if (itemstack1.getCount() == itemstack.getCount()) {
+            if (stack.getCount() == clicked.getCount()) {
                 return ItemStack.EMPTY;
             }
 
-            slot.onTake(player, itemstack1);
-            if (index == RESULT_SLOT) {
-                player.drop(itemstack1, false, Prediction.PREDICTED);
+            slot.onTake(player, stack);
+            if (slotIndex == RESULT_SLOT) {
+                player.drop(stack, false, Prediction.PREDICTED);
             }
         }
 
-        return itemstack;
+        return clicked;
     }
 
     protected static void slotChangedCraftingGrid(
