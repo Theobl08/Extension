@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:ender_torch"
+        "recipes": "extension:ender_torch"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

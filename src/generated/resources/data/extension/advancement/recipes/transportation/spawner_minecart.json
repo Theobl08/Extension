@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:spawner_minecart"
+        "recipes": "extension:spawner_minecart"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

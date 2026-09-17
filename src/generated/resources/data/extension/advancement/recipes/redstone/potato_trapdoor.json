@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:potato_trapdoor"
+        "recipes": "extension:potato_trapdoor"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

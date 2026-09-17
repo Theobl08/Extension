@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:jungle_cartography_table"
+        "recipes": "extension:jungle_cartography_table"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

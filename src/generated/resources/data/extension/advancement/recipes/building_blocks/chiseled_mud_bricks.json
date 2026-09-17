@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:chiseled_mud_bricks"
+        "recipes": "extension:chiseled_mud_bricks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

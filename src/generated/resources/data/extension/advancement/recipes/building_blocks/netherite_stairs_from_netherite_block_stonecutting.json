@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:netherite_stairs_from_netherite_block_stonecutting"
+        "recipes": "extension:netherite_stairs_from_netherite_block_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

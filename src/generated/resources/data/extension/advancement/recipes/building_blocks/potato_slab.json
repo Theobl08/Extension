@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:potato_slab"
+        "recipes": "extension:potato_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

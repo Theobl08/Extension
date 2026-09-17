@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:nether_brick_tile_stairs_from_nether_brick_tiles_stonecutting"
+        "recipes": "extension:nether_brick_tile_stairs_from_nether_brick_tiles_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:nether_brick_tile_slab"
+        "recipes": "extension:nether_brick_tile_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

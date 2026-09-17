@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:birch_cartography_table"
+        "recipes": "extension:birch_cartography_table"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

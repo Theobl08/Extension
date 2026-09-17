@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:red_nether_brick_tile_wall"
+        "recipes": "extension:red_nether_brick_tile_wall"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:chiseled_andesite_from_andesite_stonecutting"
+        "recipes": "extension:chiseled_andesite_from_andesite_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

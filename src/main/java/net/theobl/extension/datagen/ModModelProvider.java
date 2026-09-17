@@ -152,7 +152,7 @@ public class ModModelProvider extends ModelProvider {
             }
         });
 
-        blockModels.createTrivialBlock(ModBlocks.POTATO_FRUIT.get(), TexturedModel.CUBE_TOP_BOTTOM);
+        blockModels.createTrivialBlock(ModBlocks.POTATO_FRUIT.get(), TexturedModel.CUBE_BOTTOM_TOP);
         blockModels.createAxisAlignedPillarBlockCustomModel(ModBlocks.POTATO_PEDICULE.get(), plainVariant(ModelLocationUtils.getModelLocation(ModBlocks.POTATO_PEDICULE.get())));
         blockModels.registerSimpleFlatItemModel(ModBlocks.POTATO_PEDICULE.asItem());
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.POTATO_SPROUTS.get(), BlockModelGenerators.PlantType.NOT_TINTED);

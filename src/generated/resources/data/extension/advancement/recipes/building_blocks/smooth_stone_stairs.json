@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:smooth_stone_stairs"
+        "recipes": "extension:smooth_stone_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

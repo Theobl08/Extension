@@ -33,7 +33,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:soul_sandstone_stairs"
+        "recipes": "extension:soul_sandstone_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

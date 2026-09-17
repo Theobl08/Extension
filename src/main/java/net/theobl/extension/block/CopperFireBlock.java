@@ -12,13 +12,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.theobl.extension.tags.ModBlockTags;
 
 public class CopperFireBlock extends BaseFireBlock {
-    public static final MapCodec<CopperFireBlock> CODEC = simpleCodec(CopperFireBlock::new);
-
-    @Override
-    protected MapCodec<? extends BaseFireBlock> codec() {
-        return CODEC;
-    }
-
     public CopperFireBlock(Properties properties) {
         super(properties, 1.0F);
     }

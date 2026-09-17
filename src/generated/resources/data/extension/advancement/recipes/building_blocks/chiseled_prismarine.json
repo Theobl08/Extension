@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:chiseled_prismarine"
+        "recipes": "extension:chiseled_prismarine"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

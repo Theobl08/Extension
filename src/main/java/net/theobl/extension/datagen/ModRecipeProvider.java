@@ -1,9 +1,13 @@
 package net.theobl.extension.datagen;
 
+import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.triggers.PlayerTrigger;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.PackOutput;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.MultiRegistryBootstrap;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.flag.FeatureFlagSet;
@@ -12,6 +16,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -25,13 +30,29 @@ import net.theobl.extension.item.ModItems;
 import net.theobl.extension.item.crafting.TippedArrowFletchingRecipe;
 
 import javax.annotation.Nullable;
-import java.util.concurrent.CompletableFuture;
+import java.util.Set;
 
 import static net.neoforged.neoforge.common.conditions.NeoForgeConditions.*;
 
 public class ModRecipeProvider extends RecipeProvider {
-    public ModRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
-        super(provider, recipeOutput);
+    private final BrewingProvider brewingProvider = new ModBrewingProvider(this.output);
+
+    public ModRecipeProvider(BootstrapContext<Recipe<?>> recipeOutput, BootstrapContext<Advancement> advancementOutput) {
+        super(recipeOutput, advancementOutput);
+    }
+
+    public static MultiRegistryBootstrap create() {
+        return new MultiRegistryBootstrap() {
+            @Override
+            public Set<ResourceKey<? extends Registry<?>>> requestedRegistries() {
+                return Set.of(Registries.RECIPE, Registries.ADVANCEMENT);
+            }
+
+            @Override
+            public void run(MultiRegistryBootstrap.BootstrapGetter registries) {
+                new ModRecipeProvider(registries.get(Registries.RECIPE), registries.get(Registries.ADVANCEMENT)).buildRecipes();
+            }
+        };
     }
 
     @Override
@@ -321,6 +342,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_log", this.has(ModBlocks.POTATO_STEM))
                 .unlockedBy("has_logs", this.has(ModBlocks.POTATO_HYPHAE))
                 .save(this.output);
+        this.brewingProvider.buildRecipes();
     }
 
     protected void generateForEnabledBlockFamilies(FeatureFlagSet featureFlagSet) {
@@ -426,21 +448,5 @@ public class ModRecipeProvider extends RecipeProvider {
 
     protected FletchingRecipeBuilder fletching(RecipeCategory category, ItemLike result, int count) {
         return FletchingRecipeBuilder.fletching(this.items, category, result, count);
-    }
-
-    public static final class Runner extends RecipeProvider.Runner {
-        public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-            super(output, lookupProvider);
-        }
-
-        @Override
-        protected RecipeProvider createRecipeProvider(HolderLookup.Provider lookupProvider, RecipeOutput output) {
-            return new ModRecipeProvider(lookupProvider, output);
-        }
-
-        @Override
-        public String getName() {
-            return "Extension recipes";
-        }
     }
 }

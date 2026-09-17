@@ -23,14 +23,8 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class MilkCauldronBlock extends AbstractCauldronBlock {
-    public static final MapCodec<MilkCauldronBlock> CODEC = simpleCodec(MilkCauldronBlock::new);
     private static final VoxelShape SHAPE_INSIDE = Block.column(12.0, 4.0, 15.0);
     private static final VoxelShape FILLED_SHAPE = Shapes.or(AbstractCauldronBlock.SHAPE, SHAPE_INSIDE);
-
-    @Override
-    protected MapCodec<MilkCauldronBlock> codec() {
-        return CODEC;
-    }
 
     public MilkCauldronBlock(Properties properties) {
         super(properties, ExtendedCauldronInteraction.MILK);

@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:copper_campfire"
+        "recipes": "extension:copper_campfire"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

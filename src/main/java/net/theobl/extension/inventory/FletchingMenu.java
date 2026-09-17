@@ -3,6 +3,7 @@ package net.theobl.extension.inventory;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -91,7 +92,7 @@ public class FletchingMenu extends AbstractContainerMenu {
 
             slot.onTake(player, itemstack1);
             if (index == RESULT_SLOT) {
-                player.drop(itemstack1, false);
+                player.drop(itemstack1, false, Prediction.PREDICTED);
             }
         }
 

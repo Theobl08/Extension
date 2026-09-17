@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:cherry_cartography_table"
+        "recipes": "extension:cherry_cartography_table"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

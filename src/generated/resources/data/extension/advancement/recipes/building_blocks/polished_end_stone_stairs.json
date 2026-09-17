@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:polished_end_stone_stairs"
+        "recipes": "extension:polished_end_stone_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

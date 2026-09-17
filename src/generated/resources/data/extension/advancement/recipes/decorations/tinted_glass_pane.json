@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:tinted_glass_pane"
+        "recipes": "extension:tinted_glass_pane"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

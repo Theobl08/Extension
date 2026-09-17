@@ -2,12 +2,10 @@ package net.theobl.extension.datagen;
 
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -15,10 +13,9 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.predicates.MatchBlock;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.theobl.extension.block.ModBlocks;
 
@@ -26,14 +23,12 @@ import java.util.ArrayList;
 import java.util.Set;
 
 public class ModBlockLootTableProvider extends BlockLootSubProvider {
-    protected ModBlockLootTableProvider(HolderLookup.Provider registries) {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
+    protected ModBlockLootTableProvider(LootTableSubProvider.Context context) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), context);
     }
 
     @Override
     protected void generate() {
-        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-
         for (DeferredHolder<Block, ? extends Block> block : ModBlocks.BLOCKS.getEntries()) {
             if(block.get() instanceof SlabBlock) {
                 this.add(block.get(), this::createSlabItemTable);
@@ -45,30 +40,30 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 this.add(ModBlocks.POTATO_LEAVES.get(), leaves -> this.createLeavesDrops(leaves, ModBlocks.POTATO_SPROUTS.get(), NORMAL_LEAVES_SAPLING_CHANCES));
             }
             else if (block.get().defaultBlockState().is(ModBlocks.BLUE_NETHER_WART.get())) {
-                LootItemCondition.Builder lootItemConditionBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block.get())
-                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(NetherWartBlock.AGE, 3));
+                LootItemCondition.Builder lootItemConditionBuilder = MatchBlock.blockMatches(this.blocks, block.get(),
+                        StatePropertiesPredicate.Builder.properties().hasProperty(NetherWartBlock.AGE, 3));
                 this.add(block.get(),
-                        block1 -> LootTable.lootTable().withPool(this.applyExplosionDecay(block1, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                        block1 -> LootTable.lootTable().withPool(this.applyExplosionDecay(block1, LootPool.lootPool().setRolls(ContextIntProviders.exactly(1))
                                 .add(LootItem.lootTableItem(block.get())
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F))
+                                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(2, 4))
                                                 .when(lootItemConditionBuilder))
-                                        .apply(ApplyBonusCount.addUniformBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE))
+                                        .apply(ApplyBonusCount.addUniformBonusCount(this.enchantments.getOrThrow(Enchantments.FORTUNE))
                                                 .when(lootItemConditionBuilder))))));
             }
             else if (block.get().defaultBlockState().is(ModBlocks.REDSTONE_CAMPFIRE.get())) {
                 this.add(block.get(),
                         block1 -> this.createSilkTouchDispatchTable(block1, this.applyExplosionCondition(block1, LootItem.lootTableItem(Items.REDSTONE)
-                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))));
+                                .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1))))));
             }
             else if (block.get().defaultBlockState().is(ModBlocks.COPPER_CAMPFIRE.get())) {
                 this.add(block.get(),
                         block1 -> this.createSilkTouchDispatchTable(block1, this.applyExplosionCondition(block1, LootItem.lootTableItem(Items.COPPER_NUGGET)
-                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))));
+                                .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1))))));
             }
             else if (block.get().defaultBlockState().is(ModBlocks.ENDER_CAMPFIRE.get())) {
                 this.add(block.get(),
                         block1 -> this.createSilkTouchDispatchTable(block1, this.applyExplosionCondition(block1, LootItem.lootTableItem(Items.END_STONE)
-                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))));
+                                .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1))))));
             }
             else if(!(block.get() instanceof BaseFireBlock)) {
                 this.dropSelf(block.get());

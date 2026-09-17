@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:ender_campfire"
+        "recipes": "extension:ender_campfire"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

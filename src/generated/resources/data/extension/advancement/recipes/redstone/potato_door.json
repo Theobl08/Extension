@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:potato_door"
+        "recipes": "extension:potato_door"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

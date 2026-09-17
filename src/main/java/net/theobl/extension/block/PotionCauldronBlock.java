@@ -36,13 +36,6 @@ import org.jspecify.annotations.Nullable;
 
 @NullMarked
 public class PotionCauldronBlock extends AbstractCauldronBlock implements EntityBlock {
-    public static final MapCodec<PotionCauldronBlock> CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    CauldronInteractions.CODEC.fieldOf("interactions").forGetter(b -> b.interactions),
-                    propertiesCodec()
-                    )
-                    .apply(i, PotionCauldronBlock::new)
-    );
     public static final int MIN_FILL_LEVEL = BlockStateProperties.MIN_LEVEL_CAULDRON;
     public static final int MAX_FILL_LEVEL = 4;
     public static final IntegerProperty LEVEL = IntegerProperty.create("level", MIN_FILL_LEVEL, MAX_FILL_LEVEL);
@@ -51,11 +44,6 @@ public class PotionCauldronBlock extends AbstractCauldronBlock implements Entity
     private static final VoxelShape[] FILLED_SHAPES = Util.make(
             () -> Block.boxes(3, level -> Shapes.or(AbstractCauldronBlock.SHAPE, Block.column(12.0, 4.0, getPixelContentHeight(level + 1))))
     );
-
-    @Override
-    protected MapCodec<? extends AbstractCauldronBlock> codec() {
-        return CODEC;
-    }
 
     public PotionCauldronBlock(CauldronInteraction.Dispatcher interactions, BlockBehaviour.Properties properties) {
         super(properties, interactions);

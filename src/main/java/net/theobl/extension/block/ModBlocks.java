@@ -211,7 +211,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> ENDER_TORCH = BLOCKS.registerBlock(
             "ender_torch",
             p -> new TorchBlock(ModParticleTypes.ENDER_FIRE_FLAME.get(), p),
-            () -> BlockBehaviour.Properties.of().noCollision().instabreak().lightLevel(_ -> 14).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY)
+            () -> BlockBehaviour.Properties.of().noCollision().instabreak().lightLevel(_ -> 14).sound(SoundType.WOOD).pushReaction(PushReaction.POPPED)
     );
     public static final DeferredBlock<Block> ENDER_WALL_TORCH = BLOCKS.registerBlock(
             "ender_wall_torch",
@@ -223,7 +223,7 @@ public class ModBlocks {
                     .instabreak()
                     .lightLevel(_ -> 14)
                     .sound(SoundType.WOOD)
-                    .pushReaction(PushReaction.DESTROY)
+                    .pushReaction(PushReaction.POPPED)
     );
 
     public static final DeferredBlock<Block> REDSTONE_LANTERN = registerBlock("redstone_lantern",
@@ -287,7 +287,7 @@ public class ModBlocks {
                     .mapColor(MapColor.PLANT)
                     .strength(1.0F)
                     .sound(SoundType.NETHER_WOOD)
-                    .pushReaction(PushReaction.DESTROY)
+                    .pushReaction(PushReaction.POPPED)
                     .lightLevel(blockstate -> 15),
             ModEnumProxy.POTATO_RARITY.getValue()
     );
@@ -298,7 +298,7 @@ public class ModBlocks {
                     .mapColor(MapColor.PLANT)
                     .strength(0.2F)
                     .sound(SoundType.NETHER_WOOD)
-                    .pushReaction(PushReaction.DESTROY),
+                    .pushReaction(PushReaction.POPPED),
             ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_SPROUTS = registerBlock(
@@ -312,7 +312,7 @@ public class ModBlocks {
                     .instabreak()
                     .dynamicShape()
                     .offsetType(BlockBehaviour.OffsetType.XZ)
-                    .pushReaction(PushReaction.DESTROY),
+                    .pushReaction(PushReaction.POPPED),
             ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_LEAVES = registerBlock(
@@ -326,9 +326,8 @@ public class ModBlocks {
                     .noOcclusion()
                     .isValidSpawn(Blocks::ocelotOrParrot)
                     .isSuffocating(ModBlocks::never)
-                    .isViewBlocking(ModBlocks::never)
                     .ignitedByLava()
-                    .pushReaction(PushReaction.DESTROY)
+                    .pushReaction(PushReaction.POPPED)
                     .isRedstoneConductor(ModBlocks::never),
             ModEnumProxy.POTATO_RARITY.getValue()
     );
@@ -406,7 +405,7 @@ public class ModBlocks {
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(3.0F)
                     .noOcclusion()
-                    .pushReaction(PushReaction.DESTROY),
+                    .pushReaction(PushReaction.POPPED),
             ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_TRAPDOOR = registerBlock(
@@ -429,7 +428,7 @@ public class ModBlocks {
                     .instrument(NoteBlockInstrument.BASS)
                     .noCollision()
                     .strength(0.5F)
-                    .pushReaction(PushReaction.DESTROY),
+                    .pushReaction(PushReaction.POPPED),
             ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_BUTTON = registerBlock(
@@ -438,7 +437,7 @@ public class ModBlocks {
             () -> BlockBehaviour.Properties.of()
                     .noCollision()
                     .strength(0.5F)
-                    .pushReaction(PushReaction.DESTROY),
+                    .pushReaction(PushReaction.POPPED),
             ModEnumProxy.POTATO_RARITY.getValue()
     );
     public static final DeferredBlock<Block> POTATO_SHELF = BLOCKS.registerBlock(

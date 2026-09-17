@@ -3,10 +3,6 @@ package net.theobl.extension.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.DataMapProvider;
-import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
-import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
-import net.theobl.extension.block.ModBlocks;
-import net.theobl.extension.item.ModItems;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -23,10 +19,5 @@ public class ModDataMapProvider extends DataMapProvider {
 
     @Override
     protected void gather(HolderLookup.Provider provider) {
-        this.builder(NeoForgeDataMaps.COMPOSTABLES).add(ModItems.BLUE_NETHER_WART.getId(), new Compostable(0.65F), false)
-                .add(ModBlocks.POTATO_FRUIT.getId(), new Compostable(0.3F), false)
-                .add(ModBlocks.POTATO_PEDICULE.getId(), new Compostable(0.3F), false)
-                .add(ModBlocks.POTATO_SPROUTS.getId(), new Compostable(0.3F), false)
-                .add(ModBlocks.POTATO_LEAVES.getId(), new Compostable(0.3F), false);
     }
 }

@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Util;
@@ -32,12 +33,12 @@ public class AttachedListToLeavesDecorator extends TreeDecorator {
     protected final float probability;
     protected final int exclusionRadiusXZ;
     protected final int exclusionRadiusY;
-    protected final List<BlockStateProvider> blockProvider;
+    protected final List<Holder<BlockStateProvider>> blockProvider;
     protected final int requiredEmptyBlocks;
     protected final List<Direction> directions;
     protected boolean useLogs;
 
-    public AttachedListToLeavesDecorator(float probability, boolean useLogs, int exclusionRadiusXZ, int exclusionRadiusY, List<BlockStateProvider> blockProvider, int requiredEmptyBlocks, List<Direction> directions) {
+    public AttachedListToLeavesDecorator(float probability, boolean useLogs, int exclusionRadiusXZ, int exclusionRadiusY, List<Holder<BlockStateProvider>> blockProvider, int requiredEmptyBlocks, List<Direction> directions) {
         this.probability = probability;
         this.useLogs = useLogs;
         this.exclusionRadiusXZ = exclusionRadiusXZ;
@@ -67,8 +68,8 @@ public class AttachedListToLeavesDecorator extends TreeDecorator {
                     propaguleBlacklist.add(inPos.immutable());
                 }
 
-                for(BlockStateProvider stateProvider : this.blockProvider) {
-                    context.setBlock(placementPos, stateProvider.getState(context.level(), random, placementPos));
+                for(Holder<BlockStateProvider> stateProvider : this.blockProvider) {
+                    context.setBlock(placementPos, stateProvider.value().getState(context.level(), random, placementPos));
                     placementPos = placementPos.relative(direction);
                 }
             }

@@ -85,9 +85,9 @@ public class ExtensionClient {
     }
 
     @SubscribeEvent
-    public static void renderBlockScreenEffect(RenderBlockScreenEffectEvent event) {
+    public static void renderBlockScreenEffect(ExtractBlockScreenEffectEvent event) {
         Player player = event.getPlayer();
-        BlockState blockState = event.getBlockState();
+        BlockState blockState = event.getState();
         MobEffectInstance mobEffectInstance = player.getEffect(MobEffects.FIRE_RESISTANCE);
         if(player.isCreative()) {
             event.setCanceled(true);

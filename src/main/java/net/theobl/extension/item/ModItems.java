@@ -5,6 +5,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemContainerContents;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -25,7 +26,8 @@ public class ModItems {
     public static final DeferredItem<Item> BLUE_NETHER_BRICK = ITEMS.registerSimpleItem("blue_nether_brick");
 
     public static final DeferredItem<Item> BLUE_NETHER_WART = ITEMS.registerItem("blue_nether_wart",
-            properties -> new BlockItem(ModBlocks.BLUE_NETHER_WART.get(), properties));
+            properties -> new BlockItem(ModBlocks.BLUE_NETHER_WART.get(), properties),
+            properties -> properties.compostable(ContextIntProviders.COMPOSTABLE_MEDIUM));
 
     public static final DeferredItem<Item> ENDER_TORCH = ITEMS.registerItem("ender_torch",
             p -> new StandingAndWallBlockItem(ModBlocks.ENDER_TORCH.get(), ModBlocks.ENDER_WALL_TORCH.get(), Direction.DOWN, p),
@@ -42,11 +44,12 @@ public class ModItems {
 
     public static final DeferredItem<Item> POTATO_SIGN = ITEMS.registerItem(
             "potato_sign",
-            p -> new SignItem(ModBlocks.POTATO_SIGN.get(), ModBlocks.POTATO_WALL_SIGN.get(), p),
+            p -> new StandingAndWallBlockItem(ModBlocks.POTATO_SIGN.get(), ModBlocks.POTATO_WALL_SIGN.get(), Direction.DOWN, p),
             () -> new Item.Properties()
                     .rarity(ModEnumProxy.POTATO_RARITY.getValue())
                     .stacksTo(23)
                     .useBlockDescriptionPrefix()
+                    .signText()
     );
     public static final DeferredItem<Item> POTATO_HANGING_SIGN = ITEMS.registerItem(
             "potato_hanging_sign",
@@ -55,6 +58,7 @@ public class ModItems {
                     .rarity(ModEnumProxy.POTATO_RARITY.getValue())
                     .stacksTo(13)
                     .useBlockDescriptionPrefix()
+                    .signText()
     );
     public static final DeferredItem<Item> POTATO_RAFT = ITEMS.registerItem("potato_raft", p -> new BoatItem(ModEntityType.POTATO_RAFT.get(), p), p -> p.rarity(ModEnumProxy.POTATO_RARITY.getValue()).stacksTo(1));
     public static final DeferredItem<Item> POTATO_CHEST_RAFT = ITEMS.registerItem(

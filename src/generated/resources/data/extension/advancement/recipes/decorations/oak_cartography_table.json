@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:oak_cartography_table"
+        "recipes": "extension:oak_cartography_table"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

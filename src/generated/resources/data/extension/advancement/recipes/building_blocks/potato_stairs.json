@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:potato_stairs"
+        "recipes": "extension:potato_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

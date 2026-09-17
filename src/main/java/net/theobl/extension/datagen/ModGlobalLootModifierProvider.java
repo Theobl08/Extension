@@ -1,5 +1,6 @@
 package net.theobl.extension.datagen;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
@@ -11,6 +12,7 @@ import net.theobl.extension.Extension;
 import net.theobl.extension.item.ModItems;
 import net.theobl.extension.loot.AddArchaeologyItemLootModifier;
 
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
@@ -25,9 +27,7 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
                 "add_empty_pottery_sherd",
                 // The loot modifier to add.
                 new AddArchaeologyItemLootModifier(
-                        new LootItemCondition[] {
-                                LootTableIdCondition.builder(BuiltInLootTables.DESERT_WELL_ARCHAEOLOGY.identifier()).build()
-                        },
+                        Optional.of(Holder.direct(LootTableIdCondition.builder(BuiltInLootTables.DESERT_WELL_ARCHAEOLOGY.identifier()).build())),
                         IGlobalLootModifier.DEFAULT_PRIORITY,
                         ModItems.EMPTY_POTTERY_SHERD.asItem(),
                         2

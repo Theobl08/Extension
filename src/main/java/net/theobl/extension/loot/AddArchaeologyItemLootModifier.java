@@ -19,6 +19,7 @@ import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootModifier;
 
 import java.util.List;
+import java.util.Optional;
 
 public class AddArchaeologyItemLootModifier extends LootModifier {
     public static final MapCodec<AddArchaeologyItemLootModifier> CODEC = RecordCodecBuilder.mapCodec(i -> codecStart(i)
@@ -28,7 +29,7 @@ public class AddArchaeologyItemLootModifier extends LootModifier {
     private final Item item;
     private final int itemWeight;
 
-    public AddArchaeologyItemLootModifier(LootItemCondition[] conditions, int priority, Item item, int itemWeight) {
+    public AddArchaeologyItemLootModifier(Optional<Holder<LootItemCondition>> conditions, int priority, Item item, int itemWeight) {
         super(conditions, priority);
         this.item = item;
         this.itemWeight = itemWeight;

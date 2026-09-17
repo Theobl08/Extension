@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:potato_hanging_sign"
+        "recipes": "extension:potato_hanging_sign"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

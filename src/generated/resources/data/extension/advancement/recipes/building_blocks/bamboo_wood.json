@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:bamboo_wood"
+        "recipes": "extension:bamboo_wood"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

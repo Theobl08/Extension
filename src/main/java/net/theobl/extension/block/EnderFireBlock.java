@@ -12,13 +12,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.theobl.extension.tags.ModBlockTags;
 
 public class EnderFireBlock extends BaseFireBlock {
-    public static final MapCodec<EnderFireBlock> CODEC = simpleCodec(EnderFireBlock::new);
-
-    @Override
-    protected MapCodec<EnderFireBlock> codec() {
-        return CODEC;
-    }
-
     public EnderFireBlock(Properties properties) {
         super(properties, 2.0F);
     }

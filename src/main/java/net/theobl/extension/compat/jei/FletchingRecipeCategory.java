@@ -32,7 +32,7 @@ public class FletchingRecipeCategory extends AbstractRecipeCategory<RecipeHolder
 
     @Override
     public void createRecipeExtras(IRecipeExtrasBuilder builder, RecipeHolder<FletchingRecipe> recipe, IFocusGroup focuses) {
-        builder.addRecipeArrow().setPosition(30,19);
+        builder.addRecipeArrowWidget().setPosition(30,19);
     }
 
     @Override

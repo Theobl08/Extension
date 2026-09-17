@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:red_nether_bricks_from_red_nether_brick"
+        "recipes": "extension:red_nether_bricks_from_red_nether_brick"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

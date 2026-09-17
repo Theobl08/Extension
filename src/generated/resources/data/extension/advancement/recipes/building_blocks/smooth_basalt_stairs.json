@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:smooth_basalt_stairs"
+        "recipes": "extension:smooth_basalt_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -14,7 +14,6 @@
     "CarvedPumpkinBlockMixin",
     "CauldronInteractionMixin",
     "CraftingMenuMixin",
-    "DecoratedPotPatternsMixin",
     "DirtPathBlockMixin",
     "DoorBlockMixin",
     "EndIslandDensityFunctionMixin",
@@ -25,7 +24,6 @@
     "NoiseChunkBasedGeneratorMixin",
     "PistonBaseBlockMixin",
     "PistonMovingBlockEntityMixin",
-    "ShovelItemMixin",
     "SliderControlMixin",
     "SoulFireBlockMixin"
   ],

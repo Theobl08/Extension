@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:potato_button"
+        "recipes": "extension:potato_button"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:blue_nether_wart_from_warped_wart_block"
+        "recipes": "extension:blue_nether_wart_from_warped_wart_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

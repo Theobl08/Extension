@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:polished_stone_wall"
+        "recipes": "extension:polished_stone_wall"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

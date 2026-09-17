@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:soul_sandstone_slab"
+        "recipes": "extension:soul_sandstone_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

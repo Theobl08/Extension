@@ -42,7 +42,7 @@ public abstract class PistonMovingBlockEntityMixin extends BlockEntity implement
         extension$handleBlockEntitiesData(blockEntity.getRenderBlockEntity(), entity, level);
     }
 
-    @Inject(method = "finalTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z", shift = At.Shift.AFTER))
+    @Inject(method = "finalTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;setBlockAndUpdate(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z", shift = At.Shift.AFTER))
     private void finalTickHandleBlockEntityData(CallbackInfo ci) {
         BlockEntity blockEntity = this.level.getBlockEntity(this.worldPosition);
         extension$handleBlockEntitiesData(this.getRenderBlockEntity(), blockEntity, this.level);

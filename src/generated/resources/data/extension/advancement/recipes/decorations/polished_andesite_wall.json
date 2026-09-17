@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:polished_andesite_wall"
+        "recipes": "extension:polished_andesite_wall"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

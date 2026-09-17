@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:granite_bricks"
+        "recipes": "extension:granite_bricks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

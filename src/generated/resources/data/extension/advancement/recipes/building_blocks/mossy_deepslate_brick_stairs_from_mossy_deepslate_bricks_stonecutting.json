@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:mossy_deepslate_brick_stairs_from_mossy_deepslate_bricks_stonecutting"
+        "recipes": "extension:mossy_deepslate_brick_stairs_from_mossy_deepslate_bricks_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

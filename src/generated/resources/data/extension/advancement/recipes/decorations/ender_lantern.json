@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:ender_lantern"
+        "recipes": "extension:ender_lantern"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

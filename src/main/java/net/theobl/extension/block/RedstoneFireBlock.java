@@ -18,13 +18,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.theobl.extension.tags.ModBlockTags;
 
 public class RedstoneFireBlock extends BaseFireBlock {
-    public static final MapCodec<RedstoneFireBlock> CODEC = simpleCodec(RedstoneFireBlock::new);
-
-    @Override
-    protected MapCodec<? extends BaseFireBlock> codec() {
-        return CODEC;
-    }
-
     public RedstoneFireBlock(Properties properties) {
         super(properties, 1.0F);
     }

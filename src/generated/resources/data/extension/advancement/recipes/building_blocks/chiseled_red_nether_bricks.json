@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:chiseled_red_nether_bricks"
+        "recipes": "extension:chiseled_red_nether_bricks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

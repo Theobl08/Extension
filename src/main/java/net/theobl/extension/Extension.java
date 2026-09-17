@@ -20,17 +20,16 @@ import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.component.Compostable;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityTypes;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.gamerules.GameRules;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -41,9 +40,9 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.common.world.poi.ExtendPoiTypesEvent;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityInvulnerabilityCheckEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
@@ -56,7 +55,6 @@ import net.theobl.extension.block.ExtendedCauldronInteraction;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.block.WoodTypeCollection;
 import net.theobl.extension.block.entity.ModBlockEntityType;
-import net.theobl.extension.block.entity.ModDecoratedPotPatterns;
 import net.theobl.extension.commands.HeldItemNameCommand;
 import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.inventory.FletchingMenu;
@@ -111,7 +109,6 @@ public class Extension {
         ModParticleTypes.register(modEventBus);
 
         ModBlockEntityType.register(modEventBus);
-        ModDecoratedPotPatterns.register(modEventBus);
         ModEntityType.register(modEventBus);
         ModTreeDecoratorType.register(modEventBus);
         ModTrunkPlacerType.register(modEventBus);
@@ -128,6 +125,7 @@ public class Extension {
         modEventBus.addListener(this::addBlockToBlockEntity);
         modEventBus.addListener(this::extendPoiTypes);
         modEventBus.addListener(this::registerCauldronFluidContent);
+        modEventBus.addListener(this::modifyDefaultComponents);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -160,14 +158,6 @@ public class Extension {
 
     private void registerCauldronFluidContent(RegisterCauldronFluidContentEvent event) {
         event.register(ModBlocks.MILK_CAULDRON.get(), NeoForgeMod.MILK.get(), FluidType.BUCKET_VOLUME, null);
-    }
-
-    @SubscribeEvent
-    public void registerBrewingRecipes(RegisterBrewingRecipesEvent event) {
-        // Gets the builder to add recipes to
-        PotionBrewing.Builder builder = event.getBuilder();
-        builder.addMix(Potions.WATER, ModItems.BLUE_NETHER_WART.asItem(), Potions.AWKWARD);
-        builder.addMix(Potions.AWKWARD, Items.RABBIT_HIDE, Potions.LUCK);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -247,6 +237,16 @@ public class Extension {
     public void registerCommands(RegisterCommandsEvent event) {
         CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
         HeldItemNameCommand.register(dispatcher);
+    }
+
+    public void modifyDefaultComponents(ModifyDefaultComponentsEvent event) {
+        ModifyDefaultComponentsEvent.Initializer compostableLow = (components, context, item) ->
+                components.set(DataComponents.COMPOSTABLE, new Compostable(ContextIntProviders.COMPOSTABLE_LOW));
+        event.modify(ModBlocks.POTATO_FRUIT, compostableLow);
+        event.modify(ModBlocks.POTATO_PEDICULE, compostableLow);
+        event.modify(ModBlocks.POTATO_SPROUTS, compostableLow);
+        event.modify(ModBlocks.POTATO_LEAVES, compostableLow);
+        event.modify(ModBlocks.POTATO_STEM, compostableLow);
     }
 
     @SubscribeEvent

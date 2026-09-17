@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:spectral_arrow"
+        "recipes": "extension:spectral_arrow"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

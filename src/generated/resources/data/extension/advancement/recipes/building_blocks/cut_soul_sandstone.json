@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:cut_soul_sandstone"
+        "recipes": "extension:cut_soul_sandstone"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

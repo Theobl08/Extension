@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:diorite_bricks"
+        "recipes": "extension:diorite_bricks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

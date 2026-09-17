@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:quartz_brick_wall_from_quartz_bricks_stonecutting"
+        "recipes": "extension:quartz_brick_wall_from_quartz_bricks_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

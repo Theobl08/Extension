@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "extension:polished_prismarine"
+        "recipes": "extension:polished_prismarine"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
