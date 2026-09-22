@@ -13,6 +13,7 @@ import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.theobl.extension.Config;
 import net.theobl.extension.Extension;
+import net.theobl.extension.biome.ModBiomes;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.item.ModItems;
@@ -67,6 +68,8 @@ public class ModLanguageProvider extends LanguageProvider {
 
         add(ModEntityType.POTATO_RAFT.get(), "Potato Raft");
         add(ModEntityType.POTATO_CHEST_RAFT.get(), "Potato Raft with Chest");
+
+        addBiome(ModBiomes.ARBORETUM, "Arboretum");
 
         addConfig(Config.BOAT_STEP_UP);
         addConfig(Config.CLEAR_VOID);
