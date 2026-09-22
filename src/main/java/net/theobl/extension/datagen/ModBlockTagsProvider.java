@@ -158,6 +158,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.BAMBOO_BLOCKS).add(ModBlocks.BAMBOO_WOOD.getKey());
 
+        tag(BlockTags.REPLACEABLE_BY_MUSHROOMS).add(ModBlocks.ORANGE_SHRUB.getKey(), ModBlocks.YELLOW_SHRUB.getKey());
+
         for(DeferredHolder<Block, ? extends Block> deferredBlock : ModBlocks.BLOCKS.getEntries()){
             if(deferredBlock.get() instanceof StairBlock)
                 tag(BlockTags.STAIRS).add(deferredBlock.getKey());

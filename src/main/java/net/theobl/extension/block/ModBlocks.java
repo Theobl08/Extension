@@ -298,6 +298,18 @@ public class ModBlocks {
             () -> BlockBehaviour.Properties.ofFullCopy(Blocks.POPLAR_SAPLING),
             () -> new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_LOW).cookingFuel(ContextIntProviders.COOKING_TIME_DRY_PLANTS)
     );
+    public static final DeferredBlock<Block> ORANGE_SHRUB = registerBlock(
+            "orange_shrub",
+            BushBlock::new,
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.RED_SHRUB),
+            () -> new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_LOW)
+    );
+    public static final DeferredBlock<Block> YELLOW_SHRUB = registerBlock(
+            "yellow_shrub",
+            BushBlock::new,
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.RED_SHRUB),
+            () -> new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_LOW)
+    );
     public static final DeferredBlock<Block> POTTED_RED_POPLAR_SAPLING = BLOCKS.registerBlock(
             "potted_red_poplar_sapling",
             p -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, RED_POPLAR_SAPLING, p),

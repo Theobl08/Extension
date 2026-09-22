@@ -1,4 +1,4 @@
-// 26.3	2026-09-17T20:37:45.6913037	Registries for reloadable
+// 26.3	2026-09-22T12:21:56.8022245	Registries for reloadable
 340685fd2c5a916508f72eb45ceb9553b9c7f77d data/extension/advancement/recipes/building_blocks/andesite_bricks.json
 b147e4e1db7137a86a50f9ebd8caa67e37e55281 data/extension/advancement/recipes/building_blocks/andesite_bricks_from_andesite_stonecutting.json
 028ef04c69a0ccc72a15ce5eb7155ffaeecd2342 data/extension/advancement/recipes/building_blocks/andesite_bricks_from_polished_andesite_stonecutting.json
@@ -368,6 +368,7 @@ eddcf4f9d3a4fe3ed27d53285012145865ae8090 data/extension/loot_table/blocks/nether
 4c4d873cc2d93b411926b9916b0a67f718064ec8 data/extension/loot_table/blocks/nether_brick_tile_wall.json
 812d7815909b54311c531541d13c9c7c9b0ed822 data/extension/loot_table/blocks/oak_cartography_table.json
 4ca99208036e92a0ddfaf187d814d99c66cc1f3f data/extension/loot_table/blocks/orange_poplar_sapling.json
+d8b6a04ae3d341a128886ed730a644926f59c58c data/extension/loot_table/blocks/orange_shrub.json
 6cf7c13134a4de6bef0bdf104e580320a0978e02 data/extension/loot_table/blocks/pale_oak_cartography_table.json
 5f29f83a3e995fb294aa9147bd4365dd112903c5 data/extension/loot_table/blocks/pale_oak_crafting_table.json
 28ea16724ee3794b8ddae2c575c2061effb709ea data/extension/loot_table/blocks/polished_andesite_wall.json
@@ -447,6 +448,7 @@ d29afb47852b8d70ea31eef4cb1125ca169bb227 data/extension/loot_table/blocks/tinted
 3cb5d953c9c2f89bfd6c7cf7c98ee8025687a823 data/extension/loot_table/blocks/warped_cartography_table.json
 5c9b7a199bcfa885da9d672ba2f581b89b763470 data/extension/loot_table/blocks/warped_crafting_table.json
 70d8efaf4f0b3e70d2557a0da6b127240cad7f6f data/extension/loot_table/blocks/yellow_poplar_sapling.json
+4683dbb88a1ebb6001a9af8749ce5380e3c06894 data/extension/loot_table/blocks/yellow_shrub.json
 e2c9657d73c0373d550cba66fa1d14344ef34be7 data/extension/recipe/acacia_cartography_table.json
 ca09f9fbd0e5c3f62daa1e53670ee5912d2b8cf9 data/extension/recipe/acacia_crafting_table.json
 71643df60ffd32084dd8d8ffe2971f1b1f900745 data/extension/recipe/andesite_bricks.json

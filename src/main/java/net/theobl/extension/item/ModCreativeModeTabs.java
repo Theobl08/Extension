@@ -142,6 +142,8 @@ public class ModCreativeModeTabs {
             event.insertAfter(ModBlocks.SOUL_O_LANTERN.toStack(), ModBlocks.ENDER_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.ENDER_O_LANTERN.toStack(), ModBlocks.COPPER_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.COPPER_O_LANTERN.toStack(), ModBlocks.REDSTONE_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.RED_SHRUB.getDefaultInstance(), ModBlocks.ORANGE_SHRUB.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.ORANGE_SHRUB.toStack(), ModBlocks.YELLOW_SHRUB.toStack(), PARENT_AND_SEARCH_TABS);
         }
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.insertAfter(Items.SOUL_TORCH.getDefaultInstance(), ModItems.ENDER_TORCH.toStack(), PARENT_AND_SEARCH_TABS);

@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "minecraft:dappled_forest",
+  "features": "extension:patch_orange_shrub",
+  "step": "vegetal_decoration"
+}

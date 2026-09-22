@@ -155,6 +155,8 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createPlantWithDefaultItem(ModBlocks.RED_POPLAR_SAPLING.get(), ModBlocks.POTTED_RED_POPLAR_SAPLING.get(), PlantType.NOT_TINTED);
         blockModels.createPlantWithDefaultItem(ModBlocks.ORANGE_POPLAR_SAPLING.get(), ModBlocks.POTTED_ORANGE_POPLAR_SAPLING.get(), PlantType.NOT_TINTED);
         blockModels.createPlantWithDefaultItem(ModBlocks.YELLOW_POPLAR_SAPLING.get(), ModBlocks.POTTED_YELLOW_POPLAR_SAPLING.get(), PlantType.NOT_TINTED);
+        blockModels.createCrossBlockWithDefaultItem(ModBlocks.ORANGE_SHRUB.get(), PlantType.NOT_TINTED);
+        blockModels.createCrossBlockWithDefaultItem(ModBlocks.YELLOW_SHRUB.get(), PlantType.NOT_TINTED);
 
         blockModels.createTrivialBlock(ModBlocks.POTATO_FRUIT.get(), TexturedModel.CUBE_BOTTOM_TOP);
         blockModels.createAxisAlignedPillarBlockCustomModel(ModBlocks.POTATO_PEDICULE.get(), plainVariant(ModelLocationUtils.getModelLocation(ModBlocks.POTATO_PEDICULE.get())));
