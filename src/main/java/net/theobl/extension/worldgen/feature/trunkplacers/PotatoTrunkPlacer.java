@@ -1,4 +1,4 @@
-package net.theobl.extension.worldgen;
+package net.theobl.extension.worldgen.feature.trunkplacers;
 
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;

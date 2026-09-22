@@ -1,4 +1,4 @@
-package net.theobl.extension.worldgen;
+package net.theobl.extension.worldgen.feature;
 
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -19,6 +19,8 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.worldgen.feature.treedecorators.AttachedListToLeavesDecorator;
+import net.theobl.extension.worldgen.feature.trunkplacers.PotatoTrunkPlacer;
 
 import java.util.List;
 

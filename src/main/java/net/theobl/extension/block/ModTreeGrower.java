@@ -7,10 +7,7 @@ import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.theobl.extension.Extension;
-import net.theobl.extension.worldgen.ModTreeFeatures;
-import org.jspecify.annotations.Nullable;
-
-import java.util.Optional;
+import net.theobl.extension.worldgen.feature.ModTreeFeatures;
 
 public class ModTreeGrower {
 

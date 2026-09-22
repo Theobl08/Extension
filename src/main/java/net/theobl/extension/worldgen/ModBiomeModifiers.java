@@ -10,6 +10,7 @@ import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.theobl.extension.Extension;
+import net.theobl.extension.worldgen.placement.ModVegetationPlacements;
 
 public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_ORANGE_SHRUB = createKey("add_orange_shrub");

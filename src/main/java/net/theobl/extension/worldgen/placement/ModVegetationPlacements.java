@@ -1,4 +1,4 @@
-package net.theobl.extension.worldgen;
+package net.theobl.extension.worldgen.placement;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -10,6 +10,7 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.theobl.extension.Extension;
+import net.theobl.extension.worldgen.feature.ModVegetationFeatures;
 
 public class ModVegetationPlacements {
     public static final ResourceKey<PlacedFeature> PATCH_ORANGE_SHRUB = createKey("patch_orange_shrub");

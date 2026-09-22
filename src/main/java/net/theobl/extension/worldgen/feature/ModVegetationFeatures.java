@@ -1,4 +1,4 @@
-package net.theobl.extension.worldgen;
+package net.theobl.extension.worldgen.feature;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;

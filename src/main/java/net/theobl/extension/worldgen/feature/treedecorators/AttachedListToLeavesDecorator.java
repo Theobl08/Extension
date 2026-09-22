@@ -1,4 +1,4 @@
-package net.theobl.extension.worldgen;
+package net.theobl.extension.worldgen.feature.treedecorators;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;

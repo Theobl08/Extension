@@ -77,8 +77,8 @@ import net.theobl.extension.loot.ModLootModifiers;
 import net.theobl.extension.particles.ModParticleTypes;
 import net.theobl.extension.stats.ModStats;
 import net.theobl.extension.util.ModUtil;
-import net.theobl.extension.worldgen.ModTreeDecoratorType;
-import net.theobl.extension.worldgen.ModTrunkPlacerType;
+import net.theobl.extension.worldgen.feature.treedecorators.ModTreeDecoratorType;
+import net.theobl.extension.worldgen.feature.trunkplacers.ModTrunkPlacerType;
 import org.slf4j.Logger;
 
 import java.util.List;

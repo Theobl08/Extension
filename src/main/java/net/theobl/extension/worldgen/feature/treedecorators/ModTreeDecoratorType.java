@@ -1,7 +1,6 @@
-package net.theobl.extension.worldgen;
+package net.theobl.extension.worldgen.feature.treedecorators;
 
 import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
