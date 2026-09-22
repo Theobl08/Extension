@@ -12,6 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.theobl.extension.Extension;
 import net.theobl.extension.ModEnumProxy;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.block.entity.ModDecoratedPotPatterns;
 import net.theobl.extension.entity.ModEntityType;
 
 public class ModItems {
@@ -33,7 +34,8 @@ public class ModItems {
             p -> new StandingAndWallBlockItem(ModBlocks.ENDER_TORCH.get(), ModBlocks.ENDER_WALL_TORCH.get(), Direction.DOWN, p),
             Item.Properties::useBlockDescriptionPrefix);
 
-    public static final DeferredItem<Item> EMPTY_POTTERY_SHERD = ITEMS.registerSimpleItem("empty_pottery_sherd", p -> p.rarity(Rarity.UNCOMMON));
+    public static final DeferredItem<Item> EMPTY_POTTERY_SHERD = ITEMS.registerSimpleItem(
+            "empty_pottery_sherd", p -> p.rarity(Rarity.UNCOMMON).potPattern(ModDecoratedPotPatterns.EMPTY));
 
     public static final DeferredItem<Item> ILLUSIONER_SPAWN_EGG = ITEMS.registerItem("illusioner_spawn_egg",
             SpawnEggItem::new, p -> p.spawnEgg(EntityTypes.ILLUSIONER));
