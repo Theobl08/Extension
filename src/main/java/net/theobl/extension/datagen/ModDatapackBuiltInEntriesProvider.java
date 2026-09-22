@@ -8,6 +8,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.theobl.extension.biome.ModBiomes;
 import net.theobl.extension.block.entity.ModDecoratedPotPatterns;
 import net.theobl.extension.worldgen.ModBiomeModifiers;
+import net.theobl.extension.worldgen.feature.ModFeatureUtils;
 import net.theobl.extension.worldgen.feature.ModTreeFeatures;
 import net.theobl.extension.worldgen.feature.ModVegetationFeatures;
 import net.theobl.extension.worldgen.placement.ModPlacementUtils;
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class ModDatapackBuiltInEntriesProvider {
     protected static final RegistrySetBuilder WORLD_BUILDER = new RegistrySetBuilder()
-            .add(Registries.FEATURE, context -> { ModTreeFeatures.bootstrap(context); ModVegetationFeatures.bootstrap(context); })
+            .add(Registries.FEATURE, ModFeatureUtils::bootstrap)
             .add(Registries.PLACED_FEATURE, ModPlacementUtils::bootstrap)
             .add(Registries.BIOME, ModBiomes::bootstrap)
             .add(Registries.DECORATED_POT_PATTERN, ModDecoratedPotPatterns::bootstrap)

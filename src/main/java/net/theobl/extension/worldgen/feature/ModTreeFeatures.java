@@ -25,11 +25,11 @@ import net.theobl.extension.worldgen.feature.trunkplacers.PotatoTrunkPlacer;
 import java.util.List;
 
 public class ModTreeFeatures {
-    public static final ResourceKey<Feature> POTATO_TREE_TALL = createKey("potato_tree_tall");
-    public static final ResourceKey<Feature> POTATO_TREE = createKey("potato_tree");
-    public static final ResourceKey<Feature> MOTHER_POTATO_TREE = createKey("mother_potato_tree");
+    public static final ResourceKey<Feature> POTATO_TREE_TALL = ModFeatureUtils.createKey("potato_tree_tall");
+    public static final ResourceKey<Feature> POTATO_TREE = ModFeatureUtils.createKey("potato_tree");
+    public static final ResourceKey<Feature> MOTHER_POTATO_TREE = ModFeatureUtils.createKey("mother_potato_tree");
 
-    public static void bootstrap(BootstrapContext<Feature> context) {
+    protected static void bootstrap(BootstrapContext<Feature> context) {
         HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
         HolderGetter<BlockStateProvider> blockStateProviders = context.lookup(Registries.BLOCK_STATE_PROVIDER);
         Holder<BlockStateProvider> belowTrunkProvider = blockStateProviders.getOrThrow(BlockStateProviders.SOIL_BENEATH_TREE);
@@ -168,9 +168,5 @@ public class ModTreeFeatures {
                         .ignoreVines()
                         .build()
         );
-    }
-
-    public static ResourceKey<Feature> createKey(String name) {
-        return ResourceKey.create(Registries.FEATURE, Extension.asResource(name));
     }
 }

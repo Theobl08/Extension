@@ -17,12 +17,12 @@ import net.theobl.extension.worldgen.placement.ModTreePlacements;
 import java.util.List;
 
 public class ModVegetationFeatures {
-    public static final ResourceKey<Feature> ORANGE_SHRUB = createKey("orange_shrub");
-    public static final ResourceKey<Feature> YELLOW_SHRUB = createKey("yellow_shrub");
-    public static final ResourceKey<Feature> TREES_ARBORETUM = createKey("trees_arboretum");
+    public static final ResourceKey<Feature> ORANGE_SHRUB = ModFeatureUtils.createKey("orange_shrub");
+    public static final ResourceKey<Feature> YELLOW_SHRUB = ModFeatureUtils.createKey("yellow_shrub");
+    public static final ResourceKey<Feature> TREES_ARBORETUM = ModFeatureUtils.createKey("trees_arboretum");
 
     @SuppressWarnings("deprecation")
-    public static void bootstrap(BootstrapContext<Feature> context) {
+    protected static void bootstrap(BootstrapContext<Feature> context) {
         HolderGetter<Feature> features = context.lookup(Registries.FEATURE);
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         context.register(ORANGE_SHRUB, new SimpleBlockFeature(BlockStateProvider.of(ModBlocks.ORANGE_SHRUB.get())));
@@ -53,9 +53,5 @@ public class ModVegetationFeatures {
                         placedFeatures.getOrThrow(TreePlacements.OAK_CHECKED)
                 )
         );
-    }
-
-    public static ResourceKey<Feature> createKey(String name) {
-        return ResourceKey.create(Registries.FEATURE, Extension.asResource(name));
     }
 }
