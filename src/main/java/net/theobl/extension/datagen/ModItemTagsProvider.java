@@ -2,9 +2,13 @@ package net.theobl.extension.datagen;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.TagAppender;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CartographyTableBlock;
 import net.neoforged.neoforge.common.Tags;
@@ -21,17 +25,27 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
         super(output, lookupProvider, blockTags, Extension.MODID);
     }
 
+    @Override
+    protected IntrinsicHolderTagAppender<Item> tag(TagKey<Item> tag) {
+        return new IntrinsicHolderTagAppender<>(super.tag(tag)) {
+            @Override
+            public ResourceKey<Item> convertElement(Item item) {
+                return item.builtInRegistryHolder().key();
+            }
+        };
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        tag(Tags.Items.CROPS).add(ModItems.BLUE_NETHER_WART.getKey());
-        tag(Tags.Items.BRICKS_NETHER).add(ModItems.RED_NETHER_BRICK.getKey(), ModItems.BLUE_NETHER_BRICK.getKey());
-        tag(Tags.Items.BRICKS).add(ModItems.RED_NETHER_BRICK.getKey(), ModItems.BLUE_NETHER_BRICK.getKey());
+        tag(Tags.Items.CROPS).add(ModItems.BLUE_NETHER_WART);
+        tag(Tags.Items.BRICKS_NETHER).add(ModItems.RED_NETHER_BRICK, ModItems.BLUE_NETHER_BRICK);
+        tag(Tags.Items.BRICKS).add(ModItems.RED_NETHER_BRICK, ModItems.BLUE_NETHER_BRICK);
 
-        tag(ItemTags.BOATS).add(ModItems.POTATO_RAFT.getKey());
-        tag(ItemTags.CHEST_BOATS).add(ModItems.POTATO_CHEST_RAFT.getKey());
+        tag(ItemTags.BOATS).add(ModItems.POTATO_RAFT);
+        tag(ItemTags.CHEST_BOATS).add(ModItems.POTATO_CHEST_RAFT);
 
-        tag(ItemTags.DECORATED_POT_SHERDS).add(ModItems.EMPTY_POTTERY_SHERD.getKey());
+        tag(ItemTags.DECORATED_POT_SHERDS).add(ModItems.EMPTY_POTTERY_SHERD);
 
         copy(BlockTags.LEAVES, ItemTags.LEAVES);
         copy(BlockItemTags.SAPLINGS.block(), ItemTags.SAPLINGS);
@@ -70,7 +84,7 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
         copy(Tags.Blocks.PLAYER_WORKSTATIONS_CRAFTING_TABLES, Tags.Items.PLAYER_WORKSTATIONS_CRAFTING_TABLES);
         for (var block : ModBlocks.BLOCKS.getEntries().stream().map(DeferredHolder::get).toList()) {
             if(block instanceof CartographyTableBlock) {
-                tag(Tags.Items.VILLAGER_JOB_SITES).add(block.asItem().builtInRegistryHolder().key());
+                tag(Tags.Items.VILLAGER_JOB_SITES).add(block.asItem());
             }
         }
     }

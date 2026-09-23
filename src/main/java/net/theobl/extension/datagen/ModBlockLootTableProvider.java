@@ -75,7 +75,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
             else if(block.get() instanceof FlowerPotBlock) {
                 this.dropPottedContents(block.get());
             }
-            else if(!(block.get() instanceof BaseFireBlock)) {
+            else if(block.get() instanceof BaseFireBlock) {
+                this.add(block.get(), noDrop());
+            }
+            else {
                 this.dropSelf(block.get());
             }
         }
@@ -137,7 +140,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         //return ModBlocks.BLOCKS.getEntries().stream().map(Holder::value)::iterator;
         ArrayList<Block> knownBlocks = new ArrayList<>();
         ModBlocks.BLOCKS.getEntries().stream()
-                .filter(block -> !(block.get() instanceof BaseFireBlock))
                 .map(Holder::value)
                 .forEach(knownBlocks::add);
         knownBlocks.add(Blocks.DIRT_PATH);

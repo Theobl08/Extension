@@ -2,9 +2,12 @@ package net.theobl.extension.datagen;
 
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.triggers.PlayerTrigger;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.MultiRegistryBootstrap;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.BlockFamilies;
+import net.minecraft.data.BlockFamily;
 import net.minecraft.data.recipes.*;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -69,23 +72,27 @@ public class ModRecipeProvider extends RecipeProvider {
         oneToOneConversionRecipe(ModItems.BLUE_NETHER_WART, Items.WARPED_WART_BLOCK, null, 9);
         threeByThreePacker(RecipeCategory.BUILDING_BLOCKS, Blocks.WARPED_WART_BLOCK, ModItems.BLUE_NETHER_WART);
         shapeless(RecipeCategory.MISC, ModItems.RED_NETHER_BRICK, 2)
-                .requires(Items.NETHER_BRICK).requires(Items.NETHER_WART)
-                .unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK)).save(output);
+                .requires(Items.NETHER_BRICK)
+                .requires(Items.NETHER_WART)
+                .unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK))
+                .save(output);
         shapeless(RecipeCategory.MISC, ModItems.BLUE_NETHER_BRICK, 2)
-                .requires(Items.NETHER_BRICK).requires(ModItems.BLUE_NETHER_WART)
-                .unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK)).save(output);
+                .requires(Items.NETHER_BRICK)
+                .requires(ModItems.BLUE_NETHER_WART)
+                .unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK))
+                .save(output);
 
         twoByTwoPacker(Blocks.RED_NETHER_BRICKS, ModItems.RED_NETHER_BRICK);
         twoByTwoPacker(ModBlocks.BLUE_NETHER_BRICKS, ModItems.BLUE_NETHER_BRICK);
 
-        wallRecipes(ModBlocks.STONE_WALL.get(), Items.STONE);
-        wallRecipes(ModBlocks.POLISHED_GRANITE_WALL.get(), Items.POLISHED_GRANITE);
-        wallRecipes(ModBlocks.POLISHED_DIORITE_WALL.get(), Items.POLISHED_DIORITE);
-        wallRecipes(ModBlocks.POLISHED_ANDESITE_WALL.get(), Items.POLISHED_ANDESITE);
-        wallRecipes(ModBlocks.PRISMARINE_BRICK_WALL.get(), Items.PRISMARINE_BRICKS);
-        wallRecipes(ModBlocks.DARK_PRISMARINE_WALL.get(), Items.DARK_PRISMARINE);
-        wallRecipes(ModBlocks.PURPUR_WALL.get(), Items.PURPUR_BLOCK);
-        wallRecipes(ModBlocks.QUARTZ_WALL.get(), Items.QUARTZ_BLOCK);
+        wallRecipes(ModBlocks.STONE_WALL, Items.STONE);
+        wallRecipes(ModBlocks.POLISHED_GRANITE_WALL, Items.POLISHED_GRANITE);
+        wallRecipes(ModBlocks.POLISHED_DIORITE_WALL, Items.POLISHED_DIORITE);
+        wallRecipes(ModBlocks.POLISHED_ANDESITE_WALL, Items.POLISHED_ANDESITE);
+        wallRecipes(ModBlocks.PRISMARINE_BRICK_WALL, Items.PRISMARINE_BRICKS);
+        wallRecipes(ModBlocks.DARK_PRISMARINE_WALL, Items.DARK_PRISMARINE);
+        wallRecipes(ModBlocks.PURPUR_WALL, Items.PURPUR_BLOCK);
+        wallRecipes(ModBlocks.QUARTZ_WALL, Items.QUARTZ_BLOCK);
 
         woodFromLogs(ModBlocks.BAMBOO_WOOD, Blocks.BAMBOO_BLOCK);
 
@@ -97,7 +104,8 @@ public class ModRecipeProvider extends RecipeProvider {
         chiseledRecipes(ModBlocks.CHISELED_PRISMARINE, Items.PRISMARINE_SLAB, Blocks.PRISMARINE);
         chiseledRecipes(ModBlocks.CHISELED_END_STONE_BRICKS, Items.END_STONE_BRICK_SLAB, Blocks.END_STONE_BRICKS);
 
-        stairBuilder(ModBlocks.SMOOTH_STONE_STAIRS, Ingredient.of(Items.SMOOTH_STONE)).unlockedBy(getHasName(Items.SMOOTH_STONE), has(Items.SMOOTH_STONE))
+        stairBuilder(ModBlocks.SMOOTH_STONE_STAIRS, Ingredient.of(Items.SMOOTH_STONE))
+                .unlockedBy(getHasName(Items.SMOOTH_STONE), has(Items.SMOOTH_STONE))
                 .save(output);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_STONE_STAIRS, Blocks.SMOOTH_STONE);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHERITE_STAIRS, Blocks.NETHERITE_BLOCK);
@@ -130,21 +138,7 @@ public class ModRecipeProvider extends RecipeProvider {
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Blocks.CHISELED_STONE_BRICKS, ModBlocks.POLISHED_STONE);
 
         mossyRecipes(ModBlocks.MOSSY_COBBLED_DEEPSLATE, Blocks.COBBLED_DEEPSLATE, "mossy_cobbled_deepslate");
-
         mossyRecipes(ModBlocks.MOSSY_DEEPSLATE_BRICKS, Blocks.DEEPSLATE_BRICKS, "mossy_deepslate_bricks");
-
-//        shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.STONE_BRICKS, 4)
-//                .define('#', ModBlocks.POLISHED_STONE)
-//                .pattern("##")
-//                .pattern("##")
-//                .unlockedBy("has_polished_stone", has(ModBlocks.POLISHED_STONE))
-//                .save(output);
-//        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_STONE, 4)
-//                .define('#', Blocks.STONE)
-//                .pattern("##")
-//                .pattern("##")
-//                .unlockedBy("has_stone", has(Blocks.STONE))
-//                .save(output);
 
         polished(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE, Blocks.END_STONE);
         polished(RecipeCategory.BUILDING_BLOCKS, Blocks.END_STONE_BRICKS, ModBlocks.POLISHED_END_STONE);
@@ -176,7 +170,7 @@ public class ModRecipeProvider extends RecipeProvider {
 
 
         smeltingResultFromBase(ModBlocks.CRACKED_RED_NETHER_BRICKS, Items.RED_NETHER_BRICKS);
-        fence(ModBlocks.RED_NETHER_BRICK_FENCE.get(), Blocks.RED_NETHER_BRICKS, ModItems.RED_NETHER_BRICK.get());
+        fence(ModBlocks.RED_NETHER_BRICK_FENCE, Blocks.RED_NETHER_BRICKS, ModItems.RED_NETHER_BRICK);
         chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICK_SLAB);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICKS);
 
@@ -187,7 +181,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("WN")
                 .unlockedBy("has_blue_nether_wart", has(ModItems.BLUE_NETHER_WART))
                 .save(output);
-        fence(ModBlocks.BLUE_NETHER_BRICK_FENCE.get(), ModBlocks.BLUE_NETHER_BRICKS, ModItems.BLUE_NETHER_BRICK.get());
+        fence(ModBlocks.BLUE_NETHER_BRICK_FENCE, ModBlocks.BLUE_NETHER_BRICKS, ModItems.BLUE_NETHER_BRICK);
 
         shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_SANDSTONE, 1)
                 .define('#', Items.SOUL_SAND)
@@ -208,8 +202,6 @@ public class ModRecipeProvider extends RecipeProvider {
         chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_SOUL_SANDSTONE, ModBlocks.SOUL_SANDSTONE_SLAB);
         smeltingResultFromBase(ModBlocks.SMOOTH_SOUL_SANDSTONE, ModBlocks.SOUL_SANDSTONE);
         cut(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SOUL_SANDSTONE, ModBlocks.SOUL_SANDSTONE);
-
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SOUL_SANDSTONE_SLAB, ModBlocks.SOUL_SANDSTONE, 2);
 
         WoodTypeCollection.TYPES.forEach(woodType -> {
             if(woodType != WoodType.OAK) craftingTable(ModBlocks.CRAFTING_TABLES.pick(woodType), WoodTypeCollection.BASE.pick(woodType));
@@ -377,9 +369,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(output, Extension.MODID + ":" + getConversionRecipeName(result, material) + "_stonecutting");
     }
 
-    protected void fence(Block fence, ItemLike material, Item middleItem) {
-        int i = !fence.defaultBlockState().is(BlockTags.WOODEN_FENCES) ? 6 : 3;
-        shaped(RecipeCategory.DECORATIONS, fence, i)
+    protected void fence(Holder<Block> fence, ItemLike material, ItemLike middleItem) {
+        int count = !fence.is(BlockTags.WOODEN_FENCES) ? 6 : 3;
+        shaped(RecipeCategory.DECORATIONS, fence.value(), count)
                 .define('W', material)
                 .define('#', middleItem)
                 .pattern("W#W")
@@ -448,5 +440,24 @@ public class ModRecipeProvider extends RecipeProvider {
 
     protected FletchingRecipeBuilder fletching(RecipeCategory category, ItemLike result, int count) {
         return FletchingRecipeBuilder.fletching(this.items, category, result, count);
+    }
+
+    protected void generateStonecutterRecipe(BlockFamily family, BlockFamily.Variant variant, Block base) {
+        RecipeProvider.FamilyStonecutterRecipeProvider recipeFunction = STONECUTTER_RECIPE_BUILDERS.get(variant);
+        if (recipeFunction != null) {
+            recipeFunction.create(this, family.get(variant), base);
+        }
+
+        if (variant == BlockFamily.Variant.POLISHED
+                || variant == BlockFamily.Variant.CUT
+                || variant == BlockFamily.Variant.BRICKS
+                || variant == BlockFamily.Variant.TILES
+                || variant == BlockFamily.Variant.PILLAR
+                || variant == BlockFamily.Variant.COBBLED) {
+            BlockFamily childVariantFamily = ModBlockFamilies.getFamily(family.get(variant));
+            if (childVariantFamily != null) {
+                childVariantFamily.getVariants().forEach((childVariant, r) -> this.generateStonecutterRecipe(childVariantFamily, childVariant, base));
+            }
+        }
     }
 }

@@ -42,12 +42,12 @@ public class ModLanguageProvider extends LanguageProvider {
 
         for(DeferredHolder<Block, ? extends Block> block : ModBlocks.BLOCKS.getEntries()) {
             if(block.get() instanceof CarvedPumpkinBlock)
-                add(block.get(),capitalizeString(filterBlockLang(block.get())).replace(" O ", " o'"));
+                addBlock(block, capitalizeString(filterBlockLang(block.get())).replace(" O ", " o'"));
             else if(block.get().defaultBlockState().is(ModBlocks.NETHERITE_STAIRS))
-                add(block.get(), "Swaggiest stairs ever");
+                addBlock(block, "Swaggiest stairs ever");
             else
                 try {
-                    add(block.get(), capitalizeString(filterBlockLang(block.get())));
+                    addBlock(block, capitalizeString(filterBlockLang(block.get())));
                 } catch(Exception _) {
                     Extension.LOGGER.warn("{} is already translated, skipping", block.getId());
                 }
@@ -55,19 +55,17 @@ public class ModLanguageProvider extends LanguageProvider {
 
         for(DeferredHolder<Item, ? extends Item> item : ModItems.ITEMS.getEntries()) {
             if(item.get() instanceof MinecartItem)
-                add(item.get(),"Minecart with Monster Spawner");
+                addItem(item,"Minecart with Monster Spawner");
             else if(item == ModItems.POTATO_CHEST_RAFT)
-                add(item.get(), "Potato Raft with Chest");
-            else if(item.get() == ModItems.BLUE_NETHER_WART.asItem() || !(item.get() instanceof BlockItem))
-                add(item.get(), capitalizeString(filterItemLang(item.get())));
+                addItem(item, "Potato Raft with Chest");
+            else if(item == ModItems.BLUE_NETHER_WART || !(item.get() instanceof BlockItem))
+                addItem(item, capitalizeString(filterItemLang(item.get())));
         }
 
-        for(DeferredHolder<Potion, ? extends Potion> potion : ModPotions.POTIONS.getEntries()) {
-            addPotion(potion);
-        }
+        ModPotions.POTIONS.getEntries().forEach(this::addPotion);
 
-        add(ModEntityType.POTATO_RAFT.get(), "Potato Raft");
-        add(ModEntityType.POTATO_CHEST_RAFT.get(), "Potato Raft with Chest");
+        addEntityType(ModEntityType.POTATO_RAFT, "Potato Raft");
+        addEntityType(ModEntityType.POTATO_CHEST_RAFT, "Potato Raft with Chest");
 
         addBiome(ModBiomes.ARBORETUM, "Arboretum");
 
