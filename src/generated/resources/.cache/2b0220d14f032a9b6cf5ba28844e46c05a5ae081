@@ -1,0 +1,16 @@
+// 26.3	2026-09-24T11:10:42.4372748	Tags for minecraft:worldgen/biome mod id extension
+b9cbdf4b62ef73d5dc4a192241c1e0b4060fcdb8 data/c/tags/worldgen/biome/is_temperate/overworld.json
+b9cbdf4b62ef73d5dc4a192241c1e0b4060fcdb8 data/c/tags/worldgen/biome/primary_wood_type/acacia.json
+b9cbdf4b62ef73d5dc4a192241c1e0b4060fcdb8 data/c/tags/worldgen/biome/primary_wood_type/birch.json
+b9cbdf4b62ef73d5dc4a192241c1e0b4060fcdb8 data/c/tags/worldgen/biome/primary_wood_type/cherry.json
+b9cbdf4b62ef73d5dc4a192241c1e0b4060fcdb8 data/c/tags/worldgen/biome/primary_wood_type/dark_oak.json
+b9cbdf4b62ef73d5dc4a192241c1e0b4060fcdb8 data/c/tags/worldgen/biome/primary_wood_type/jungle.json
+b9cbdf4b62ef73d5dc4a192241c1e0b4060fcdb8 data/c/tags/worldgen/biome/primary_wood_type/mangrove.json
+b9cbdf4b62ef73d5dc4a192241c1e0b4060fcdb8 data/c/tags/worldgen/biome/primary_wood_type/oak.json
+b9cbdf4b62ef73d5dc4a192241c1e0b4060fcdb8 data/c/tags/worldgen/biome/primary_wood_type/pale_oak.json
+b9cbdf4b62ef73d5dc4a192241c1e0b4060fcdb8 data/c/tags/worldgen/biome/primary_wood_type/spruce.json
+b9cbdf4b62ef73d5dc4a192241c1e0b4060fcdb8 data/minecraft/tags/worldgen/biome/has_structure/abandoned_camp_forest.json
+b9cbdf4b62ef73d5dc4a192241c1e0b4060fcdb8 data/minecraft/tags/worldgen/biome/has_structure/trial_chambers.json
+b9cbdf4b62ef73d5dc4a192241c1e0b4060fcdb8 data/minecraft/tags/worldgen/biome/is_forest.json
+b9cbdf4b62ef73d5dc4a192241c1e0b4060fcdb8 data/minecraft/tags/worldgen/biome/is_overworld.json
+b9cbdf4b62ef73d5dc4a192241c1e0b4060fcdb8 data/minecraft/tags/worldgen/biome/stronghold_biased_to.json

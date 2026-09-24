@@ -29,5 +29,6 @@ public class DataGenerators {
 
         event.createWorldRegistryObjects(ModDatapackBuiltInEntriesProvider.WORLD_BUILDER, Set.of(Extension.MODID, Identifier.DEFAULT_NAMESPACE));
         event.createReloadableRegistryObjects(ModDatapackBuiltInEntriesProvider.RELOADABLE_BUILDER, Set.of(Extension.MODID, Identifier.DEFAULT_NAMESPACE));
+        event.createProvider(ModBiomeTagsProvider::new);
     }
 }
