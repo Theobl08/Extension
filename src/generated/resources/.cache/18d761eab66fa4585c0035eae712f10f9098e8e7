@@ -1,8 +1,8 @@
-// 26.3	2026-09-22T22:43:47.021864	Registries for world
+// 26.3	2026-09-23T18:55:50.0187985	Registries for world
 31b09efd7e9ada6a96ffb2cd21354216a6b5e1bd data/extension/decorated_pot_pattern/empty.json
 6a5a5d3350e20feac37fc252e9118b7f9984de95 data/extension/neoforge/biome_modifier/add_orange_shrub.json
 ad0479fa34bb8a74d53c0f67bd30cfde5b0674d0 data/extension/neoforge/biome_modifier/add_yellow_shrub.json
-b1c9b6f1252875f0ee8d7587cd5c9b92ad7089a1 data/extension/worldgen/biome/arboretum.json
+ce9a583f18a57d63a55c7eee2059bfc2e0919e9a data/extension/worldgen/biome/arboretum.json
 62ca14dde6c37dca73de158cc3a11adb93ea206c data/extension/worldgen/feature/mother_potato_tree.json
 c03f3728ed9afc4b24ef3ec8bb2efa0214b91bfe data/extension/worldgen/feature/orange_shrub.json
 074c5e11868b3b59174be36af2055eda0e08e60e data/extension/worldgen/feature/potato_tree.json

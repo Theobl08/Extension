@@ -31,21 +31,26 @@ public class ModBiomes {
 
     public static Biome arboretum(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<WorldCarver> carvers) {
         //Forest & Flower Forest
+        BackgroundMusic music = new BackgroundMusic(SoundEvents.MUSIC_BIOME_FOREST);
         BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
         OverworldBiomes.globalOverworldGeneration(generation);
-        BackgroundMusic music = new BackgroundMusic(SoundEvents.MUSIC_BIOME_FOREST);
+        BiomeDefaultFeatures.addFerns(generation);
+        BiomeDefaultFeatures.addDappledForestVegetation(generation); // Dappled Forest
+        BiomeDefaultFeatures.addLightBambooVegetation(generation); // Jungle
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PALE_GARDEN_FLOWERS); // Dark Forest & Pale Garden
         generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.FLOWER_FOREST_FLOWERS);
         generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModVegetationPlacements.TREES_ARBORETUM);
 
+        BiomeDefaultFeatures.addBushes(generation);
         BiomeDefaultFeatures.addDefaultFlowers(generation);
         BiomeDefaultFeatures.addForestGrass(generation);
+        BiomeDefaultFeatures.addTaigaGrass(generation);
         BiomeDefaultFeatures.addDefaultMushrooms(generation);
         BiomeDefaultFeatures.addDefaultExtraVegetation(generation, true);
 
         BiomeDefaultFeatures.addDefaultOres(generation);
         BiomeDefaultFeatures.addDefaultSoftDisks(generation);
 
-        BiomeDefaultFeatures.addBushes(generation);
 
         MobSpawnSettings.Builder mobs = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(mobs);
@@ -54,21 +59,12 @@ public class ModBiomes {
 //        mobs.addSpawn(EntityTypes.WOLF, 5, 4, 4);
 
         //Taiga
-        BiomeDefaultFeatures.addFerns(generation);
-        BiomeDefaultFeatures.addTaigaGrass(generation);
         BiomeDefaultFeatures.addCommonBerryBushes(generation);
-
-        //Dark Forest & Pale Garden
-        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PALE_GARDEN_FLOWERS);
 
         //Cherry Grove
         BiomeDefaultFeatures.addExtraEmeralds(generation);
 
-        //Dappled Forest
-        BiomeDefaultFeatures.addDappledForestVegetation(generation);
-
         //(Sparse) Jungle
-        BiomeDefaultFeatures.addLightBambooVegetation(generation);
         BiomeDefaultFeatures.addSparseJungleMelons(generation);
 
         return OverworldBiomes.baseBiome(0.7F, 0.8F)
