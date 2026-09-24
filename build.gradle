@@ -135,6 +135,8 @@ dependencies {
 
     implementation "curse.maven:jade-324717:${jade_version}-sources" // Get both standard jar and sources jar, see https://cursemaven.com/test/324717/8326243-sources
 
+    implementation "maven.modrinth:lithostitched:${lithostitched_version}-neoforge-${minecraft_version}"
+
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
     // The group id is ignored when searching -- in this case, it is "blank"
