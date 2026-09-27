@@ -25,10 +25,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class ModUtil {
-    @SuppressWarnings("deprecation")
-    public static List<Holder<Potion>> POTIONS = new ArrayList<>(BuiltInRegistries.POTION.stream().map(BuiltInRegistries.POTION::wrapAsHolder)
-            .filter(p -> !p.is(Potions.WATER)).toList());
-
     public static ItemStack createFilledResult(ItemStack itemStack, Player player, ItemStack newItemStack, boolean limitCreativeStackSize, int consumedAmount) {
         boolean isCreative = player.hasInfiniteMaterials();
         if (limitCreativeStackSize && isCreative) {
@@ -188,9 +184,5 @@ public class ModUtil {
             case "&r" -> rarity.getStyleModifier().apply(Style.EMPTY).withItalic(false);
             case null, default -> style; // not a formatting code -> the style stay as-is.
         };
-    }
-
-    static {
-        POTIONS.addAll(ModPotions.POTIONS.getEntries());
     }
 }
