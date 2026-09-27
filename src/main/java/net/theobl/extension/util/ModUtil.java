@@ -35,10 +35,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class ModUtil {
-    @SuppressWarnings("deprecation")
-    public static List<Holder<Potion>> POTIONS = new ArrayList<>(BuiltInRegistries.POTION.stream().map(BuiltInRegistries.POTION::wrapAsHolder)
-            .filter(p -> !p.is(Potions.WATER)).toList());
-
     public static void bootstrap() {
         FireBlock fire = (FireBlock) Blocks.FIRE;
         fire.setFlammable(ModBlocks.ORANGE_SHRUB.get(), 60, 100);
@@ -208,9 +204,5 @@ public class ModUtil {
             case "&r" -> rarity.getStyleModifier().apply(Style.EMPTY).withItalic(false);
             case null, default -> style; // not a formatting code -> the style stay as-is.
         };
-    }
-
-    static {
-        POTIONS.addAll(ModPotions.POTIONS.getEntries());
     }
 }
