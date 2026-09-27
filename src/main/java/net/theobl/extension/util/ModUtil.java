@@ -31,10 +31,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class ModUtil {
-    @SuppressWarnings("deprecation")
-    public static List<Holder<Potion>> POTIONS = new ArrayList<>(BuiltInRegistries.POTION.stream().map(BuiltInRegistries.POTION::wrapAsHolder)
-            .filter(p -> !p.is(Potions.WATER)).toList());
-
     public static void bootstrap() {
         DispenserBlock.registerBehavior(ModItems.POTATO_RAFT, new BoatDispenseItemBehavior(ModEntityType.POTATO_RAFT.get()));
         DispenserBlock.registerBehavior(ModItems.POTATO_CHEST_RAFT, new BoatDispenseItemBehavior(ModEntityType.POTATO_CHEST_RAFT.get()));
@@ -200,9 +196,5 @@ public class ModUtil {
             case "&r" -> rarity.getStyleModifier().apply(Style.EMPTY).withItalic(false);
             case null, default -> style; // not a formatting code -> the style stay as-is.
         };
-    }
-
-    static {
-        POTIONS.addAll(ModPotions.POTIONS.getEntries());
     }
 }

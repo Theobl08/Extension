@@ -33,7 +33,7 @@ public abstract class CauldronInteractionMixin {
     @ModifyReturnValue(method = "lambda$bootStrap$0(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/InteractionResult;",
             at = @At("MIXINEXTRAS:EXPRESSION"))
     private static InteractionResult convertToPotionCauldron(InteractionResult original, @Local PotionContents potionContents, @Local(argsOnly = true) Level level, @Local(argsOnly = true) BlockPos pos, @Local(argsOnly = true) Player player, @Local(argsOnly = true) InteractionHand hand, @Local(argsOnly = true) ItemStack itemInHand) {
-        if(potionContents != null && potionContents.potion().isPresent() && ModUtil.POTIONS.contains(potionContents.potion().get())) {
+        if(potionContents != null && potionContents.potion().isPresent()) {
             if (!level.isClientSide()) {
                 Item usedItem = itemInHand.getItem();
                 player.setItemInHand(hand, ItemUtils.createFilledResult(itemInHand, player, new ItemStack(Items.GLASS_BOTTLE)));
