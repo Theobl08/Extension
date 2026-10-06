@@ -139,19 +139,19 @@ public class ModCreativeModeTabs {
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.insertAfter(Items.SOUL_SAND.getDefaultInstance(), ModBlocks.SOUL_SANDSTONE.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.JACK_O_LANTERN.getDefaultInstance(), ModBlocks.SOUL_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModBlocks.SOUL_O_LANTERN.toStack(), ModBlocks.ENDER_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModBlocks.ENDER_O_LANTERN.toStack(), ModBlocks.COPPER_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModBlocks.COPPER_O_LANTERN.toStack(), ModBlocks.REDSTONE_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.SOUL_O_LANTERN.toStack(), ModBlocks.COPPER_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.COPPER_O_LANTERN.toStack(), ModBlocks.ENDER_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.ENDER_O_LANTERN.toStack(), ModBlocks.REDSTONE_O_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.RED_SHRUB.getDefaultInstance(), ModBlocks.ORANGE_SHRUB.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.ORANGE_SHRUB.toStack(), ModBlocks.YELLOW_SHRUB.toStack(), PARENT_AND_SEARCH_TABS);
         }
         if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            event.insertAfter(Items.SOUL_TORCH.getDefaultInstance(), ModItems.ENDER_TORCH.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.COPPER_TORCH.getDefaultInstance(), ModItems.ENDER_TORCH.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.SOUL_LANTERN.getDefaultInstance(), ModBlocks.ENDER_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.COPPER_LANTERN.waxed().oxidized().getDefaultInstance(), ModBlocks.REDSTONE_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(Items.SOUL_CAMPFIRE.getDefaultInstance(), ModBlocks.ENDER_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModBlocks.ENDER_CAMPFIRE.toStack(), ModBlocks.COPPER_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);
-            event.insertAfter(ModBlocks.COPPER_CAMPFIRE.toStack(), ModBlocks.REDSTONE_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.SOUL_CAMPFIRE.getDefaultInstance(), ModBlocks.COPPER_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.COPPER_CAMPFIRE.toStack(), ModBlocks.ENDER_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(ModBlocks.ENDER_CAMPFIRE.toStack(), ModBlocks.REDSTONE_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);
         }
         if(event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
             event.insertAfter(Items.REDSTONE_TORCH.getDefaultInstance(), ModBlocks.REDSTONE_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
@@ -164,9 +164,10 @@ public class ModCreativeModeTabs {
             event.insertAfter(Items.NETHER_BRICK.getDefaultInstance(), ModItems.RED_NETHER_BRICK.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModItems.RED_NETHER_BRICK.toStack(), ModItems.BLUE_NETHER_BRICK.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.NETHER_WART.getDefaultInstance(), ModItems.BLUE_NETHER_WART.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertBefore(Items.EXPLORER_POTTERY_SHERD.getDefaultInstance(), ModItems.EMPTY_POTTERY_SHERD.toStack(), PARENT_AND_SEARCH_TABS);
         }
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS)
-            event.insertAfter(new ItemStack(Items.HUSK_SPAWN_EGG), new ItemStack(ModItems.ILLUSIONER_SPAWN_EGG.asItem()), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.EVOKER_SPAWN_EGG.getDefaultInstance(), ModItems.ILLUSIONER_SPAWN_EGG.toStack(), PARENT_AND_SEARCH_TABS);
     }
 
     private static void acceptWithoutThrowing(CreativeModeTab.Output output, ItemLike item) {
