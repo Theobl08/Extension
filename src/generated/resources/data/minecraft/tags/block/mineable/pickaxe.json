@@ -66,8 +66,6 @@
     "extension:smooth_soul_sandstone_stairs",
     "extension:smooth_soul_sandstone_slab",
     "extension:cut_soul_sandstone",
-    "extension:cut_soul_sandstone_slab",
-    "extension:redstone_lantern",
-    "extension:ender_lantern"
+    "extension:cut_soul_sandstone_slab"
   ]
 }

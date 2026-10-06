@@ -1,4 +1,4 @@
-// 26.3	2026-09-17T19:10:31.5715396	Tags for minecraft:item mod id extension
+// 26.3	2026-10-05T22:41:33.3929703	Tags for minecraft:item mod id extension
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks.json
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks/nether.json
 d4dca80551a0d488392912428cdc618c8b8e9197 data/c/tags/item/crops.json
@@ -20,6 +20,7 @@ f1b85978c2c8b9f8de74c451178076fb6048de33 data/minecraft/tags/item/decorated_pot_
 6af7f26669e374797e819a720298b940f77a2c18 data/minecraft/tags/item/fences.json
 e425c47578377de2388a2a345e79caccab792af8 data/minecraft/tags/item/fence_gates.json
 c1b0f3bc5074bdb8f2518e78819094ab859167f2 data/minecraft/tags/item/hanging_signs.json
+a1d01b6a1b82929ecb7315678011273652b41d66 data/minecraft/tags/item/lanterns.json
 096ddd7892a9f24bf58d25dccf95160736b6bee4 data/minecraft/tags/item/leaves.json
 4737b983b9cab361c9d355611cdc43645e329274 data/minecraft/tags/item/logs.json
 3486cb571e4d7f4403ec590dfafb6972d44ae7da data/minecraft/tags/item/piglin_repellents.json

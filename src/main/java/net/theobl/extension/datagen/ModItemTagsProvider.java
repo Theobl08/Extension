@@ -46,6 +46,7 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
         tag(ItemTags.CHEST_BOATS).add(ModItems.POTATO_CHEST_RAFT);
 
         tag(ItemTags.DECORATED_POT_SHERDS).add(ModItems.EMPTY_POTTERY_SHERD);
+        copy(BlockTags.LANTERNS, BlockItemTags.LANTERNS.item());
 
         copy(BlockTags.LEAVES, ItemTags.LEAVES);
         copy(BlockItemTags.SAPLINGS.block(), ItemTags.SAPLINGS);

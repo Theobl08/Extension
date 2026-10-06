@@ -40,15 +40,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.BLUE_NETHER_BRICK_FENCE);
 
         tag(Tags.Blocks.GLASS_PANES).add(ModBlocks.TINTED_GLASS_PANE);
+        tag(BlockTags.BLOCKS_MOTION_NO_LEAVES).add(ModBlocks.TINTED_GLASS_PANE);
         tag(BlockTags.SWORD_EFFICIENT)
-                .add(ModBlocks.BLUE_NETHER_WART)
                 .add(ModBlocks.SOUL_O_LANTERN)
                 .add(ModBlocks.REDSTONE_O_LANTERN)
                 .add(ModBlocks.COPPER_O_LANTERN)
                 .add(ModBlocks.ENDER_O_LANTERN);
 
         tag(BlockTags.MINEABLE_WITH_AXE)
-                .add(ModBlocks.BLUE_NETHER_WART)
                 .add(ModBlocks.SOUL_O_LANTERN)
                 .add(ModBlocks.COPPER_O_LANTERN)
                 .add(ModBlocks.COPPER_CAMPFIRE)
@@ -56,6 +55,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.REDSTONE_CAMPFIRE)
                 .add(ModBlocks.ENDER_O_LANTERN)
                 .add(ModBlocks.ENDER_CAMPFIRE);
+
+        tag(BlockTags.WASHED_AWAY_BY_FLUIDS)
+                .add(ModBlocks.BLUE_NETHER_WART)
+                .add(ModBlocks.ORANGE_SHRUB)
+                .add(ModBlocks.YELLOW_SHRUB)
+                .add(ModBlocks.ENDER_TORCH)
+                .add(ModBlocks.ENDER_WALL_TORCH);
+        tag(BlockTags.CANNOT_PLACE_BASALT_PILLAR_ON).add(ModBlocks.BLUE_NETHER_WART);
 
         tag(BlockTags.WALL_POST_OVERRIDE).add(ModBlocks.ENDER_TORCH);
         tag(BlockTags.CAMPFIRES).add(ModBlocks.COPPER_CAMPFIRE, ModBlocks.REDSTONE_CAMPFIRE, ModBlocks.ENDER_CAMPFIRE);
@@ -107,6 +114,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.PURPUR_WALL)
                 .add(ModBlocks.ENDER_O_LANTERN);
 
+        tag(BlockTags.LANTERNS).add(ModBlocks.ENDER_LANTERN).add(ModBlocks.REDSTONE_LANTERN);
+
         tag(BlockTags.SWORD_EFFICIENT).add(ModBlocks.POTATO_FRUIT);
         tag(BlockTags.LOGS).add(ModBlocks.POTATO_STEM, ModBlocks.POTATO_HYPHAE);
         tag(BlockTags.OVERWORLD_NATURAL_LOGS).add(ModBlocks.POTATO_STEM);
@@ -129,6 +138,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.BAMBOO_BLOCKS).add(ModBlocks.BAMBOO_WOOD);
 
         tag(BlockTags.REPLACEABLE_BY_MUSHROOMS).add(ModBlocks.ORANGE_SHRUB, ModBlocks.YELLOW_SHRUB);
+        tag(BlockTags.REPLACEABLE).add(ModBlocks.ORANGE_SHRUB, ModBlocks.YELLOW_SHRUB);
+        tag(BlockTags.ENCHANTMENT_POWER_TRANSMITTER).add(ModBlocks.ORANGE_SHRUB, ModBlocks.YELLOW_SHRUB);
 
         for(DeferredHolder<Block, ? extends Block> deferredBlock : ModBlocks.BLOCKS.getEntries()){
             if(deferredBlock.get() instanceof StairBlock)
@@ -188,7 +199,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                         block.toString().contains("smooth") ||
                         block.toString().contains("polished") ||
                         block.toString().contains("chiseled") ||
-                        block instanceof LanternBlock ||
                         block.defaultBlockState().is(ModBlocks.NETHERITE_STAIRS));
     }
 

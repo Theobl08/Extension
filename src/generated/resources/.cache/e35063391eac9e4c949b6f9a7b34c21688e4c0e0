@@ -1,4 +1,4 @@
-// 26.3	2026-09-22T12:21:56.8222234	Tags for minecraft:block mod id extension
+// 26.3	2026-10-05T23:03:21.9056278	Tags for minecraft:block mod id extension
 6af7f26669e374797e819a720298b940f77a2c18 data/c/tags/block/fences.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/block/fences/nether_brick.json
 e425c47578377de2388a2a345e79caccab792af8 data/c/tags/block/fence_gates/wooden.json
@@ -14,31 +14,36 @@ c0434c4e9b5cdc9314107095014bb559626cf0a9 data/extension/tags/block/copper_fire_b
 5100ac8a910d42428c75205d145bb249574ca2c1 data/extension/tags/block/ender_fire_base_blocks.json
 b2300135caa494a27cb7a1bbf1427da73ffa8c63 data/extension/tags/block/redstone_fire_base_blocks.json
 4adf5b941cac85c0ee24f444633aa2c07e620ef0 data/minecraft/tags/block/bamboo_blocks.json
+e994b502fa84d2d351afd20245604823cdd325df data/minecraft/tags/block/blocks_motion_no_leaves.json
 c2b25de3136547dc1ae29b20e9c2ec38656ae6fa data/minecraft/tags/block/campfires.json
+d4dca80551a0d488392912428cdc618c8b8e9197 data/minecraft/tags/block/cannot_place_basalt_pillar_on.json
 e6fb5ccafd35ae058e2e0678279b45d06c7864fc data/minecraft/tags/block/cauldrons.json
 c1b0f3bc5074bdb8f2518e78819094ab859167f2 data/minecraft/tags/block/ceiling_hanging_signs.json
+d1f4b5e42e72598156108941ed5580031af15bf2 data/minecraft/tags/block/enchantment_power_transmitter.json
 6af7f26669e374797e819a720298b940f77a2c18 data/minecraft/tags/block/fences.json
 e425c47578377de2388a2a345e79caccab792af8 data/minecraft/tags/block/fence_gates.json
 dda2b9f854f882316a5f1fc960987e325fa9d68c data/minecraft/tags/block/fire.json
+a1d01b6a1b82929ecb7315678011273652b41d66 data/minecraft/tags/block/lanterns.json
 096ddd7892a9f24bf58d25dccf95160736b6bee4 data/minecraft/tags/block/leaves.json
 4737b983b9cab361c9d355611cdc43645e329274 data/minecraft/tags/block/logs.json
-cf56f541742b03711b7f74b9a7477750d7e96246 data/minecraft/tags/block/mineable/axe.json
-084d1c620f52c0e482e028b456fdfe5ebb486971 data/minecraft/tags/block/mineable/pickaxe.json
+dd5b1c0be86037b3fdacf8461538d651dd4c2c7c data/minecraft/tags/block/mineable/axe.json
+e4988594cb7a1b76575f4273be19000bb1af862a data/minecraft/tags/block/mineable/pickaxe.json
 45d7047b9d3567131955bd6cd85d4b295042277a data/minecraft/tags/block/overworld_natural_logs.json
 3486cb571e4d7f4403ec590dfafb6972d44ae7da data/minecraft/tags/block/piglin_repellents.json
 fb08e79ad6a72de180b1d4b584fe8db7ed01bb10 data/minecraft/tags/block/planks.json
-dda2b9f854f882316a5f1fc960987e325fa9d68c data/minecraft/tags/block/replaceable.json
+c8544df6e74a7d16c96f48ab846a8828f2f0d631 data/minecraft/tags/block/replaceable.json
 d1f4b5e42e72598156108941ed5580031af15bf2 data/minecraft/tags/block/replaceable_by_mushrooms.json
 82905b1536acc588b4f6d9ea2228be5838d67774 data/minecraft/tags/block/saplings.json
 0e3139b247b37247d9322ff679c5f2b4db9a7340 data/minecraft/tags/block/slabs.json
 7c05ffbca25c048919d4100d7919450945c54578 data/minecraft/tags/block/soul_fire_base_blocks.json
 50831fb3f976b4a251122759400169cb9afeb268 data/minecraft/tags/block/stairs.json
 42d88003cb1227da4cf4d1f01dd8ad1504a65b89 data/minecraft/tags/block/standing_signs.json
-34eaa462ea39124fc0306bbd59d830339224754d data/minecraft/tags/block/sword_efficient.json
+efe552faad789a6d87d9b0aa5b31a8e4a153b498 data/minecraft/tags/block/sword_efficient.json
 4a35feacbc6f72c4a203d2dcb08dd4a143200af0 data/minecraft/tags/block/walls.json
 f2d60b7a511e060a6392a3cd33de9c6a5f403b8e data/minecraft/tags/block/wall_hanging_signs.json
 09e5394208db8dd2a9449329937e41c0e21a71e0 data/minecraft/tags/block/wall_post_override.json
 ad2d74147d85cf9bb73d521f6f8f2e58d61ac787 data/minecraft/tags/block/wall_signs.json
+13b68a5d39e6daad4585eb0872a88c26eb774c22 data/minecraft/tags/block/washed_away_by_fluids.json
 05463d3307b5cf48def4b2e9168575393570e9c6 data/minecraft/tags/block/wooden_buttons.json
 9dc2e3835f586ad0fcbc3ac9706d3b02285677fe data/minecraft/tags/block/wooden_doors.json
 3bee9c193ad3617ab20672b4914ffe1247278077 data/minecraft/tags/block/wooden_fences.json
