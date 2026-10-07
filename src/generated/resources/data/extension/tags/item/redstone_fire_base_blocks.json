@@ -1,0 +1,8 @@
+{
+  "values": [
+    "#minecraft:redstone_ores",
+    "minecraft:redstone_block",
+    "extension:redstone_o_lantern",
+    "extension:carmine_froglight"
+  ]
+}

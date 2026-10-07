@@ -17,6 +17,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.item.ModItems;
+import net.theobl.extension.tags.ModBlockTags;
+import net.theobl.extension.tags.ModItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -72,6 +74,9 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
         copy(BlockTags.WALLS, ItemTags.WALLS);
         copy(BlockTags.FENCES, BlockItemTags.FENCES.item());
         copy(BlockTags.SOUL_FIRE_BASE_BLOCKS, ItemTags.SOUL_FIRE_BASE_BLOCKS);
+        copy(ModBlockTags.COPPER_FIRE_BASE_BLOCKS, ModItemTags.COPPER_FIRE_BASE_BLOCKS);
+        copy(ModBlockTags.ENDER_FIRE_BASE_BLOCKS, ModItemTags.ENDER_FIRE_BASE_BLOCKS);
+        copy(ModBlockTags.REDSTONE_FIRE_BASE_BLOCKS, ModItemTags.REDSTONE_FIRE_BASE_BLOCKS);
         copy(BlockTags.PIGLIN_REPELLENTS, ItemTags.PIGLIN_REPELLENTS);
         copy(Tags.Blocks.FENCES, Tags.Items.FENCES);
         copy(Tags.Blocks.FENCES_NETHER_BRICK, Tags.Items.FENCES_NETHER_BRICK);

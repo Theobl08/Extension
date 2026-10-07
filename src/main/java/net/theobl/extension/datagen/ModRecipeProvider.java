@@ -31,6 +31,7 @@ import net.theobl.extension.block.WoodTypeCollection;
 import net.theobl.extension.datagen.recipe.FletchingRecipeBuilder;
 import net.theobl.extension.item.ModItems;
 import net.theobl.extension.item.crafting.TippedArrowFletchingRecipe;
+import net.theobl.extension.tags.ModItemTags;
 
 import javax.annotation.Nullable;
 import java.util.Set;
@@ -211,7 +212,7 @@ public class ModRecipeProvider extends RecipeProvider {
         this.shaped(RecipeCategory.DECORATIONS, ModBlocks.ENDER_TORCH, 4)
                 .define('X', Ingredient.of(Items.COAL, Items.CHARCOAL))
                 .define('#', Items.STICK)
-                .define('C', Tags.Items.END_STONES)
+                .define('C', ModItemTags.ENDER_FIRE_BASE_BLOCKS)
                 .pattern("X")
                 .pattern("#")
                 .pattern("C")
@@ -292,7 +293,7 @@ public class ModRecipeProvider extends RecipeProvider {
         shaped(RecipeCategory.DECORATIONS, ModBlocks.ENDER_CAMPFIRE)
                 .define('L', ItemTags.LOGS)
                 .define('S', Items.STICK)
-                .define('C', Tags.Items.END_STONES)
+                .define('C', ModItemTags.ENDER_FIRE_BASE_BLOCKS)
                 .pattern(" S ")
                 .pattern("SCS")
                 .pattern("LLL")
