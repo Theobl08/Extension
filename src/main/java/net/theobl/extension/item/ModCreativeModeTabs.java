@@ -150,6 +150,8 @@ public class ModCreativeModeTabs {
             event.insertAfter(Items.SOUL_LANTERN.getDefaultInstance(), ModBlocks.ENDER_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.COPPER_LANTERN.waxed().oxidized().getDefaultInstance(), ModBlocks.REDSTONE_LANTERN.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(Items.SOUL_CAMPFIRE.getDefaultInstance(), ModBlocks.COPPER_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.OCHRE_FROGLIGHT.getDefaultInstance(), ModBlocks.CERULEAN_FROGLIGHT.toStack(), PARENT_AND_SEARCH_TABS);
+            event.insertAfter(Items.PEARLESCENT_FROGLIGHT.getDefaultInstance(), ModBlocks.CARMINE_FROGLIGHT.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.COPPER_CAMPFIRE.toStack(), ModBlocks.ENDER_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);
             event.insertAfter(ModBlocks.ENDER_CAMPFIRE.toStack(), ModBlocks.REDSTONE_CAMPFIRE.toStack(), PARENT_AND_SEARCH_TABS);
         }

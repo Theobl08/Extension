@@ -40,7 +40,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.BLUE_NETHER_BRICK_FENCE);
 
         tag(Tags.Blocks.GLASS_PANES).add(ModBlocks.TINTED_GLASS_PANE);
-        tag(BlockTags.BLOCKS_MOTION_NO_LEAVES).add(ModBlocks.TINTED_GLASS_PANE);
+        tag(BlockTags.BLOCKS_MOTION_NO_LEAVES).add(ModBlocks.TINTED_GLASS_PANE).add(ModBlocks.CERULEAN_FROGLIGHT, ModBlocks.CARMINE_FROGLIGHT);
+        tag(Tags.Blocks.FROGLIGHTS).add(ModBlocks.CERULEAN_FROGLIGHT, ModBlocks.CARMINE_FROGLIGHT);
         tag(BlockTags.SWORD_EFFICIENT)
                 .add(ModBlocks.SOUL_O_LANTERN)
                 .add(ModBlocks.REDSTONE_O_LANTERN)

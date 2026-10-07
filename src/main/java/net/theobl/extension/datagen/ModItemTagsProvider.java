@@ -82,6 +82,9 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
         copy(Tags.Blocks.SANDSTONE_STAIRS, Tags.Items.SANDSTONE_STAIRS);
         copy(Tags.Blocks.SANDSTONE_SLABS, Tags.Items.SANDSTONE_SLABS);
 
+        tag(ItemTags.SULFUR_CUBE_ARCHETYPE_FAST_FLAT).add(ModBlocks.CERULEAN_FROGLIGHT.asItem(), ModBlocks.CARMINE_FROGLIGHT.asItem());
+        copy(Tags.Blocks.FROGLIGHTS, Tags.Items.FROGLIGHTS);
+
         copy(Tags.Blocks.PLAYER_WORKSTATIONS_CRAFTING_TABLES, Tags.Items.PLAYER_WORKSTATIONS_CRAFTING_TABLES);
         for (var block : ModBlocks.BLOCKS.getEntries().stream().map(DeferredHolder::get).toList()) {
             if(block instanceof CartographyTableBlock) {

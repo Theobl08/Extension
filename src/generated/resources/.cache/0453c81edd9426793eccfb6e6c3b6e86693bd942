@@ -1,10 +1,11 @@
-// 26.3	2026-10-05T22:41:33.3929703	Tags for minecraft:item mod id extension
+// 26.3	2026-10-06T16:10:21.7827504	Tags for minecraft:item mod id extension
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks.json
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks/nether.json
 d4dca80551a0d488392912428cdc618c8b8e9197 data/c/tags/item/crops.json
 6af7f26669e374797e819a720298b940f77a2c18 data/c/tags/item/fences.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/item/fences/nether_brick.json
 e425c47578377de2388a2a345e79caccab792af8 data/c/tags/item/fence_gates/wooden.json
+79e89080a565f3434bd05d9070fb5a71ea7fbbda data/c/tags/item/froglights.json
 e994b502fa84d2d351afd20245604823cdd325df data/c/tags/item/glass_panes.json
 d41ede5f1302b43f5dbd755f9f7deaf12f9bafa3 data/c/tags/item/natural_woods.json
 220cbd17fbf58970272245dfa32378d315d17bd9 data/c/tags/item/player_workstations/crafting_tables.json
@@ -30,6 +31,7 @@ fb08e79ad6a72de180b1d4b584fe8db7ed01bb10 data/minecraft/tags/item/planks.json
 0e3139b247b37247d9322ff679c5f2b4db9a7340 data/minecraft/tags/item/slabs.json
 7c05ffbca25c048919d4100d7919450945c54578 data/minecraft/tags/item/soul_fire_base_blocks.json
 50831fb3f976b4a251122759400169cb9afeb268 data/minecraft/tags/item/stairs.json
+79e89080a565f3434bd05d9070fb5a71ea7fbbda data/minecraft/tags/item/sulfur_cube_archetype/fast_flat.json
 4a35feacbc6f72c4a203d2dcb08dd4a143200af0 data/minecraft/tags/item/walls.json
 05463d3307b5cf48def4b2e9168575393570e9c6 data/minecraft/tags/item/wooden_buttons.json
 9dc2e3835f586ad0fcbc3ac9706d3b02285677fe data/minecraft/tags/item/wooden_doors.json

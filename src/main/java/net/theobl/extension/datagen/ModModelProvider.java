@@ -131,6 +131,9 @@ public class ModModelProvider extends ModelProvider {
         createFire(ModBlocks.REDSTONE_FIRE.get(), blockModels);
         createFire(ModBlocks.ENDER_FIRE.get(), blockModels);
 
+        blockModels.createRotatedPillarWithHorizontalVariant(ModBlocks.CERULEAN_FROGLIGHT.get(), TexturedModel.COLUMN, TexturedModel.COLUMN_HORIZONTAL);
+        blockModels.createRotatedPillarWithHorizontalVariant(ModBlocks.CARMINE_FROGLIGHT.get(), TexturedModel.COLUMN, TexturedModel.COLUMN_HORIZONTAL);
+
         WoodTypeCollection.TYPES.forEach(woodType -> {
             if (woodType != WoodType.OAK) {
                 blockModels.createCraftingTableLike(

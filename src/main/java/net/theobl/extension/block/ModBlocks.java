@@ -253,6 +253,17 @@ public class ModBlocks {
             EnderFireBlock::new,
             () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FIRE));
 
+    public static final DeferredBlock<Block> CERULEAN_FROGLIGHT = registerBlock(
+            "cerulean_froglight",
+            RotatedPillarBlock::new,
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OCHRE_FROGLIGHT).mapColor(MapColor.COLOR_CYAN)
+    );
+    public static final DeferredBlock<Block> CARMINE_FROGLIGHT = registerBlock(
+            "carmine_froglight",
+            RotatedPillarBlock::new,
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OCHRE_FROGLIGHT).mapColor(MapColor.COLOR_RED)
+    );
+
     public static final DeferredBlock<Block> MILK_CAULDRON = BLOCKS.registerBlock("milk_cauldron",
             MilkCauldronBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON));
     public static final DeferredBlock<PotionCauldronBlock> POTION_CAULDRON = BLOCKS.registerBlock(
