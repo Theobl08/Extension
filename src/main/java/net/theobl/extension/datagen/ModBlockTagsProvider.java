@@ -67,7 +67,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.WALL_POST_OVERRIDE).add(ModBlocks.ENDER_TORCH);
         tag(BlockTags.CAMPFIRES).add(ModBlocks.COPPER_CAMPFIRE, ModBlocks.REDSTONE_CAMPFIRE, ModBlocks.ENDER_CAMPFIRE);
-        tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModBlocks.SOUL_O_LANTERN);
+        tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModBlocks.SOUL_O_LANTERN).add(ModBlocks.CERULEAN_FROGLIGHT);
         tag(Tags.Blocks.PUMPKINS)
                 .add(ModBlocks.SOUL_O_LANTERN)
                 .add(ModBlocks.COPPER_O_LANTERN)
@@ -90,12 +90,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addAll(Blocks.COPPER_TRAPDOOR.asList().stream().filter(this::isNotOxidized).toList())
                 .addAll(Blocks.COPPER_BULB.asList().stream().filter(this::isNotOxidized).toList())
                 .add(Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE)
-                .add(ModBlocks.COPPER_O_LANTERN);
+                .add(ModBlocks.COPPER_O_LANTERN)
+                .add(Blocks.VERDANT_FROGLIGHT);
 
         tag(ModBlockTags.REDSTONE_FIRE_BASE_BLOCKS)
                 .addTag(BlockItemTags.REDSTONE_ORES.block())
                 .add(Blocks.REDSTONE_BLOCK)
-                .add(ModBlocks.REDSTONE_O_LANTERN);
+                .add(ModBlocks.REDSTONE_O_LANTERN)
+                .add(ModBlocks.CARMINE_FROGLIGHT);
 
         tag(ModBlockTags.ENDER_FIRE_BASE_BLOCKS)
                 .addTag(Tags.Blocks.END_STONES)
@@ -113,7 +115,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.POLISHED_END_STONE_SLAB)
                 .add(ModBlocks.POLISHED_END_STONE_WALL)
                 .add(ModBlocks.PURPUR_WALL)
-                .add(ModBlocks.ENDER_O_LANTERN);
+                .add(ModBlocks.ENDER_O_LANTERN)
+                .add(Blocks.PEARLESCENT_FROGLIGHT);
 
         tag(BlockTags.LANTERNS).add(ModBlocks.ENDER_LANTERN).add(ModBlocks.REDSTONE_LANTERN);
 

@@ -55,6 +55,7 @@
     "minecraft:waxed_oxidized_copper_bulb",
     "minecraft:copper_ore",
     "minecraft:deepslate_copper_ore",
-    "extension:copper_o_lantern"
+    "extension:copper_o_lantern",
+    "minecraft:verdant_froglight"
   ]
 }
