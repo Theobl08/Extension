@@ -9,6 +9,7 @@ import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -41,7 +42,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.BLUE_NETHER_BRICK_FENCE);
 
         tag(Tags.Blocks.GLASS_PANES).add(ModBlocks.TINTED_GLASS_PANE);
-        tag(BlockTags.BLOCKS_MOTION_NO_LEAVES).add(ModBlocks.TINTED_GLASS_PANE).add(ModBlocks.CERULEAN_FROGLIGHT, ModBlocks.CARMINE_FROGLIGHT);
+        tag(BlockTags.BLOCKS_MOTION_NO_LEAVES)
+                .add(ModBlocks.TINTED_GLASS_PANE)
+                .add(ModBlocks.CERULEAN_FROGLIGHT, ModBlocks.CARMINE_FROGLIGHT)
+                .addAll(ModBlocks.CRAFTING_TABLES, WoodType.OAK)
+                .addAll(ModBlocks.CARTOGRAPHY_TABLES, WoodType.DARK_OAK)
+                .addAll(ModBlocks.FLETCHING_TABLES, WoodType.BIRCH);
         tag(Tags.Blocks.FROGLIGHTS).add(ModBlocks.CERULEAN_FROGLIGHT, ModBlocks.CARMINE_FROGLIGHT);
         tag(BlockTags.SWORD_EFFICIENT)
                 .add(ModBlocks.SOUL_O_LANTERN)

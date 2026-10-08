@@ -7,7 +7,9 @@ import net.minecraft.tags.TagEntry;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.ColorCollection;
 import net.minecraft.world.level.block.WeatheringCopperCollection;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.theobl.extension.block.WoodTypeCollection;
 import org.jspecify.annotations.NullMarked;
 
 import java.util.Arrays;
@@ -102,6 +104,16 @@ public abstract class IntrinsicHolderTagAppender<Element> implements TagAppender
 
     public <T extends DeferredHolder<Element, ? extends Element>> IntrinsicHolderTagAppender<Element> addAll(WeatheringCopperCollection<T> collection) {
         collection.forEach(this::add);
+        return this;
+    }
+
+    public <T extends DeferredHolder<Element, ? extends Element>> IntrinsicHolderTagAppender<Element> addAll(WoodTypeCollection<T> collection) {
+        collection.forEach(this::add);
+        return this;
+    }
+
+    public <T extends DeferredHolder<Element, ? extends Element>> IntrinsicHolderTagAppender<Element> addAll(WoodTypeCollection<T> collection, WoodType woodTypeToExclude) {
+        collection.asList().stream().filter(t -> t != collection.pick(woodTypeToExclude)).toList().forEach(this::add);
         return this;
     }
 
