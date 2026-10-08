@@ -161,6 +161,7 @@ public class Extension {
     private void extendPoiTypes(ExtendPoiTypesEvent event) {
         event.addBlockToPoi(PoiTypes.LEATHERWORKER, ModBlocks.MILK_CAULDRON.get());
         WoodTypeCollection.TYPES.forEach(woodType -> {
+            if(woodType != WoodType.BIRCH) event.addBlockToPoi(PoiTypes.FLETCHER, ModBlocks.FLETCHING_TABLES.pick(woodType).get());
             if(woodType != WoodType.DARK_OAK) event.addBlockToPoi(PoiTypes.CARTOGRAPHER, ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get());
         });
     }

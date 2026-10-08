@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "#": "minecraft:stick",
-    "C": "#c:end_stones",
+    "C": "#extension:ender_fire_base_blocks",
     "X": [
       "minecraft:coal",
       "minecraft:charcoal"

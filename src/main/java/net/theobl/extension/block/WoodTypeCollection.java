@@ -51,7 +51,7 @@ public record WoodTypeCollection<T>(
 
     public static <B extends Block> WoodTypeCollection<DeferredBlock<B>> registerBlocksWithExistingVanillaBlock(
             String id,
-            TriFunction<String, Function<BlockBehaviour.Properties, Block>, BlockBehaviour.Properties, DeferredBlock<B>> register,
+            TriFunction<String, Function<BlockBehaviour.Properties, B>, BlockBehaviour.Properties, DeferredBlock<B>> register,
             BiFunction<WoodType, BlockBehaviour.Properties, B> woodTypeBlockFactory,
             Function<WoodType, BlockBehaviour.Properties> propertiesSupplier,
             Block existingBlock,

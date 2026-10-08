@@ -13,6 +13,7 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.theobl.extension.Extension;
+import net.theobl.extension.block.FletchingTableBlock;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.tags.ModBlockTags;
 
@@ -171,6 +172,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             if(deferredBlock.get() instanceof CartographyTableBlock) {
                 tag(Tags.Blocks.VILLAGER_JOB_SITES).add(deferredBlock);
             }
+            if(deferredBlock.get() instanceof FletchingTableBlock) {
+                tag(Tags.Blocks.VILLAGER_JOB_SITES).add(deferredBlock);
+            }
 
             if(deferredBlock.get() instanceof SaplingBlock)
                 tag(BlockItemTags.SAPLINGS.block()).add(deferredBlock);
@@ -208,7 +212,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     private boolean mineableWithAxe(Block block) {
         return block instanceof CraftingTableBlock
-                || block instanceof CartographyTableBlock;
+                || block instanceof CartographyTableBlock
+                || block instanceof FletchingTableBlock;
     }
 
     private boolean isNotOxidized(Block block) {

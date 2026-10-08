@@ -13,6 +13,7 @@ import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.theobl.extension.block.FletchingTableBlock;
 import net.theobl.extension.item.crafting.FletchingRecipe;
 import net.theobl.extension.item.crafting.ModRecipeType;
 
@@ -146,7 +147,8 @@ public class FletchingMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(this.access, player, Blocks.FLETCHING_TABLE);
+        return access.evaluate((level, pos) ->
+                (level.getBlockState(pos).getBlock() instanceof FletchingTableBlock || level.getBlockState(pos).is(Blocks.FLETCHING_TABLE)) && player.isWithinBlockInteractionRange(pos, 4.0), true);
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

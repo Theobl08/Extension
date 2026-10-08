@@ -291,6 +291,11 @@ public class ModBlocks {
                     .sound(woodType.soundType()),
             Blocks.CARTOGRAPHY_TABLE, WoodType.DARK_OAK
     );
+    public static final WoodTypeCollection<DeferredBlock<Block>> FLETCHING_TABLES = registerWoodTypeCollection(
+            "fletching_table",
+            FletchingTableBlock::new,
+            Blocks.FLETCHING_TABLE, WoodType.BIRCH
+    );
     public static final DeferredBlock<Block> RED_POPLAR_SAPLING = registerBlock(
             "red_poplar_sapling",
             p -> new SaplingBlock(ModTreeGrower.RED_POPLAR, p),
@@ -562,6 +567,18 @@ public class ModBlocks {
 
     private static boolean never(BlockState state, BlockGetter blockGetter, BlockPos blockPos) {
         return false;
+    }
+
+    private static  <T extends Block> WoodTypeCollection<DeferredBlock<T>> registerWoodTypeCollection(String name, Function<BlockBehaviour.Properties, T> factory, Block existingBlock, WoodType existingBlockWoodType) {
+        return WoodTypeCollection.registerBlocksWithExistingVanillaBlock(
+                name,
+                ModBlocks::registerBlock,
+                (woodType, p) -> factory.apply(p),
+                woodType -> BlockBehaviour.Properties.ofFullCopy(existingBlock)
+                        .mapColor(WoodTypeCollection.BASE.pick(woodType).defaultMapColor())
+                        .sound(woodType.soundType()),
+                existingBlock, existingBlockWoodType
+        );
     }
 
     public static <T extends Block> DeferredBlock<Block> registerStair(String name, DeferredBlock<T> baseBlock) {

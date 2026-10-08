@@ -141,6 +141,12 @@ public class ModModelProvider extends ModelProvider {
                         WoodTypeCollection.BASE.pick(woodType),
                         TextureMapping::craftingTable);
             }
+            if (woodType != WoodType.BIRCH) {
+                blockModels.createCraftingTableLike(
+                        ModBlocks.FLETCHING_TABLES.pick(woodType).get(),
+                        WoodTypeCollection.BASE.pick(woodType),
+                        TextureMapping::fletchingTable);
+            }
             if (woodType != WoodType.DARK_OAK) {
                 TextureMapping mapping = new TextureMapping()
                         .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get(), "_side3"))

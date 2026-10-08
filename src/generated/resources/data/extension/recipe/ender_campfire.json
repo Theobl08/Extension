@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "C": "#c:end_stones",
+    "C": "#extension:ender_fire_base_blocks",
     "L": "#minecraft:logs",
     "S": "minecraft:stick"
   },

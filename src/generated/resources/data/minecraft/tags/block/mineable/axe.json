@@ -30,6 +30,18 @@
     "extension:bamboo_cartography_table",
     "extension:cherry_cartography_table",
     "extension:pale_oak_cartography_table",
-    "extension:poplar_cartography_table"
+    "extension:poplar_cartography_table",
+    "extension:oak_fletching_table",
+    "extension:spruce_fletching_table",
+    "extension:jungle_fletching_table",
+    "extension:acacia_fletching_table",
+    "extension:dark_oak_fletching_table",
+    "extension:crimson_fletching_table",
+    "extension:warped_fletching_table",
+    "extension:mangrove_fletching_table",
+    "extension:bamboo_fletching_table",
+    "extension:cherry_fletching_table",
+    "extension:pale_oak_fletching_table",
+    "extension:poplar_fletching_table"
   ]
 }
