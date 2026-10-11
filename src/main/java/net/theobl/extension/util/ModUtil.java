@@ -69,7 +69,7 @@ public class ModUtil {
 
     public static <T> String name(T value) {
         return switch (value) {
-            case Holder<?> holder -> holder.getKey() != null ? holder.getKey().identifier().getPath() : holder.toString();
+            case Holder<?> holder -> holder.key().identifier().getPath();
             case Block block -> BuiltInRegistries.BLOCK.getKey(block).getPath();
             case null, default -> "";
         };

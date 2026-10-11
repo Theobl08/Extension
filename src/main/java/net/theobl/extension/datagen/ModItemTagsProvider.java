@@ -48,32 +48,32 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
         tag(ItemTags.CHEST_BOATS).add(ModItems.POTATO_CHEST_RAFT);
 
         tag(ItemTags.DECORATED_POT_SHERDS).add(ModItems.EMPTY_POTTERY_SHERD);
-        copy(BlockTags.LANTERNS, BlockItemTags.LANTERNS.item());
+        copy(BlockItemTags.LANTERNS);
 
-        copy(BlockTags.LEAVES, ItemTags.LEAVES);
-        copy(BlockItemTags.SAPLINGS.block(), ItemTags.SAPLINGS);
-        copy(BlockTags.LOGS, ItemTags.LOGS);
+        copy(BlockItemTags.LEAVES);
+        copy(BlockItemTags.SAPLINGS);
+        copy(BlockItemTags.LOGS);
         copy(Tags.Blocks.NATURAL_WOODS, Tags.Items.NATURAL_WOODS);
-        copy(BlockTags.PLANKS, ItemTags.PLANKS);
-        copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
-        copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
-        copy(BlockTags.WOODEN_FENCES, ItemTags.WOODEN_FENCES);
-        copy(BlockTags.FENCE_GATES, ItemTags.FENCE_GATES);
+        copy(BlockItemTags.PLANKS);
+        copy(BlockItemTags.WOODEN_STAIRS);
+        copy(BlockItemTags.WOODEN_SLABS);
+        copy(BlockItemTags.WOODEN_FENCES);
+        copy(BlockItemTags.FENCE_GATES);
         copy(Tags.Blocks.FENCE_GATES_WOODEN, Tags.Items.FENCE_GATES_WOODEN);
-        copy(BlockTags.WOODEN_DOORS, ItemTags.WOODEN_DOORS);
-        copy(BlockTags.WOODEN_TRAPDOORS, ItemTags.WOODEN_TRAPDOORS);
-        copy(BlockTags.WOODEN_PRESSURE_PLATES, ItemTags.WOODEN_PRESSURE_PLATES);
-        copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
-        copy(BlockTags.STANDING_SIGNS, ItemTags.SIGNS);
-        copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
+        copy(BlockItemTags.WOODEN_DOORS);
+        copy(BlockItemTags.WOODEN_TRAPDOORS);
+        copy(BlockItemTags.WOODEN_PRESSURE_PLATES);
+        copy(BlockItemTags.WOODEN_BUTTONS);
+        copy(BlockItemTags.SIGNS);
+        copy(BlockItemTags.HANGING_SIGNS);
 
-        copy(BlockTags.BAMBOO_BLOCKS, ItemTags.BAMBOO_BLOCKS);
+        copy(BlockItemTags.BAMBOO_BLOCKS);
 
-        copy(BlockTags.STAIRS, BlockItemTags.STAIRS.item());
-        copy(BlockTags.SLABS, BlockItemTags.SLABS.item());
-        copy(BlockTags.WALLS, ItemTags.WALLS);
-        copy(BlockTags.FENCES, BlockItemTags.FENCES.item());
-        copy(BlockTags.SOUL_FIRE_BASE_BLOCKS, ItemTags.SOUL_FIRE_BASE_BLOCKS);
+        copy(BlockItemTags.STAIRS);
+        copy(BlockItemTags.SLABS);
+        copy(BlockItemTags.WALLS);
+        copy(BlockItemTags.FENCES);
+        copy(BlockItemTags.SOUL_FIRE_BASE_BLOCKS);
         copy(ModBlockTags.COPPER_FIRE_BASE_BLOCKS, ModItemTags.COPPER_FIRE_BASE_BLOCKS);
         copy(ModBlockTags.ENDER_FIRE_BASE_BLOCKS, ModItemTags.ENDER_FIRE_BASE_BLOCKS);
         copy(ModBlockTags.REDSTONE_FIRE_BASE_BLOCKS, ModItemTags.REDSTONE_FIRE_BASE_BLOCKS);

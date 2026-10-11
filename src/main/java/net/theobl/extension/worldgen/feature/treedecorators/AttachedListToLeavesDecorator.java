@@ -50,7 +50,7 @@ public class AttachedListToLeavesDecorator extends TreeDecorator {
 
     @Override
     public void place(Context context) {
-        Set<BlockPos> propaguleBlacklist = new HashSet();
+        Set<BlockPos> propaguleBlacklist = new HashSet<>();
         RandomSource random = context.random();
 
         for(BlockPos leafPos : this.useLogs

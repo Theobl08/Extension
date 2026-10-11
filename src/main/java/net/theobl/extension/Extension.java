@@ -137,7 +137,7 @@ public class Extension {
         modEventBus.addListener(this::modifyDefaultComponents);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.LOCAL, Config.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -243,7 +243,7 @@ public class Extension {
             PotionContents potionContents = stack.get(DataComponents.POTION_CONTENTS);
             if(potionContents != null && potionContents.potion().isPresent()) {
                 Holder<Potion> potion = potionContents.potion().get();
-                String potionName = potion.getKey().identifier().getPath();
+                String potionName = potion.key().identifier().getPath();
                 List<Component> tooltip = event.getToolTip();
 
                 int index = tooltip.size();

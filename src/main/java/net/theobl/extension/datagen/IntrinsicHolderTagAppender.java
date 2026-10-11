@@ -81,13 +81,13 @@ public abstract class IntrinsicHolderTagAppender<Element> implements TagAppender
     }
 
     public IntrinsicHolderTagAppender<Element> add(DeferredHolder<Element, ? extends Element> element) {
-        this.add(element.getKey());
+        this.add(element.key());
         return this;
     }
 
     @SafeVarargs
     public final IntrinsicHolderTagAppender<Element> add(DeferredHolder<Element, ? extends Element>... element) {
-        this.original.addAll(Arrays.stream(element).map(DeferredHolder::getKey));
+        this.original.addAll(Arrays.stream(element).map(DeferredHolder::key));
         return this;
     }
 
