@@ -6,7 +6,6 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.MultiRegistryBootstrap;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.BlockFamilies;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.recipes.*;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -15,7 +14,6 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -205,8 +203,8 @@ public class ModRecipeProvider extends RecipeProvider {
         cut(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SOUL_SANDSTONE, ModBlocks.SOUL_SANDSTONE);
 
         WoodTypeCollection.TYPES.forEach(woodType -> {
-            if(woodType != WoodType.OAK) craftingTable(ModBlocks.CRAFTING_TABLES.pick(woodType), WoodTypeCollection.BASE.pick(woodType));
-            if(woodType != WoodType.DARK_OAK) cartographyTable(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType), WoodTypeCollection.BASE.pick(woodType));
+            if(woodType != WoodType.OAK) craftingTable(ModBlocks.CRAFTING_TABLES.pick(woodType), WoodTypeCollection.PLANKS.pick(woodType));
+            if(woodType != WoodType.DARK_OAK) cartographyTable(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType), WoodTypeCollection.PLANKS.pick(woodType));
         });
 
         this.shaped(RecipeCategory.DECORATIONS, ModBlocks.ENDER_TORCH, 4)

@@ -277,7 +277,7 @@ public class ModBlocks {
             ModBlocks::registerBlock,
             ((woodType, properties) -> new CraftingTableBlock(properties)),
             woodType -> BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
-                    .mapColor(WoodTypeCollection.BASE.pick(woodType).defaultMapColor())
+                    .mapColor(WoodTypeCollection.PLANKS.pick(woodType).defaultMapColor())
                     .sound(woodType.soundType()),
             Blocks.CRAFTING_TABLE, WoodType.OAK
     );
@@ -287,7 +287,7 @@ public class ModBlocks {
             ModBlocks::registerBlock,
             ((woodType, properties) -> new CartographyTableBlock(properties)),
             woodType -> BlockBehaviour.Properties.ofFullCopy(Blocks.CARTOGRAPHY_TABLE)
-                    .mapColor(WoodTypeCollection.BASE.pick(woodType).defaultMapColor())
+                    .mapColor(WoodTypeCollection.PLANKS.pick(woodType).defaultMapColor())
                     .sound(woodType.soundType()),
             Blocks.CARTOGRAPHY_TABLE, WoodType.DARK_OAK
     );
@@ -575,7 +575,7 @@ public class ModBlocks {
                 ModBlocks::registerBlock,
                 (woodType, p) -> factory.apply(p),
                 woodType -> BlockBehaviour.Properties.ofFullCopy(existingBlock)
-                        .mapColor(WoodTypeCollection.BASE.pick(woodType).defaultMapColor())
+                        .mapColor(WoodTypeCollection.PLANKS.pick(woodType).defaultMapColor())
                         .sound(woodType.soundType()),
                 existingBlock, existingBlockWoodType
         );

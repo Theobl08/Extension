@@ -33,7 +33,7 @@ public record WoodTypeCollection<T>(
             WoodType.POPLAR
     );
     public static final WoodTypeCollection<String> NAMES = TYPES.map(WoodType::name);
-    public static final WoodTypeCollection<Block> BASE = new WoodTypeCollection<>(
+    public static final WoodTypeCollection<Block> PLANKS = new WoodTypeCollection<>(
             Blocks.OAK_PLANKS,
             Blocks.SPRUCE_PLANKS,
             Blocks.BIRCH_PLANKS,

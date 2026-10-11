@@ -138,19 +138,19 @@ public class ModModelProvider extends ModelProvider {
             if (woodType != WoodType.OAK) {
                 blockModels.createCraftingTableLike(
                         ModBlocks.CRAFTING_TABLES.pick(woodType).get(),
-                        WoodTypeCollection.BASE.pick(woodType),
+                        WoodTypeCollection.PLANKS.pick(woodType),
                         TextureMapping::craftingTable);
             }
             if (woodType != WoodType.BIRCH) {
                 blockModels.createCraftingTableLike(
                         ModBlocks.FLETCHING_TABLES.pick(woodType).get(),
-                        WoodTypeCollection.BASE.pick(woodType),
+                        WoodTypeCollection.PLANKS.pick(woodType),
                         TextureMapping::fletchingTable);
             }
             if (woodType != WoodType.DARK_OAK) {
                 TextureMapping mapping = new TextureMapping()
                         .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get(), "_side3"))
-                        .put(TextureSlot.DOWN, TextureMapping.getBlockTexture(WoodTypeCollection.BASE.pick(woodType)))
+                        .put(TextureSlot.DOWN, TextureMapping.getBlockTexture(WoodTypeCollection.PLANKS.pick(woodType)))
                         .put(TextureSlot.UP, TextureMapping.getBlockTexture(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get(), "_top"))
                         .put(TextureSlot.NORTH, TextureMapping.getBlockTexture(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get(), "_side3"))
                         .put(TextureSlot.EAST, TextureMapping.getBlockTexture(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get(), "_side3"))
