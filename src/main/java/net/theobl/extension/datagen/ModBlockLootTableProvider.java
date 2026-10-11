@@ -78,6 +78,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
             else if(block.get() instanceof BaseFireBlock) {
                 this.add(block.get(), noDrop());
             }
+            else if (block.get() instanceof BeehiveBlock) {
+                this.add(block.get(), this::createBeeHiveDrop);
+            }
             else {
                 this.dropSelf(block.get());
             }

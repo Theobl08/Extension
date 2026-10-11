@@ -160,6 +160,7 @@ public class ModModelProvider extends ModelProvider {
                         .accept(createSimpleBlock(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get(), plainVariant(ModelTemplates.CUBE.create(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get(), mapping, blockModels.modelOutput))));
             }
         });
+        ModBlocks.BEEHIVES.values().forEach(block -> blockModels.createBeeNest(block.get(),TextureMapping::orientableCubeSameEnds));
 
         blockModels.createPlantWithDefaultItem(ModBlocks.RED_POPLAR_SAPLING.get(), ModBlocks.POTTED_RED_POPLAR_SAPLING.get(), PlantType.NOT_TINTED);
         blockModels.createPlantWithDefaultItem(ModBlocks.ORANGE_POPLAR_SAPLING.get(), ModBlocks.POTTED_ORANGE_POPLAR_SAPLING.get(), PlantType.NOT_TINTED);

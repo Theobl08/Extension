@@ -2,6 +2,7 @@ package net.theobl.extension.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.util.Util;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.BlockGetter;
@@ -296,6 +297,11 @@ public class ModBlocks {
             FletchingTableBlock::new,
             Blocks.FLETCHING_TABLE, WoodType.BIRCH
     );
+    public static final Map<WoodType, DeferredBlock<Block>> BEEHIVES = registerVanillaBlockVariants(
+            "beehive",
+            BeehiveBlock::new,
+            Blocks.BEEHIVE, WoodType.OAK
+    );
     public static final DeferredBlock<Block> RED_POPLAR_SAPLING = registerBlock(
             "red_poplar_sapling",
             p -> new SaplingBlock(ModTreeGrower.RED_POPLAR, p),
@@ -578,6 +584,23 @@ public class ModBlocks {
                         .mapColor(WoodTypeCollection.PLANKS.pick(woodType).defaultMapColor())
                         .sound(woodType.soundType()),
                 existingBlock, existingBlockWoodType
+        );
+    }
+    private static  <T extends Block> Map<WoodType, DeferredBlock<T>> registerVanillaBlockVariants(String name, Function<BlockBehaviour.Properties, T> factory, Block vanillaBlock, WoodType vanillaBlockWoodType) {
+        return Util.make(
+                new LinkedHashMap<>(),
+                map -> WoodTypeCollection.TYPES.forEach(woodType -> {
+                    if(!woodType.equals(vanillaBlockWoodType)) {
+                        map.put(woodType, registerBlock(
+                                woodType.name() + "_" + name,
+                                factory,
+                                BlockBehaviour.Properties.ofFullCopy(vanillaBlock)
+                                        .mapColor(WoodTypeCollection.PLANKS.pick(woodType).defaultMapColor())
+                                        .sound(woodType.soundType())
+                                )
+                        );
+                    }
+                })
         );
     }
 

@@ -38,6 +38,18 @@
     "extension:bamboo_fletching_table",
     "extension:cherry_fletching_table",
     "extension:pale_oak_fletching_table",
-    "extension:poplar_fletching_table"
+    "extension:poplar_fletching_table",
+    "extension:spruce_beehive",
+    "extension:birch_beehive",
+    "extension:jungle_beehive",
+    "extension:acacia_beehive",
+    "extension:dark_oak_beehive",
+    "extension:crimson_beehive",
+    "extension:warped_beehive",
+    "extension:mangrove_beehive",
+    "extension:bamboo_beehive",
+    "extension:cherry_beehive",
+    "extension:pale_oak_beehive",
+    "extension:poplar_beehive"
   ]
 }

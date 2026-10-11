@@ -14,6 +14,7 @@ import org.jspecify.annotations.NullMarked;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @NullMarked
 public abstract class IntrinsicHolderTagAppender<Element> implements TagAppender<Element> {
@@ -119,6 +120,11 @@ public abstract class IntrinsicHolderTagAppender<Element> implements TagAppender
 
     public <T extends DeferredHolder<Element, ? extends Element>> IntrinsicHolderTagAppender<Element> addAll(Iterable<T> collection) {
         collection.forEach(this::add);
+        return this;
+    }
+
+    public <T extends DeferredHolder<Element, ? extends Element>> IntrinsicHolderTagAppender<Element> addAll(Map<?, T> collection) {
+        collection.values().forEach(this::add);
         return this;
     }
 

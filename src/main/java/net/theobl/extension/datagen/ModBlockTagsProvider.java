@@ -47,7 +47,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CERULEAN_FROGLIGHT, ModBlocks.CARMINE_FROGLIGHT)
                 .addAll(ModBlocks.CRAFTING_TABLES, WoodType.OAK)
                 .addAll(ModBlocks.CARTOGRAPHY_TABLES, WoodType.DARK_OAK)
-                .addAll(ModBlocks.FLETCHING_TABLES, WoodType.BIRCH);
+                .addAll(ModBlocks.FLETCHING_TABLES, WoodType.BIRCH)
+                .addAll(ModBlocks.BEEHIVES);
         tag(Tags.Blocks.FROGLIGHTS).add(ModBlocks.CERULEAN_FROGLIGHT, ModBlocks.CARMINE_FROGLIGHT);
         tag(BlockTags.SWORD_EFFICIENT)
                 .add(ModBlocks.SOUL_O_LANTERN)
@@ -181,6 +182,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             if(deferredBlock.get() instanceof FletchingTableBlock) {
                 tag(Tags.Blocks.VILLAGER_JOB_SITES).add(deferredBlock);
             }
+            if(deferredBlock.get() instanceof BeehiveBlock) {
+                tag(BlockTags.BEEHIVES).add(deferredBlock);
+            }
 
             if(deferredBlock.get() instanceof SaplingBlock)
                 tag(BlockItemTags.SAPLINGS.block()).add(deferredBlock);
@@ -219,6 +223,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     private boolean mineableWithAxe(Block block) {
         return block instanceof CraftingTableBlock
                 || block instanceof CartographyTableBlock
+                || block instanceof BeehiveBlock
                 || block instanceof FletchingTableBlock;
     }
 
