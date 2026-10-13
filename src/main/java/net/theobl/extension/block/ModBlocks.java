@@ -302,6 +302,11 @@ public class ModBlocks {
             BeehiveBlock::new,
             Blocks.BEEHIVE, WoodType.OAK
     );
+    public static final Map<WoodType, DeferredBlock<Block>> BOOKSHELVES = registerVanillaBlockVariants(
+            "bookshelf",
+            Block::new,
+            Blocks.BOOKSHELF, WoodType.OAK
+    );
     public static final DeferredBlock<Block> RED_POPLAR_SAPLING = registerBlock(
             "red_poplar_sapling",
             p -> new SaplingBlock(ModTreeGrower.RED_POPLAR, p),

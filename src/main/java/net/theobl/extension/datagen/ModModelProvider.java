@@ -161,6 +161,11 @@ public class ModModelProvider extends ModelProvider {
             }
         });
         ModBlocks.BEEHIVES.values().forEach(block -> blockModels.createBeeNest(block.get(),TextureMapping::orientableCubeSameEnds));
+        ModBlocks.BOOKSHELVES.forEach((woodType, block) -> {
+            TextureMapping textures = TextureMapping.column(TextureMapping.getBlockTexture(block.get()), TextureMapping.getBlockTexture(WoodTypeCollection.PLANKS.pick(woodType)));
+            MultiVariant model = plainVariant(ModelTemplates.CUBE_COLUMN.create(block.get(), textures, blockModels.modelOutput));
+            blockModels.blockStateOutput.accept(createSimpleBlock(block.get(), model));
+        });
 
         blockModels.createPlantWithDefaultItem(ModBlocks.RED_POPLAR_SAPLING.get(), ModBlocks.POTTED_RED_POPLAR_SAPLING.get(), PlantType.NOT_TINTED);
         blockModels.createPlantWithDefaultItem(ModBlocks.ORANGE_POPLAR_SAPLING.get(), ModBlocks.POTTED_ORANGE_POPLAR_SAPLING.get(), PlantType.NOT_TINTED);

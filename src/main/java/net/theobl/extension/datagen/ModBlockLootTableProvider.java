@@ -85,6 +85,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 this.dropSelf(block.get());
             }
         }
+        ModBlocks.BOOKSHELVES.values().forEach(deferredBlock ->
+                this.add(deferredBlock.get(), block -> this.createSingleItemTableWithSilkTouch(block, Items.BOOK, ContextIntProviders.exactly(3))));
+
 
         // Create loot tables that will be passed in the "Add Table" Neoforge loot table modifier
         output.accept(

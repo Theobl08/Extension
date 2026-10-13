@@ -50,6 +50,18 @@
     "extension:bamboo_beehive",
     "extension:cherry_beehive",
     "extension:pale_oak_beehive",
-    "extension:poplar_beehive"
+    "extension:poplar_beehive",
+    "extension:spruce_bookshelf",
+    "extension:birch_bookshelf",
+    "extension:jungle_bookshelf",
+    "extension:acacia_bookshelf",
+    "extension:dark_oak_bookshelf",
+    "extension:crimson_bookshelf",
+    "extension:warped_bookshelf",
+    "extension:mangrove_bookshelf",
+    "extension:bamboo_bookshelf",
+    "extension:cherry_bookshelf",
+    "extension:pale_oak_bookshelf",
+    "extension:poplar_bookshelf"
   ]
 }
