@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/lectern",
+  "textures": {
+    "base": "extension:block/crimson_lectern_base",
+    "bottom": "minecraft:block/crimson_planks",
+    "front": "extension:block/crimson_lectern_front",
+    "particle": "extension:block/crimson_lectern_sides",
+    "sides": "extension:block/crimson_lectern_sides",
+    "top": "extension:block/crimson_lectern_top"
+  }
+}

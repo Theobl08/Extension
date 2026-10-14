@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CartographyTableBlock;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagCopyingItemTagProvider;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
@@ -92,6 +93,7 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
         copy(Tags.Blocks.FROGLIGHTS, Tags.Items.FROGLIGHTS);
 
         copy(Tags.Blocks.PLAYER_WORKSTATIONS_CRAFTING_TABLES, Tags.Items.PLAYER_WORKSTATIONS_CRAFTING_TABLES);
+        tag(Tags.Items.VILLAGER_JOB_SITES).addAll(ModBlocks.LECTERNS.values().stream().map(DeferredBlock::asItem).toList());
         for (var block : ModBlocks.BLOCKS.getEntries().stream().map(DeferredHolder::get).toList()) {
             if(block instanceof CartographyTableBlock) {
                 tag(Tags.Items.VILLAGER_JOB_SITES).add(block.asItem());

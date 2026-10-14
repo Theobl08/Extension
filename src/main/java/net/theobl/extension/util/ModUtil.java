@@ -41,6 +41,7 @@ public class ModUtil {
         fire.setFlammable(ModBlocks.YELLOW_SHRUB.get(), 60, 100);
         ModBlocks.BEEHIVES.values().forEach(block -> fire.setFlammable(block.get(), 5, 20));
         ModBlocks.BOOKSHELVES.values().forEach(block -> fire.setFlammable(block.get(), 30, 20));
+        ModBlocks.LECTERNS.values().forEach(block -> fire.setFlammable(block.get(), 30, 20));
 
         DispenserBlock.registerBehavior(ModItems.POTATO_RAFT, new BoatDispenseItemBehavior(ModEntityType.POTATO_RAFT.get()));
         DispenserBlock.registerBehavior(ModItems.POTATO_CHEST_RAFT, new BoatDispenseItemBehavior(ModEntityType.POTATO_CHEST_RAFT.get()));

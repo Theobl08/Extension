@@ -74,6 +74,18 @@
     "extension:bamboo_chiseled_bookshelf",
     "extension:cherry_chiseled_bookshelf",
     "extension:pale_oak_chiseled_bookshelf",
-    "extension:poplar_chiseled_bookshelf"
+    "extension:poplar_chiseled_bookshelf",
+    "extension:spruce_lectern",
+    "extension:birch_lectern",
+    "extension:jungle_lectern",
+    "extension:acacia_lectern",
+    "extension:dark_oak_lectern",
+    "extension:crimson_lectern",
+    "extension:warped_lectern",
+    "extension:mangrove_lectern",
+    "extension:bamboo_lectern",
+    "extension:cherry_lectern",
+    "extension:pale_oak_lectern",
+    "extension:poplar_lectern"
   ]
 }

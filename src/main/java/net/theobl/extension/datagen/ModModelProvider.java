@@ -168,6 +168,7 @@ public class ModModelProvider extends ModelProvider {
             blockModels.blockStateOutput.accept(createSimpleBlock(block.get(), model));
         });
         ModBlocks.CHISELED_BOOKSHELVES.values().forEach(modBlockModels::createChiseledBookshelf);
+        ModBlocks.LECTERNS.forEach((woodType, block) -> modBlockModels.createLecterns(block.get(), WoodTypeCollection.PLANKS.pick(woodType)));
 
         blockModels.createPlantWithDefaultItem(ModBlocks.RED_POPLAR_SAPLING.get(), ModBlocks.POTTED_RED_POPLAR_SAPLING.get(), PlantType.NOT_TINTED);
         blockModels.createPlantWithDefaultItem(ModBlocks.ORANGE_POPLAR_SAPLING.get(), ModBlocks.POTTED_ORANGE_POPLAR_SAPLING.get(), PlantType.NOT_TINTED);

@@ -6,6 +6,7 @@ import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.BlockModelDefinitionGenerator;
 import net.minecraft.client.data.models.blockstates.MultiPartGenerator;
+import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.dispatch.VariantMutator;
 import net.minecraft.client.renderer.block.dispatch.multipart.CombinedCondition;
@@ -22,8 +23,11 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class ModBlockModelGenerators extends BlockModelGenerators {
+    static final TextureSlot BASE = TextureSlot.create("base", TextureSlot.END);
+    static final TextureSlot SIDES = TextureSlot.create("sides",TextureSlot.ALL);
     static final ModelTemplate CHISELED_BOOKSHELF = ModelTemplates.create("chiseled_bookshelf", TextureSlot.TOP, TextureSlot.SIDE);
     static final ModelTemplate CHISELED_BOOKSHELF_INVENTORY = ModelTemplates.create("chiseled_bookshelf_inventory", "_inventory", TextureSlot.TOP, TextureSlot.SIDE, TextureSlot.FRONT);
+    static final ModelTemplate LECTERN =  ModelTemplates.create("lectern", BASE, TextureSlot.TOP, TextureSlot.BOTTOM, SIDES, TextureSlot.FRONT, TextureSlot.PARTICLE);
 
     public ModBlockModelGenerators(Consumer<BlockModelDefinitionGenerator> blockStateOutput, ItemModelOutput itemModelOutput, BiConsumer<Identifier, ModelInstance> modelOutput) {
         super(blockStateOutput, itemModelOutput, modelOutput);
@@ -86,5 +90,17 @@ public class ModBlockModelGenerators extends BlockModelGenerators {
                 new CombinedCondition(CombinedCondition.Operation.AND, List.of(facingCondition, condition().term(stateProperty, isSlotOccupied).build())),
                 model.with(mutator)
         );
+    }
+
+    public void createLecterns(Block block, Block planks) {
+        TextureMapping textureMapping = new TextureMapping()
+                .put(BASE, TextureMapping.getBlockTexture(block, "_base"))
+                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(block, "_top"))
+                .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(planks))
+                .put(SIDES, TextureMapping.getBlockTexture(block, "_sides"))
+                .put(TextureSlot.FRONT, TextureMapping.getBlockTexture(block, "_front"))
+                .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(block, "_sides"));
+        MultiVariant model = plainVariant(LECTERN.create(block, textureMapping, this.modelOutput));
+        this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block, model).with(ROTATION_HORIZONTAL_FACING));
     }
 }

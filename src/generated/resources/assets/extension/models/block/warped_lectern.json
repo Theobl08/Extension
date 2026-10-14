@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/lectern",
+  "textures": {
+    "base": "extension:block/warped_lectern_base",
+    "bottom": "minecraft:block/warped_planks",
+    "front": "extension:block/warped_lectern_front",
+    "particle": "extension:block/warped_lectern_sides",
+    "sides": "extension:block/warped_lectern_sides",
+    "top": "extension:block/warped_lectern_top"
+  }
+}

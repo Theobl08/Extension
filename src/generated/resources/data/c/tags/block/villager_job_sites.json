@@ -25,6 +25,18 @@
     "extension:bamboo_fletching_table",
     "extension:cherry_fletching_table",
     "extension:pale_oak_fletching_table",
-    "extension:poplar_fletching_table"
+    "extension:poplar_fletching_table",
+    "extension:spruce_lectern",
+    "extension:birch_lectern",
+    "extension:jungle_lectern",
+    "extension:acacia_lectern",
+    "extension:dark_oak_lectern",
+    "extension:crimson_lectern",
+    "extension:warped_lectern",
+    "extension:mangrove_lectern",
+    "extension:bamboo_lectern",
+    "extension:cherry_lectern",
+    "extension:pale_oak_lectern",
+    "extension:poplar_lectern"
   ]
 }

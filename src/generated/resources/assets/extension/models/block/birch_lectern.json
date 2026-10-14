@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/lectern",
+  "textures": {
+    "base": "extension:block/birch_lectern_base",
+    "bottom": "minecraft:block/birch_planks",
+    "front": "extension:block/birch_lectern_front",
+    "particle": "extension:block/birch_lectern_sides",
+    "sides": "extension:block/birch_lectern_sides",
+    "top": "extension:block/birch_lectern_top"
+  }
+}

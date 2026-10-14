@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "extension:block/poplar_lectern",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "extension:block/poplar_lectern"
+    },
+    "facing=south": {
+      "model": "extension:block/poplar_lectern",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "extension:block/poplar_lectern",
+      "y": 270
+    }
+  }
+}

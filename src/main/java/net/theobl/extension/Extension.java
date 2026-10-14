@@ -158,6 +158,7 @@ public class Extension {
         event.modify(BlockEntityTypes.HANGING_SIGN, ModBlocks.POTATO_HANGING_SIGN.get(), ModBlocks.POTATO_WALL_HANGING_SIGN.get());
         ModBlocks.BEEHIVES.values().forEach(block -> event.modify(BlockEntityTypes.BEEHIVE, block.get()));
         ModBlocks.CHISELED_BOOKSHELVES.values().forEach(block -> event.modify(BlockEntityTypes.CHISELED_BOOKSHELF, block.get()));
+        ModBlocks.LECTERNS.values().forEach(block -> event.modify(BlockEntityTypes.LECTERN, block.get()));
     }
 
     private void extendPoiTypes(ExtendPoiTypesEvent event) {
@@ -167,6 +168,7 @@ public class Extension {
             if(woodType != WoodType.DARK_OAK) event.addBlockToPoi(PoiTypes.CARTOGRAPHER, ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get());
         });
         ModBlocks.BEEHIVES.values().forEach(block -> event.addBlockToPoi(PoiTypes.BEEHIVE, block.get()));
+        ModBlocks.LECTERNS.values().forEach(block -> event.addBlockToPoi(PoiTypes.LIBRARIAN, block.get()));
     }
 
     private void registerCauldronFluidContent(RegisterCauldronFluidContentEvent event) {

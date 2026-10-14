@@ -50,7 +50,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addAll(ModBlocks.FLETCHING_TABLES, WoodType.BIRCH)
                 .addAll(ModBlocks.BEEHIVES)
                 .addAll(ModBlocks.BOOKSHELVES)
-                .addAll(ModBlocks.CHISELED_BOOKSHELVES);
+                .addAll(ModBlocks.CHISELED_BOOKSHELVES)
+                .addAll(ModBlocks.LECTERNS);
         tag(Tags.Blocks.BOOKSHELVES).addAll(ModBlocks.BOOKSHELVES);
         tag(BlockTags.ENCHANTMENT_POWER_PROVIDER).addAll(ModBlocks.BOOKSHELVES);
         tag(Tags.Blocks.FROGLIGHTS).add(ModBlocks.CERULEAN_FROGLIGHT, ModBlocks.CARMINE_FROGLIGHT);
@@ -189,6 +190,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             if(deferredBlock.get() instanceof BeehiveBlock) {
                 tag(BlockTags.BEEHIVES).add(deferredBlock);
             }
+            if(deferredBlock.get() instanceof LecternBlock) {
+                tag(Tags.Blocks.VILLAGER_JOB_SITES).add(deferredBlock);
+            }
 
             if(deferredBlock.get() instanceof SaplingBlock)
                 tag(BlockItemTags.SAPLINGS.block()).add(deferredBlock);
@@ -231,7 +235,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 || block instanceof BeehiveBlock
                 || block instanceof FletchingTableBlock
                 || block.toString().contains("bookshelf")
-                || block instanceof ChiseledBookShelfBlock;
+                || block instanceof ChiseledBookShelfBlock
+                || block instanceof LecternBlock;
     }
 
     private boolean isNotOxidized(Block block) {
