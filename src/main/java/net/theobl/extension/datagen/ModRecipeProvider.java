@@ -204,6 +204,12 @@ public class ModRecipeProvider extends RecipeProvider {
 
         ModBlocks.CRAFTING_TABLES.forEach((woodType, block) -> craftingTable(block, WoodTypeCollection.PLANKS.pick(woodType)));
         ModBlocks.CARTOGRAPHY_TABLES.forEach((woodType, block) -> cartographyTable(block, WoodTypeCollection.PLANKS.pick(woodType)));
+        ModBlocks.FLETCHING_TABLES.forEach((woodType, block) -> fletchingTable(block, WoodTypeCollection.PLANKS.pick(woodType)));
+        ModBlocks.BEEHIVES.forEach((woodType, block) -> beehive(block, WoodTypeCollection.PLANKS.pick(woodType)));
+        ModBlocks.BOOKSHELVES.forEach((woodType, block) -> bookshelf(block, WoodTypeCollection.PLANKS.pick(woodType)));
+        ModBlocks.CHISELED_BOOKSHELVES.forEach((woodType, block) -> chiseledBookshelf(block, WoodTypeCollection.PLANKS.pick(woodType)));
+        ModBlocks.LECTERNS.forEach((woodType, block) -> lectern(block, ModBlocks.BOOKSHELVES.get(woodType)));
+        ModBlocks.BARRELS.forEach((woodType, block) -> barrel(block, WoodTypeCollection.PLANKS.pick(woodType)));
 
         this.shaped(RecipeCategory.DECORATIONS, ModBlocks.ENDER_TORCH, 4)
                 .define('X', Ingredient.of(Items.COAL, Items.CHARCOAL))
@@ -432,6 +438,73 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("##")
                 .pattern("##")
                 .unlockedBy("has_paper", this.has(Items.PAPER))
+                .save(this.output);
+    }
+
+    protected void fletchingTable(ItemLike result, ItemLike planks) {
+        this.shaped(RecipeCategory.DECORATIONS, result)
+                .define('#', planks)
+                .define('@', Items.FLINT)
+                .pattern("@@")
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy("has_flint", this.has(Items.FLINT))
+                .save(this.output);
+    }
+
+    protected void beehive(ItemLike result, ItemLike planks) {
+        this.shaped(RecipeCategory.DECORATIONS, result)
+                .define('P', planks)
+                .define('H', Items.HONEYCOMB)
+                .pattern("PPP")
+                .pattern("HHH")
+                .pattern("PPP")
+                .unlockedBy("has_honeycomb", this.has(Items.HONEYCOMB))
+                .save(this.output);
+    }
+
+    protected void bookshelf(ItemLike result, ItemLike planks) {
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, result)
+                .define('#', planks)
+                .define('X', Items.BOOK)
+                .pattern("###")
+                .pattern("XXX")
+                .pattern("###")
+                .unlockedBy("has_book", this.has(Items.BOOK))
+                .save(this.output);
+    }
+
+    protected void chiseledBookshelf(ItemLike result, ItemLike planks) {
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, result)
+                .define('#', planks)
+                .define('X', ItemTags.WOODEN_SLABS)
+                .pattern("###")
+                .pattern("XXX")
+                .pattern("###")
+                .unlockedBy("has_book", this.has(Items.BOOK))
+                .save(this.output);
+    }
+
+    protected void lectern(ItemLike result, ItemLike bookshelf) {
+        this.shaped(RecipeCategory.REDSTONE, result)
+                .define('S', ItemTags.WOODEN_SLABS)
+                .define('B', bookshelf)
+                .pattern("SSS")
+                .pattern(" B ")
+                .pattern(" S ")
+                .unlockedBy("has_book", this.has(Items.BOOK))
+                .save(this.output);
+    }
+
+    protected void barrel(ItemLike result, ItemLike planks) {
+        this.shaped(RecipeCategory.DECORATIONS, result)
+                .define('P', planks)
+                .define('S', ItemTags.WOODEN_SLABS)
+                .pattern("PSP")
+                .pattern("P P")
+                .pattern("PSP")
+                .unlockedBy("has_planks", this.has(ItemTags.PLANKS))
+                .unlockedBy("has_wood_slab", this.has(ItemTags.WOODEN_SLABS))
                 .save(this.output);
     }
 

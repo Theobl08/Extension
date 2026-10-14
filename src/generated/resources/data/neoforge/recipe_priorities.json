@@ -1,6 +1,11 @@
 {
   "entries": {
+    "minecraft:barrel": -1,
+    "minecraft:beehive": -1,
+    "minecraft:bookshelf": -1,
     "minecraft:cartography_table": -1,
-    "minecraft:crafting_table": -1
+    "minecraft:chiseled_bookshelf": -1,
+    "minecraft:crafting_table": -1,
+    "minecraft:fletching_table": -1
   }
 }

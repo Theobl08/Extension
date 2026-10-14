@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "P": "minecraft:poplar_planks",
+    "S": "#minecraft:wooden_slabs"
+  },
+  "pattern": [
+    "PSP",
+    "P P",
+    "PSP"
+  ],
+  "result": {
+    "id": "extension:poplar_barrel"
+  }
+}

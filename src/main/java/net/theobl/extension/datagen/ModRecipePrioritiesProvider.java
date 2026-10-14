@@ -22,5 +22,10 @@ public class ModRecipePrioritiesProvider extends RecipePrioritiesProvider {
     protected void start() {
         this.add(Identifier.withDefaultNamespace(ModUtil.name(Blocks.CRAFTING_TABLE)), -1);
         this.add(Identifier.withDefaultNamespace(ModUtil.name(Blocks.CARTOGRAPHY_TABLE)), -1);
+        this.add(Identifier.withDefaultNamespace(ModUtil.name(Blocks.FLETCHING_TABLE)), -1);
+        this.add(Identifier.withDefaultNamespace(ModUtil.name(Blocks.BEEHIVE)), -1);
+        this.add(Identifier.withDefaultNamespace(ModUtil.name(Blocks.BOOKSHELF)), -1);
+        this.add(Identifier.withDefaultNamespace(ModUtil.name(Blocks.CHISELED_BOOKSHELF)), -1);
+        this.add(Identifier.withDefaultNamespace(ModUtil.name(Blocks.BARREL)), -1);
     }
 }
