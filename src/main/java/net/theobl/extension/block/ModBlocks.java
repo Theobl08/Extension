@@ -317,6 +317,11 @@ public class ModBlocks {
             LecternBlock::new,
             Blocks.LECTERN, WoodType.OAK
     );
+    public static final Map<WoodType, DeferredBlock<Block>> BARRELS = registerVanillaBlockVariants(
+            "barrel",
+            BarrelBlock::new,
+            Blocks.BARREL, WoodType.SPRUCE
+    );
     public static final DeferredBlock<Block> RED_POPLAR_SAPLING = registerBlock(
             "red_poplar_sapling",
             p -> new SaplingBlock(ModTreeGrower.RED_POPLAR, p),

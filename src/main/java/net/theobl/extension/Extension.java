@@ -159,6 +159,7 @@ public class Extension {
         ModBlocks.BEEHIVES.values().forEach(block -> event.modify(BlockEntityTypes.BEEHIVE, block.get()));
         ModBlocks.CHISELED_BOOKSHELVES.values().forEach(block -> event.modify(BlockEntityTypes.CHISELED_BOOKSHELF, block.get()));
         ModBlocks.LECTERNS.values().forEach(block -> event.modify(BlockEntityTypes.LECTERN, block.get()));
+        ModBlocks.BARRELS.values().forEach(block -> event.modify(BlockEntityTypes.BARREL, block.get()));
     }
 
     private void extendPoiTypes(ExtendPoiTypesEvent event) {
@@ -169,6 +170,7 @@ public class Extension {
         });
         ModBlocks.BEEHIVES.values().forEach(block -> event.addBlockToPoi(PoiTypes.BEEHIVE, block.get()));
         ModBlocks.LECTERNS.values().forEach(block -> event.addBlockToPoi(PoiTypes.LIBRARIAN, block.get()));
+        ModBlocks.BARRELS.values().forEach(block -> event.addBlockToPoi(PoiTypes.FISHERMAN, block.get()));
     }
 
     private void registerCauldronFluidContent(RegisterCauldronFluidContentEvent event) {

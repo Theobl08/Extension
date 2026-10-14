@@ -1,4 +1,5 @@
-// 26.3	2026-10-14T19:08:54.2252379	extension-global/Tags for minecraft:block mod id extension
+// 26.3	2026-10-14T22:51:12.3656074	extension-global/Tags for minecraft:block mod id extension
+36f8cbc5e9616d7035a1297ed9de1d21f5acc0a0 data/c/tags/block/barrels/wooden.json
 ec11c9e13861d470609a4ba896ce98c1f7d7ba15 data/c/tags/block/bookshelves.json
 6af7f26669e374797e819a720298b940f77a2c18 data/c/tags/block/fences.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/block/fences/nether_brick.json
@@ -11,13 +12,13 @@ d41ede5f1302b43f5dbd755f9f7deaf12f9bafa3 data/c/tags/block/natural_woods.json
 ee90fd36ae9a8638d0d8f73aa91314f85ac2e3bd data/c/tags/block/sandstone/blocks.json
 4129d63523084b45c78c6fc8da77ed857f6e6a75 data/c/tags/block/sandstone/slabs.json
 bdef780f9a4c2965de35f74f5eb088150d9f694d data/c/tags/block/sandstone/stairs.json
-b94bc5ef8c5a68f52fce3002e7f8a34ab919905d data/c/tags/block/villager_job_sites.json
+282aae72c7b8b4ca003cb8daf4feed93c64e815c data/c/tags/block/villager_job_sites.json
 7d83990af18caa2d1c7bc2ae972a60a5ef83d002 data/extension/tags/block/copper_fire_base_blocks.json
 09b6ec40b2b41dc1aaedf9b7ed6d9d948f37737d data/extension/tags/block/ender_fire_base_blocks.json
 d33ccc1978338567020b500743d7fb840f45f2b5 data/extension/tags/block/redstone_fire_base_blocks.json
 4adf5b941cac85c0ee24f444633aa2c07e620ef0 data/minecraft/tags/block/bamboo_blocks.json
 d667e42c883815bd4c57cf083e14855b9e09551b data/minecraft/tags/block/beehives.json
-b8ba0610ec18cbfba6a3740d106cdce7e6319ef6 data/minecraft/tags/block/blocks_motion_no_leaves.json
+b31b0b5df9937bd8d3e92dbd626db427e1b4ebf8 data/minecraft/tags/block/blocks_motion_no_leaves.json
 c2b25de3136547dc1ae29b20e9c2ec38656ae6fa data/minecraft/tags/block/campfires.json
 d4dca80551a0d488392912428cdc618c8b8e9197 data/minecraft/tags/block/cannot_place_basalt_pillar_on.json
 e6fb5ccafd35ae058e2e0678279b45d06c7864fc data/minecraft/tags/block/cauldrons.json
@@ -27,10 +28,11 @@ d1f4b5e42e72598156108941ed5580031af15bf2 data/minecraft/tags/block/enchantment_p
 6af7f26669e374797e819a720298b940f77a2c18 data/minecraft/tags/block/fences.json
 e425c47578377de2388a2a345e79caccab792af8 data/minecraft/tags/block/fence_gates.json
 dda2b9f854f882316a5f1fc960987e325fa9d68c data/minecraft/tags/block/fire.json
+36f8cbc5e9616d7035a1297ed9de1d21f5acc0a0 data/minecraft/tags/block/guarded_by_piglins.json
 a1d01b6a1b82929ecb7315678011273652b41d66 data/minecraft/tags/block/lanterns.json
 096ddd7892a9f24bf58d25dccf95160736b6bee4 data/minecraft/tags/block/leaves.json
 4737b983b9cab361c9d355611cdc43645e329274 data/minecraft/tags/block/logs.json
-cf58ea20d2f890fca1bc33367c2ce88805ba77f9 data/minecraft/tags/block/mineable/axe.json
+c63e57b7ef316e5d0af0db34d5c11464b586bfb2 data/minecraft/tags/block/mineable/axe.json
 e4988594cb7a1b76575f4273be19000bb1af862a data/minecraft/tags/block/mineable/pickaxe.json
 45d7047b9d3567131955bd6cd85d4b295042277a data/minecraft/tags/block/overworld_natural_logs.json
 3486cb571e4d7f4403ec590dfafb6972d44ae7da data/minecraft/tags/block/piglin_repellents.json

@@ -7,10 +7,12 @@ import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.BlockModelDefinitionGenerator;
 import net.minecraft.client.data.models.blockstates.MultiPartGenerator;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.dispatch.VariantMutator;
 import net.minecraft.client.renderer.block.dispatch.multipart.CombinedCondition;
 import net.minecraft.client.renderer.block.dispatch.multipart.Condition;
+import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChiseledBookShelfBlock;
@@ -102,5 +104,23 @@ public class ModBlockModelGenerators extends BlockModelGenerators {
                 .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(block, "_sides"));
         MultiVariant model = plainVariant(LECTERN.create(block, textureMapping, this.modelOutput));
         this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block, model).with(ROTATION_HORIZONTAL_FACING));
+    }
+
+    public void createBarrel(DeferredBlock<Block> deferredBlock) {
+        Block block = deferredBlock.get();
+        Material openTop = TextureMapping.getBlockTexture(block, "_top_open");
+        MultiVariant closedModel = plainVariant(TexturedModel.CUBE_BOTTOM_TOP.create(block, this.modelOutput));
+        MultiVariant openModel = plainVariant(
+                TexturedModel.CUBE_BOTTOM_TOP
+                        .get(block)
+                        .updateTextures(t -> t.put(TextureSlot.TOP, openTop))
+                        .createWithSuffix(block, "_open", this.modelOutput)
+        );
+        this.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.dispatch(block)
+                                .with(PropertyDispatch.initial(BlockStateProperties.OPEN).select(false, closedModel).select(true, openModel))
+                                .with(ROTATIONS_COLUMN_WITH_FACING)
+                );
     }
 }

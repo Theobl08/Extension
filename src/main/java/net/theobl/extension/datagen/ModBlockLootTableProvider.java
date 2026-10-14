@@ -84,6 +84,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
             else if (block.get() instanceof ChiseledBookShelfBlock) {
                 this.dropWhenSilkTouch(block.get());
             }
+            else if (block.get() instanceof BarrelBlock) {
+                this.add(block.get(), this::createNameableBlockEntityTable);
+            }
             else {
                 this.dropSelf(block.get());
             }

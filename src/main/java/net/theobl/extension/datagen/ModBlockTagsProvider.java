@@ -51,7 +51,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addAll(ModBlocks.BEEHIVES)
                 .addAll(ModBlocks.BOOKSHELVES)
                 .addAll(ModBlocks.CHISELED_BOOKSHELVES)
-                .addAll(ModBlocks.LECTERNS);
+                .addAll(ModBlocks.LECTERNS)
+                .addAll(ModBlocks.BARRELS);
         tag(Tags.Blocks.BOOKSHELVES).addAll(ModBlocks.BOOKSHELVES);
         tag(BlockTags.ENCHANTMENT_POWER_PROVIDER).addAll(ModBlocks.BOOKSHELVES);
         tag(Tags.Blocks.FROGLIGHTS).add(ModBlocks.CERULEAN_FROGLIGHT, ModBlocks.CARMINE_FROGLIGHT);
@@ -193,6 +194,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             if(deferredBlock.get() instanceof LecternBlock) {
                 tag(Tags.Blocks.VILLAGER_JOB_SITES).add(deferredBlock);
             }
+            if(deferredBlock.get() instanceof BarrelBlock) {
+                tag(Tags.Blocks.VILLAGER_JOB_SITES).add(deferredBlock);
+                tag(Tags.Blocks.BARRELS_WOODEN).add(deferredBlock);
+                tag(BlockTags.GUARDED_BY_PIGLINS).add(deferredBlock);
+            }
 
             if(deferredBlock.get() instanceof SaplingBlock)
                 tag(BlockItemTags.SAPLINGS.block()).add(deferredBlock);
@@ -236,7 +242,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 || block instanceof FletchingTableBlock
                 || block.toString().contains("bookshelf")
                 || block instanceof ChiseledBookShelfBlock
-                || block instanceof LecternBlock;
+                || block instanceof LecternBlock
+                || block instanceof BarrelBlock;
     }
 
     private boolean isNotOxidized(Block block) {
