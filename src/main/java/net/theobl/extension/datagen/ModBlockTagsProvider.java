@@ -49,7 +49,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addAll(ModBlocks.CARTOGRAPHY_TABLES, WoodType.DARK_OAK)
                 .addAll(ModBlocks.FLETCHING_TABLES, WoodType.BIRCH)
                 .addAll(ModBlocks.BEEHIVES)
-                .addAll(ModBlocks.BOOKSHELVES);
+                .addAll(ModBlocks.BOOKSHELVES)
+                .addAll(ModBlocks.CHISELED_BOOKSHELVES);
         tag(Tags.Blocks.BOOKSHELVES).addAll(ModBlocks.BOOKSHELVES);
         tag(BlockTags.ENCHANTMENT_POWER_PROVIDER).addAll(ModBlocks.BOOKSHELVES);
         tag(Tags.Blocks.FROGLIGHTS).add(ModBlocks.CERULEAN_FROGLIGHT, ModBlocks.CARMINE_FROGLIGHT);
@@ -215,6 +216,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     private boolean mineableWithPickaxe(Block block) {
         return !(block instanceof WallBlock) && // "#minecraft:wall" is already in the tag
+                !(block instanceof ChiseledBookShelfBlock) && //chiseled bookshelves goes into "#minecraft:mineable/axe" tag
                 (block.toString().contains("soul_sandstone") ||
                         block.toString().contains("brick") ||
                         block.toString().contains("smooth") ||
@@ -228,7 +230,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 || block instanceof CartographyTableBlock
                 || block instanceof BeehiveBlock
                 || block instanceof FletchingTableBlock
-                || block.toString().contains("bookshelf");
+                || block.toString().contains("bookshelf")
+                || block instanceof ChiseledBookShelfBlock;
     }
 
     private boolean isNotOxidized(Block block) {

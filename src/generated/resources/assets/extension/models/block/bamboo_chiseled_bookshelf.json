@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/chiseled_bookshelf",
+  "textures": {
+    "side": "extension:block/bamboo_chiseled_bookshelf_side",
+    "top": "extension:block/bamboo_chiseled_bookshelf_top"
+  }
+}

@@ -1,4 +1,4 @@
-// 26.3	2026-10-13T23:34:40.6954394	extension-global/Tags for minecraft:block mod id extension
+// 26.3	2026-10-14T00:38:12.8222236	extension-global/Tags for minecraft:block mod id extension
 ec11c9e13861d470609a4ba896ce98c1f7d7ba15 data/c/tags/block/bookshelves.json
 6af7f26669e374797e819a720298b940f77a2c18 data/c/tags/block/fences.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/block/fences/nether_brick.json
@@ -17,7 +17,7 @@ b6160fdb213940712524e96ad66b32dbac827bac data/c/tags/block/villager_job_sites.js
 d33ccc1978338567020b500743d7fb840f45f2b5 data/extension/tags/block/redstone_fire_base_blocks.json
 4adf5b941cac85c0ee24f444633aa2c07e620ef0 data/minecraft/tags/block/bamboo_blocks.json
 d667e42c883815bd4c57cf083e14855b9e09551b data/minecraft/tags/block/beehives.json
-1ec5fb5f8a2b5e634ef231adce8ac4f7cf1e1dc8 data/minecraft/tags/block/blocks_motion_no_leaves.json
+ef749c020c41b455447f393f50e36732be642271 data/minecraft/tags/block/blocks_motion_no_leaves.json
 c2b25de3136547dc1ae29b20e9c2ec38656ae6fa data/minecraft/tags/block/campfires.json
 d4dca80551a0d488392912428cdc618c8b8e9197 data/minecraft/tags/block/cannot_place_basalt_pillar_on.json
 e6fb5ccafd35ae058e2e0678279b45d06c7864fc data/minecraft/tags/block/cauldrons.json
@@ -30,7 +30,7 @@ dda2b9f854f882316a5f1fc960987e325fa9d68c data/minecraft/tags/block/fire.json
 a1d01b6a1b82929ecb7315678011273652b41d66 data/minecraft/tags/block/lanterns.json
 096ddd7892a9f24bf58d25dccf95160736b6bee4 data/minecraft/tags/block/leaves.json
 4737b983b9cab361c9d355611cdc43645e329274 data/minecraft/tags/block/logs.json
-f29d818a245a91d57e105a5be364016e06616706 data/minecraft/tags/block/mineable/axe.json
+0b570fc0c7bffc35d4d69ae831273b5b6b36ff3d data/minecraft/tags/block/mineable/axe.json
 e4988594cb7a1b76575f4273be19000bb1af862a data/minecraft/tags/block/mineable/pickaxe.json
 45d7047b9d3567131955bd6cd85d4b295042277a data/minecraft/tags/block/overworld_natural_logs.json
 3486cb571e4d7f4403ec590dfafb6972d44ae7da data/minecraft/tags/block/piglin_repellents.json

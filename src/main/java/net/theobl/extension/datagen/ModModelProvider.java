@@ -72,6 +72,7 @@ public class ModModelProvider extends ModelProvider {
 
     @Override
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
+        ModBlockModelGenerators modBlockModels = new ModBlockModelGenerators(blockModels);
         ModBlockFamilies.getAllFamilies()
                 .filter(BlockFamily::shouldGenerateModel)
                 .forEach(blockFamily -> {
@@ -166,6 +167,7 @@ public class ModModelProvider extends ModelProvider {
             MultiVariant model = plainVariant(ModelTemplates.CUBE_COLUMN.create(block.get(), textures, blockModels.modelOutput));
             blockModels.blockStateOutput.accept(createSimpleBlock(block.get(), model));
         });
+        ModBlocks.CHISELED_BOOKSHELVES.values().forEach(modBlockModels::createChiseledBookshelf);
 
         blockModels.createPlantWithDefaultItem(ModBlocks.RED_POPLAR_SAPLING.get(), ModBlocks.POTTED_RED_POPLAR_SAPLING.get(), PlantType.NOT_TINTED);
         blockModels.createPlantWithDefaultItem(ModBlocks.ORANGE_POPLAR_SAPLING.get(), ModBlocks.POTTED_ORANGE_POPLAR_SAPLING.get(), PlantType.NOT_TINTED);

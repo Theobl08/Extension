@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/chiseled_bookshelf_inventory",
+  "textures": {
+    "front": "extension:block/jungle_chiseled_bookshelf_empty",
+    "side": "extension:block/jungle_chiseled_bookshelf_side",
+    "top": "extension:block/jungle_chiseled_bookshelf_top"
+  }
+}

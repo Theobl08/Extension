@@ -307,6 +307,11 @@ public class ModBlocks {
             Block::new,
             Blocks.BOOKSHELF, WoodType.OAK
     );
+    public static final Map<WoodType, DeferredBlock<Block>> CHISELED_BOOKSHELVES = registerVanillaBlockVariants(
+            "chiseled_bookshelf",
+            p -> new ChiseledBookShelfBlock(p.sound(SoundType.CHISELED_BOOKSHELF)),
+            Blocks.CHISELED_BOOKSHELF, WoodType.OAK
+    );
     public static final DeferredBlock<Block> RED_POPLAR_SAPLING = registerBlock(
             "red_poplar_sapling",
             p -> new SaplingBlock(ModTreeGrower.RED_POPLAR, p),

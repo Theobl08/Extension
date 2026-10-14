@@ -62,6 +62,18 @@
     "extension:bamboo_bookshelf",
     "extension:cherry_bookshelf",
     "extension:pale_oak_bookshelf",
-    "extension:poplar_bookshelf"
+    "extension:poplar_bookshelf",
+    "extension:spruce_chiseled_bookshelf",
+    "extension:birch_chiseled_bookshelf",
+    "extension:jungle_chiseled_bookshelf",
+    "extension:acacia_chiseled_bookshelf",
+    "extension:dark_oak_chiseled_bookshelf",
+    "extension:crimson_chiseled_bookshelf",
+    "extension:warped_chiseled_bookshelf",
+    "extension:mangrove_chiseled_bookshelf",
+    "extension:bamboo_chiseled_bookshelf",
+    "extension:cherry_chiseled_bookshelf",
+    "extension:pale_oak_chiseled_bookshelf",
+    "extension:poplar_chiseled_bookshelf"
   ]
 }

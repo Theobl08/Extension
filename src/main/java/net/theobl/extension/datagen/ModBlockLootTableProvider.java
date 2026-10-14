@@ -81,6 +81,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
             else if (block.get() instanceof BeehiveBlock) {
                 this.add(block.get(), this::createBeeHiveDrop);
             }
+            else if (block.get() instanceof ChiseledBookShelfBlock) {
+                this.dropWhenSilkTouch(block.get());
+            }
             else {
                 this.dropSelf(block.get());
             }
