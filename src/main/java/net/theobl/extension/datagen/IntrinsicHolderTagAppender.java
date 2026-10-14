@@ -113,11 +113,6 @@ public abstract class IntrinsicHolderTagAppender<Element> implements TagAppender
         return this;
     }
 
-    public <T extends DeferredHolder<Element, ? extends Element>> IntrinsicHolderTagAppender<Element> addAll(WoodTypeCollection<T> collection, WoodType woodTypeToExclude) {
-        collection.asList().stream().filter(t -> t != collection.pick(woodTypeToExclude)).toList().forEach(this::add);
-        return this;
-    }
-
     public <T extends DeferredHolder<Element, ? extends Element>> IntrinsicHolderTagAppender<Element> addAll(Iterable<T> collection) {
         collection.forEach(this::add);
         return this;

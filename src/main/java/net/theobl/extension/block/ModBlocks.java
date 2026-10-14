@@ -273,26 +273,17 @@ public class ModBlocks {
             () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON)
     );
 
-    public static final WoodTypeCollection<DeferredBlock<Block>> CRAFTING_TABLES = WoodTypeCollection.registerBlocksWithExistingVanillaBlock(
+    public static final Map<WoodType, DeferredBlock<Block>> CRAFTING_TABLES = registerVanillaBlockVariants(
             "crafting_table",
-            ModBlocks::registerBlock,
-            ((woodType, properties) -> new CraftingTableBlock(properties)),
-            woodType -> BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)
-                    .mapColor(WoodTypeCollection.PLANKS.pick(woodType).defaultMapColor())
-                    .sound(woodType.soundType()),
+            CraftingTableBlock::new,
             Blocks.CRAFTING_TABLE, WoodType.OAK
     );
-
-    public static final WoodTypeCollection<DeferredBlock<Block>> CARTOGRAPHY_TABLES = WoodTypeCollection.registerBlocksWithExistingVanillaBlock(
+    public static final Map<WoodType, DeferredBlock<Block>> CARTOGRAPHY_TABLES = registerVanillaBlockVariants(
             "cartography_table",
-            ModBlocks::registerBlock,
-            ((woodType, properties) -> new CartographyTableBlock(properties)),
-            woodType -> BlockBehaviour.Properties.ofFullCopy(Blocks.CARTOGRAPHY_TABLE)
-                    .mapColor(WoodTypeCollection.PLANKS.pick(woodType).defaultMapColor())
-                    .sound(woodType.soundType()),
+            CartographyTableBlock::new,
             Blocks.CARTOGRAPHY_TABLE, WoodType.DARK_OAK
     );
-    public static final WoodTypeCollection<DeferredBlock<Block>> FLETCHING_TABLES = registerWoodTypeCollection(
+    public static final Map<WoodType, DeferredBlock<Block>> FLETCHING_TABLES = registerVanillaBlockVariants(
             "fletching_table",
             FletchingTableBlock::new,
             Blocks.FLETCHING_TABLE, WoodType.BIRCH
@@ -595,17 +586,6 @@ public class ModBlocks {
         return false;
     }
 
-    private static  <T extends Block> WoodTypeCollection<DeferredBlock<T>> registerWoodTypeCollection(String name, Function<BlockBehaviour.Properties, T> factory, Block existingBlock, WoodType existingBlockWoodType) {
-        return WoodTypeCollection.registerBlocksWithExistingVanillaBlock(
-                name,
-                ModBlocks::registerBlock,
-                (woodType, p) -> factory.apply(p),
-                woodType -> BlockBehaviour.Properties.ofFullCopy(existingBlock)
-                        .mapColor(WoodTypeCollection.PLANKS.pick(woodType).defaultMapColor())
-                        .sound(woodType.soundType()),
-                existingBlock, existingBlockWoodType
-        );
-    }
     private static  <T extends Block> Map<WoodType, DeferredBlock<T>> registerVanillaBlockVariants(String name, Function<BlockBehaviour.Properties, T> factory, Block vanillaBlock, WoodType vanillaBlockWoodType) {
         return Util.make(
                 new LinkedHashMap<>(),

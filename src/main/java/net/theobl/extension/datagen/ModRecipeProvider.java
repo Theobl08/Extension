@@ -202,10 +202,8 @@ public class ModRecipeProvider extends RecipeProvider {
         smeltingResultFromBase(ModBlocks.SMOOTH_SOUL_SANDSTONE, ModBlocks.SOUL_SANDSTONE);
         cut(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SOUL_SANDSTONE, ModBlocks.SOUL_SANDSTONE);
 
-        WoodTypeCollection.TYPES.forEach(woodType -> {
-            if(woodType != WoodType.OAK) craftingTable(ModBlocks.CRAFTING_TABLES.pick(woodType), WoodTypeCollection.PLANKS.pick(woodType));
-            if(woodType != WoodType.DARK_OAK) cartographyTable(ModBlocks.CARTOGRAPHY_TABLES.pick(woodType), WoodTypeCollection.PLANKS.pick(woodType));
-        });
+        ModBlocks.CRAFTING_TABLES.forEach((woodType, block) -> craftingTable(block, WoodTypeCollection.PLANKS.pick(woodType)));
+        ModBlocks.CARTOGRAPHY_TABLES.forEach((woodType, block) -> cartographyTable(block, WoodTypeCollection.PLANKS.pick(woodType)));
 
         this.shaped(RecipeCategory.DECORATIONS, ModBlocks.ENDER_TORCH, 4)
                 .define('X', Ingredient.of(Items.COAL, Items.CHARCOAL))

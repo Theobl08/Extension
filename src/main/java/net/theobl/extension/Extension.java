@@ -164,10 +164,8 @@ public class Extension {
 
     private void extendPoiTypes(ExtendPoiTypesEvent event) {
         event.addBlockToPoi(PoiTypes.LEATHERWORKER, ModBlocks.MILK_CAULDRON.get());
-        WoodTypeCollection.TYPES.forEach(woodType -> {
-            if(woodType != WoodType.BIRCH) event.addBlockToPoi(PoiTypes.FLETCHER, ModBlocks.FLETCHING_TABLES.pick(woodType).get());
-            if(woodType != WoodType.DARK_OAK) event.addBlockToPoi(PoiTypes.CARTOGRAPHER, ModBlocks.CARTOGRAPHY_TABLES.pick(woodType).get());
-        });
+        ModBlocks.CARTOGRAPHY_TABLES.values().forEach(block -> event.addBlockToPoi(PoiTypes.CARTOGRAPHER, block.get()));
+        ModBlocks.FLETCHING_TABLES.values().forEach(block -> event.addBlockToPoi(PoiTypes.FLETCHER, block.get()));
         ModBlocks.BEEHIVES.values().forEach(block -> event.addBlockToPoi(PoiTypes.BEEHIVE, block.get()));
         ModBlocks.LECTERNS.values().forEach(block -> event.addBlockToPoi(PoiTypes.LIBRARIAN, block.get()));
         ModBlocks.BARRELS.values().forEach(block -> event.addBlockToPoi(PoiTypes.FISHERMAN, block.get()));

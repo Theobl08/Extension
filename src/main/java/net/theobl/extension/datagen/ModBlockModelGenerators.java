@@ -39,6 +39,19 @@ public class ModBlockModelGenerators extends BlockModelGenerators {
         this(blockModels.blockStateOutput, blockModels.itemModelOutput, blockModels.modelOutput);
     }
 
+    public void createCartographyTable(Block block, Block planks) {
+        TextureMapping mapping = new TextureMapping()
+                .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(block, "_side3"))
+                .put(TextureSlot.DOWN, TextureMapping.getBlockTexture(planks))
+                .put(TextureSlot.UP, TextureMapping.getBlockTexture(block, "_top"))
+                .put(TextureSlot.NORTH, TextureMapping.getBlockTexture(block, "_side3"))
+                .put(TextureSlot.EAST, TextureMapping.getBlockTexture(block, "_side3"))
+                .put(TextureSlot.SOUTH, TextureMapping.getBlockTexture(block, "_side1"))
+                .put(TextureSlot.WEST, TextureMapping.getBlockTexture(block, "_side2"));
+        this.blockStateOutput
+                .accept(createSimpleBlock(block, plainVariant(ModelTemplates.CUBE.create(block, mapping, this.modelOutput))));
+    }
+
     void createChiseledBookshelf(DeferredBlock<Block> deferredBlock) {
         Block block = deferredBlock.get();
         MultiVariant body = plainVariant(CHISELED_BOOKSHELF.create(block, TextureMapping.cubeTop(block), this.modelOutput));
