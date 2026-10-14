@@ -1,4 +1,5 @@
-// 26.3	2026-10-14T19:08:54.2292369	extension-global/Tags for minecraft:item mod id extension
+// 26.3	2026-10-14T23:30:20.796268	extension-global/Tags for minecraft:item mod id extension
+36f8cbc5e9616d7035a1297ed9de1d21f5acc0a0 data/c/tags/item/barrels/wooden.json
 ec11c9e13861d470609a4ba896ce98c1f7d7ba15 data/c/tags/item/bookshelves.json
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks.json
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks/nether.json
@@ -14,7 +15,7 @@ d41ede5f1302b43f5dbd755f9f7deaf12f9bafa3 data/c/tags/item/natural_woods.json
 ee90fd36ae9a8638d0d8f73aa91314f85ac2e3bd data/c/tags/item/sandstone/blocks.json
 4129d63523084b45c78c6fc8da77ed857f6e6a75 data/c/tags/item/sandstone/slabs.json
 bdef780f9a4c2965de35f74f5eb088150d9f694d data/c/tags/item/sandstone/stairs.json
-30c115ce3ec84e0c8328ce6f908e6e5b825652c9 data/c/tags/item/villager_job_sites.json
+9d1a60ca9042e6c9da04de26992bce02688d12c7 data/c/tags/item/villager_job_sites.json
 7d83990af18caa2d1c7bc2ae972a60a5ef83d002 data/extension/tags/item/copper_fire_base_blocks.json
 09b6ec40b2b41dc1aaedf9b7ed6d9d948f37737d data/extension/tags/item/ender_fire_base_blocks.json
 d33ccc1978338567020b500743d7fb840f45f2b5 data/extension/tags/item/redstone_fire_base_blocks.json
