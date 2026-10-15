@@ -28,7 +28,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.component.Compostable;
 import net.minecraft.world.item.component.CookingFuel;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
@@ -274,14 +273,6 @@ public class Extension {
     }
 
     public void modifyDefaultComponents(ModifyDefaultComponentsEvent event) {
-        ModifyDefaultComponentsEvent.Initializer compostableLow = (components, context, item) ->
-                components.set(DataComponents.COMPOSTABLE, new Compostable(ContextIntProviders.COMPOSTABLE_LOW));
-        event.modify(ModBlocks.POTATO_FRUIT, compostableLow);
-        event.modify(ModBlocks.POTATO_PEDICULE, compostableLow);
-        event.modify(ModBlocks.POTATO_SPROUTS, compostableLow);
-        event.modify(ModBlocks.POTATO_LEAVES, compostableLow);
-        event.modify(ModBlocks.POTATO_STEM, compostableLow);
-
         ModifyDefaultComponentsEvent.Initializer cookingTimeWoodBlocks = (builder, _, _) ->
                 builder.set(DataComponents.COOKING_FUEL, new CookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS, ContextFloatProviders.COOKING_DEFAULT_SPEED_MULTIPLIER));
         ModBlocks.CRAFTING_TABLES.values().stream().filter(ModUtil::isFlammableWood).forEach(block -> event.modify(block, cookingTimeWoodBlocks));
