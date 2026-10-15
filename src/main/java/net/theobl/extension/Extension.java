@@ -160,6 +160,7 @@ public class Extension {
         ModBlocks.CHISELED_BOOKSHELVES.values().forEach(block -> event.modify(BlockEntityTypes.CHISELED_BOOKSHELF, block.get()));
         ModBlocks.LECTERNS.values().forEach(block -> event.modify(BlockEntityTypes.LECTERN, block.get()));
         ModBlocks.BARRELS.values().forEach(block -> event.modify(BlockEntityTypes.BARREL, block.get()));
+        ModBlocks.CRAFTERS.values().forEach(block -> event.modify(BlockEntityTypes.CRAFTER, block.get()));
     }
 
     private void extendPoiTypes(ExtendPoiTypesEvent event) {

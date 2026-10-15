@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/crafter",
+  "textures": {
+    "east": "extension:block/jungle_crafter_east",
+    "north": "extension:block/jungle_crafter_north",
+    "south": "extension:block/jungle_crafter_south",
+    "west": "extension:block/jungle_crafter_west"
+  }
+}

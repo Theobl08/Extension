@@ -1,4 +1,4 @@
-// 26.3	2026-10-14T22:51:12.3656074	extension-global/Tags for minecraft:block mod id extension
+// 26.3	2026-10-15T18:46:20.3801365	extension-global/Tags for minecraft:block mod id extension
 36f8cbc5e9616d7035a1297ed9de1d21f5acc0a0 data/c/tags/block/barrels/wooden.json
 ec11c9e13861d470609a4ba896ce98c1f7d7ba15 data/c/tags/block/bookshelves.json
 6af7f26669e374797e819a720298b940f77a2c18 data/c/tags/block/fences.json
@@ -18,7 +18,7 @@ bdef780f9a4c2965de35f74f5eb088150d9f694d data/c/tags/block/sandstone/stairs.json
 d33ccc1978338567020b500743d7fb840f45f2b5 data/extension/tags/block/redstone_fire_base_blocks.json
 4adf5b941cac85c0ee24f444633aa2c07e620ef0 data/minecraft/tags/block/bamboo_blocks.json
 d667e42c883815bd4c57cf083e14855b9e09551b data/minecraft/tags/block/beehives.json
-b31b0b5df9937bd8d3e92dbd626db427e1b4ebf8 data/minecraft/tags/block/blocks_motion_no_leaves.json
+6ca0434f7dc2fec4374971979dbb00aa5d5daf96 data/minecraft/tags/block/blocks_motion_no_leaves.json
 c2b25de3136547dc1ae29b20e9c2ec38656ae6fa data/minecraft/tags/block/campfires.json
 d4dca80551a0d488392912428cdc618c8b8e9197 data/minecraft/tags/block/cannot_place_basalt_pillar_on.json
 e6fb5ccafd35ae058e2e0678279b45d06c7864fc data/minecraft/tags/block/cauldrons.json
@@ -33,7 +33,8 @@ a1d01b6a1b82929ecb7315678011273652b41d66 data/minecraft/tags/block/lanterns.json
 096ddd7892a9f24bf58d25dccf95160736b6bee4 data/minecraft/tags/block/leaves.json
 4737b983b9cab361c9d355611cdc43645e329274 data/minecraft/tags/block/logs.json
 c63e57b7ef316e5d0af0db34d5c11464b586bfb2 data/minecraft/tags/block/mineable/axe.json
-e4988594cb7a1b76575f4273be19000bb1af862a data/minecraft/tags/block/mineable/pickaxe.json
+378d6d3873d13d7faf3889b78a19a90a5c1c4c50 data/minecraft/tags/block/mineable/pickaxe.json
+7238cf37c9e8dd7f0c3001c2314b0bed9c0d714b data/minecraft/tags/block/needs_stone_tool.json
 45d7047b9d3567131955bd6cd85d4b295042277a data/minecraft/tags/block/overworld_natural_logs.json
 3486cb571e4d7f4403ec590dfafb6972d44ae7da data/minecraft/tags/block/piglin_repellents.json
 fb08e79ad6a72de180b1d4b584fe8db7ed01bb10 data/minecraft/tags/block/planks.json

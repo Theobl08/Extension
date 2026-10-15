@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/crafter",
+  "textures": {
+    "east": "extension:block/dark_oak_crafter_east",
+    "north": "extension:block/dark_oak_crafter_north",
+    "south": "extension:block/dark_oak_crafter_south",
+    "west": "extension:block/dark_oak_crafter_west"
+  }
+}

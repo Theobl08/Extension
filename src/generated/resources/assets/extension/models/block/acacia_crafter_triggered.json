@@ -1,0 +1,8 @@
+{
+  "parent": "extension:block/acacia_crafter",
+  "textures": {
+    "east": "extension:block/acacia_crafter_east_triggered",
+    "south": "extension:block/acacia_crafter_south_triggered",
+    "west": "extension:block/acacia_crafter_west_triggered"
+  }
+}

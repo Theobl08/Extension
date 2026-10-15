@@ -1,0 +1,8 @@
+{
+  "parent": "extension:block/mangrove_crafter",
+  "textures": {
+    "east": "extension:block/mangrove_crafter_east_triggered",
+    "south": "extension:block/mangrove_crafter_south_triggered",
+    "west": "extension:block/mangrove_crafter_west_triggered"
+  }
+}

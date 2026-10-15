@@ -66,6 +66,18 @@
     "extension:smooth_soul_sandstone_stairs",
     "extension:smooth_soul_sandstone_slab",
     "extension:cut_soul_sandstone",
-    "extension:cut_soul_sandstone_slab"
+    "extension:cut_soul_sandstone_slab",
+    "extension:spruce_crafter",
+    "extension:birch_crafter",
+    "extension:jungle_crafter",
+    "extension:acacia_crafter",
+    "extension:dark_oak_crafter",
+    "extension:crimson_crafter",
+    "extension:warped_crafter",
+    "extension:mangrove_crafter",
+    "extension:bamboo_crafter",
+    "extension:cherry_crafter",
+    "extension:pale_oak_crafter",
+    "extension:poplar_crafter"
   ]
 }

@@ -16,6 +16,7 @@ import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChiseledBookShelfBlock;
+import net.minecraft.world.level.block.CrafterBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -30,6 +31,10 @@ public class ModBlockModelGenerators extends BlockModelGenerators {
     static final ModelTemplate CHISELED_BOOKSHELF = ModelTemplates.create("chiseled_bookshelf", TextureSlot.TOP, TextureSlot.SIDE);
     static final ModelTemplate CHISELED_BOOKSHELF_INVENTORY = ModelTemplates.create("chiseled_bookshelf_inventory", "_inventory", TextureSlot.TOP, TextureSlot.SIDE, TextureSlot.FRONT);
     static final ModelTemplate LECTERN =  ModelTemplates.create("lectern", BASE, TextureSlot.TOP, TextureSlot.BOTTOM, SIDES, TextureSlot.FRONT, TextureSlot.PARTICLE);
+    static final ModelTemplate CRAFTER =  ModelTemplates.create("crafter");
+    static final ModelTemplate CRAFTER_TRIGGERED =  ModelTemplates.create("extension:crafter_triggered", "_triggered", TextureSlot.SOUTH, TextureSlot.EAST, TextureSlot.WEST).extend().parent(CRAFTER.model.orElseThrow()).build();
+    static final ModelTemplate CRAFTER_CRAFTING =  ModelTemplates.create("extension:crafter_crafting", "_crafting", TextureSlot.NORTH, TextureSlot.EAST, TextureSlot.WEST).extend().parent(CRAFTER_TRIGGERED.model.orElseThrow()).build();
+    static final ModelTemplate CRAFTER_CRAFTING_TRIGGERED =  ModelTemplates.create("extension:crafter_crafting_triggered", "_crafting_triggered").extend().parent(CRAFTER_TRIGGERED.model.orElseThrow()).build();
 
     public ModBlockModelGenerators(Consumer<BlockModelDefinitionGenerator> blockStateOutput, ItemModelOutput itemModelOutput, BiConsumer<Identifier, ModelInstance> modelOutput) {
         super(blockStateOutput, itemModelOutput, modelOutput);
@@ -134,6 +139,70 @@ public class ModBlockModelGenerators extends BlockModelGenerators {
                         MultiVariantGenerator.dispatch(block)
                                 .with(PropertyDispatch.initial(BlockStateProperties.OPEN).select(false, closedModel).select(true, openModel))
                                 .with(ROTATIONS_COLUMN_WITH_FACING)
+                );
+    }
+
+    public void createCrafterBlock(DeferredBlock<Block> deferredBlock) {
+        Block block = deferredBlock.get();
+        TextureMapping offMappings = new TextureMapping()
+                .put(TextureSlot.NORTH, TextureMapping.getBlockTexture(block, "_north"))
+                .put(TextureSlot.SOUTH, TextureMapping.getBlockTexture(block, "_south"))
+                .put(TextureSlot.EAST, TextureMapping.getBlockTexture(block, "_east"))
+                .put(TextureSlot.WEST, TextureMapping.getBlockTexture(block, "_west"));
+
+        TextureMapping triggeredMappings = new TextureMapping()
+                .put(TextureSlot.SOUTH, TextureMapping.getBlockTexture(block, "_south_triggered"))
+                .put(TextureSlot.EAST, TextureMapping.getBlockTexture(block, "_east_triggered"))
+                .put(TextureSlot.WEST, TextureMapping.getBlockTexture(block, "_west_triggered"));
+
+        TextureMapping craftingMappings = new TextureMapping()
+                .put(TextureSlot.NORTH, TextureMapping.getBlockTexture(block, "_north_crafting"))
+                .put(TextureSlot.EAST, TextureMapping.getBlockTexture(block, "_east_crafting"))
+                .put(TextureSlot.WEST, TextureMapping.getBlockTexture(block, "_west_crafting"));
+
+        MultiVariant off = plainVariant(
+                CRAFTER.extend()
+                .requiredTextureSlot(TextureSlot.NORTH)
+                .requiredTextureSlot(TextureSlot.SOUTH)
+                .requiredTextureSlot(TextureSlot.EAST)
+                .requiredTextureSlot(TextureSlot.WEST)
+                .build().create(block, offMappings, this.modelOutput)
+        );
+        MultiVariant triggeredLocation = plainVariant(
+                CRAFTER.extend()
+                .suffix("_triggered")
+                .parent(off.variants().unwrap().getFirst().value().modelLocation())
+                .requiredTextureSlot(TextureSlot.SOUTH)
+                .requiredTextureSlot(TextureSlot.EAST)
+                .requiredTextureSlot(TextureSlot.WEST)
+                .build().create(block, triggeredMappings, this.modelOutput)
+        );
+        MultiVariant craftingLocation = plainVariant(
+                CRAFTER.extend()
+                .suffix("_crafting")
+                .parent(triggeredLocation.variants().unwrap().getFirst().value().modelLocation())
+                .requiredTextureSlot(TextureSlot.NORTH)
+                .requiredTextureSlot(TextureSlot.EAST)
+                .requiredTextureSlot(TextureSlot.WEST)
+                .build().create(block, craftingMappings, this.modelOutput)
+        );
+        MultiVariant craftingTriggeredLocation = plainVariant(
+                CRAFTER.extend()
+                .suffix("_crafting_triggered")
+                .parent(craftingLocation.variants().unwrap().getFirst().value().modelLocation())
+                .build().create(block, new TextureMapping(), this.modelOutput)
+        );
+        this.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.dispatch(block)
+                                .with(
+                                        PropertyDispatch.initial(BlockStateProperties.TRIGGERED, CrafterBlock.CRAFTING)
+                                                .select(false, false, off)
+                                                .select(true, true, craftingTriggeredLocation)
+                                                .select(true, false, triggeredLocation)
+                                                .select(false, true, craftingLocation)
+                                )
+                                .with(PropertyDispatch.modify(BlockStateProperties.ORIENTATION).generate(BlockModelGenerators::applyRotation))
                 );
     }
 }

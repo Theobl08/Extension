@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "minecraft:iron_ingot",
+    "C": "extension:dark_oak_crafting_table",
+    "D": "minecraft:dropper",
+    "R": "minecraft:redstone"
+  },
+  "pattern": [
+    "###",
+    "#C#",
+    "RDR"
+  ],
+  "result": {
+    "id": "extension:dark_oak_crafter"
+  }
+}

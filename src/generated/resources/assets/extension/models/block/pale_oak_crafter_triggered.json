@@ -1,0 +1,8 @@
+{
+  "parent": "extension:block/pale_oak_crafter",
+  "textures": {
+    "east": "extension:block/pale_oak_crafter_east_triggered",
+    "south": "extension:block/pale_oak_crafter_south_triggered",
+    "west": "extension:block/pale_oak_crafter_west_triggered"
+  }
+}

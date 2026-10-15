@@ -210,6 +210,7 @@ public class ModRecipeProvider extends RecipeProvider {
         ModBlocks.CHISELED_BOOKSHELVES.forEach((woodType, block) -> chiseledBookshelf(block, WoodTypeCollection.PLANKS.pick(woodType)));
         ModBlocks.LECTERNS.forEach((woodType, block) -> lectern(block, ModBlocks.BOOKSHELVES.get(woodType)));
         ModBlocks.BARRELS.forEach((woodType, block) -> barrel(block, WoodTypeCollection.PLANKS.pick(woodType)));
+        ModBlocks.CRAFTERS.forEach((woodType, block) -> crafter(block, ModBlocks.CRAFTING_TABLES.get(woodType)));
 
         this.shaped(RecipeCategory.DECORATIONS, ModBlocks.ENDER_TORCH, 4)
                 .define('X', Ingredient.of(Items.COAL, Items.CHARCOAL))
@@ -505,6 +506,19 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("PSP")
                 .unlockedBy("has_planks", this.has(ItemTags.PLANKS))
                 .unlockedBy("has_wood_slab", this.has(ItemTags.WOODEN_SLABS))
+                .save(this.output);
+    }
+
+    protected void crafter(ItemLike result, ItemLike craftingTable) {
+        this.shaped(RecipeCategory.REDSTONE, result)
+                .define('#', Items.IRON_INGOT)
+                .define('C', craftingTable)
+                .define('R', Items.REDSTONE)
+                .define('D', Items.DROPPER)
+                .pattern("###")
+                .pattern("#C#")
+                .pattern("RDR")
+                .unlockedBy("has_dropper", this.has(Items.DROPPER))
                 .save(this.output);
     }
 

@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/crafter",
+  "textures": {
+    "east": "extension:block/poplar_crafter_east",
+    "north": "extension:block/poplar_crafter_north",
+    "south": "extension:block/poplar_crafter_south",
+    "west": "extension:block/poplar_crafter_west"
+  }
+}

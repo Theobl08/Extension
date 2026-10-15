@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/crafter",
+  "textures": {
+    "east": "extension:block/mangrove_crafter_east",
+    "north": "extension:block/mangrove_crafter_north",
+    "south": "extension:block/mangrove_crafter_south",
+    "west": "extension:block/mangrove_crafter_west"
+  }
+}

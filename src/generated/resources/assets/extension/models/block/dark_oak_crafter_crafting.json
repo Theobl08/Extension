@@ -1,0 +1,8 @@
+{
+  "parent": "extension:block/dark_oak_crafter_triggered",
+  "textures": {
+    "east": "extension:block/dark_oak_crafter_east_crafting",
+    "north": "extension:block/dark_oak_crafter_north_crafting",
+    "west": "extension:block/dark_oak_crafter_west_crafting"
+  }
+}
