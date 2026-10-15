@@ -277,17 +277,20 @@ public class ModBlocks {
     public static final Map<WoodType, DeferredBlock<Block>> CRAFTING_TABLES = registerVanillaBlockVariants(
             "crafting_table",
             CraftingTableBlock::new,
-            Blocks.CRAFTING_TABLE, WoodType.OAK
+            Blocks.CRAFTING_TABLE, WoodType.OAK,
+            () -> new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS)
     );
     public static final Map<WoodType, DeferredBlock<Block>> CARTOGRAPHY_TABLES = registerVanillaBlockVariants(
             "cartography_table",
             CartographyTableBlock::new,
-            Blocks.CARTOGRAPHY_TABLE, WoodType.DARK_OAK
+            Blocks.CARTOGRAPHY_TABLE, WoodType.DARK_OAK,
+            () -> new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS)
     );
     public static final Map<WoodType, DeferredBlock<Block>> FLETCHING_TABLES = registerVanillaBlockVariants(
             "fletching_table",
             FletchingTableBlock::new,
-            Blocks.FLETCHING_TABLE, WoodType.BIRCH
+            Blocks.FLETCHING_TABLE, WoodType.BIRCH,
+            () -> new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS)
     );
     public static final Map<WoodType, DeferredBlock<Block>> BEEHIVES = registerVanillaBlockVariants(
             "beehive",
@@ -297,22 +300,26 @@ public class ModBlocks {
     public static final Map<WoodType, DeferredBlock<Block>> BOOKSHELVES = registerVanillaBlockVariants(
             "bookshelf",
             Block::new,
-            Blocks.BOOKSHELF, WoodType.OAK
+            Blocks.BOOKSHELF, WoodType.OAK,
+            () -> new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS)
     );
     public static final Map<WoodType, DeferredBlock<Block>> CHISELED_BOOKSHELVES = registerVanillaBlockVariants(
             "chiseled_bookshelf",
             p -> new ChiseledBookShelfBlock(p.sound(SoundType.CHISELED_BOOKSHELF)),
-            Blocks.CHISELED_BOOKSHELF, WoodType.OAK
+            Blocks.CHISELED_BOOKSHELF, WoodType.OAK,
+            () -> new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS)
     );
     public static final Map<WoodType, DeferredBlock<Block>> LECTERNS = registerVanillaBlockVariants(
             "lectern",
             LecternBlock::new,
-            Blocks.LECTERN, WoodType.OAK
+            Blocks.LECTERN, WoodType.OAK,
+            () -> new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS)
     );
     public static final Map<WoodType, DeferredBlock<Block>> BARRELS = registerVanillaBlockVariants(
             "barrel",
             BarrelBlock::new,
-            Blocks.BARREL, WoodType.SPRUCE
+            Blocks.BARREL, WoodType.SPRUCE,
+            () -> new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS)
     );
     public static final Map<WoodType, DeferredBlock<Block>> CRAFTERS = registerVanillaBlockVariants(
             "crafter",
@@ -602,7 +609,8 @@ public class ModBlocks {
         return false;
     }
 
-    private static  <T extends Block> Map<WoodType, DeferredBlock<T>> registerVanillaBlockVariants(String name, Function<BlockBehaviour.Properties, T> factory, Block vanillaBlock, WoodType vanillaBlockWoodType) {
+    @SafeVarargs
+    private static  <T extends Block> Map<WoodType, DeferredBlock<T>> registerVanillaBlockVariants(String name, Function<BlockBehaviour.Properties, T> factory, Block vanillaBlock, WoodType vanillaBlockWoodType, Supplier<Item.Properties>... itemProperties) {
         return Util.make(
                 new LinkedHashMap<>(),
                 map -> WoodTypeCollection.TYPES.forEach(woodType -> {
@@ -612,7 +620,8 @@ public class ModBlocks {
                                 factory,
                                 BlockBehaviour.Properties.ofFullCopy(vanillaBlock)
                                         .mapColor(WoodTypeCollection.PLANKS.pick(woodType).defaultMapColor())
-                                        .sound(woodType.soundType())
+                                        .sound(woodType.soundType()),
+                                itemProperties
                                 )
                         );
                     }
@@ -636,9 +645,14 @@ public class ModBlocks {
         return registerBlock(name, WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(base.get()).forceSolidOn());
     }
 
-    public static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> block, Supplier<BlockBehaviour.Properties> properties, Supplier<Item.Properties> itemProperties) {
+    @SafeVarargs
+    private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> block, Supplier<BlockBehaviour.Properties> properties, Supplier<Item.Properties>... itemProperties) {
         DeferredBlock<T> deferredBlock = BLOCKS.registerBlock(name, block, properties);
-        ModItems.ITEMS.registerSimpleBlockItem(deferredBlock, itemProperties);
+        if(itemProperties.length > 0) {
+            ModItems.ITEMS.registerSimpleBlockItem(deferredBlock, itemProperties[0]);
+        } else {
+            ModItems.ITEMS.registerSimpleBlockItem(deferredBlock);
+        }
         return deferredBlock;
     }
 
@@ -656,6 +670,9 @@ public class ModBlocks {
         DeferredBlock<T> deferredBlock = BLOCKS.registerBlock(name, block, () -> properties);
         ModItems.ITEMS.registerSimpleBlockItem(name, deferredBlock, Item.Properties::fireResistant);
         return deferredBlock;
+    @SafeVarargs
+    private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> block, BlockBehaviour.Properties properties, Supplier<Item.Properties>... itemProperties) {
+        return registerBlock(name, block, () -> properties, itemProperties);
     }
 
     public static void register(IEventBus eventBus) {
