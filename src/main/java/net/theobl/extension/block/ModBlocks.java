@@ -81,8 +81,9 @@ public class ModBlocks {
             IronBarsBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STAINED_GLASS_PANE.gray()));
 
     public static final DeferredBlock<Block> SMOOTH_STONE_STAIRS = registerStair("smooth_stone_stairs", Blocks.SMOOTH_STONE);
-    public static final DeferredBlock<Block> NETHERITE_STAIRS = registerFireResistantBlock("netherite_stairs",
-            properties -> new StairBlock(Blocks.NETHERITE_BLOCK.defaultBlockState(), properties), BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK));
+    public static final DeferredBlock<Block> NETHERITE_STAIRS = registerBlock("netherite_stairs",
+            properties -> new StairBlock(Blocks.NETHERITE_BLOCK.defaultBlockState(), properties), BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK),
+            () -> new Item.Properties().fireResistant());
 
     public static final DeferredBlock<Block> POLISHED_STONE = registerBlock("polished_stone",
             Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE));
@@ -656,20 +657,6 @@ public class ModBlocks {
         return deferredBlock;
     }
 
-    public static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> block, Supplier<BlockBehaviour.Properties> properties) {
-        DeferredBlock<T> deferredBlock = BLOCKS.registerBlock(name, block, properties);
-        ModItems.ITEMS.registerSimpleBlockItem(name, deferredBlock);
-        return deferredBlock;
-    }
-
-    public static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> block, BlockBehaviour.Properties properties) {
-        return registerBlock(name, block, () -> properties);
-    }
-
-    public static <T extends Block> DeferredBlock<T> registerFireResistantBlock(String name, Function<BlockBehaviour.Properties, ? extends T> block, BlockBehaviour.Properties properties){
-        DeferredBlock<T> deferredBlock = BLOCKS.registerBlock(name, block, () -> properties);
-        ModItems.ITEMS.registerSimpleBlockItem(name, deferredBlock, Item.Properties::fireResistant);
-        return deferredBlock;
     @SafeVarargs
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> block, BlockBehaviour.Properties properties, Supplier<Item.Properties>... itemProperties) {
         return registerBlock(name, block, () -> properties, itemProperties);
