@@ -20,6 +20,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DispenserBlock;
@@ -46,6 +47,11 @@ public class ModUtil {
         DispenserBlock.registerBehavior(ModItems.POTATO_RAFT, new BoatDispenseItemBehavior(ModEntityType.POTATO_RAFT.get()));
         DispenserBlock.registerBehavior(ModItems.POTATO_CHEST_RAFT, new BoatDispenseItemBehavior(ModEntityType.POTATO_CHEST_RAFT.get()));
         DispenserBlock.registerBehavior(ModItems.SPAWNER_MINECART, new MinecartDispenseItemBehavior(EntityTypes.SPAWNER_MINECART));
+    }
+
+    public static boolean isFlammableWood(ItemLike item) {
+        String name = BuiltInRegistries.ITEM.getKey(item.asItem()).getPath();
+        return !(name.contains("crimson") || name.contains("warped"));
     }
 
     public static ItemStack createFilledResult(ItemStack itemStack, Player player, ItemStack newItemStack, boolean limitCreativeStackSize, int consumedAmount) {

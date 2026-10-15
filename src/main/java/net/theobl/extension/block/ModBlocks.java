@@ -47,7 +47,8 @@ public class ModBlocks {
     public static final DeferredBlock<Block> QUARTZ_WALL = registerWall("quartz_wall", () -> Blocks.QUARTZ_BLOCK);
 
     public  static final DeferredBlock<Block> BAMBOO_WOOD = registerBlock("bamboo_wood",
-            RotatedPillarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_BLOCK));
+            RotatedPillarBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_BLOCK),
+            () -> new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS));
 
     public static final DeferredBlock<Block> CHISELED_BRICKS = registerBlock("chiseled_bricks",
             Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS));

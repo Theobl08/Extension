@@ -29,6 +29,7 @@ import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.component.Compostable;
+import net.minecraft.world.item.component.CookingFuel;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -38,6 +39,7 @@ import net.minecraft.world.level.block.entity.BlockEntityTypes;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gamerules.GameRules;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProviders;
 import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -279,6 +281,16 @@ public class Extension {
         event.modify(ModBlocks.POTATO_SPROUTS, compostableLow);
         event.modify(ModBlocks.POTATO_LEAVES, compostableLow);
         event.modify(ModBlocks.POTATO_STEM, compostableLow);
+
+        ModifyDefaultComponentsEvent.Initializer cookingTimeWoodBlocks = (builder, _, _) ->
+                builder.set(DataComponents.COOKING_FUEL, new CookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS, ContextFloatProviders.COOKING_DEFAULT_SPEED_MULTIPLIER));
+        ModBlocks.CRAFTING_TABLES.values().stream().filter(ModUtil::isFlammableWood).forEach(block -> event.modify(block, cookingTimeWoodBlocks));
+        ModBlocks.CARTOGRAPHY_TABLES.values().stream().filter(ModUtil::isFlammableWood).forEach(block -> event.modify(block, cookingTimeWoodBlocks));
+        ModBlocks.FLETCHING_TABLES.values().stream().filter(ModUtil::isFlammableWood).forEach(block -> event.modify(block, cookingTimeWoodBlocks));
+        ModBlocks.BOOKSHELVES.values().stream().filter(ModUtil::isFlammableWood).forEach(block -> event.modify(block, cookingTimeWoodBlocks));
+        ModBlocks.CHISELED_BOOKSHELVES.values().stream().filter(ModUtil::isFlammableWood).forEach(block -> event.modify(block, cookingTimeWoodBlocks));
+        ModBlocks.LECTERNS.values().stream().filter(ModUtil::isFlammableWood).forEach(block -> event.modify(block, cookingTimeWoodBlocks));
+        ModBlocks.BARRELS.values().stream().filter(ModUtil::isFlammableWood).forEach(block -> event.modify(block, cookingTimeWoodBlocks));
     }
 
     @SubscribeEvent
