@@ -6,6 +6,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -13,6 +14,11 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static net.minecraft.world.item.CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS;
 
@@ -38,6 +44,108 @@ public class ModCreativeModeTabs {
                         }
                         output.accept(ModItems.BLUE_NETHER_WART); // Add the example item to the tab. For your own tabs, this method is preferred over the event
                     }).build());
+
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> VARIANT_VANILLA_BLOCKS = CREATIVE_MODE_TABS.register(
+            "variant_vanilla_blocks",
+            () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.extension.variant_vanilla_blocks"))
+                    .withTabsBefore(CreativeModeTabs.COMBAT)
+                    .icon(() -> ModBlocks.CRAFTING_TABLES.get(WoodType.WARPED).toStack())
+                    .displayItems((parameters, output) -> {
+                        List<WoodType> gameplayWoodTypeOrder = List.of(
+                                        WoodType.OAK,
+                                        WoodType.SPRUCE,
+                                        WoodType.BIRCH,
+                                        WoodType.JUNGLE,
+                                        WoodType.ACACIA,
+                                        WoodType.DARK_OAK,
+                                        WoodType.MANGROVE,
+                                        WoodType.CHERRY,
+                                        WoodType.PALE_OAK,
+                                        WoodType.POPLAR,
+                                        WoodType.BAMBOO,
+                                        WoodType.CRIMSON,
+                                        WoodType.WARPED
+                                );
+
+                        Map<WoodType, Block> craftingTables = new HashMap<>(
+                                //https://stackoverflow.com/questions/31131984/java-8-change-the-values-of-an-entryset-stream
+                                ModBlocks.CRAFTING_TABLES
+                                        .entrySet()
+                                        .stream()
+                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
+                        );
+                        Map<WoodType, Block> cartogarphyTables = new HashMap<>(
+                                ModBlocks.CARTOGRAPHY_TABLES
+                                        .entrySet()
+                                        .stream()
+                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
+                        );
+                        Map<WoodType, Block> fletchingTables = new HashMap<>(
+                                ModBlocks.FLETCHING_TABLES
+                                        .entrySet()
+                                        .stream()
+                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
+                        );
+                        Map<WoodType, Block> beehives = new HashMap<>(
+                                ModBlocks.BEEHIVES
+                                        .entrySet()
+                                        .stream()
+                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
+                        );
+                        Map<WoodType, Block> bookshelves = new HashMap<>(
+                                ModBlocks.BOOKSHELVES
+                                        .entrySet()
+                                        .stream()
+                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
+                        );
+                        Map<WoodType, Block> chisledBookshelves = new HashMap<>(
+                                ModBlocks.CHISELED_BOOKSHELVES
+                                        .entrySet()
+                                        .stream()
+                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
+                        );
+                        Map<WoodType, Block> lecterns = new HashMap<>(
+                                ModBlocks.LECTERNS
+                                        .entrySet()
+                                        .stream()
+                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
+                        );
+                        Map<WoodType, Block> barrels = new HashMap<>(
+                                ModBlocks.BARRELS
+                                        .entrySet()
+                                        .stream()
+                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
+                        );
+                        Map<WoodType, Block> crafters = new HashMap<>(
+                                ModBlocks.CRAFTERS
+                                        .entrySet()
+                                        .stream()
+                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
+                        );
+                        craftingTables.put(WoodType.OAK, Blocks.CRAFTING_TABLE);
+                        cartogarphyTables.put(WoodType.DARK_OAK, Blocks.CARTOGRAPHY_TABLE);
+                        fletchingTables.put(WoodType.BIRCH, Blocks.FLETCHING_TABLE);
+                        beehives.put(WoodType.OAK, Blocks.BEEHIVE);
+                        bookshelves.put(WoodType.OAK, Blocks.BOOKSHELF);
+                        chisledBookshelves.put(WoodType.OAK, Blocks.CHISELED_BOOKSHELF);
+                        lecterns.put(WoodType.OAK, Blocks.LECTERN);
+                        barrels.put(WoodType.SPRUCE, Blocks.BARREL);
+                        crafters.put(WoodType.OAK, Blocks.CRAFTER);
+
+                        gameplayWoodTypeOrder.forEach(woodType -> {
+                            output.accept(craftingTables.get(woodType));
+                            output.accept(cartogarphyTables.get(woodType));
+                            output.accept(fletchingTables.get(woodType));
+                            output.accept(beehives.get(woodType));
+                            output.accept(bookshelves.get(woodType));
+                            output.accept(chisledBookshelves.get(woodType));
+                            output.accept(lecterns.get(woodType));
+                            output.accept(barrels.get(woodType));
+                            output.accept(crafters.get(woodType));
+                        });
+                    })
+                    .build()
+    );
 
     // Add blocks to the vanilla tabs
     public static void addCreative(BuildCreativeModeTabContentsEvent event) {

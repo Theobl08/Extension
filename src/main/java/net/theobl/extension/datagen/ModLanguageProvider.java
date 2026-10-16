@@ -16,6 +16,7 @@ import net.theobl.extension.Extension;
 import net.theobl.extension.biome.ModBiomes;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.entity.ModEntityType;
+import net.theobl.extension.item.ModCreativeModeTabs;
 import net.theobl.extension.item.ModItems;
 import net.theobl.extension.item.alchemy.ModPotions;
 import net.theobl.extension.stats.ModStats;
@@ -36,6 +37,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("config.jade.plugin_extension.potion_cauldron", "Cauldron's Potion Info");
 
         add("itemGroup.extension", "Extension");
+        addTranslatableComponent(ModCreativeModeTabs.VARIANT_VANILLA_BLOCKS.get().getDisplayName(), capitalizeString(ModCreativeModeTabs.VARIANT_VANILLA_BLOCKS.getId().getPath().replace("_", " ")));
 
         add("potion.longPotion", "Extended");
         add("potion.strongPotion", "Enhanced");

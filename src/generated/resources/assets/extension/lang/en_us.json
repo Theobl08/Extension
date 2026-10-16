@@ -273,6 +273,7 @@
   "item.minecraft.tipped_arrow.effect.mundane": "Mundane Tipped Arrow",
   "item.minecraft.tipped_arrow.effect.thick": "Thick Tipped Arrow",
   "itemGroup.extension": "Extension",
+  "itemGroup.extension.variant_vanilla_blocks": "Variant Vanilla Blocks",
   "potion.longPotion": "Extended",
   "potion.strongPotion": "Enhanced",
   "stat.extension.interact_with_fletching_table": "Interactions with Fletching Table",
