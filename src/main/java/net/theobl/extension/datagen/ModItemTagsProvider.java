@@ -39,7 +39,6 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
         };
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(Tags.Items.CROPS).add(ModItems.BLUE_NETHER_WART);
@@ -55,13 +54,13 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
         copy(BlockItemTags.LEAVES);
         copy(BlockItemTags.SAPLINGS);
         copy(BlockItemTags.LOGS);
-        copy(Tags.Blocks.NATURAL_WOODS, Tags.Items.NATURAL_WOODS);
+        copy(Tags.BlockItems.NATURAL_WOODS);
         copy(BlockItemTags.PLANKS);
         copy(BlockItemTags.WOODEN_STAIRS);
         copy(BlockItemTags.WOODEN_SLABS);
         copy(BlockItemTags.WOODEN_FENCES);
         copy(BlockItemTags.FENCE_GATES);
-        copy(Tags.Blocks.FENCE_GATES_WOODEN, Tags.Items.FENCE_GATES_WOODEN);
+        copy(Tags.BlockItems.FENCE_GATES_WOODEN);
         copy(BlockItemTags.WOODEN_DOORS);
         copy(BlockItemTags.WOODEN_TRAPDOORS);
         copy(BlockItemTags.WOODEN_PRESSURE_PLATES);
@@ -70,7 +69,7 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
         copy(BlockItemTags.HANGING_SIGNS);
 
         copy(BlockItemTags.BAMBOO_BLOCKS);
-        copy(Tags.Blocks.BOOKSHELVES, Tags.Items.BOOKSHELVES);
+        copy(Tags.BlockItems.BOOKSHELVES);
 
         copy(BlockItemTags.STAIRS);
         copy(BlockItemTags.SLABS);
@@ -81,20 +80,20 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
         copy(ModBlockTags.ENDER_FIRE_BASE_BLOCKS, ModItemTags.ENDER_FIRE_BASE_BLOCKS);
         copy(ModBlockTags.REDSTONE_FIRE_BASE_BLOCKS, ModItemTags.REDSTONE_FIRE_BASE_BLOCKS);
         copy(BlockTags.PIGLIN_REPELLENTS, ItemTags.PIGLIN_REPELLENTS);
-        copy(Tags.Blocks.FENCES, Tags.Items.FENCES);
-        copy(Tags.Blocks.FENCES_NETHER_BRICK, Tags.Items.FENCES_NETHER_BRICK);
-        copy(Tags.Blocks.GLASS_PANES, Tags.Items.GLASS_PANES);
-        copy(Tags.Blocks.PUMPKINS, Tags.Items.PUMPKINS);
+        copy(Tags.BlockItems.FENCES);
+        copy(Tags.BlockItems.FENCES_NETHER_BRICK);
+        copy(Tags.BlockItems.GLASS_PANES);
+        copy(Tags.BlockItems.PUMPKINS);
 
-        copy(Tags.Blocks.SANDSTONE_BLOCKS, Tags.Items.SANDSTONE_BLOCKS);
-        copy(Tags.Blocks.SANDSTONE_STAIRS, Tags.Items.SANDSTONE_STAIRS);
-        copy(Tags.Blocks.SANDSTONE_SLABS, Tags.Items.SANDSTONE_SLABS);
+        copy(Tags.BlockItems.SANDSTONE_BLOCKS);
+        copy(Tags.BlockItems.SANDSTONE_STAIRS);
+        copy(Tags.BlockItems.SANDSTONE_SLABS);
 
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_FAST_FLAT).add(ModBlocks.CERULEAN_FROGLIGHT.asItem(), ModBlocks.CARMINE_FROGLIGHT.asItem());
-        copy(Tags.Blocks.FROGLIGHTS, Tags.Items.FROGLIGHTS);
+        copy(Tags.BlockItems.FROGLIGHTS);
 
-        copy(Tags.Blocks.BARRELS_WOODEN, Tags.Items.BARRELS_WOODEN);
-        copy(Tags.Blocks.PLAYER_WORKSTATIONS_CRAFTING_TABLES, Tags.Items.PLAYER_WORKSTATIONS_CRAFTING_TABLES);
+        copy(Tags.BlockItems.BARRELS_WOODEN);
+        copy(Tags.BlockItems.PLAYER_WORKSTATIONS_CRAFTING_TABLES);
         tag(Tags.Items.VILLAGER_JOB_SITES)
                 .addAll(ModBlocks.LECTERNS.values().stream().map(DeferredBlock::asItem).toList())
                 .addAll(ModBlocks.BARRELS.values().stream().map(DeferredBlock::asItem).toList());

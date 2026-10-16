@@ -1,0 +1,132 @@
+{
+  "values": {
+    "extension:acacia_beehive": {
+      "burn_odds": 20,
+      "ignite_odds": 5
+    },
+    "extension:acacia_bookshelf": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:acacia_lectern": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:bamboo_beehive": {
+      "burn_odds": 20,
+      "ignite_odds": 5
+    },
+    "extension:bamboo_bookshelf": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:bamboo_lectern": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:birch_beehive": {
+      "burn_odds": 20,
+      "ignite_odds": 5
+    },
+    "extension:birch_bookshelf": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:birch_lectern": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:cherry_beehive": {
+      "burn_odds": 20,
+      "ignite_odds": 5
+    },
+    "extension:cherry_bookshelf": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:cherry_lectern": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:dark_oak_beehive": {
+      "burn_odds": 20,
+      "ignite_odds": 5
+    },
+    "extension:dark_oak_bookshelf": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:dark_oak_lectern": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:jungle_beehive": {
+      "burn_odds": 20,
+      "ignite_odds": 5
+    },
+    "extension:jungle_bookshelf": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:jungle_lectern": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:mangrove_beehive": {
+      "burn_odds": 20,
+      "ignite_odds": 5
+    },
+    "extension:mangrove_bookshelf": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:mangrove_lectern": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:orange_shrub": {
+      "burn_odds": 100,
+      "ignite_odds": 60
+    },
+    "extension:pale_oak_beehive": {
+      "burn_odds": 20,
+      "ignite_odds": 5
+    },
+    "extension:pale_oak_bookshelf": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:pale_oak_lectern": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:poplar_beehive": {
+      "burn_odds": 20,
+      "ignite_odds": 5
+    },
+    "extension:poplar_bookshelf": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:poplar_lectern": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:spruce_beehive": {
+      "burn_odds": 20,
+      "ignite_odds": 5
+    },
+    "extension:spruce_bookshelf": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:spruce_lectern": {
+      "burn_odds": 20,
+      "ignite_odds": 30
+    },
+    "extension:yellow_shrub": {
+      "burn_odds": 100,
+      "ignite_odds": 60
+    }
+  }
+}

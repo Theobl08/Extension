@@ -219,7 +219,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("X")
                 .pattern("#")
                 .pattern("C")
-                .unlockedBy("has_end_stone", this.has(Tags.Items.END_STONES))
+                .unlockedBy("has_end_stone", this.has(ModItemTags.ENDER_FIRE_BASE_BLOCKS))
                 .save(this.output);
 
         shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SOUL_O_LANTERN)
@@ -301,7 +301,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("SCS")
                 .pattern("LLL")
                 .unlockedBy("has_stick", has(Items.STICK))
-                .unlockedBy("has_end_stone", has(Tags.Items.END_STONES))
+                .unlockedBy("has_end_stone", has(ModItemTags.ENDER_FIRE_BASE_BLOCKS))
                 .save(output);
 
         fletching(RecipeCategory.COMBAT, Items.ARROW, 6)

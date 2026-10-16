@@ -5,6 +5,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.references.BlockItemIds;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockItemTagId;
 import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -35,13 +36,17 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         };
     }
 
+    private IntrinsicHolderTagAppender<Block> tag(BlockItemTagId blockItemTagId) {
+        return tag(blockItemTagId.block());
+    }
+
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        tag(Tags.Blocks.FENCES_NETHER_BRICK)
+        tag(Tags.BlockItems.FENCES_NETHER_BRICK)
                 .add(ModBlocks.RED_NETHER_BRICK_FENCE)
                 .add(ModBlocks.BLUE_NETHER_BRICK_FENCE);
 
-        tag(Tags.Blocks.GLASS_PANES).add(ModBlocks.TINTED_GLASS_PANE);
+        tag(Tags.BlockItems.GLASS_PANES).add(ModBlocks.TINTED_GLASS_PANE);
         tag(BlockTags.BLOCKS_MOTION_NO_LEAVES)
                 .add(ModBlocks.TINTED_GLASS_PANE)
                 .add(ModBlocks.CERULEAN_FROGLIGHT, ModBlocks.CARMINE_FROGLIGHT)
@@ -54,9 +59,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addAll(ModBlocks.LECTERNS)
                 .addAll(ModBlocks.BARRELS)
                 .addAll(ModBlocks.CRAFTERS);
-        tag(Tags.Blocks.BOOKSHELVES).addAll(ModBlocks.BOOKSHELVES);
+        tag(Tags.BlockItems.BOOKSHELVES).addAll(ModBlocks.BOOKSHELVES);
         tag(BlockTags.ENCHANTMENT_POWER_PROVIDER).addAll(ModBlocks.BOOKSHELVES);
-        tag(Tags.Blocks.FROGLIGHTS).add(ModBlocks.CERULEAN_FROGLIGHT, ModBlocks.CARMINE_FROGLIGHT);
+        tag(Tags.BlockItems.FROGLIGHTS).add(ModBlocks.CERULEAN_FROGLIGHT, ModBlocks.CARMINE_FROGLIGHT);
         tag(BlockTags.SWORD_EFFICIENT)
                 .add(ModBlocks.SOUL_O_LANTERN)
                 .add(ModBlocks.REDSTONE_O_LANTERN)
@@ -85,7 +90,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.WALL_POST_OVERRIDE).add(ModBlocks.ENDER_TORCH);
         tag(BlockTags.CAMPFIRES).add(ModBlocks.COPPER_CAMPFIRE, ModBlocks.REDSTONE_CAMPFIRE, ModBlocks.ENDER_CAMPFIRE);
         tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModBlocks.SOUL_O_LANTERN).add(ModBlocks.CERULEAN_FROGLIGHT);
-        tag(Tags.Blocks.PUMPKINS)
+        tag(Tags.BlockItems.PUMPKINS)
                 .add(ModBlocks.SOUL_O_LANTERN)
                 .add(ModBlocks.COPPER_O_LANTERN)
                 .add(ModBlocks.REDSTONE_O_LANTERN)
@@ -117,7 +122,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.CARMINE_FROGLIGHT);
 
         tag(ModBlockTags.ENDER_FIRE_BASE_BLOCKS)
-                .addTag(Tags.Blocks.END_STONES)
+                .addTag(Tags.BlockItems.END_STONES.block())
                 .add(Blocks.END_STONE_BRICKS)
                 .add(Blocks.END_STONE_BRICK_STAIRS)
                 .add(Blocks.END_STONE_BRICK_SLAB)
@@ -140,13 +145,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.SWORD_EFFICIENT).add(ModBlocks.POTATO_FRUIT);
         tag(BlockTags.LOGS).add(ModBlocks.POTATO_STEM, ModBlocks.POTATO_HYPHAE);
         tag(BlockTags.OVERWORLD_NATURAL_LOGS).add(ModBlocks.POTATO_STEM);
-        tag(Tags.Blocks.NATURAL_WOODS).add(ModBlocks.POTATO_HYPHAE);
+        tag(Tags.BlockItems.NATURAL_WOODS).add(ModBlocks.POTATO_HYPHAE);
         tag(BlockTags.PLANKS).add(ModBlocks.POTATO_PLANKS);
         tag(BlockTags.WOODEN_STAIRS).add(ModBlocks.POTATO_STAIRS);
         tag(BlockTags.WOODEN_SLABS).add(ModBlocks.POTATO_SLAB);
         tag(BlockTags.WOODEN_FENCES).add(ModBlocks.POTATO_FENCE);
         tag(BlockTags.FENCE_GATES).add(ModBlocks.POTATO_FENCE_GATE);
-        tag(Tags.Blocks.FENCE_GATES_WOODEN).add(ModBlocks.POTATO_FENCE_GATE);
+        tag(Tags.BlockItems.FENCE_GATES_WOODEN).add(ModBlocks.POTATO_FENCE_GATE);
         tag(BlockTags.WOODEN_DOORS).add(ModBlocks.POTATO_DOOR);
         tag(BlockTags.WOODEN_TRAPDOORS).add(ModBlocks.POTATO_TRAPDOOR);
         tag(BlockTags.WOODEN_PRESSURE_PLATES).add(ModBlocks.POTATO_PRESSURE_PLATE);
@@ -174,7 +179,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
             if(deferredBlock.get() instanceof FenceBlock) {
                 tag(BlockTags.FENCES).add(deferredBlock);
-                tag(Tags.Blocks.FENCES).add(deferredBlock);
+                tag(Tags.BlockItems.FENCES).add(deferredBlock);
             }
 
             if(deferredBlock.get() instanceof AbstractCauldronBlock) {
@@ -183,7 +188,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             }
 
             if(deferredBlock.get() instanceof CraftingTableBlock) {
-                tag(Tags.Blocks.PLAYER_WORKSTATIONS_CRAFTING_TABLES).add(deferredBlock);
+                tag(Tags.BlockItems.PLAYER_WORKSTATIONS_CRAFTING_TABLES).add(deferredBlock);
             }
             if(deferredBlock.get() instanceof CartographyTableBlock) {
                 tag(Tags.Blocks.VILLAGER_JOB_SITES).add(deferredBlock);
@@ -199,7 +204,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             }
             if(deferredBlock.get() instanceof BarrelBlock) {
                 tag(Tags.Blocks.VILLAGER_JOB_SITES).add(deferredBlock);
-                tag(Tags.Blocks.BARRELS_WOODEN).add(deferredBlock);
+                tag(Tags.BlockItems.BARRELS_WOODEN).add(deferredBlock);
                 tag(BlockTags.GUARDED_BY_PIGLINS).add(deferredBlock);
             }
 
@@ -212,11 +217,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             if(deferredBlock.get().toString().contains("soul_sandstone")) {
                 tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(deferredBlock);
                 if(deferredBlock.get() instanceof StairBlock)
-                    tag(Tags.Blocks.SANDSTONE_STAIRS).add(deferredBlock);
+                    tag(Tags.BlockItems.SANDSTONE_STAIRS).add(deferredBlock);
                 else if(deferredBlock.get() instanceof SlabBlock)
-                    tag(Tags.Blocks.SANDSTONE_SLABS).add(deferredBlock);
+                    tag(Tags.BlockItems.SANDSTONE_SLABS).add(deferredBlock);
                 else if(!(deferredBlock.get() instanceof WallBlock))
-                    tag(Tags.Blocks.SANDSTONE_BLOCKS).add(deferredBlock);
+                    tag(Tags.BlockItems.SANDSTONE_BLOCKS).add(deferredBlock);
             }
             
             if(mineableWithPickaxe(deferredBlock.get()))
