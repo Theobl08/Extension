@@ -1,10 +1,14 @@
 package net.theobl.extension.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.Util;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.component.Bees;
+import net.minecraft.world.item.component.BlockItemStateProperties;
+import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -296,7 +300,10 @@ public class ModBlocks {
     public static final Map<WoodType, DeferredBlock<Block>> BEEHIVES = registerVanillaBlockVariants(
             "beehive",
             BeehiveBlock::new,
-            Blocks.BEEHIVE, WoodType.OAK
+            Blocks.BEEHIVE, WoodType.OAK,
+            () -> new Item.Properties()
+                    .component(DataComponents.BEES, Bees.EMPTY)
+                    .component(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY.with(BeehiveBlock.HONEY_LEVEL, 0))
     );
     public static final Map<WoodType, DeferredBlock<Block>> BOOKSHELVES = registerVanillaBlockVariants(
             "bookshelf",
@@ -308,7 +315,7 @@ public class ModBlocks {
             "chiseled_bookshelf",
             p -> new ChiseledBookShelfBlock(p.sound(SoundType.CHISELED_BOOKSHELF)),
             Blocks.CHISELED_BOOKSHELF, WoodType.OAK,
-            () -> new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS)
+            () -> new Item.Properties().component(DataComponents.CONTAINER, ItemContainerContents.EMPTY).cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS)
     );
     public static final Map<WoodType, DeferredBlock<Block>> LECTERNS = registerVanillaBlockVariants(
             "lectern",
@@ -320,12 +327,13 @@ public class ModBlocks {
             "barrel",
             BarrelBlock::new,
             Blocks.BARREL, WoodType.SPRUCE,
-            () -> new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS)
+            () -> new Item.Properties().component(DataComponents.CONTAINER, ItemContainerContents.EMPTY).cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_BLOCKS)
     );
     public static final Map<WoodType, DeferredBlock<Block>> CRAFTERS = registerVanillaBlockVariants(
             "crafter",
             CrafterBlock::new,
-            Blocks.CRAFTER, WoodType.OAK
+            Blocks.CRAFTER, WoodType.OAK,
+            () -> new Item.Properties().component(DataComponents.CONTAINER, ItemContainerContents.EMPTY)
     );
     public static final DeferredBlock<Block> RED_POPLAR_SAPLING = registerBlock(
             "red_poplar_sapling",
