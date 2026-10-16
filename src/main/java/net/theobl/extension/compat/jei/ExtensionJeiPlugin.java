@@ -2,6 +2,8 @@ package net.theobl.extension.compat.jei;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.RecipeTypes;
+import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.helpers.IJeiHelpers;
 import mezz.jei.api.registration.*;
 import net.minecraft.resources.Identifier;
@@ -9,7 +11,9 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
 import net.neoforged.neoforge.client.event.RecipesReceivedEvent;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.theobl.extension.Extension;
+import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.inventory.FletchingMenu;
 import net.theobl.extension.inventory.FletchingScreen;
 import net.theobl.extension.inventory.ModMenuType;
@@ -58,6 +62,9 @@ public class ExtensionJeiPlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addCraftingStation(FletchingRecipeCategory.FLETCHING, Blocks.FLETCHING_TABLE);
+        registration.addCraftingStations(FletchingRecipeCategory.FLETCHING, VanillaTypes.ITEM_STACK, ModBlocks.FLETCHING_TABLES.values().stream().map(DeferredBlock::toStack).toList());
+        registration.addCraftingStations(RecipeTypes.CRAFTING, VanillaTypes.ITEM_STACK, ModBlocks.CRAFTING_TABLES.values().stream().map(DeferredBlock::toStack).toList());
+        registration.addCraftingStations(RecipeTypes.CRAFTING, VanillaTypes.ITEM_STACK, ModBlocks.CRAFTERS.values().stream().map(DeferredBlock::toStack).toList());
     }
 
     /**
