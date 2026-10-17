@@ -115,7 +115,7 @@ public class ExtendedCauldronInteraction {
     ) {
         return isUnderWater(level, pos)
                 ? InteractionResult.CONSUME
-                : emptyBucket(level, pos, player, hand, filledStack, ModBlocks.MILK_CAULDRON.get().defaultBlockState(), SoundEvents.BUCKET_EMPTY_LAVA);
+                : emptyBucket(level, pos, player, hand, filledStack, ModBlocks.MILK_CAULDRON.get().defaultBlockState(), NeoForgeMod.BUCKET_EMPTY_MILK.get());
     }
 
     private static InteractionResult arrowInteraction(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack itemInHand) {
