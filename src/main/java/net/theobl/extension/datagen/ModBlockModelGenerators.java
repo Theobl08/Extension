@@ -17,6 +17,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChiseledBookShelfBlock;
 import net.minecraft.world.level.block.CrafterBlock;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -204,5 +205,11 @@ public class ModBlockModelGenerators extends BlockModelGenerators {
                                 )
                                 .with(PropertyDispatch.modify(BlockStateProperties.ORIENTATION).generate(BlockModelGenerators::applyRotation))
                 );
+    }
+
+    public void createLiquidBlock(DeferredBlock<LiquidBlock> block, Identifier stillTexture) {
+        // This does the EXACT same thing as createAirLikeBlock(Block, Material)
+        ModelTemplates.PARTICLE_ONLY.create(block.get(), TextureMapping.particle(new Material(stillTexture)), this.modelOutput);
+        createNonTemplateModelBlock(block.get());
     }
 }

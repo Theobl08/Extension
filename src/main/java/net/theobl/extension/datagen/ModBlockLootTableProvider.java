@@ -87,7 +87,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
             else if (block.get() instanceof BarrelBlock) {
                 this.add(block.get(), this::createNameableBlockEntityTable);
             }
-            else {
+            else if(!(block.get() instanceof LiquidBlock)){
                 this.dropSelf(block.get());
             }
         }

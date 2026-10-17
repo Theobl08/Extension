@@ -25,6 +25,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.theobl.extension.Extension;
 import net.theobl.extension.ModEnumProxy;
+import net.theobl.extension.fluid.ModFluids;
 import net.theobl.extension.item.ModItems;
 import net.theobl.extension.particles.ModParticleTypes;
 import net.theobl.extension.util.ModUtil;
@@ -379,6 +380,11 @@ public class ModBlocks {
             "potted_yellow_poplar_sapling",
             p -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, YELLOW_POPLAR_SAPLING, p),
             () -> BlockBehaviour.Properties.ofFullCopy(Blocks.POPLAR_SAPLING)
+    );
+    public static final DeferredBlock<LiquidBlock> BEETROOT_SOUP = BLOCKS.registerBlock(
+            "beetroot_soup",
+            p -> new LiquidBlock(ModFluids.BEETROOT_SOUP.get(), p),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).mapColor(MapColor.TERRACOTTA_RED)
     );
 
     public static final DeferredBlock<Block> POTATO_FRUIT = registerBlock(

@@ -92,6 +92,8 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_FAST_FLAT).add(ModBlocks.CERULEAN_FROGLIGHT.asItem(), ModBlocks.CARMINE_FROGLIGHT.asItem());
         copy(Tags.BlockItems.FROGLIGHTS);
 
+        tag(Tags.Items.BUCKETS).add(ModItems.BEETROOT_SOUP_BUCKET);
+
         copy(Tags.BlockItems.BARRELS_WOODEN);
         copy(Tags.BlockItems.PLAYER_WORKSTATIONS_CRAFTING_TABLES);
         tag(Tags.Items.VILLAGER_JOB_SITES)

@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.neoforge.client.model.generators.blockstate.CompositeBlockStateModelBuilder;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.block.WoodTypeCollection;
@@ -87,6 +88,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.BLUE_NETHER_BRICK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.ILLUSIONER_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.EMPTY_POTTERY_SHERD.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.BEETROOT_SOUP_BUCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.POTATO_RAFT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.POTATO_CHEST_RAFT.get(), ModelTemplates.FLAT_ITEM);
 
@@ -154,6 +156,8 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createPlantWithDefaultItem(ModBlocks.YELLOW_POPLAR_SAPLING.get(), ModBlocks.POTTED_YELLOW_POPLAR_SAPLING.get(), PlantType.NOT_TINTED);
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.ORANGE_SHRUB.get(), PlantType.NOT_TINTED);
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.YELLOW_SHRUB.get(), PlantType.NOT_TINTED);
+
+        modBlockModels.createLiquidBlock(ModBlocks.BEETROOT_SOUP, Identifier.fromNamespaceAndPath(NeoForgeMod.MOD_ID, "block/milk_still"));
 
         blockModels.createTrivialBlock(ModBlocks.POTATO_FRUIT.get(), TexturedModel.CUBE_BOTTOM_TOP);
         blockModels.createAxisAlignedPillarBlockCustomModel(ModBlocks.POTATO_PEDICULE.get(), plainVariant(ModelLocationUtils.getModelLocation(ModBlocks.POTATO_PEDICULE.get())));

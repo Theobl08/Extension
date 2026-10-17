@@ -3,6 +3,7 @@ package net.theobl.extension.item;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.EntityTypes;
+import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
@@ -14,6 +15,7 @@ import net.theobl.extension.ModEnumProxy;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.block.entity.ModDecoratedPotPatterns;
 import net.theobl.extension.entity.ModEntityType;
+import net.theobl.extension.fluid.ModFluids;
 
 public class ModItems {
     // Create a Deferred Register to hold Items which will all be registered under the "extension" namespace
@@ -39,6 +41,12 @@ public class ModItems {
 
     public static final DeferredItem<Item> ILLUSIONER_SPAWN_EGG = ITEMS.registerItem("illusioner_spawn_egg",
             SpawnEggItem::new, p -> p.spawnEgg(EntityTypes.ILLUSIONER));
+
+    public static final DeferredItem<Item> BEETROOT_SOUP_BUCKET = ITEMS.registerItem(
+            "beetroot_soup_bucket",
+            p -> new BucketItem(ModFluids.BEETROOT_SOUP.get(), p),
+            p -> p.craftRemainder(Items.BUCKET).stacksTo(1)
+    );
 
     public static final DeferredItem<BlockItem> POTATO_SHELF = ITEMS.registerItem("potato_shelf",
             p -> new BlockItem(ModBlocks.POTATO_SHELF.get(), p), p -> p.rarity(ModEnumProxy.POTATO_RARITY.getValue()).component(DataComponents.CONTAINER, ItemContainerContents.EMPTY).useBlockDescriptionPrefix()

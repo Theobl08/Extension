@@ -36,6 +36,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class ModUtil {
+    public static int BEETROOT_SOUP_COLOR = 0xB82A30;
+
     public static void bootstrap() {
         DispenserBlock.registerBehavior(ModItems.POTATO_RAFT, new BoatDispenseItemBehavior(ModEntityType.POTATO_RAFT.get()));
         DispenserBlock.registerBehavior(ModItems.POTATO_CHEST_RAFT, new BoatDispenseItemBehavior(ModEntityType.POTATO_CHEST_RAFT.get()));

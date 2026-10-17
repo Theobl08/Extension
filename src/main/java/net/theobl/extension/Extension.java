@@ -63,6 +63,8 @@ import net.theobl.extension.block.WoodTypeCollection;
 import net.theobl.extension.block.entity.ModBlockEntityType;
 import net.theobl.extension.commands.HeldItemNameCommand;
 import net.theobl.extension.entity.ModEntityType;
+import net.theobl.extension.fluid.ModFluidTypes;
+import net.theobl.extension.fluid.ModFluids;
 import net.theobl.extension.inventory.FletchingMenu;
 import net.theobl.extension.inventory.ModMenuType;
 import net.theobl.extension.item.ModCreativeModeTabs;
@@ -106,6 +108,9 @@ public class Extension {
         ModItems.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         ModCreativeModeTabs.register(modEventBus);
+
+        ModFluidTypes.register(modEventBus);
+        ModFluids.register(modEventBus);
 
         ModMenuType.register(modEventBus);
         ModRecipeType.register(modEventBus);

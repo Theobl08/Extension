@@ -1,8 +1,9 @@
-// 26.3	2026-10-14T23:30:20.796268	extension-global/Tags for minecraft:item mod id extension
+// 26.3	2026-10-18T01:04:43.4240019	extension-global/Tags for minecraft:item mod id extension
 36f8cbc5e9616d7035a1297ed9de1d21f5acc0a0 data/c/tags/item/barrels/wooden.json
 ec11c9e13861d470609a4ba896ce98c1f7d7ba15 data/c/tags/item/bookshelves.json
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks.json
 1ffde89156c430e080a90e8fc936c2b8f6d8462a data/c/tags/item/bricks/nether.json
+7f89a4d32eb3931b486364dec3d704f69d9c4d7f data/c/tags/item/buckets.json
 d4dca80551a0d488392912428cdc618c8b8e9197 data/c/tags/item/crops.json
 6af7f26669e374797e819a720298b940f77a2c18 data/c/tags/item/fences.json
 7c52b8a04b033a00afebd30f88dc97c4e606478a data/c/tags/item/fences/nether_brick.json
