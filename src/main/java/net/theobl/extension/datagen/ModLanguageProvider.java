@@ -16,6 +16,7 @@ import net.theobl.extension.Extension;
 import net.theobl.extension.biome.ModBiomes;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.entity.ModEntityType;
+import net.theobl.extension.gamerules.ModGameRules;
 import net.theobl.extension.item.ModCreativeModeTabs;
 import net.theobl.extension.item.ModItems;
 import net.theobl.extension.item.alchemy.ModPotions;
@@ -38,6 +39,8 @@ public class ModLanguageProvider extends LanguageProvider {
 
         add("itemGroup.extension", "Extension");
         addTranslatableComponent(ModCreativeModeTabs.VARIANT_VANILLA_BLOCKS.get().getDisplayName(), capitalizeString(ModCreativeModeTabs.VARIANT_VANILLA_BLOCKS.getId().getPath().replace("_", " ")));
+
+        addGameRule(ModGameRules.BEETROOT_SOUP_SOURCE_CONVERSION, "Beetroot soup converts to source", "When flowing beetroot soup is surrounded on two sides by beetroot soup sources, it converts into a source.");
 
         add("potion.longPotion", "Extended");
         add("potion.strongPotion", "Enhanced");

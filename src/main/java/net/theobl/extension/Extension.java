@@ -65,6 +65,7 @@ import net.theobl.extension.commands.HeldItemNameCommand;
 import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.fluid.ModFluidTypes;
 import net.theobl.extension.fluid.ModFluids;
+import net.theobl.extension.gamerules.ModGameRules;
 import net.theobl.extension.inventory.FletchingMenu;
 import net.theobl.extension.inventory.ModMenuType;
 import net.theobl.extension.item.ModCreativeModeTabs;
@@ -116,6 +117,7 @@ public class Extension {
         ModRecipeType.register(modEventBus);
         ModRecipeSerializer.register(modEventBus);
         ModStats.register(modEventBus);
+        ModGameRules.register(modEventBus);
 
         ModParticleTypes.register(modEventBus);
 

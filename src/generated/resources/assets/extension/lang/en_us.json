@@ -258,6 +258,8 @@
   "extension.configuration.noFireOverlay": "No Fire Overlay",
   "extension.configuration.pistonsPushBlockEntities": "Pistons Push Block Entities",
   "extension.configuration.unbreakableAtMaxUnbreakingLevel": "Unbreakable At Max Unbreaking Level",
+  "gamerule.extension.beetroot_soup_source_conversion": "Beetroot soup converts to source",
+  "gamerule.extension.beetroot_soup_source_conversion.description": "When flowing beetroot soup is surrounded on two sides by beetroot soup sources, it converts into a source.",
   "item.extension.beetroot_soup_bucket": "Beetroot Soup Bucket",
   "item.extension.blue_nether_brick": "Blue Nether Brick",
   "item.extension.blue_nether_wart": "Blue Nether Wart",
