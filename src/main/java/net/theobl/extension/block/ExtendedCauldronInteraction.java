@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.core.cauldron.CauldronInteractions;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -22,22 +23,33 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.event.RegisterCauldronInteractionEvent;
+import net.theobl.extension.Extension;
 import net.theobl.extension.block.entity.PotionCauldronBlockEntity;
 import net.theobl.extension.util.ModUtil;
 
 import static net.minecraft.core.cauldron.CauldronInteractions.*;
 import static net.theobl.extension.util.ModUtil.createFilledResult;
 
+@EventBusSubscriber(modid = Extension.MODID)
 public class ExtendedCauldronInteraction {
-    public static CauldronInteraction.Dispatcher MILK = newDispatcher("milk");
-    public static CauldronInteraction.Dispatcher POTION = newDispatcher("potion");
+    public static final CauldronInteraction.Dispatcher MILK = new CauldronInteraction.Dispatcher();
+    public static final CauldronInteraction.Dispatcher POTION = new CauldronInteraction.Dispatcher();
+    public static final Identifier MILK_ID = Extension.asResource("milk");
+    public static final Identifier POTION_ID = Extension.asResource("potion");
 
-    public static void bootStrap() {
-        addMilkInteractions(CauldronInteractions.EMPTY);
-        addMilkInteractions(CauldronInteractions.WATER);
-        addMilkInteractions(CauldronInteractions.LAVA);
-        addMilkInteractions(CauldronInteractions.POWDER_SNOW);
+    @SubscribeEvent
+    private static void registerCauldronInteractionDispatchers(RegisterCauldronInteractionEvent.Dispatcher event) {
+        event.register(MILK_ID, MILK);
+        event.register(POTION_ID, POTION);
+    }
+
+    @SubscribeEvent
+    private static void registerCauldronInteractions(RegisterCauldronInteractionEvent.Interaction event) {
+        event.registerToAll(Items.MILK_BUCKET, ExtendedCauldronInteraction::fillMilkInteraction);
 
         MILK.put(
                 Items.BUCKET,
@@ -54,7 +66,6 @@ public class ExtendedCauldronInteraction {
                 )
         );
         addDefaultInteractions(MILK);
-        addMilkInteractions(MILK);
 
             POTION.put(
                     Items.GLASS_BOTTLE,
@@ -103,11 +114,7 @@ public class ExtendedCauldronInteraction {
                     }
                 }
             });
-            POTION.put(Items.ARROW, ExtendedCauldronInteraction::arrowInteraction);
-        }
-
-    static void addMilkInteractions(CauldronInteraction.Dispatcher interactionsMap) {
-        interactionsMap.put(Items.MILK_BUCKET, ExtendedCauldronInteraction::fillMilkInteraction);
+            event.register(POTION_ID, Items.ARROW, ExtendedCauldronInteraction::arrowInteraction);
     }
 
     private static InteractionResult fillMilkInteraction(

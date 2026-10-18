@@ -145,7 +145,6 @@ public class Extension {
         // Some common setup code
         //LOGGER.info("HELLO FROM COMMON SETUP");
         event.enqueueWork(ModUtil::bootstrap);
-        ExtendedCauldronInteraction.bootStrap();
         // For custom stats: add this line if the formatting is different from StatFormatter.DEFAULT to properly display it with the correct unit
         // Stats.CUSTOM.get(ModStats.INTERACT_WITH_FLETCHING_TABLE, StatFormatter.TIME);
     }
