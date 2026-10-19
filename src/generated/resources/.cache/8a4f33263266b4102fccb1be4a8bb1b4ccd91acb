@@ -1,4 +1,4 @@
-// 26.3	2026-10-16T14:31:19.3244052	Registries for Reloadable (extension[1]): [minecraft, extension]
+// 26.3	2026-10-18T16:34:18.931053	Registries for Reloadable (extension[1]): [minecraft, extension]
 63a45c5a98c25611258a8b7e235c19721cbec0fd data/extension/advancement/recipes/building_blocks/acacia_bookshelf.json
 9a038ede8d7f8a06c8a2a22b4c45fc67a73082f9 data/extension/advancement/recipes/building_blocks/acacia_chiseled_bookshelf.json
 340685fd2c5a916508f72eb45ceb9553b9c7f77d data/extension/advancement/recipes/building_blocks/andesite_bricks.json
@@ -407,6 +407,7 @@ c64da87ab97c778924b07110c9abc77aba13a13c data/extension/loot_table/blocks/bamboo
 824e337fd27d1984d1f38872f7211a54d4af1b2a data/extension/loot_table/blocks/bamboo_fletching_table.json
 37749103d1b3dd06089b5c656d0474afe9e6017b data/extension/loot_table/blocks/bamboo_lectern.json
 f1d730faba6c58dd4c1063f08cebbf1df2e08753 data/extension/loot_table/blocks/bamboo_wood.json
+cb52d5cf3dd58205ec8a1d355db492959fc7f5f1 data/extension/loot_table/blocks/beetroot_soup_cauldron.json
 a4508c8ceca04fa259aa935d1fb11e8942ab3a4c data/extension/loot_table/blocks/birch_barrel.json
 d8d2fad5aa5d96aa3952c6b6607ace0a83430ba3 data/extension/loot_table/blocks/birch_beehive.json
 5ca71dfe37b659a1306d5f1e393175a52e4d6ca8 data/extension/loot_table/blocks/birch_bookshelf.json

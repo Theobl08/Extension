@@ -29,6 +29,7 @@ import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.RegisterCauldronInteractionEvent;
 import net.theobl.extension.Extension;
 import net.theobl.extension.block.entity.PotionCauldronBlockEntity;
+import net.theobl.extension.item.ModItems;
 import net.theobl.extension.util.ModUtil;
 
 import static net.minecraft.core.cauldron.CauldronInteractions.*;
@@ -38,18 +39,23 @@ import static net.theobl.extension.util.ModUtil.createFilledResult;
 public class ExtendedCauldronInteraction {
     public static final CauldronInteraction.Dispatcher MILK = new CauldronInteraction.Dispatcher();
     public static final CauldronInteraction.Dispatcher POTION = new CauldronInteraction.Dispatcher();
+    public static final CauldronInteraction.Dispatcher BEETROOT_SOUP = new CauldronInteraction.Dispatcher();
     public static final Identifier MILK_ID = Extension.asResource("milk");
     public static final Identifier POTION_ID = Extension.asResource("potion");
+    public static final Identifier BEETROOT_SOUP_ID = Extension.asResource("beetroot_soup");
 
     @SubscribeEvent
     private static void registerCauldronInteractionDispatchers(RegisterCauldronInteractionEvent.Dispatcher event) {
         event.register(MILK_ID, MILK);
         event.register(POTION_ID, POTION);
+        event.register(BEETROOT_SOUP_ID, BEETROOT_SOUP);
     }
 
     @SubscribeEvent
     private static void registerCauldronInteractions(RegisterCauldronInteractionEvent.Interaction event) {
+        final Identifier EMPTY = Identifier.withDefaultNamespace("empty");
         event.registerToAll(Items.MILK_BUCKET, ExtendedCauldronInteraction::fillMilkInteraction);
+        event.registerToAll(ModItems.BEETROOT_SOUP_BUCKET.get(), ExtendedCauldronInteraction::fillBeetrootSoupInteraction);
 
         MILK.put(
                 Items.BUCKET,
@@ -66,6 +72,66 @@ public class ExtendedCauldronInteraction {
                 )
         );
         addDefaultInteractions(MILK);
+
+        addDefaultInteractions(BEETROOT_SOUP);
+        event.register(
+                BEETROOT_SOUP_ID,
+                Items.BUCKET,
+                (state, level, pos, player, hand, itemInHand) -> fillBucket(
+                        state,
+                        level,
+                        pos,
+                        player,
+                        hand,
+                        itemInHand,
+                        ModItems.BEETROOT_SOUP_BUCKET.toStack(),
+                        s -> true,
+                        SoundEvents.BUCKET_FILL
+                )
+        );
+        event.register(BEETROOT_SOUP_ID, Items.BOWL, (state, level, pos, player, hand, itemInHand) -> {
+            if (!level.isClientSide()) {
+                Item usedItem = itemInHand.getItem();
+                player.setItemInHand(hand, ItemUtils.createFilledResult(itemInHand, player, Items.BEETROOT_SOUP.getDefaultInstance()));
+                player.awardStat(Stats.USE_CAULDRON);
+                player.awardStat(Stats.ITEM_USED.get(usedItem));
+                FourLayeredCauldronBlock.lowerFillLevel(state, level, pos);
+                level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
+            }
+
+            return InteractionResult.SUCCESS;
+        });
+        event.register(BEETROOT_SOUP_ID, Items.BEETROOT_SOUP, (state, level, pos, player, hand, itemInHand) -> {
+            if (state.getValue(FourLayeredCauldronBlock.LEVEL) == FourLayeredCauldronBlock.MAX_FILL_LEVEL) {
+                return InteractionResult.TRY_WITH_EMPTY_HAND;
+            }
+
+            if (!level.isClientSide()) {
+                Item usedItem = itemInHand.getItem();
+                player.setItemInHand(hand, ItemUtils.createFilledResult(itemInHand, player, Items.BOWL.getDefaultInstance()));
+                player.awardStat(Stats.USE_CAULDRON);
+                player.awardStat(Stats.ITEM_USED.get(usedItem));
+                level.setBlockAndUpdate(pos, state.cycle(FourLayeredCauldronBlock.LEVEL));
+                level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
+            }
+
+            return InteractionResult.SUCCESS;
+        });
+        event.register(EMPTY, Items.BEETROOT_SOUP, (state, level, pos, player, hand, itemInHand) -> {
+            if (!level.isClientSide()) {
+                Item usedItem = itemInHand.getItem();
+                player.setItemInHand(hand, ItemUtils.createFilledResult(itemInHand, player, Items.BOWL.getDefaultInstance()));
+                player.awardStat(Stats.USE_CAULDRON);
+                player.awardStat(Stats.ITEM_USED.get(usedItem));
+                level.setBlockAndUpdate(pos, ModBlocks.BEETROOT_SOUP_CAULDRON.get().defaultBlockState());
+                level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
+            }
+
+            return InteractionResult.SUCCESS;
+        });
 
             POTION.put(
                     Items.GLASS_BOTTLE,
@@ -123,6 +189,14 @@ public class ExtendedCauldronInteraction {
         return isUnderWater(level, pos)
                 ? InteractionResult.CONSUME
                 : emptyBucket(level, pos, player, hand, filledStack, ModBlocks.MILK_CAULDRON.get().defaultBlockState(), NeoForgeMod.BUCKET_EMPTY_MILK.get());
+    }
+
+    private static InteractionResult fillBeetrootSoupInteraction(
+            BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack filledStack
+    ) {
+        return isUnderWater(level, pos)
+                ? InteractionResult.CONSUME
+                : emptyBucket(level, pos, player, hand, filledStack, ModBlocks.BEETROOT_SOUP_CAULDRON.get().defaultBlockState().setValue(FourLayeredCauldronBlock.LEVEL, FourLayeredCauldronBlock.MAX_FILL_LEVEL), SoundEvents.BUCKET_EMPTY);
     }
 
     private static InteractionResult arrowInteraction(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack itemInHand) {

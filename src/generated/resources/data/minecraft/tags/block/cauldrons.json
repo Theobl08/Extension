@@ -1,6 +1,7 @@
 {
   "values": [
     "extension:milk_cauldron",
-    "extension:potion_cauldron"
+    "extension:potion_cauldron",
+    "extension:beetroot_soup_cauldron"
   ]
 }

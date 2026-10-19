@@ -58,6 +58,7 @@ import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.RegisterCauldronFluidContentEvent;
 import net.theobl.extension.block.ExtendedCauldronInteraction;
+import net.theobl.extension.block.FourLayeredCauldronBlock;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.block.WoodTypeCollection;
 import net.theobl.extension.block.entity.ModBlockEntityType;
@@ -167,6 +168,7 @@ public class Extension {
 
     private void extendPoiTypes(ExtendPoiTypesEvent event) {
         event.addBlockToPoi(PoiTypes.LEATHERWORKER, ModBlocks.MILK_CAULDRON.get());
+        event.addBlockToPoi(PoiTypes.LEATHERWORKER, ModBlocks.BEETROOT_SOUP_CAULDRON.get());
         ModBlocks.CARTOGRAPHY_TABLES.values().forEach(block -> event.addBlockToPoi(PoiTypes.CARTOGRAPHER, block.get()));
         ModBlocks.FLETCHING_TABLES.values().forEach(block -> event.addBlockToPoi(PoiTypes.FLETCHER, block.get()));
         ModBlocks.BEEHIVES.values().forEach(block -> event.addBlockToPoi(PoiTypes.BEEHIVE, block.get()));
@@ -176,6 +178,7 @@ public class Extension {
 
     private void registerCauldronFluidContent(RegisterCauldronFluidContentEvent event) {
         event.register(ModBlocks.MILK_CAULDRON.get(), NeoForgeMod.MILK.get(), FluidType.BUCKET_VOLUME, null);
+        event.register(ModBlocks.BEETROOT_SOUP_CAULDRON.get(), ModFluids.BEETROOT_SOUP.get(), FluidType.BUCKET_VOLUME, FourLayeredCauldronBlock.LEVEL);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

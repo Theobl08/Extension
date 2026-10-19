@@ -14,13 +14,11 @@ import net.minecraft.client.renderer.block.dispatch.multipart.CombinedCondition;
 import net.minecraft.client.renderer.block.dispatch.multipart.Condition;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ChiseledBookShelfBlock;
-import net.minecraft.world.level.block.CrafterBlock;
-import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import net.theobl.extension.block.FourLayeredCauldronBlock;
 
 import java.util.List;
 import java.util.function.BiConsumer;
@@ -33,9 +31,9 @@ public class ModBlockModelGenerators extends BlockModelGenerators {
     static final ModelTemplate CHISELED_BOOKSHELF_INVENTORY = ModelTemplates.create("chiseled_bookshelf_inventory", "_inventory", TextureSlot.TOP, TextureSlot.SIDE, TextureSlot.FRONT);
     static final ModelTemplate LECTERN =  ModelTemplates.create("lectern", BASE, TextureSlot.TOP, TextureSlot.BOTTOM, SIDES, TextureSlot.FRONT, TextureSlot.PARTICLE);
     static final ModelTemplate CRAFTER =  ModelTemplates.create("crafter");
-    static final ModelTemplate CRAFTER_TRIGGERED =  ModelTemplates.create("extension:crafter_triggered", "_triggered", TextureSlot.SOUTH, TextureSlot.EAST, TextureSlot.WEST).extend().parent(CRAFTER.model.orElseThrow()).build();
-    static final ModelTemplate CRAFTER_CRAFTING =  ModelTemplates.create("extension:crafter_crafting", "_crafting", TextureSlot.NORTH, TextureSlot.EAST, TextureSlot.WEST).extend().parent(CRAFTER_TRIGGERED.model.orElseThrow()).build();
-    static final ModelTemplate CRAFTER_CRAFTING_TRIGGERED =  ModelTemplates.create("extension:crafter_crafting_triggered", "_crafting_triggered").extend().parent(CRAFTER_TRIGGERED.model.orElseThrow()).build();
+    public static final ModelTemplate CAULDRON_LEVEL0 = ModelTemplates.create(
+            "extension:template_cauldron_level0", TextureSlot.CONTENT, TextureSlot.INSIDE, TextureSlot.PARTICLE, TextureSlot.TOP, TextureSlot.BOTTOM, TextureSlot.SIDE
+    );
 
     public ModBlockModelGenerators(Consumer<BlockModelDefinitionGenerator> blockStateOutput, ItemModelOutput itemModelOutput, BiConsumer<Identifier, ModelInstance> modelOutput) {
         super(blockStateOutput, itemModelOutput, modelOutput);
@@ -211,5 +209,65 @@ public class ModBlockModelGenerators extends BlockModelGenerators {
         // This does the EXACT same thing as createAirLikeBlock(Block, Material)
         ModelTemplates.PARTICLE_ONLY.create(block.get(), TextureMapping.particle(new Material(stillTexture)), this.modelOutput);
         createNonTemplateModelBlock(block.get());
+    }
+
+    public void createFourLayeredCauldrons(DeferredBlock<Block> deferredBlock, Identifier stillTexture) {
+        Block block = deferredBlock.get();
+        Material stillLocation = new Material(stillTexture);
+        this.blockStateOutput
+                .accept(
+                        MultiVariantGenerator.dispatch(block)
+                                .with(
+                                        PropertyDispatch.initial(FourLayeredCauldronBlock.LEVEL)
+                                                .select(
+                                                        1,
+                                                        plainVariant(
+                                                                CAULDRON_LEVEL0
+                                                                        .createWithSuffix(
+                                                                                block,
+                                                                                "_level0",
+                                                                                TextureMapping.cauldron(stillLocation),
+                                                                                this.modelOutput
+                                                                        )
+                                                        )
+                                                )
+                                                .select(
+                                                        2,
+                                                        plainVariant(
+                                                                ModelTemplates.CAULDRON_LEVEL1
+                                                                        .createWithSuffix(
+                                                                                block,
+                                                                                "_level1",
+                                                                                TextureMapping.cauldron(stillLocation),
+                                                                                this.modelOutput
+                                                                        )
+                                                        )
+                                                )
+                                                .select(
+                                                        3,
+                                                        plainVariant(
+                                                                ModelTemplates.CAULDRON_LEVEL2
+                                                                        .createWithSuffix(
+                                                                                block,
+                                                                                "_level2",
+                                                                                TextureMapping.cauldron(stillLocation),
+                                                                                this.modelOutput
+                                                                        )
+                                                        )
+                                                )
+                                                .select(
+                                                        4,
+                                                        plainVariant(
+                                                                ModelTemplates.CAULDRON_FULL
+                                                                        .createWithSuffix(
+                                                                                block,
+                                                                                "_full",
+                                                                                TextureMapping.cauldron(stillLocation),
+                                                                                this.modelOutput
+                                                                        )
+                                                        )
+                                                )
+                                )
+                );
     }
 }

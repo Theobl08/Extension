@@ -158,6 +158,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.YELLOW_SHRUB.get(), PlantType.NOT_TINTED);
 
         modBlockModels.createLiquidBlock(ModBlocks.BEETROOT_SOUP, Identifier.fromNamespaceAndPath(NeoForgeMod.MOD_ID, "block/milk_still"));
+        modBlockModels.createFourLayeredCauldrons(ModBlocks.BEETROOT_SOUP_CAULDRON, Identifier.fromNamespaceAndPath(NeoForgeMod.MOD_ID, "block/milk_still"));
 
         blockModels.createTrivialBlock(ModBlocks.POTATO_FRUIT.get(), TexturedModel.CUBE_BOTTOM_TOP);
         blockModels.createAxisAlignedPillarBlockCustomModel(ModBlocks.POTATO_PEDICULE.get(), plainVariant(ModelLocationUtils.getModelLocation(ModBlocks.POTATO_PEDICULE.get())));

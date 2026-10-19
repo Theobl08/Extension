@@ -11,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
+import net.minecraft.util.ARGB;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
@@ -39,6 +40,7 @@ import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.inventory.FletchingScreen;
 import net.theobl.extension.inventory.ModMenuType;
 import net.theobl.extension.particles.ModParticleTypes;
+import net.theobl.extension.util.ModUtil;
 
 import java.util.List;
 import java.util.Optional;
@@ -76,6 +78,7 @@ public class ExtensionClient {
     public static void registerColorHandlers(RegisterColorHandlersEvent.BlockTintSources event) {
         event.register(List.of(BlockTintSources.foliage()), ModBlocks.POTATO_LEAVES.get());
         event.register(List.of(BlockTintSources.grassBlock()), Blocks.MOSS_BLOCK);
+        event.register(List.of(BlockTintSources.constant(ARGB.opaque(ModUtil.BEETROOT_SOUP_COLOR))), ModBlocks.BEETROOT_SOUP_CAULDRON.get());
     }
 
     @SubscribeEvent

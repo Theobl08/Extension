@@ -1,4 +1,4 @@
-// 26.3	2026-10-17T01:46:29.0594571	extension-global/Model Definitions - extension
+// 26.3	2026-10-18T16:34:18.9200523	extension-global/Model Definitions - extension
 ae4a2e7f5077949611658877c0c00d6829b76e85 assets/extension/blockstates/acacia_barrel.json
 01c2ee2af2b0277d3cab85e2833ad86f54d8499e assets/extension/blockstates/acacia_beehive.json
 bbc2c6dca4ccf5e4a9d05f5f2fba572ee87793c6 assets/extension/blockstates/acacia_bookshelf.json
@@ -23,6 +23,7 @@ b5565b82833905d92700c05b0b6b41fc94ba5321 assets/extension/blockstates/bamboo_fle
 b0621dc7f94197919520ea6673f284555085cef7 assets/extension/blockstates/bamboo_lectern.json
 c33a46923b85943c927836bd98d6f867e215afc9 assets/extension/blockstates/bamboo_wood.json
 ee16c5ccc3143edd56133b5d1715024c45179963 assets/extension/blockstates/beetroot_soup.json
+0222075912d28415c5da31b23774e77f8abc49b6 assets/extension/blockstates/beetroot_soup_cauldron.json
 3745e5fd9cb2c9ecab0da9c2cd515fec7f0c6012 assets/extension/blockstates/birch_barrel.json
 635fdc82ad757432f1907c3cf6730d89fdf39025 assets/extension/blockstates/birch_beehive.json
 57de9545fc88f6a995598621f88fafd7415f21f8 assets/extension/blockstates/birch_bookshelf.json
@@ -563,6 +564,10 @@ d0ab7f067339b9b5b0618e9e323f5d6cb7f7d49d assets/extension/models/block/bamboo_cr
 ad2325fb183a7097bfbe1a793b1464703dca1e8b assets/extension/models/block/bamboo_lectern.json
 d50590b4afd00026cb639fe67d6698b89817b1a7 assets/extension/models/block/bamboo_wood.json
 75687510790a184b256c64dafeeb4c5c96f65249 assets/extension/models/block/beetroot_soup.json
+d9661443d4eecf11c2ad1789197e71408e9518f6 assets/extension/models/block/beetroot_soup_cauldron_full.json
+e70f0f0c24837b9503bd3b7efcb609e51cabf6dd assets/extension/models/block/beetroot_soup_cauldron_level0.json
+afcd76844744b74e0fb5980f05c189359606f755 assets/extension/models/block/beetroot_soup_cauldron_level1.json
+558d1cad35e6ea949347758498f75b49c786f89a assets/extension/models/block/beetroot_soup_cauldron_level2.json
 f8ed3ee9063054d7b05a19945ab473038d9d0c12 assets/extension/models/block/birch_barrel.json
 d05778128b532e73a1edaa2ecee0dc259b732f50 assets/extension/models/block/birch_barrel_open.json
 09781f432f1fbd9e3616f4381c9ddd0c7f2132ef assets/extension/models/block/birch_beehive_empty.json
