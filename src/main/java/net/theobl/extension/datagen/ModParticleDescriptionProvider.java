@@ -1,6 +1,7 @@
 package net.theobl.extension.datagen;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.client.data.ParticleDescriptionProvider;
 import net.theobl.extension.Extension;
 import net.theobl.extension.particles.ModParticleTypes;
@@ -18,5 +19,8 @@ public class ModParticleDescriptionProvider extends ParticleDescriptionProvider 
     @Override
     protected void addDescriptions() {
         this.spriteSet(ModParticleTypes.ENDER_FIRE_FLAME.get(), Extension.asResource("ender_fire_flame"));
+        this.spriteSet(ModParticleTypes.DRIPPING_DRIPSTONE_BEETROOT_SOUP.get(), Identifier.withDefaultNamespace("drip_hang"));
+        this.spriteSet(ModParticleTypes.FALLING_DRIPSTONE_BEETROOT_SOUP.get(), Identifier.withDefaultNamespace("drip_fall"));
+        this.spriteSet(ModParticleTypes.LANDING_BEETROOT_SOUP.get(), Identifier.withDefaultNamespace("drip_land"));
     }
 }

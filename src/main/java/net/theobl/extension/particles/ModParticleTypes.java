@@ -12,6 +12,14 @@ public class ModParticleTypes {
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, Extension.MODID);
 
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> ENDER_FIRE_FLAME = PARTICLE_TYPES.register("ender_fire_flame", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> LANDING_BEETROOT_SOUP = registerSimpleParticleType("landing_beetroot_soup",false);
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DRIPPING_DRIPSTONE_BEETROOT_SOUP = registerSimpleParticleType("dripping_dripstone_beetroot_soup",false);
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FALLING_DRIPSTONE_BEETROOT_SOUP = registerSimpleParticleType("falling_dripstone_beetroot_soup",false);
+
+    @SuppressWarnings("SameParameterValue")
+    private static DeferredHolder<ParticleType<?>, SimpleParticleType> registerSimpleParticleType(String name, boolean overrideLimiter) {
+        return PARTICLE_TYPES.register(name, () -> new SimpleParticleType(overrideLimiter));
+    }
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

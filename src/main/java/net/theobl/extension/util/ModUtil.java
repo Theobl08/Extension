@@ -1,6 +1,7 @@
 package net.theobl.extension.util;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.particle.SingleQuadParticle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.dispenser.BoatDispenseItemBehavior;
@@ -12,6 +13,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.ARGB;
 import net.minecraft.util.Prediction;
 import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.player.Player;
@@ -77,6 +79,10 @@ public class ModUtil {
             case Block block -> BuiltInRegistries.BLOCK.getKey(block).getPath();
             case null, default -> "";
         };
+    }
+
+    public static void setParticleColor(SingleQuadParticle particle, int color) {
+        particle.setColor(ARGB.red(color) / 255.0F, ARGB.green(color) / 255.0F, ARGB.blue(color) / 255.0F);
     }
 
     public static int getPotionColor(Holder<Potion> potion) {

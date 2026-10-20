@@ -34,6 +34,7 @@ import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.block.entity.ModBlockEntityType;
 import net.theobl.extension.client.ModModelLayers;
+import net.theobl.extension.client.particle.ModDripParticle;
 import net.theobl.extension.client.renderer.blockentity.PotionCauldronRenderer;
 import net.theobl.extension.compat.jei.ExtensionJeiPlugin;
 import net.theobl.extension.entity.ModEntityType;
@@ -107,6 +108,9 @@ public class ExtensionClient {
     @SubscribeEvent
     public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ModParticleTypes.ENDER_FIRE_FLAME.get(), FlameParticle.Provider::new);
+        event.registerSpriteSet(ModParticleTypes.LANDING_BEETROOT_SOUP.get(), ModDripParticle.BeetrootSoupLandProvider::new);
+        event.registerSpriteSet(ModParticleTypes.DRIPPING_DRIPSTONE_BEETROOT_SOUP.get(), ModDripParticle.DripstoneBeetrootSoupHangProvider::new);
+        event.registerSpriteSet(ModParticleTypes.FALLING_DRIPSTONE_BEETROOT_SOUP.get(), ModDripParticle.DripstoneBeetrootSoupFallProvider::new);
     }
 
     @SubscribeEvent
