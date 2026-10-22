@@ -150,7 +150,7 @@ public class ModUtil {
         }
 
         MutableComponent component = Component.empty();
-        var style = Style.EMPTY;
+        Style style = Style.EMPTY;
         for (String s : stringList) {
             if(stringList.indexOf(s) == 0 && !s.startsWith("&")) {
                 component.append(s);

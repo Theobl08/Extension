@@ -59,7 +59,7 @@ public class FletchingRecipe implements Recipe<CraftingInput> {
         NonNullList<ItemStack> result = NonNullList.withSize(input.size(), ItemStack.EMPTY);
 
         for (int slot = 0; slot < result.size(); slot++) {
-            var item = input.getItem(slot);
+            ItemStack item = input.getItem(slot);
             ItemStackTemplate remainder = item.getCraftingRemainder();
             result.set(slot, remainder != null ? remainder.create() : ItemStack.EMPTY);
         }

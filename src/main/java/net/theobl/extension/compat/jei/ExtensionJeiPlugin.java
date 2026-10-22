@@ -45,7 +45,7 @@ public class ExtensionJeiPlugin implements IModPlugin {
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         registration.addRecipes(FletchingRecipeCategory.FLETCHING, fletchingRecipes.stream().filter(recipe -> !recipe.id().identifier().getPath().contains("tipped")).toList());
-        var specialFletchingRecipes = replaceSpecialFletchingRecipes(fletchingRecipes, registration.getJeiHelpers());
+        List<RecipeHolder<FletchingRecipe>> specialFletchingRecipes = replaceSpecialFletchingRecipes(fletchingRecipes, registration.getJeiHelpers());
         registration.addRecipes(FletchingRecipeCategory.FLETCHING, specialFletchingRecipes);
     }
 
@@ -86,7 +86,7 @@ public class ExtensionJeiPlugin implements IModPlugin {
                 // distinct + this limit will ensure we stop iterating early if we find all the recipes we're looking for.
                 .limit(replacers.size())
                 .flatMap(recipeClass -> {
-                    var supplier = replacers.get(recipeClass);
+                    Supplier<List<RecipeHolder<FletchingRecipe>>> supplier = replacers.get(recipeClass);
                     try {
                         return supplier.get()
                                 .stream();
