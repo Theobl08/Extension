@@ -24,7 +24,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
@@ -34,7 +33,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SupportType;
 import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gamerules.GameRules;
 import net.neoforged.bus.api.IEventBus;
@@ -45,22 +43,21 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.common.tooltip.TooltipLocation;
 import net.neoforged.neoforge.common.world.poi.ExtendPoiTypesEvent;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.RegisterTooltipAppendersEvent;
 import net.neoforged.neoforge.event.entity.EntityInvulnerabilityCheckEvent;
-import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.RegisterCauldronFluidContentEvent;
-import net.theobl.extension.block.ExtendedCauldronInteraction;
 import net.theobl.extension.block.FourLayeredCauldronBlock;
 import net.theobl.extension.block.ModBlocks;
-import net.theobl.extension.block.WoodTypeCollection;
 import net.theobl.extension.block.entity.ModBlockEntityType;
 import net.theobl.extension.commands.HeldItemNameCommand;
 import net.theobl.extension.entity.ModEntityType;
@@ -139,6 +136,7 @@ public class Extension {
         modEventBus.addListener(this::addBlockToBlockEntity);
         modEventBus.addListener(this::extendPoiTypes);
         modEventBus.addListener(this::registerCauldronFluidContent);
+        modEventBus.addListener(this::registerTooltipAppenders);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.LOCAL, Config.SPEC);
@@ -250,27 +248,21 @@ public class Extension {
         }
     }
 
-    @SubscribeEvent
-    public void itemTooltip(ItemTooltipEvent event) {
-        ItemStack stack = event.getItemStack();
+    public void registerTooltipAppenders(RegisterTooltipAppendersEvent event) {
+        event.registerAppender(TooltipLocation.PRE_ITEM_INFO, ((stack, _, _, _, _, builder) -> {
         if(stack.getItem() instanceof PotionItem) {
             PotionContents potionContents = stack.get(DataComponents.POTION_CONTENTS);
             if(potionContents != null && potionContents.potion().isPresent()) {
                 Holder<Potion> potion = potionContents.potion().get();
                 String potionName = potion.key().identifier().getPath();
-                List<Component> tooltip = event.getToolTip();
-
-                int index = tooltip.size();
-                if(event.getFlags().isAdvanced())
-                    index = index - 2; // Prevent our addition being added after the advanced tooltip
-
                 if(potionName.startsWith("long")) {
-                    tooltip.add(index, Component.translatable("potion.longPotion").withStyle(ChatFormatting.DARK_GRAY));
+                    builder.accept(Component.translatable("potion.longPotion").withStyle(ChatFormatting.DARK_GRAY));
                 } else if(potionName.startsWith("strong")) {
-                    tooltip.add(index, Component.translatable("potion.strongPotion").withStyle(ChatFormatting.DARK_GRAY));
+                    builder.accept(Component.translatable("potion.strongPotion").withStyle(ChatFormatting.DARK_GRAY));
                 }
             }
         }
+        }));
     }
 
     @SubscribeEvent
