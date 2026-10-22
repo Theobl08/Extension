@@ -1,4 +1,4 @@
-// 26.3	2026-10-21T16:46:32.4148333	Registries for Reloadable (extension[1]): [minecraft, extension]
+// 26.3	2026-10-22T16:09:15.1216216	Registries for Reloadable (extension[1]): [minecraft, extension]
 63a45c5a98c25611258a8b7e235c19721cbec0fd data/extension/advancement/recipes/building_blocks/acacia_bookshelf.json
 9a038ede8d7f8a06c8a2a22b4c45fc67a73082f9 data/extension/advancement/recipes/building_blocks/acacia_chiseled_bookshelf.json
 340685fd2c5a916508f72eb45ceb9553b9c7f77d data/extension/advancement/recipes/building_blocks/andesite_bricks.json
@@ -244,6 +244,7 @@ fc30f728612c4e96c12b1e3958baa69dd032d3c2 data/extension/advancement/recipes/deco
 78c2aa9e76f160771bd0575f557c46e76c4bae4f data/extension/advancement/recipes/decorations/crimson_cartography_table.json
 65a2347c763e936b7411ab93f8f6760470b9932b data/extension/advancement/recipes/decorations/crimson_crafting_table.json
 8e0ec006b0a8c32915ba10b9a181f6a461a17993 data/extension/advancement/recipes/decorations/crimson_fletching_table.json
+b478806b966b3c5dfa32d8351cf3c62dd1ee2ad4 data/extension/advancement/recipes/decorations/crying_enchanting_table.json
 ef68f3b4efe2620f11627e2291aad152852e1c6d data/extension/advancement/recipes/decorations/dark_oak_barrel.json
 65477175eba119f13abecd8328092cf0bebfe8bf data/extension/advancement/recipes/decorations/dark_oak_beehive.json
 7d5b31016feff52e970abc904c39eaffbf1f8f22 data/extension/advancement/recipes/decorations/dark_oak_crafting_table.json
@@ -462,6 +463,7 @@ bd0b221d44f666c363593456e8ccb6f2305579ef data/extension/loot_table/blocks/crimso
 6808b4653c634c96f52152829f5bb8611b9ea926 data/extension/loot_table/blocks/crimson_crafting_table.json
 126bd5ac401018d07c589a778fa43824e1b61fa7 data/extension/loot_table/blocks/crimson_fletching_table.json
 8524ce56066607f35ffaeba0615cebcd818542c0 data/extension/loot_table/blocks/crimson_lectern.json
+1ffc5a9cea82c1342d32441d2c6ec8574fdd3a19 data/extension/loot_table/blocks/crying_enchanting_table.json
 a8f1388886ab9fbef3c10463fe768115788a19b3 data/extension/loot_table/blocks/cut_soul_sandstone.json
 0d9fd0849894afbb2cc5f52db4b2f8268698c69e data/extension/loot_table/blocks/cut_soul_sandstone_slab.json
 d61727557759105bfd40b825763d7e92bf211024 data/extension/loot_table/blocks/dark_oak_barrel.json
@@ -760,6 +762,7 @@ be5f193a57b7ec761aad2da7b7b0b567d748d673 data/extension/recipe/crimson_chiseled_
 60ce1a256a8f423007a402a0aec3ed62b2bca656 data/extension/recipe/crimson_crafting_table.json
 a8e73ddc2f01257667078212cb29ab80d8b234ec data/extension/recipe/crimson_fletching_table.json
 78b4d7b995caf53deeb82825fbc8d175f3b6729c data/extension/recipe/crimson_lectern.json
+6f05563a99e8cbf0e672c6515b4d0d029103b6a3 data/extension/recipe/crying_enchanting_table.json
 57dc9fbdbcf090ace23bd33fc2bf4473ee3cf589 data/extension/recipe/cut_soul_sandstone.json
 18044e9c3c79941d3bb67b7980d2483de50366c7 data/extension/recipe/cut_soul_sandstone_from_soul_sandstone_stonecutting.json
 a8d4890c6f1ea3a40643a0c507c45ad659cc71d6 data/extension/recipe/cut_soul_sandstone_slab.json

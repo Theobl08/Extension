@@ -58,7 +58,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .addAll(ModBlocks.CHISELED_BOOKSHELVES)
                 .addAll(ModBlocks.LECTERNS)
                 .addAll(ModBlocks.BARRELS)
-                .addAll(ModBlocks.CRAFTERS);
+                .addAll(ModBlocks.CRAFTERS)
+                .add(ModBlocks.CRYING_ENCHANTING_TABLE);
         tag(Tags.BlockItems.BOOKSHELVES).addAll(ModBlocks.BOOKSHELVES);
         tag(BlockTags.ENCHANTMENT_POWER_PROVIDER).addAll(ModBlocks.BOOKSHELVES);
         tag(Tags.BlockItems.FROGLIGHTS).add(ModBlocks.CERULEAN_FROGLIGHT, ModBlocks.CARMINE_FROGLIGHT);
@@ -241,6 +242,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                         block.toString().contains("polished") ||
                         block.toString().contains("chiseled") ||
                         block instanceof CrafterBlock ||
+                        block instanceof EnchantingTableBlock ||
                         block.defaultBlockState().is(ModBlocks.NETHERITE_STAIRS));
     }
 

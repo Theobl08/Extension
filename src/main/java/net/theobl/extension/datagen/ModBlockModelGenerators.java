@@ -34,6 +34,7 @@ public class ModBlockModelGenerators extends BlockModelGenerators {
     public static final ModelTemplate CAULDRON_LEVEL0 = ModelTemplates.create(
             "extension:template_cauldron_level0", TextureSlot.CONTENT, TextureSlot.INSIDE, TextureSlot.PARTICLE, TextureSlot.TOP, TextureSlot.BOTTOM, TextureSlot.SIDE
     );
+    static final ModelTemplate ENCHANTING_TABLE =  ModelTemplates.create("enchanting_table", TextureSlot.TOP, TextureSlot.BOTTOM, TextureSlot.SIDE, TextureSlot.PARTICLE);
 
     public ModBlockModelGenerators(Consumer<BlockModelDefinitionGenerator> blockStateOutput, ItemModelOutput itemModelOutput, BiConsumer<Identifier, ModelInstance> modelOutput) {
         super(blockStateOutput, itemModelOutput, modelOutput);
@@ -269,5 +270,15 @@ public class ModBlockModelGenerators extends BlockModelGenerators {
                                                 )
                                 )
                 );
+    }
+
+    public void createEnchantingTable(DeferredBlock<Block> deferredBlock, Block obsidian) {
+        Block block = deferredBlock.get();
+        MultiVariant model = plainVariant(ENCHANTING_TABLE.create(block, new TextureMapping()
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(block, "_side"))
+                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(Blocks.ENCHANTING_TABLE, "_top"))
+                .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(obsidian))
+                .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(obsidian)), this.modelOutput));
+        this.blockStateOutput.accept(createSimpleBlock(block, model));
     }
 }

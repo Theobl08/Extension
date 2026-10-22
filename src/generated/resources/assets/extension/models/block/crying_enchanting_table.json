@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/enchanting_table",
+  "textures": {
+    "bottom": "minecraft:block/crying_obsidian",
+    "particle": "minecraft:block/crying_obsidian",
+    "side": "extension:block/crying_enchanting_table_side",
+    "top": "minecraft:block/enchanting_table_top"
+  }
+}

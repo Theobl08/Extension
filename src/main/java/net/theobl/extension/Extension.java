@@ -159,6 +159,7 @@ public class Extension {
         event.modify(BlockEntityTypes.SHELF, ModBlocks.POTATO_SHELF.get());
         event.modify(BlockEntityTypes.SIGN, ModBlocks.POTATO_SIGN.get(), ModBlocks.POTATO_WALL_SIGN.get());
         event.modify(BlockEntityTypes.HANGING_SIGN, ModBlocks.POTATO_HANGING_SIGN.get(), ModBlocks.POTATO_WALL_HANGING_SIGN.get());
+        event.modify(BlockEntityTypes.ENCHANTING_TABLE, ModBlocks.CRYING_ENCHANTING_TABLE.get());
         ModBlocks.BEEHIVES.values().forEach(block -> event.modify(BlockEntityTypes.BEEHIVE, block.get()));
         ModBlocks.CHISELED_BOOKSHELVES.values().forEach(block -> event.modify(BlockEntityTypes.CHISELED_BOOKSHELF, block.get()));
         ModBlocks.LECTERNS.values().forEach(block -> event.modify(BlockEntityTypes.LECTERN, block.get()));

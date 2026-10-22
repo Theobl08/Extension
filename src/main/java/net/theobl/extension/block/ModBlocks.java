@@ -336,6 +336,11 @@ public class ModBlocks {
             Blocks.CRAFTER, WoodType.OAK,
             () -> new Item.Properties().component(DataComponents.CONTAINER, ItemContainerContents.EMPTY)
     );
+    public static final DeferredBlock<Block> CRYING_ENCHANTING_TABLE = registerBlock(
+            "crying_enchanting_table",
+            EnchantingTableBlock::new,
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.ENCHANTING_TABLE)
+    );
     public static final DeferredBlock<Block> RED_POPLAR_SAPLING = registerBlock(
             "red_poplar_sapling",
             p -> new SaplingBlock(ModTreeGrower.RED_POPLAR, p),

@@ -16,6 +16,7 @@
     "CraftingMenuMixin",
     "DirtPathBlockMixin",
     "DoorBlockMixin",
+    "EnchantmentMenuMixin",
     "EndIslandDensityFunctionMixin",
     "EntityMixin",
     "GossipTypeMixin",

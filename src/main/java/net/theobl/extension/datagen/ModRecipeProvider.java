@@ -303,7 +303,15 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_stick", has(Items.STICK))
                 .unlockedBy("has_end_stone", has(ModItemTags.ENDER_FIRE_BASE_BLOCKS))
                 .save(output);
-
+        this.shaped(RecipeCategory.DECORATIONS, ModBlocks.CRYING_ENCHANTING_TABLE)
+                .define('B', Items.BOOK)
+                .define('#', Blocks.CRYING_OBSIDIAN)
+                .define('D', Items.DIAMOND)
+                .pattern(" B ")
+                .pattern("D#D")
+                .pattern("###")
+                .unlockedBy("has_crying_obsidian", this.has(Blocks.CRYING_OBSIDIAN))
+                .save(this.output);
         fletching(RecipeCategory.COMBAT, Items.ARROW, 6)
                 .requires(Items.FLINT)
                 .requires(Items.STICK)
