@@ -15,6 +15,9 @@ public class ModParticleTypes {
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> LANDING_BEETROOT_SOUP = registerSimpleParticleType("landing_beetroot_soup",false);
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DRIPPING_DRIPSTONE_BEETROOT_SOUP = registerSimpleParticleType("dripping_dripstone_beetroot_soup",false);
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FALLING_DRIPSTONE_BEETROOT_SOUP = registerSimpleParticleType("falling_dripstone_beetroot_soup",false);
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> LANDING_MUSHROOM_STEW = registerSimpleParticleType("landing_mushroom_stew",false);
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DRIPPING_DRIPSTONE_MUSHROOM_STEW = registerSimpleParticleType("dripping_dripstone_mushroom_stew",false);
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FALLING_DRIPSTONE_MUSHROOM_STEW = registerSimpleParticleType("falling_dripstone_mushroom_stew",false);
 
     @SuppressWarnings("SameParameterValue")
     private static DeferredHolder<ParticleType<?>, SimpleParticleType> registerSimpleParticleType(String name, boolean overrideLimiter) {

@@ -386,9 +386,19 @@ public class ModBlocks {
             p -> new LiquidBlock(ModFluids.BEETROOT_SOUP.get(), p),
             () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).mapColor(MapColor.TERRACOTTA_RED)
     );
+    public static final DeferredBlock<LiquidBlock> MUSHROOM_STEW = BLOCKS.registerBlock(
+            "mushroom_stew",
+            p -> new LiquidBlock(ModFluids.MUSHROOM_STEW.get(), p),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).mapColor(MapColor.TERRACOTTA_WHITE)
+    );
     public static final DeferredBlock<Block> BEETROOT_SOUP_CAULDRON = BLOCKS.registerBlock(
             "beetroot_soup_cauldron",
             p -> new FourLayeredCauldronBlock(p, ExtendedCauldronInteraction.BEETROOT_SOUP),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON)
+    );
+    public static final DeferredBlock<Block> MUSHROOM_STEW_CAULDRON = BLOCKS.registerBlock(
+            "mushroom_stew_cauldron",
+            p -> new FourLayeredCauldronBlock(p, ExtendedCauldronInteraction.MUSHROOM_STEW),
             () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON)
     );
 

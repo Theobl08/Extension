@@ -80,6 +80,7 @@ public class ExtensionClient {
         event.register(List.of(BlockTintSources.foliage()), ModBlocks.POTATO_LEAVES.get());
         event.register(List.of(BlockTintSources.grassBlock()), Blocks.MOSS_BLOCK);
         event.register(List.of(BlockTintSources.constant(ARGB.opaque(ModUtil.BEETROOT_SOUP_COLOR))), ModBlocks.BEETROOT_SOUP_CAULDRON.get());
+        event.register(List.of(BlockTintSources.constant(ModUtil.MUSHROOM_STEW_COLOR)), ModBlocks.MUSHROOM_STEW_CAULDRON.get());
     }
 
     @SubscribeEvent
@@ -111,6 +112,9 @@ public class ExtensionClient {
         event.registerSpriteSet(ModParticleTypes.LANDING_BEETROOT_SOUP.get(), ModDripParticle.BeetrootSoupLandProvider::new);
         event.registerSpriteSet(ModParticleTypes.DRIPPING_DRIPSTONE_BEETROOT_SOUP.get(), ModDripParticle.DripstoneBeetrootSoupHangProvider::new);
         event.registerSpriteSet(ModParticleTypes.FALLING_DRIPSTONE_BEETROOT_SOUP.get(), ModDripParticle.DripstoneBeetrootSoupFallProvider::new);
+        event.registerSpriteSet(ModParticleTypes.LANDING_MUSHROOM_STEW.get(), ModDripParticle.MushroomStewLandProvider::new);
+        event.registerSpriteSet(ModParticleTypes.DRIPPING_DRIPSTONE_MUSHROOM_STEW.get(), ModDripParticle.DripstoneMushroomStewHangProvider::new);
+        event.registerSpriteSet(ModParticleTypes.FALLING_DRIPSTONE_MUSHROOM_STEW.get(), ModDripParticle.DripstoneMushroomStewFallProvider::new);
     }
 
     @SubscribeEvent

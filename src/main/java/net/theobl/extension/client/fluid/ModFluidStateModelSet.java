@@ -22,5 +22,10 @@ public class ModFluidStateModelSet {
                 new Material(Identifier.fromNamespaceAndPath(NeoForgeMod.MOD_ID, "block/milk_flowing")),
                 null,
                 state -> ARGB.opaque(ModUtil.BEETROOT_SOUP_COLOR)), ModFluids.BEETROOT_SOUP, ModFluids.FLOWING_BEETROOT_SOUP);
+        event.register(new FluidModel.Unbaked(
+                new Material(Identifier.fromNamespaceAndPath(NeoForgeMod.MOD_ID, "block/milk_still")),
+                new Material(Identifier.fromNamespaceAndPath(NeoForgeMod.MOD_ID, "block/milk_flowing")),
+                null,
+                state -> ModUtil.MUSHROOM_STEW_COLOR), ModFluids.MUSHROOM_STEW, ModFluids.FLOWING_MUSHROOM_STEW);
     }
 }

@@ -32,5 +32,6 @@ public class ModFluidTagsProvider extends FluidTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider registries) {
         tag(Tags.Fluids.BEETROOT_SOUP).add(ModFluids.BEETROOT_SOUP, ModFluids.FLOWING_BEETROOT_SOUP);
+        tag(Tags.Fluids.MUSHROOM_STEW).add(ModFluids.MUSHROOM_STEW, ModFluids.FLOWING_MUSHROOM_STEW);
     }
 }

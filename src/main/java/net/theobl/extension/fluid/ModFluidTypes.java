@@ -5,6 +5,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -24,6 +25,7 @@ import net.theobl.extension.Extension;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.gamerules.ModGameRules;
 import net.theobl.extension.particles.ModParticleTypes;
+import net.theobl.extension.util.ModUtil;
 
 public class ModFluidTypes {
     public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(NeoForgeRegistries.FLUID_TYPES, Extension.MODID);
@@ -41,48 +43,40 @@ public class ModFluidTypes {
             ) {
                 @Override
                 public boolean move(LivingEntity entity, Vec3 movementVector, double gravity) {
-                    boolean isFalling = entity.getDeltaMovement().y <= 0.0;
-                    double oldY = entity.getY();
-
-                    float slowDown = entity.isSprinting() ? 0.9F : /*entity.getWaterSlowDown()*/ 0.8F;
-                    float speed = 0.02F;
-                    float waterWalker = (float)entity.getAttributeValue(Attributes.WATER_MOVEMENT_EFFICIENCY);
-                    if (!entity.onGround()) {
-                        waterWalker *= 0.5F;
-                    }
-
-                    if (waterWalker > 0.0F) {
-                        slowDown += (0.54600006F - slowDown) * waterWalker;
-                        speed += (entity.getSpeed() - speed) * waterWalker;
-                    }
-
-                    if (entity.hasEffect(MobEffects.DOLPHINS_GRACE)) {
-                        slowDown = 0.96F;
-                    }
-
-                    speed *= (float)entity.getAttributeValue(net.neoforged.neoforge.common.NeoForgeMod.SWIM_SPEED);
-                    entity.moveRelative(speed, movementVector);
-                    entity.move(MoverType.SELF, entity.getDeltaMovement());
-                    Vec3 movement = entity.getDeltaMovement();
-                    if (entity.horizontalCollision && entity.onClimbable()) {
-                        movement = new Vec3(movement.x, 0.2, movement.z);
-                    }
-
-                    movement = movement.multiply(slowDown, 0.8F, slowDown);
-                    entity.setDeltaMovement(entity.getFluidFallingAdjustedMovement(gravity, isFalling, movement));
-
-//                    entity.jumpOutOfFluid(oldY);
-                    movement = entity.getDeltaMovement();
-                    if (entity.horizontalCollision && entity.isFree(movement.x, movement.y + 0.6F - entity.getY() + oldY, movement.z)) {
-                        entity.setDeltaMovement(movement.x, 0.3F, movement.z);
-                    }
-                    return true;
+                    return ModUtil.travelInWater(entity, movementVector, gravity);
                 }
 
                 @Override
                 public boolean canConvertToSource(FluidState state, LevelReader reader, BlockPos pos) {
                     if (reader instanceof ServerLevel level) {
                         return level.getGameRules().get(ModGameRules.BEETROOT_SOUP_SOURCE_CONVERSION.get());
+                    }
+                    //Best guess fallback to default (false)
+                    return super.canConvertToSource(state, reader, pos);
+                }
+            }
+    );
+
+    public static final DeferredHolder<FluidType, FluidType> MUSHROOM_STEW_TYPE = FLUID_TYPES.register(
+            "mushroom_stew",
+            () -> new FluidType(FluidType.Properties.create()
+                    .descriptionId("item.minecraft.mushroom_stew")
+                    .motionScale(Entity.WATER_FLOW_SCALE / 2.0D)
+                    .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+                    .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
+                    .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
+                    .viscosity(2000)
+                    .addDripstoneDripping(PointedDripstoneBlock.LAVA_TRANSFER_PROBABILITY_PER_RANDOM_TICK, ModParticleTypes.DRIPPING_DRIPSTONE_MUSHROOM_STEW.get(), ModBlocks.MUSHROOM_STEW_CAULDRON.get(), SoundEvents.POINTED_DRIPSTONE_DRIP_LAVA_INTO_CAULDRON)
+            ) {
+                @Override
+                public boolean move(LivingEntity entity, Vec3 movementVector, double gravity) {
+                    return ModUtil.travelInWater(entity, movementVector, gravity);
+                }
+
+                @Override
+                public boolean canConvertToSource(FluidState state, LevelReader reader, BlockPos pos) {
+                    if (reader instanceof ServerLevel level) {
+                        return level.getGameRules().get(ModGameRules.MUSHROOM_STEW_SOURCE_CONVERSION.get());
                     }
                     //Best guess fallback to default (false)
                     return super.canConvertToSource(state, reader, pos);

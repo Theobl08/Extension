@@ -27,6 +27,19 @@ public class ModFluids {
                     .block(ModBlocks.BEETROOT_SOUP)
                     .bucket(ModItems.BEETROOT_SOUP_BUCKET);
 
+    public static final DeferredHolder<Fluid, FlowingFluid> MUSHROOM_STEW = FLUIDS.register(
+            "mushroom_stew",
+            () -> new BaseFlowingFluid.Source(ModFluids.MUSHROOM_STEW_PROPERTIES)
+    );
+    public static final DeferredHolder<Fluid, FlowingFluid> FLOWING_MUSHROOM_STEW = FLUIDS.register(
+            "flowing_mushroom_stew",
+            () -> new BaseFlowingFluid.Flowing(ModFluids.MUSHROOM_STEW_PROPERTIES)
+    );
+    public static final BaseFlowingFluid.Properties MUSHROOM_STEW_PROPERTIES =
+            new BaseFlowingFluid.Properties(ModFluidTypes.MUSHROOM_STEW_TYPE, MUSHROOM_STEW, FLOWING_MUSHROOM_STEW)
+                    .block(ModBlocks.MUSHROOM_STEW)
+                    .bucket(ModItems.MUSHROOM_STEW_BUCKET);
+
     public static void register(IEventBus eventBus) {
         FLUIDS.register(eventBus);
     }

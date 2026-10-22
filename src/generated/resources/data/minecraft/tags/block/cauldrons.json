@@ -2,6 +2,7 @@
   "values": [
     "extension:milk_cauldron",
     "extension:potion_cauldron",
-    "extension:beetroot_soup_cauldron"
+    "extension:beetroot_soup_cauldron",
+    "extension:mushroom_stew_cauldron"
   ]
 }

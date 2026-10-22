@@ -8,6 +8,7 @@ import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CartographyTableBlock;
@@ -92,7 +93,9 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
         tag(ItemTags.SULFUR_CUBE_ARCHETYPE_FAST_FLAT).add(ModBlocks.CERULEAN_FROGLIGHT.asItem(), ModBlocks.CARMINE_FROGLIGHT.asItem());
         copy(Tags.BlockItems.FROGLIGHTS);
 
-        tag(Tags.Items.BUCKETS).add(ModItems.BEETROOT_SOUP_BUCKET);
+        ModItems.ITEMS.getEntries().stream()
+                .filter(i -> i.get() instanceof BucketItem)
+                .forEach(i -> tag(Tags.Items.BUCKETS).add(i));
 
         copy(Tags.BlockItems.BARRELS_WOODEN);
         copy(Tags.BlockItems.PLAYER_WORKSTATIONS_CRAFTING_TABLES);

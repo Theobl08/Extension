@@ -22,5 +22,8 @@ public class ModParticleDescriptionProvider extends ParticleDescriptionProvider 
         this.spriteSet(ModParticleTypes.DRIPPING_DRIPSTONE_BEETROOT_SOUP.get(), Identifier.withDefaultNamespace("drip_hang"));
         this.spriteSet(ModParticleTypes.FALLING_DRIPSTONE_BEETROOT_SOUP.get(), Identifier.withDefaultNamespace("drip_fall"));
         this.spriteSet(ModParticleTypes.LANDING_BEETROOT_SOUP.get(), Identifier.withDefaultNamespace("drip_land"));
+        this.spriteSet(ModParticleTypes.DRIPPING_DRIPSTONE_MUSHROOM_STEW.get(), Identifier.withDefaultNamespace("drip_hang"));
+        this.spriteSet(ModParticleTypes.FALLING_DRIPSTONE_MUSHROOM_STEW.get(), Identifier.withDefaultNamespace("drip_fall"));
+        this.spriteSet(ModParticleTypes.LANDING_MUSHROOM_STEW.get(), Identifier.withDefaultNamespace("drip_land"));
     }
 }

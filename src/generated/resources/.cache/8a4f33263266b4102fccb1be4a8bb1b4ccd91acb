@@ -1,4 +1,4 @@
-// 26.3	2026-10-18T16:34:18.931053	Registries for Reloadable (extension[1]): [minecraft, extension]
+// 26.3	2026-10-21T16:46:32.4148333	Registries for Reloadable (extension[1]): [minecraft, extension]
 63a45c5a98c25611258a8b7e235c19721cbec0fd data/extension/advancement/recipes/building_blocks/acacia_bookshelf.json
 9a038ede8d7f8a06c8a2a22b4c45fc67a73082f9 data/extension/advancement/recipes/building_blocks/acacia_chiseled_bookshelf.json
 340685fd2c5a916508f72eb45ceb9553b9c7f77d data/extension/advancement/recipes/building_blocks/andesite_bricks.json
@@ -513,6 +513,7 @@ ca7d3245e8648cdc71ade154d72df82bf4c3b4ea data/extension/loot_table/blocks/mossy_
 a2aedce522575b010fc34ae649615b83a824357a data/extension/loot_table/blocks/mossy_deepslate_brick_slab.json
 ce043f2708899fa82e3619c0499e18bb61ea487d data/extension/loot_table/blocks/mossy_deepslate_brick_stairs.json
 dd23226613be09276a5b9905ea3d98f5bcd5f0fe data/extension/loot_table/blocks/mossy_deepslate_brick_wall.json
+c0e99fe9bbd5486fec05ee9105eff1132d2f6c14 data/extension/loot_table/blocks/mushroom_stew_cauldron.json
 087e34f0ff6953d1438976e7428ee6eff6709c19 data/extension/loot_table/blocks/netherite_stairs.json
 890d098a490b23b6f0c03e87e4307ad5dd59d7df data/extension/loot_table/blocks/nether_brick_pillar.json
 681db143780455d994997af68974fb620b1b8666 data/extension/loot_table/blocks/nether_brick_tiles.json

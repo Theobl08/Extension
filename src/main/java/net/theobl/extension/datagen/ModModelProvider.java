@@ -89,6 +89,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.ILLUSIONER_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.EMPTY_POTTERY_SHERD.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.BEETROOT_SOUP_BUCKET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.MUSHROOM_STEW_BUCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.POTATO_RAFT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.POTATO_CHEST_RAFT.get(), ModelTemplates.FLAT_ITEM);
 
@@ -158,7 +159,9 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.YELLOW_SHRUB.get(), PlantType.NOT_TINTED);
 
         modBlockModels.createLiquidBlock(ModBlocks.BEETROOT_SOUP, Identifier.fromNamespaceAndPath(NeoForgeMod.MOD_ID, "block/milk_still"));
+        modBlockModels.createLiquidBlock(ModBlocks.MUSHROOM_STEW, Identifier.fromNamespaceAndPath(NeoForgeMod.MOD_ID, "block/milk_still"));
         modBlockModels.createFourLayeredCauldrons(ModBlocks.BEETROOT_SOUP_CAULDRON, Identifier.fromNamespaceAndPath(NeoForgeMod.MOD_ID, "block/milk_still"));
+        modBlockModels.createFourLayeredCauldrons(ModBlocks.MUSHROOM_STEW_CAULDRON, Identifier.fromNamespaceAndPath(NeoForgeMod.MOD_ID, "block/milk_still"));
 
         blockModels.createTrivialBlock(ModBlocks.POTATO_FRUIT.get(), TexturedModel.CUBE_BOTTOM_TOP);
         blockModels.createAxisAlignedPillarBlockCustomModel(ModBlocks.POTATO_PEDICULE.get(), plainVariant(ModelLocationUtils.getModelLocation(ModBlocks.POTATO_PEDICULE.get())));

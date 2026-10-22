@@ -41,6 +41,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addTranslatableComponent(ModCreativeModeTabs.VARIANT_VANILLA_BLOCKS.get().getDisplayName(), capitalizeString(ModCreativeModeTabs.VARIANT_VANILLA_BLOCKS.getId().getPath().replace("_", " ")));
 
         addGameRule(ModGameRules.BEETROOT_SOUP_SOURCE_CONVERSION, "Beetroot soup converts to source", "When flowing beetroot soup is surrounded on two sides by beetroot soup sources, it converts into a source.");
+        addGameRule(ModGameRules.MUSHROOM_STEW_SOURCE_CONVERSION, "Mushroom stew converts to source", "When flowing mushroom stew is surrounded on two sides by mushroom stew sources, it converts into a source.");
 
         add("potion.longPotion", "Extended");
         add("potion.strongPotion", "Enhanced");

@@ -15,7 +15,11 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Prediction;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityTypes;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -27,6 +31,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.block.FireBlock;
+import net.minecraft.world.phys.Vec3;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.item.ModItems;
@@ -39,6 +44,7 @@ import java.util.Objects;
 
 public class ModUtil {
     public static int BEETROOT_SOUP_COLOR = 0xB82A30;
+    public static int MUSHROOM_STEW_COLOR = 0xFFCC9978;
 
     public static void bootstrap() {
         DispenserBlock.registerBehavior(ModItems.POTATO_RAFT, new BoatDispenseItemBehavior(ModEntityType.POTATO_RAFT.get()));
@@ -97,6 +103,46 @@ public class ModUtil {
                 pos.getZ() + 0.5,
                 7,
                 0.1, 0.0, 0.1, 0.0);
+    }
+
+    ///A 1:1 equivalent to [LivingEntity#travelInWater(Vec3, double, boolean, double)]
+    public static boolean travelInWater(LivingEntity entity, Vec3 movementVector, double gravity) {
+        boolean isFalling = entity.getDeltaMovement().y <= 0.0;
+        double oldY = entity.getY();
+
+        float slowDown = entity.isSprinting() ? 0.9F : /*entity.getWaterSlowDown()*/ 0.8F;
+        float speed = 0.02F;
+        float waterWalker = (float)entity.getAttributeValue(Attributes.WATER_MOVEMENT_EFFICIENCY);
+        if (!entity.onGround()) {
+            waterWalker *= 0.5F;
+        }
+
+        if (waterWalker > 0.0F) {
+            slowDown += (0.54600006F - slowDown) * waterWalker;
+            speed += (entity.getSpeed() - speed) * waterWalker;
+        }
+
+        if (entity.hasEffect(MobEffects.DOLPHINS_GRACE)) {
+            slowDown = 0.96F;
+        }
+
+        speed *= (float)entity.getAttributeValue(net.neoforged.neoforge.common.NeoForgeMod.SWIM_SPEED);
+        entity.moveRelative(speed, movementVector);
+        entity.move(MoverType.SELF, entity.getDeltaMovement());
+        Vec3 movement = entity.getDeltaMovement();
+        if (entity.horizontalCollision && entity.onClimbable()) {
+            movement = new Vec3(movement.x, 0.2, movement.z);
+        }
+
+        movement = movement.multiply(slowDown, 0.8F, slowDown);
+        entity.setDeltaMovement(entity.getFluidFallingAdjustedMovement(gravity, isFalling, movement));
+
+//                    entity.jumpOutOfFluid(oldY);
+        movement = entity.getDeltaMovement();
+        if (entity.horizontalCollision && entity.isFree(movement.x, movement.y + 0.6F - entity.getY() + oldY, movement.z)) {
+            entity.setDeltaMovement(movement.x, 0.3F, movement.z);
+        }
+        return true;
     }
 
     /**Apply chat formating to the given {@link Component} using the soon-to-be removed §-based formatting system*/

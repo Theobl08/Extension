@@ -40,15 +40,18 @@ public class ExtendedCauldronInteraction {
     public static final CauldronInteraction.Dispatcher MILK = new CauldronInteraction.Dispatcher();
     public static final CauldronInteraction.Dispatcher POTION = new CauldronInteraction.Dispatcher();
     public static final CauldronInteraction.Dispatcher BEETROOT_SOUP = new CauldronInteraction.Dispatcher();
+    public static final CauldronInteraction.Dispatcher MUSHROOM_STEW = new CauldronInteraction.Dispatcher();
     public static final Identifier MILK_ID = Extension.asResource("milk");
     public static final Identifier POTION_ID = Extension.asResource("potion");
     public static final Identifier BEETROOT_SOUP_ID = Extension.asResource("beetroot_soup");
+    public static final Identifier MUSHROOM_STEW_ID = Extension.asResource("mushroom_stew");
 
     @SubscribeEvent
     private static void registerCauldronInteractionDispatchers(RegisterCauldronInteractionEvent.Dispatcher event) {
         event.register(MILK_ID, MILK);
         event.register(POTION_ID, POTION);
         event.register(BEETROOT_SOUP_ID, BEETROOT_SOUP);
+        event.register(MUSHROOM_STEW_ID, MUSHROOM_STEW);
     }
 
     @SubscribeEvent
@@ -56,6 +59,7 @@ public class ExtendedCauldronInteraction {
         final Identifier EMPTY = Identifier.withDefaultNamespace("empty");
         event.registerToAll(Items.MILK_BUCKET, ExtendedCauldronInteraction::fillMilkInteraction);
         event.registerToAll(ModItems.BEETROOT_SOUP_BUCKET.get(), ExtendedCauldronInteraction::fillBeetrootSoupInteraction);
+        event.registerToAll(ModItems.MUSHROOM_STEW_BUCKET.get(), ExtendedCauldronInteraction::fillMushroomStewInteraction);
 
         MILK.put(
                 Items.BUCKET,
@@ -133,6 +137,66 @@ public class ExtendedCauldronInteraction {
             return InteractionResult.SUCCESS;
         });
 
+        addDefaultInteractions(MUSHROOM_STEW);
+        event.register(
+                MUSHROOM_STEW_ID,
+                Items.BUCKET,
+                (state, level, pos, player, hand, itemInHand) -> fillBucket(
+                        state,
+                        level,
+                        pos,
+                        player,
+                        hand,
+                        itemInHand,
+                        ModItems.MUSHROOM_STEW_BUCKET.toStack(),
+                        s -> true,
+                        SoundEvents.BUCKET_FILL
+                )
+        );
+        event.register(MUSHROOM_STEW_ID, Items.BOWL, (state, level, pos, player, hand, itemInHand) -> {
+            if (!level.isClientSide()) {
+                Item usedItem = itemInHand.getItem();
+                player.setItemInHand(hand, ItemUtils.createFilledResult(itemInHand, player, Items.MUSHROOM_STEW.getDefaultInstance()));
+                player.awardStat(Stats.USE_CAULDRON);
+                player.awardStat(Stats.ITEM_USED.get(usedItem));
+                FourLayeredCauldronBlock.lowerFillLevel(state, level, pos);
+                level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
+            }
+
+            return InteractionResult.SUCCESS;
+        });
+        event.register(MUSHROOM_STEW_ID, Items.MUSHROOM_STEW, (state, level, pos, player, hand, itemInHand) -> {
+            if (state.getValue(FourLayeredCauldronBlock.LEVEL) == FourLayeredCauldronBlock.MAX_FILL_LEVEL) {
+                return InteractionResult.TRY_WITH_EMPTY_HAND;
+            }
+
+            if (!level.isClientSide()) {
+                Item usedItem = itemInHand.getItem();
+                player.setItemInHand(hand, ItemUtils.createFilledResult(itemInHand, player, Items.BOWL.getDefaultInstance()));
+                player.awardStat(Stats.USE_CAULDRON);
+                player.awardStat(Stats.ITEM_USED.get(usedItem));
+                level.setBlockAndUpdate(pos, state.cycle(FourLayeredCauldronBlock.LEVEL));
+                level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
+            }
+
+            return InteractionResult.SUCCESS;
+        });
+        event.register(EMPTY, Items.MUSHROOM_STEW, (state, level, pos, player, hand, itemInHand) -> {
+            if (!level.isClientSide()) {
+                Item usedItem = itemInHand.getItem();
+                player.setItemInHand(hand, ItemUtils.createFilledResult(itemInHand, player, Items.BOWL.getDefaultInstance()));
+                player.awardStat(Stats.USE_CAULDRON);
+                player.awardStat(Stats.ITEM_USED.get(usedItem));
+                level.setBlockAndUpdate(pos, ModBlocks.MUSHROOM_STEW_CAULDRON.get().defaultBlockState());
+                level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
+            }
+
+            return InteractionResult.SUCCESS;
+        });
+
             POTION.put(
                     Items.GLASS_BOTTLE,
                     (state, level, pos, player, hand, itemInHand) -> {
@@ -197,6 +261,14 @@ public class ExtendedCauldronInteraction {
         return isUnderWater(level, pos)
                 ? InteractionResult.CONSUME
                 : emptyBucket(level, pos, player, hand, filledStack, ModBlocks.BEETROOT_SOUP_CAULDRON.get().defaultBlockState().setValue(FourLayeredCauldronBlock.LEVEL, FourLayeredCauldronBlock.MAX_FILL_LEVEL), SoundEvents.BUCKET_EMPTY);
+    }
+
+    private static InteractionResult fillMushroomStewInteraction(
+            BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack filledStack
+    ) {
+        return isUnderWater(level, pos)
+                ? InteractionResult.CONSUME
+                : emptyBucket(level, pos, player, hand, filledStack, ModBlocks.MUSHROOM_STEW_CAULDRON.get().defaultBlockState().setValue(FourLayeredCauldronBlock.LEVEL, FourLayeredCauldronBlock.MAX_FILL_LEVEL), SoundEvents.BUCKET_EMPTY);
     }
 
     private static InteractionResult arrowInteraction(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack itemInHand) {

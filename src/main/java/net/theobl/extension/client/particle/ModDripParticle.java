@@ -90,4 +90,56 @@ public final class ModDripParticle {
             return particle;
         }
     }
+
+    public static class DripstoneMushroomStewFallProvider implements ParticleProvider<SimpleParticleType> {
+        private final SpriteSet sprite;
+
+        public DripstoneMushroomStewFallProvider(SpriteSet sprite) {
+            this.sprite = sprite;
+        }
+
+        public Particle createParticle(
+                SimpleParticleType options, ClientLevel level, double x, double y, double z, double xAux, double yAux, double zAux, RandomSource random
+        ) {
+            DripParticle particle = new ModDripParticle.DripstoneFallAndLandParticle(
+                    level, x, y, z, ModFluids.MUSHROOM_STEW.get(), ModParticleTypes.LANDING_MUSHROOM_STEW.get(), this.sprite.get(random), SoundEvents.POINTED_DRIPSTONE_DRIP_LAVA
+            );
+            ModUtil.setParticleColor(particle, ModUtil.MUSHROOM_STEW_COLOR);
+            return particle;
+        }
+    }
+
+    public static class DripstoneMushroomStewHangProvider implements ParticleProvider<SimpleParticleType> {
+        private final SpriteSet sprite;
+
+        public DripstoneMushroomStewHangProvider(SpriteSet sprite) {
+            this.sprite = sprite;
+        }
+
+        public Particle createParticle(
+                SimpleParticleType options, ClientLevel level, double x, double y, double z, double xAux, double yAux, double zAux, RandomSource random
+        ) {
+            DripParticle particle = new DripParticle.DripHangParticle(
+                    level, x, y, z, ModFluids.MUSHROOM_STEW.get(), ModParticleTypes.FALLING_DRIPSTONE_MUSHROOM_STEW.get(), this.sprite.get(random)
+            );
+            ModUtil.setParticleColor(particle, ModUtil.MUSHROOM_STEW_COLOR);
+            return particle;
+        }
+    }
+
+    public static class MushroomStewLandProvider implements ParticleProvider<SimpleParticleType> {
+        private final SpriteSet sprite;
+
+        public MushroomStewLandProvider(SpriteSet sprite) {
+            this.sprite = sprite;
+        }
+
+        public Particle createParticle(
+                SimpleParticleType options, ClientLevel level, double x, double y, double z, double xAux, double yAux, double zAux, RandomSource random
+        ) {
+            DripParticle particle = new DripParticle.DripLandParticle(level, x, y, z, ModFluids.MUSHROOM_STEW.get(), this.sprite.get(random));
+            ModUtil.setParticleColor(particle, ModUtil.MUSHROOM_STEW_COLOR);
+            return particle;
+        }
+    }
 }

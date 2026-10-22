@@ -47,6 +47,11 @@ public class ModItems {
             p -> new BucketItem(ModFluids.BEETROOT_SOUP.get(), p),
             p -> p.craftRemainder(Items.BUCKET).stacksTo(1)
     );
+    public static final DeferredItem<Item> MUSHROOM_STEW_BUCKET = ITEMS.registerItem(
+            "mushroom_stew_bucket",
+            p -> new BucketItem(ModFluids.MUSHROOM_STEW.get(), p),
+            p -> p.craftRemainder(Items.BUCKET).stacksTo(1)
+    );
 
     public static final DeferredItem<BlockItem> POTATO_SHELF = ITEMS.registerItem("potato_shelf",
             p -> new BlockItem(ModBlocks.POTATO_SHELF.get(), p), p -> p.rarity(ModEnumProxy.POTATO_RARITY.getValue()).component(DataComponents.CONTAINER, ItemContainerContents.EMPTY).useBlockDescriptionPrefix()

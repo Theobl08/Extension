@@ -17,6 +17,7 @@ public class ModGameRules {
     public static final DeferredRegister<GameRule<?>> GAME_RULES = DeferredRegister.create(BuiltInRegistries.GAME_RULE, Extension.MODID);
 
     public static final DeferredHolder<GameRule<?>, GameRule<Boolean>> BEETROOT_SOUP_SOURCE_CONVERSION = registerBoolean("beetroot_soup_source_conversion", GameRuleCategory.UPDATES, false);
+    public static final DeferredHolder<GameRule<?>, GameRule<Boolean>> MUSHROOM_STEW_SOURCE_CONVERSION = registerBoolean("mushroom_stew_source_conversion", GameRuleCategory.UPDATES, false);
 
 
     private static DeferredHolder<GameRule<?>,GameRule<Boolean>> registerBoolean(String id, GameRuleCategory category, boolean defaultValue) {
