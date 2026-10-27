@@ -250,18 +250,18 @@ public class Extension {
 
     public void registerTooltipAppenders(RegisterTooltipAppendersEvent event) {
         event.registerAppender(TooltipLocation.PRE_ITEM_INFO, ((stack, _, _, _, _, builder) -> {
-        if(stack.getItem() instanceof PotionItem) {
-            PotionContents potionContents = stack.get(DataComponents.POTION_CONTENTS);
-            if(potionContents != null && potionContents.potion().isPresent()) {
-                Holder<Potion> potion = potionContents.potion().get();
-                String potionName = potion.key().identifier().getPath();
-                if(potionName.startsWith("long")) {
-                    builder.accept(Component.translatable("potion.longPotion").withStyle(ChatFormatting.DARK_GRAY));
-                } else if(potionName.startsWith("strong")) {
-                    builder.accept(Component.translatable("potion.strongPotion").withStyle(ChatFormatting.DARK_GRAY));
+            if (stack.getItem() instanceof PotionItem) {
+                PotionContents potionContents = stack.get(DataComponents.POTION_CONTENTS);
+                if (potionContents != null && potionContents.potion().isPresent()) {
+                    Holder<Potion> potion = potionContents.potion().get();
+                    String potionName = potion.key().identifier().getPath();
+                    if (potionName.startsWith("long")) {
+                        builder.accept(Component.translatable("potion.longPotion").withStyle(ChatFormatting.DARK_GRAY));
+                    } else if (potionName.startsWith("strong")) {
+                        builder.accept(Component.translatable("potion.strongPotion").withStyle(ChatFormatting.DARK_GRAY));
+                    }
                 }
             }
-        }
         }));
     }
 

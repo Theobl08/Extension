@@ -197,45 +197,21 @@ public class ExtendedCauldronInteraction {
             return InteractionResult.SUCCESS;
         });
 
-            POTION.put(
-                    Items.GLASS_BOTTLE,
-                    (state, level, pos, player, hand, itemInHand) -> {
-                        if(level.getBlockEntity(pos) instanceof PotionCauldronBlockEntity blockEntity && state.getValue(PotionCauldronBlock.LEVEL) != 1) {
-                            if (!level.isClientSide()) {
-                                Item usedItem = itemInHand.getItem();
-                                player.setItemInHand(
-                                        hand, ItemUtils.createFilledResult(itemInHand, player, PotionContents.createItemStack(Items.POTION, blockEntity.getPotion()))
-                                );
-                                player.awardStat(Stats.USE_CAULDRON);
-                                player.awardStat(Stats.ITEM_USED.get(usedItem));
-                                PotionCauldronBlock.lowerFillLevel(state, level, pos);
-                                level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                                level.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
-                                ModUtil.showPotionInteractParticles((ServerLevel) level, new PotionContents(blockEntity.getPotion()), pos, (double) (state.getValue(PotionCauldronBlock.LEVEL) - 1) / 4);
-                            }
-
-                            return InteractionResult.SUCCESS;
-                        }
-                        else  {
-                            return InteractionResult.TRY_WITH_EMPTY_HAND;
-                        }
-                    }
-            );
-            POTION.put(Items.POTION, (state, level, pos, player, hand, itemInHand) -> {
-                if (state.getValue(PotionCauldronBlock.LEVEL) == PotionCauldronBlock.MAX_FILL_LEVEL) {
-                    return InteractionResult.TRY_WITH_EMPTY_HAND;
-                } else {
-                    PotionContents potionContents = itemInHand.get(DataComponents.POTION_CONTENTS);
-                    PotionCauldronBlockEntity blockEntity = (PotionCauldronBlockEntity) level.getBlockEntity(pos);
-                    if (potionContents != null && blockEntity != null && potionContents.is(blockEntity.getPotion())) {
+        POTION.put(
+                Items.GLASS_BOTTLE,
+                (state, level, pos, player, hand, itemInHand) -> {
+                    if (level.getBlockEntity(pos) instanceof PotionCauldronBlockEntity blockEntity && state.getValue(PotionCauldronBlock.LEVEL) != 1) {
                         if (!level.isClientSide()) {
-                            player.setItemInHand(hand, ItemUtils.createFilledResult(itemInHand, player, new ItemStack(Items.GLASS_BOTTLE)));
+                            Item usedItem = itemInHand.getItem();
+                            player.setItemInHand(
+                                    hand, ItemUtils.createFilledResult(itemInHand, player, PotionContents.createItemStack(Items.POTION, blockEntity.getPotion()))
+                            );
                             player.awardStat(Stats.USE_CAULDRON);
-                            player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
-                            level.setBlockAndUpdate(pos, state.cycle(PotionCauldronBlock.LEVEL));
-                            level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-                            level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
-                            ModUtil.showPotionInteractParticles((ServerLevel) level, potionContents, pos, (double) state.getValue(PotionCauldronBlock.LEVEL) / 4);
+                            player.awardStat(Stats.ITEM_USED.get(usedItem));
+                            PotionCauldronBlock.lowerFillLevel(state, level, pos);
+                            level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                            level.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
+                            ModUtil.showPotionInteractParticles((ServerLevel) level, new PotionContents(blockEntity.getPotion()), pos, (double) (state.getValue(PotionCauldronBlock.LEVEL) - 1) / 4);
                         }
 
                         return InteractionResult.SUCCESS;
@@ -243,8 +219,31 @@ public class ExtendedCauldronInteraction {
                         return InteractionResult.TRY_WITH_EMPTY_HAND;
                     }
                 }
-            });
-            event.register(POTION_ID, Items.ARROW, ExtendedCauldronInteraction::arrowInteraction);
+        );
+        POTION.put(Items.POTION, (state, level, pos, player, hand, itemInHand) -> {
+            if (state.getValue(PotionCauldronBlock.LEVEL) == PotionCauldronBlock.MAX_FILL_LEVEL) {
+                return InteractionResult.TRY_WITH_EMPTY_HAND;
+            } else {
+                PotionContents potionContents = itemInHand.get(DataComponents.POTION_CONTENTS);
+                PotionCauldronBlockEntity blockEntity = (PotionCauldronBlockEntity) level.getBlockEntity(pos);
+                if (potionContents != null && blockEntity != null && potionContents.is(blockEntity.getPotion())) {
+                    if (!level.isClientSide()) {
+                        player.setItemInHand(hand, ItemUtils.createFilledResult(itemInHand, player, new ItemStack(Items.GLASS_BOTTLE)));
+                        player.awardStat(Stats.USE_CAULDRON);
+                        player.awardStat(Stats.ITEM_USED.get(itemInHand.getItem()));
+                        level.setBlockAndUpdate(pos, state.cycle(PotionCauldronBlock.LEVEL));
+                        level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+                        level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
+                        ModUtil.showPotionInteractParticles((ServerLevel) level, potionContents, pos, (double) state.getValue(PotionCauldronBlock.LEVEL) / 4);
+                    }
+
+                    return InteractionResult.SUCCESS;
+                } else {
+                    return InteractionResult.TRY_WITH_EMPTY_HAND;
+                }
+            }
+        });
+        event.register(POTION_ID, Items.ARROW, ExtendedCauldronInteraction::arrowInteraction);
     }
 
     private static InteractionResult fillMilkInteraction(
