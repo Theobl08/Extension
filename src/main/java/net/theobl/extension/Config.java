@@ -35,6 +35,10 @@ public class Config {
             BUILDER.comment("Whether pistons can push block entities")
                     .define("pistonsPushBlockEntities", false);
 
+    public static final ModConfigSpec.BooleanValue SHOW_ADDITIONAL_ITEM_INFORMATION =
+            BUILDER.comment("Show additional item info under the item name")
+                    .define("showAdditionalItemInformation", true);
+
     static final ModConfigSpec SPEC = BUILDER.build();
 
     public static Boolean clearVoid;
@@ -43,6 +47,7 @@ public class Config {
     public static Boolean farmlandTrample;
     public static Boolean unbreakableAtMaxUnbreakingLevel;
     public static Boolean pistonsCanPushBlockEntities;
+    public static Boolean showAdditionalItemInformation;
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
@@ -52,5 +57,6 @@ public class Config {
         farmlandTrample = FARMLAND_TRAMPLE.get();
         unbreakableAtMaxUnbreakingLevel = UNBREAKABLE_AT_MAX_UNBREAKING_LEVEL.get();
         pistonsCanPushBlockEntities = PISTONS_CAN_PUSH_BLOCK_ENTITIES.get();
+        showAdditionalItemInformation = SHOW_ADDITIONAL_ITEM_INFORMATION.get();
     }
 }

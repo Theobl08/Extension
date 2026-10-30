@@ -19,6 +19,7 @@ import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.gamerules.ModGameRules;
 import net.theobl.extension.item.ModCreativeModeTabs;
 import net.theobl.extension.item.ModItems;
+import net.theobl.extension.item.ModTooltips;
 import net.theobl.extension.item.alchemy.ModPotions;
 import net.theobl.extension.stats.ModStats;
 import net.theobl.extension.util.ModUtil;
@@ -39,6 +40,47 @@ public class ModLanguageProvider extends LanguageProvider {
 
         add("itemGroup.extension", "Extension");
         addTranslatableComponent(ModCreativeModeTabs.VARIANT_VANILLA_BLOCKS.get().getDisplayName(), capitalizeString(ModCreativeModeTabs.VARIANT_VANILLA_BLOCKS.getId().getPath().replace("_", " ")));
+
+        addTranslatableComponent(ModTooltips.CRAFTING_TABLE_TOOLTIP, "Make stuff");
+        addTranslatableComponent(ModTooltips.FURNACE_TOOLTIP, "Smelt & cook");
+        addTranslatableComponent(ModTooltips.BLAST_FURNACE_TOOLTIP, "Smelt metal faster");
+        addTranslatableComponent(ModTooltips.SMOKER_TOOLTIP, "Cook food faster");
+        addTranslatableComponent(ModTooltips.STORAGE_ITEM_TOOLTIP, "Storage");
+        addTranslatableComponent(ModTooltips.COMPOSTER_TOOLTIP, "Make bone meal");
+        addTranslatableComponent(ModTooltips.LOOM_TOOLTIP, "Decorate banners");
+        addTranslatableComponent(ModTooltips.CARTOGRAPHY_TABLE_TOOLTIP, "Modify Maps");
+        addTranslatableComponent(ModTooltips.SMITHING_TABLE_TOOLTIP, "Upgrade tools & armor");
+        addTranslatableComponent(ModTooltips.STONECUTTER_TOOLTIP, "Cut stone & copper");
+        addTranslatableComponent(ModTooltips.LECTERN_TOOLTIP, "Display books");
+        addTranslatableComponent(ModTooltips.GRINDSTONE_TOOLTIP, "Remove enchantments");
+        addTranslatableComponent(ModTooltips.BREWING_STAND_TOOLTIP, "Brew potions");
+        addTranslatableComponent(ModTooltips.CAULDRON_TOOLTIP, "Holds liquids & potions"); // Since we have created PotionCauldronBlock, this is technically true
+        addTranslatableComponent(ModTooltips.ANVIL_TOOLTIP, "Repair & enchant tools");
+        addTranslatableComponent(ModTooltips.ENCHANTING_TABLE_TOOLTIP, "Enchant tools & books");
+        addTranslatableComponent(ModTooltips.HOPPER_TOOLTIP, "Add items to chest");
+        addTranslatableComponent(ModTooltips.DROPPER_TOOLTIP, "Eject items");
+        addTranslatableComponent(ModTooltips.DISPENSER_TOOLTIP, "Automate actions");
+        addTranslatableComponent(ModTooltips.OBSERVER_TOOLTIP, "Detects change");
+        addTranslatableComponent(ModTooltips.CRAFTER_TOOLTIP, "Automate crafting");
+        addTranslatableComponent(ModTooltips.PISTON_TOOLTIP, "Push blocks");
+        addTranslatableComponent(ModTooltips.STICKY_PISTON_TOOLTIP, "Pull blocks");
+        addTranslatableComponent(ModTooltips.COMPARATOR_TOOLTIP, "Reads signal strength");
+        addTranslatableComponent(ModTooltips.HOE_TOOLTIP, "Farming");
+        addTranslatableComponent(ModTooltips.SHEARS_TOOLTIP, "Cut & trim");
+        addTranslatableComponent(ModTooltips.BRUSH_TOOLTIP, "Excavate & brush");
+        addTranslatableComponent(ModTooltips.FLINT_AND_STEEL_TOOLTIP, "Make fire");
+        addTranslatableComponent(ModTooltips.COMPASS_TOOLTIP, "Points to world spawn");
+        addTranslatableComponent(ModTooltips.LODESTONE_COMPASS_TOOLTIP, "Points to lodestone");
+        addTranslatableComponent(ModTooltips.RECOVERY_COMPASS_TOOLTIP, "See where you died");
+        addTranslatableComponent(ModTooltips.REDSTONE_SOURCE_TOOLTIP, "Redstone power source");
+        addTranslatableComponent(ModTooltips.REDSTONE_CONDUCTOR_TOOLTIP, "Redstone conductor");
+        addTranslatableComponent(ModTooltips.REDSTONE_POWERED_TOOLTIP, "Redstone powered");
+
+        addTranslatableComponent(ModTooltips.CHISELED_BOOKSHELF_TOOLTIP, "Store books");
+        addTranslatableComponent(ModTooltips.FLETCHING_TABLE_TOOLTIP, "Make arrow efficiently");
+        addTranslatableComponent(ModTooltips.CAMPFIRE_TOOLTIP, "Slowly cook food");
+        addTranslatableComponent(ModTooltips.TARGET_TOOLTIP, "Detects arrow hits");
+        addTranslatableComponent(ModTooltips.SCULK_SENSOR_TOOLTIP, "Detects sounds");
 
         addGameRule(ModGameRules.BEETROOT_SOUP_SOURCE_CONVERSION, "Beetroot soup converts to source", "When flowing beetroot soup is surrounded on two sides by beetroot soup sources, it converts into a source.");
         addGameRule(ModGameRules.MUSHROOM_STEW_SOURCE_CONVERSION, "Mushroom stew converts to source", "When flowing mushroom stew is surrounded on two sides by mushroom stew sources, it converts into a source.");
@@ -81,6 +123,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addConfig(Config.FARMLAND_TRAMPLE);
         addConfig(Config.UNBREAKABLE_AT_MAX_UNBREAKING_LEVEL);
         addConfig(Config.PISTONS_CAN_PUSH_BLOCK_ENTITIES);
+        addConfig(Config.SHOW_ADDITIONAL_ITEM_INFORMATION);
 
         translateTags(BannerPatternTags.class);
         translateTags(BiomeTags.class);

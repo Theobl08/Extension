@@ -68,6 +68,7 @@ import net.theobl.extension.inventory.FletchingMenu;
 import net.theobl.extension.inventory.ModMenuType;
 import net.theobl.extension.item.ModCreativeModeTabs;
 import net.theobl.extension.item.ModItems;
+import net.theobl.extension.item.ModTooltips;
 import net.theobl.extension.item.alchemy.ModPotions;
 import net.theobl.extension.item.crafting.ModRecipeSerializer;
 import net.theobl.extension.item.crafting.ModRecipeType;
@@ -137,6 +138,7 @@ public class Extension {
         modEventBus.addListener(this::extendPoiTypes);
         modEventBus.addListener(this::registerCauldronFluidContent);
         modEventBus.addListener(this::registerTooltipAppenders);
+        modEventBus.addListener(ModTooltips::registerTooltipAppenders);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.LOCAL, Config.SPEC);
