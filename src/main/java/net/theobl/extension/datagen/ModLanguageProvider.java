@@ -8,7 +8,9 @@ import net.minecraft.world.item.MinecartItem;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CarvedPumpkinBlock;
+import net.neoforged.fml.util.ObfuscationReflectionHelper;
 import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.theobl.extension.Config;
@@ -26,7 +28,9 @@ import net.theobl.extension.util.ModUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class ModLanguageProvider extends LanguageProvider {
     private static final List<String> POTIONS_TYPES = List.of("potion.", "splash_potion.", "lingering_potion.", "tipped_arrow.");
@@ -129,8 +133,10 @@ public class ModLanguageProvider extends LanguageProvider {
         translateTags(BiomeTags.class);
         translateTags(BlockTags.class);
         translateTags(DamageTypeTags.class);
+        translateTags(DialogTags.class);
         translateTags(EnchantmentTags.class);
         translateTags(EntityTypeTags.class);
+        translateTags(FeatureTags.class);
         translateTags(FlatLevelGeneratorPresetTags.class);
         translateTags(FluidTags.class);
         translateTags(GameEventTags.class);
@@ -138,8 +144,27 @@ public class ModLanguageProvider extends LanguageProvider {
         translateTags(ItemTags.class);
         translateTags(PaintingVariantTags.class);
         translateTags(PoiTypeTags.class);
+        translateTags(PotionTags.class);
         translateTags(StructureTags.class);
+        translateTags(TimelineTags.class);
+        translateTags(VillagerTradeTags.class);
         translateTags(WorldPresetTags.class);
+
+        // Translate tags in BlockItemTags.class;
+        for (Field field : BlockItemTags.class.getDeclaredFields()) {
+            BlockItemTagId tagId;
+            Map<?, ?> data = ObfuscationReflectionHelper.getPrivateValue(LanguageProvider.class, this, "data");
+            try {
+                tagId = (BlockItemTagId) field.get(null);
+            } catch (IllegalAccessException e) {
+                throw new IllegalStateException(BlockItemTags.class.getName() + " is missing tag name: " + field.getName());
+            }
+            //Arrays.stream(BlockTags.class.getFields()).noneMatch(f -> f.getName().equals(field.getName())) // https://stackoverflow.com/questions/7324991/see-if-field-exists-in-class/43953863#43953863
+            if(!data.containsKey(Tags.getTagTranslationKey(tagId.block())))
+                add(tagId.block(), capitalizeString(field.getName().replace("_", " ").toLowerCase()));
+            if(!data.containsKey(Tags.getTagTranslationKey(tagId.item())))
+                add(tagId.item(), capitalizeString(field.getName().replace("_", " ").toLowerCase()));
+        }
 
         add("item.minecraft.tipped_arrow.effect.awkward", "Awkward Tipped Arrow");
         add("item.minecraft.tipped_arrow.effect.mundane", "Mundane Tipped Arrow");
