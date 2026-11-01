@@ -34,10 +34,12 @@ import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.block.entity.ModBlockEntityType;
 import net.theobl.extension.client.ModModelLayers;
+import net.theobl.extension.client.fluid.ModClientFluidTypeExtensions;
 import net.theobl.extension.client.particle.ModDripParticle;
 import net.theobl.extension.client.renderer.blockentity.PotionCauldronRenderer;
 import net.theobl.extension.compat.jei.ExtensionJeiPlugin;
 import net.theobl.extension.entity.ModEntityType;
+import net.theobl.extension.fluid.ModFluidTypes;
 import net.theobl.extension.inventory.FletchingScreen;
 import net.theobl.extension.inventory.ModMenuType;
 import net.theobl.extension.particles.ModParticleTypes;
@@ -73,6 +75,8 @@ public class ExtensionClient {
     @SubscribeEvent
     public static void registerClientExtension(RegisterClientExtensionsEvent event) {
         // Fix https://bugs.mojang.com/browse/MC/issues/MC-132734
+        event.registerFluidType(ModClientFluidTypeExtensions.BEETROOT_SOUP_FLUID_TYPE_EXTENSION, ModFluidTypes.BEETROOT_SOUP_TYPE);
+        event.registerFluidType(ModClientFluidTypeExtensions.MUSHROOM_STEW_SOUP_FLUID_TYPE_EXTENSION, ModFluidTypes.MUSHROOM_STEW_TYPE);
     }
 
     @SubscribeEvent

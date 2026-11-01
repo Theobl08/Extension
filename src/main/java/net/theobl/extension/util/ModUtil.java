@@ -43,7 +43,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class ModUtil {
-    public static int BEETROOT_SOUP_COLOR = 0xB82A30;
+    public static int BEETROOT_SOUP_COLOR = 0xFFB82A30;
     public static int MUSHROOM_STEW_COLOR = 0xFFCC9978;
 
     public static void bootstrap() {
