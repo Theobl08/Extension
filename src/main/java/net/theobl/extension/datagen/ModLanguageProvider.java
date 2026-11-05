@@ -17,6 +17,7 @@ import net.theobl.extension.Config;
 import net.theobl.extension.Extension;
 import net.theobl.extension.biome.ModBiomes;
 import net.theobl.extension.block.ModBlocks;
+import net.theobl.extension.effect.ModMobEffects;
 import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.gamerules.ModGameRules;
 import net.theobl.extension.item.ModCreativeModeTabs;
@@ -114,6 +115,8 @@ public class ModLanguageProvider extends LanguageProvider {
                 addItem(item, capitalizeString(filterItemLang(item.get())));
         }
 
+        ModMobEffects.MOB_EFFECTS.getEntries().forEach(effect ->
+                addEffect(effect, capitalizeString(effect.getId().getPath().replace("_", " "))));
         ModPotions.POTIONS.getEntries().forEach(this::addPotion);
 
         addEntityType(ModEntityType.POTATO_RAFT, "Potato Raft");

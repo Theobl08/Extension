@@ -60,6 +60,7 @@ import net.theobl.extension.block.FourLayeredCauldronBlock;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.block.entity.ModBlockEntityType;
 import net.theobl.extension.commands.HeldItemNameCommand;
+import net.theobl.extension.effect.ModMobEffects;
 import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.fluid.ModFluidTypes;
 import net.theobl.extension.fluid.ModFluids;
@@ -98,6 +99,7 @@ public class Extension {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        ModMobEffects.register(modEventBus);
         ModPotions.register(modEventBus);
 
         NeoForgeMod.enableMilkFluid(); // We need this for our milk cauldron
