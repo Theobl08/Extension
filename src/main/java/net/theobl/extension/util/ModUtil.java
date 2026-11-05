@@ -4,8 +4,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.particle.SingleQuadParticle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.dispenser.BoatDispenseItemBehavior;
-import net.minecraft.core.dispenser.MinecartDispenseItemBehavior;
+import net.minecraft.core.dispenser.*;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -21,12 +20,15 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DispensibleContainerItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DispenserBlock;
@@ -37,10 +39,7 @@ import net.theobl.extension.entity.ModEntityType;
 import net.theobl.extension.item.ModItems;
 import net.theobl.extension.item.alchemy.ModPotions;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class ModUtil {
     public static int BEETROOT_SOUP_COLOR = 0xFFB82A30;
@@ -49,6 +48,24 @@ public class ModUtil {
     public static void bootstrap() {
         DispenserBlock.registerBehavior(ModItems.POTATO_RAFT, new BoatDispenseItemBehavior(ModEntityType.POTATO_RAFT.get()));
         DispenserBlock.registerBehavior(ModItems.POTATO_CHEST_RAFT, new BoatDispenseItemBehavior(ModEntityType.POTATO_CHEST_RAFT.get()));
+        DispenseItemBehavior filledBucketBehavior = new DefaultDispenseItemBehavior() {
+            private final DefaultDispenseItemBehavior defaultDispenseItemBehavior = new DefaultDispenseItemBehavior();
+
+            @Override
+            public ItemStack execute(BlockSource source, ItemStack dispensed) {
+                DispensibleContainerItem bucket = (DispensibleContainerItem)dispensed.getItem();
+                BlockPos target = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
+                Level level = source.level();
+                if (bucket.emptyContents(null, level, target, null, dispensed)) {
+                    bucket.checkExtraContent(null, level, dispensed, target);
+                    return this.consumeWithRemainder(source, dispensed, new ItemStack(Items.BUCKET));
+                } else {
+                    return this.defaultDispenseItemBehavior.dispense(source, dispensed);
+                }
+            }
+        };
+        DispenserBlock.registerBehavior(ModItems.BEETROOT_SOUP_BUCKET, filledBucketBehavior);
+        DispenserBlock.registerBehavior(ModItems.MUSHROOM_STEW_BUCKET, filledBucketBehavior);
         DispenserBlock.registerBehavior(ModItems.SPAWNER_MINECART, new MinecartDispenseItemBehavior(EntityTypes.SPAWNER_MINECART));
     }
 
