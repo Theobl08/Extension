@@ -44,7 +44,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("config.jade.plugin_extension.potion_cauldron", "Cauldron's Potion Info");
 
         add("itemGroup.extension", "Extension");
-        addTranslatableComponent(ModCreativeModeTabs.VARIANT_VANILLA_BLOCKS.get().getDisplayName(), capitalizeString(ModCreativeModeTabs.VARIANT_VANILLA_BLOCKS.getId().getPath().replace("_", " ")));
+        addTranslatableComponent(ModCreativeModeTabs.VARIANT_VANILLA_BLOCKS.get().getDisplayName(), capitalizeString(ModCreativeModeTabs.VARIANT_VANILLA_BLOCKS.getId().getPath()));
 
         addTranslatableComponent(ModTooltips.CRAFTING_TABLE_TOOLTIP, "Make stuff");
         addTranslatableComponent(ModTooltips.FURNACE_TOOLTIP, "Smelt & cook");
@@ -164,9 +164,9 @@ public class ModLanguageProvider extends LanguageProvider {
             }
             //Arrays.stream(BlockTags.class.getFields()).noneMatch(f -> f.getName().equals(field.getName())) // https://stackoverflow.com/questions/7324991/see-if-field-exists-in-class/43953863#43953863
             if(!data.containsKey(Tags.getTagTranslationKey(tagId.block())))
-                add(tagId.block(), capitalizeString(field.getName().replace("_", " ").toLowerCase()));
+                add(tagId.block(), capitalizeString(field.getName()));
             if(!data.containsKey(Tags.getTagTranslationKey(tagId.item())))
-                add(tagId.item(), capitalizeString(field.getName().replace("_", " ").toLowerCase()));
+                add(tagId.item(), capitalizeString(field.getName()));
         }
 
         add("item.minecraft.tipped_arrow.effect.awkward", "Awkward Tipped Arrow");
@@ -178,31 +178,28 @@ public class ModLanguageProvider extends LanguageProvider {
     }
 
     private static @NotNull String capitalizeString(String string) {
-        char[] chars = string.toLowerCase().toCharArray();
-        boolean found = false;
-        for (int i = 0; i < chars.length; i++){
-            if(!found && Character.isLetter(chars[i])){
-                chars[i] = Character.toUpperCase(chars[i]);
-                found = true;
-            } else if (Character.isWhitespace(chars[i]) || chars[i] == '.' || chars[i] == '_') {
-                found = false;
-            }
+        String[] words = string.split("_");
+
+        StringBuilder sb = new StringBuilder();
+        for (String word : words) {
+            if(!sb.isEmpty()) sb.append(' ');
+            sb.append(word.substring(0, 1).toUpperCase()).append(word.substring(1).toLowerCase());
         }
-        return String.valueOf(chars);
+        return sb.toString();
     }
 
     private static @NotNull String filterBlockLang(@NotNull Block key) {
-        return key.getDescriptionId().replace("block.extension.","").replace("_"," ");
+        return key.getDescriptionId().replace("block.extension.","");
     }
 
     private static @NotNull String filterItemLang(@NotNull Item key) {
-        return key.getDescriptionId().replace("item.extension.","").replace("_"," ");
+        return key.getDescriptionId().replace("item.extension.","");
     }
 
     private void addConfig(ModConfigSpec.ConfigValue<?> configValue) {
         String path = String.join(".", configValue.getPath());
         String key = "extension.configuration." + path;
-        add(key, capitalizeString(path.replaceAll("(?<!_)(?=[A-Z])", " "))); //https://stackoverflow.com/questions/44644827/how-to-insert-space-before-capital-letter-for-a-string-using-java/44644996#44644996
+        add(key, capitalizeString(path.replaceAll("(?<!_)(?=[A-Z])", "_"))); //https://stackoverflow.com/questions/44644827/how-to-insert-space-before-capital-letter-for-a-string-using-java/44644996#44644996
     }
 
     private void addPotion(DeferredHolder<Potion, ?> potion) {
@@ -213,8 +210,7 @@ public class ModLanguageProvider extends LanguageProvider {
             for(String type : POTIONS_TYPES) {
                 add(prefix + type + effect, capitalizeString(
                         type.replace("tipped_", "")
-                            .replace(".","")
-                            .replace("_", " ")) + " of " + capitalizeString(name));
+                            .replace(".","_")) + " of " + capitalizeString(name));
             }
         }
     }
@@ -228,7 +224,7 @@ public class ModLanguageProvider extends LanguageProvider {
             } catch (IllegalAccessException e) {
                 throw new IllegalStateException(c.getName() + " is missing tag name: " + field.getName());
             }
-            add(tag, capitalizeString(field.getName().replace("_", " ").toLowerCase()));
+            add(tag, capitalizeString(field.getName()));
         }
     }
 }
