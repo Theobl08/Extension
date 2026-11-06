@@ -27,13 +27,16 @@ import net.theobl.extension.item.alchemy.ModPotions;
 import net.theobl.extension.stats.ModStats;
 import net.theobl.extension.util.ModUtil;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NullMarked;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 public class ModLanguageProvider extends LanguageProvider {
+    List<String> translatedKeys = new ArrayList<>();
     private static final List<String> POTIONS_TYPES = List.of("potion.", "splash_potion.", "lingering_potion.", "tipped_arrow.");
     public ModLanguageProvider(PackOutput output) {
         super(output, Extension.MODID, "en_us");
@@ -99,11 +102,7 @@ public class ModLanguageProvider extends LanguageProvider {
             else if(block.get().defaultBlockState().is(ModBlocks.NETHERITE_STAIRS))
                 addBlock(block, "Swaggiest stairs ever");
             else
-                try {
-                    addBlock(block, capitalizeString(filterBlockLang(block.get())));
-                } catch(Exception _) {
-                    Extension.LOGGER.warn("{} is already translated, skipping", block.getId());
-                }
+                addBlock(block, capitalizeString(filterBlockLang(block.get())));
         }
 
         for(DeferredHolder<Item, ? extends Item> item : ModItems.ITEMS.getEntries()) {
@@ -116,7 +115,7 @@ public class ModLanguageProvider extends LanguageProvider {
         }
 
         ModMobEffects.MOB_EFFECTS.getEntries().forEach(effect ->
-                addEffect(effect, capitalizeString(effect.getId().getPath().replace("_", " "))));
+                addEffect(effect, capitalizeString(effect.getId().getPath())));
         ModPotions.POTIONS.getEntries().forEach(this::addPotion);
 
         addEntityType(ModEntityType.POTATO_RAFT, "Potato Raft");
@@ -225,6 +224,15 @@ public class ModLanguageProvider extends LanguageProvider {
                 throw new IllegalStateException(c.getName() + " is missing tag name: " + field.getName());
             }
             add(tag, capitalizeString(field.getName()));
+        }
+    }
+
+    @Override
+    @NullMarked
+    public void add(String key, String value) {
+        if(!translatedKeys.contains(key)) {
+            translatedKeys.add(key);
+            super.add(key, value);
         }
     }
 }
