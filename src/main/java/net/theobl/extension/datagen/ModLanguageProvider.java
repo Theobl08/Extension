@@ -1,18 +1,22 @@
 package net.theobl.extension.datagen;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.*;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.MinecartItem;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CarvedPumpkinBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.fml.util.ObfuscationReflectionHelper;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import net.theobl.extension.Config;
 import net.theobl.extension.Extension;
 import net.theobl.extension.biome.ModBiomes;
@@ -34,6 +38,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 public class ModLanguageProvider extends LanguageProvider {
     List<String> translatedKeys = new ArrayList<>();
@@ -96,26 +101,17 @@ public class ModLanguageProvider extends LanguageProvider {
         add("potion.longPotion", "Extended");
         add("potion.strongPotion", "Enhanced");
 
-        for(DeferredHolder<Block, ? extends Block> block : ModBlocks.BLOCKS.getEntries()) {
-            if(block.get() instanceof CarvedPumpkinBlock)
-                addBlock(block, capitalizeString(filterBlockLang(block.get())).replace(" O ", " o'"));
-            else if(block.get().defaultBlockState().is(ModBlocks.NETHERITE_STAIRS))
-                addBlock(block, "Swaggiest stairs ever");
-            else
-                addBlock(block, capitalizeString(filterBlockLang(block.get())));
-        }
+        ModBlocks.BLOCKS.getEntries().stream()
+                .filter(b -> b.get() instanceof CarvedPumpkinBlock)
+                .forEach(block -> addBlock(block, capitalizeString(block.getId().getPath()).replace(" O ", " o'")));
+        addBlock(ModBlocks.NETHERITE_STAIRS, "Swaggiest stairs ever");
+        lang(ModBlocks.BLOCKS, BlockBehaviour::getDescriptionId);
 
-        for(DeferredHolder<Item, ? extends Item> item : ModItems.ITEMS.getEntries()) {
-            if(item.get() instanceof MinecartItem)
-                addItem(item,"Minecart with Monster Spawner");
-            else if(item == ModItems.POTATO_CHEST_RAFT)
-                addItem(item, "Potato Raft with Chest");
-            else if(item == ModItems.BLUE_NETHER_WART || !(item.get() instanceof BlockItem))
-                addItem(item, capitalizeString(filterItemLang(item.get())));
-        }
+        addItem(ModItems.SPAWNER_MINECART, "Minecart with Monster Spawner");
+        addItem(ModItems.POTATO_CHEST_RAFT, "Potato Raft with Chest");
+        lang(ModItems.ITEMS, Item::getDescriptionId);
 
-        ModMobEffects.MOB_EFFECTS.getEntries().forEach(effect ->
-                addEffect(effect, capitalizeString(effect.getId().getPath())));
+        lang(ModMobEffects.MOB_EFFECTS, MobEffect::getDescriptionId);
         ModPotions.POTIONS.getEntries().forEach(this::addPotion);
 
         addEntityType(ModEntityType.POTATO_RAFT, "Potato Raft");
@@ -154,18 +150,10 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // Translate tags in BlockItemTags.class;
         for (Field field : BlockItemTags.class.getDeclaredFields()) {
-            BlockItemTagId tagId;
-            Map<?, ?> data = ObfuscationReflectionHelper.getPrivateValue(LanguageProvider.class, this, "data");
-            try {
-                tagId = (BlockItemTagId) field.get(null);
-            } catch (IllegalAccessException e) {
-                throw new IllegalStateException(BlockItemTags.class.getName() + " is missing tag name: " + field.getName());
-            }
+            BlockItemTagId tagId = getTag(field);
             //Arrays.stream(BlockTags.class.getFields()).noneMatch(f -> f.getName().equals(field.getName())) // https://stackoverflow.com/questions/7324991/see-if-field-exists-in-class/43953863#43953863
-            if(!data.containsKey(Tags.getTagTranslationKey(tagId.block())))
-                add(tagId.block(), capitalizeString(field.getName()));
-            if(!data.containsKey(Tags.getTagTranslationKey(tagId.item())))
-                add(tagId.item(), capitalizeString(field.getName()));
+            add(tagId.block(), capitalizeString(field.getName()));
+            add(tagId.item(), capitalizeString(field.getName()));
         }
 
         add("item.minecraft.tipped_arrow.effect.awkward", "Awkward Tipped Arrow");
@@ -187,12 +175,11 @@ public class ModLanguageProvider extends LanguageProvider {
         return sb.toString();
     }
 
-    private static @NotNull String filterBlockLang(@NotNull Block key) {
-        return key.getDescriptionId().replace("block.extension.","");
-    }
-
-    private static @NotNull String filterItemLang(@NotNull Item key) {
-        return key.getDescriptionId().replace("item.extension.","");
+    private <T> void lang(DeferredRegister<T> registry, Function<T, String> descriptionId) {
+        for(DeferredHolder<T, ? extends T> entry : registry.getEntries()) {
+            String key = descriptionId.apply(entry.get());
+            add(key, capitalizeString(entry.getId().getPath()));
+        }
     }
 
     private void addConfig(ModConfigSpec.ConfigValue<?> configValue) {
@@ -214,16 +201,20 @@ public class ModLanguageProvider extends LanguageProvider {
         }
     }
 
-    @SuppressWarnings("unchecked")
     private void translateTags(Class<?> c) {
         for (Field field : c.getDeclaredFields()) {
-            TagKey<Block> tag = null;
-            try {
-                tag = (TagKey<Block>) field.get(null);
-            } catch (IllegalAccessException e) {
-                throw new IllegalStateException(c.getName() + " is missing tag name: " + field.getName());
-            }
+            TagKey<?> tag = getTag(field);
             add(tag, capitalizeString(field.getName()));
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T> T getTag(Field field) {
+        try {
+            field.setAccessible(true);
+            return (T) field.get(null);
+        } catch (IllegalAccessException e) {
+            throw new IllegalStateException(field.getDeclaringClass().getName() + " is missing tag name: " + field.getName());
         }
     }
 
