@@ -1,6 +1,7 @@
 package net.theobl.extension.datagen;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagAppender;
 import net.minecraft.resources.ResourceKey;
@@ -32,12 +33,7 @@ public class ModItemTagsProvider extends BlockTagCopyingItemTagProvider {
 
     @Override
     protected IntrinsicHolderTagAppender<Item> tag(TagKey<Item> tag) {
-        return new IntrinsicHolderTagAppender<>(super.tag(tag)) {
-            @Override
-            public ResourceKey<Item> convertElement(Item item) {
-                return item.builtInRegistryHolder().key();
-            }
-        };
+        return new IntrinsicHolderTagAppender<>(super.tag(tag), BuiltInRegistries.ITEM);
     }
 
     @Override

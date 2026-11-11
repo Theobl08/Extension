@@ -1,6 +1,7 @@
 package net.theobl.extension.datagen;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.data.tags.TagAppender;
@@ -21,12 +22,7 @@ public class ModFluidTagsProvider extends FluidTagsProvider {
 
     @Override
     protected IntrinsicHolderTagAppender<Fluid> tag(TagKey<Fluid> tag) {
-        return new IntrinsicHolderTagAppender<>(super.tag(tag)) {
-            @Override
-            public ResourceKey<Fluid> convertElement(Fluid fluid) {
-                return fluid.defaultFluidState().typeHolder().key();
-            }
-        };
+        return new IntrinsicHolderTagAppender<>(super.tag(tag), BuiltInRegistries.FLUID);
     }
 
     @Override

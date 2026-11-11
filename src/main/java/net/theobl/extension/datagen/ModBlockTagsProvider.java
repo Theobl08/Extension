@@ -28,12 +28,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected IntrinsicHolderTagAppender<Block> tag(TagKey<Block> tag) {
-        return new IntrinsicHolderTagAppender<>(super.tag(tag)) {
-            @Override
-            public ResourceKey<Block> convertElement(Block block) {
-                return BuiltInRegistries.BLOCK.getResourceKey(block).orElseThrow();
-            }
-        };
+        return new IntrinsicHolderTagAppender<>(super.tag(tag), BuiltInRegistries.BLOCK);
     }
 
     private IntrinsicHolderTagAppender<Block> tag(BlockItemTagId blockItemTagId) {

@@ -1,6 +1,7 @@
 package net.theobl.extension.datagen;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.tags.TagAppender;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagEntry;
@@ -17,14 +18,18 @@ import java.util.List;
 import java.util.Map;
 
 @NullMarked
-public abstract class IntrinsicHolderTagAppender<Element> implements TagAppender<Element> {
+public class IntrinsicHolderTagAppender<Element> implements TagAppender<Element> {
     private final TagAppender<Element> original;
+    private final Registry<Element> registry;
 
-    public IntrinsicHolderTagAppender(TagAppender<Element> original) {
+    public IntrinsicHolderTagAppender(TagAppender<Element> original, Registry<Element> registry) {
         this.original = original;
+        this.registry = registry;
     }
 
-    public abstract ResourceKey<Element> convertElement(Element element);
+    public final ResourceKey<Element> convertElement(Element element) {
+        return registry.getResourceKey(element).orElseThrow(() -> new IllegalStateException("Unregistered element: " + element));
+    }
 
     @Override
     public IntrinsicHolderTagAppender<Element> add(ResourceKey<Element> element) {
