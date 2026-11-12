@@ -1,7 +1,9 @@
 package net.theobl.extension.item;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.Util;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -68,70 +70,15 @@ public class ModCreativeModeTabs {
                                         WoodType.WARPED
                                 );
 
-                        Map<WoodType, Block> craftingTables = new HashMap<>(
-                                //https://stackoverflow.com/questions/31131984/java-8-change-the-values-of-an-entryset-stream
-                                ModBlocks.CRAFTING_TABLES
-                                        .entrySet()
-                                        .stream()
-                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
-                        );
-                        Map<WoodType, Block> cartogarphyTables = new HashMap<>(
-                                ModBlocks.CARTOGRAPHY_TABLES
-                                        .entrySet()
-                                        .stream()
-                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
-                        );
-                        Map<WoodType, Block> fletchingTables = new HashMap<>(
-                                ModBlocks.FLETCHING_TABLES
-                                        .entrySet()
-                                        .stream()
-                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
-                        );
-                        Map<WoodType, Block> beehives = new HashMap<>(
-                                ModBlocks.BEEHIVES
-                                        .entrySet()
-                                        .stream()
-                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
-                        );
-                        Map<WoodType, Block> bookshelves = new HashMap<>(
-                                ModBlocks.BOOKSHELVES
-                                        .entrySet()
-                                        .stream()
-                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
-                        );
-                        Map<WoodType, Block> chisledBookshelves = new HashMap<>(
-                                ModBlocks.CHISELED_BOOKSHELVES
-                                        .entrySet()
-                                        .stream()
-                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
-                        );
-                        Map<WoodType, Block> lecterns = new HashMap<>(
-                                ModBlocks.LECTERNS
-                                        .entrySet()
-                                        .stream()
-                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
-                        );
-                        Map<WoodType, Block> barrels = new HashMap<>(
-                                ModBlocks.BARRELS
-                                        .entrySet()
-                                        .stream()
-                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
-                        );
-                        Map<WoodType, Block> crafters = new HashMap<>(
-                                ModBlocks.CRAFTERS
-                                        .entrySet()
-                                        .stream()
-                                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().value()))
-                        );
-                        craftingTables.put(WoodType.OAK, Blocks.CRAFTING_TABLE);
-                        cartogarphyTables.put(WoodType.DARK_OAK, Blocks.CARTOGRAPHY_TABLE);
-                        fletchingTables.put(WoodType.BIRCH, Blocks.FLETCHING_TABLE);
-                        beehives.put(WoodType.OAK, Blocks.BEEHIVE);
-                        bookshelves.put(WoodType.OAK, Blocks.BOOKSHELF);
-                        chisledBookshelves.put(WoodType.OAK, Blocks.CHISELED_BOOKSHELF);
-                        lecterns.put(WoodType.OAK, Blocks.LECTERN);
-                        barrels.put(WoodType.SPRUCE, Blocks.BARREL);
-                        crafters.put(WoodType.OAK, Blocks.CRAFTER);
+                        Map<WoodType, Block> craftingTables = Util.copyAndPut(Util.mapValues(ModBlocks.CRAFTING_TABLES, Holder::value), WoodType.OAK, Blocks.CRAFTING_TABLE);
+                        Map<WoodType, Block> cartogarphyTables = Util.copyAndPut(Util.mapValues(ModBlocks.CARTOGRAPHY_TABLES, Holder::value), WoodType.DARK_OAK, Blocks.CARTOGRAPHY_TABLE);
+                        Map<WoodType, Block> fletchingTables = Util.copyAndPut(Util.mapValues(ModBlocks.FLETCHING_TABLES, Holder::value), WoodType.BIRCH, Blocks.FLETCHING_TABLE);
+                        Map<WoodType, Block> beehives = Util.copyAndPut(Util.mapValues(ModBlocks.BEEHIVES, Holder::value), WoodType.OAK, Blocks.BEEHIVE);
+                        Map<WoodType, Block> bookshelves = Util.copyAndPut(Util.mapValues(ModBlocks.BOOKSHELVES, Holder::value), WoodType.OAK, Blocks.BOOKSHELF);
+                        Map<WoodType, Block> chisledBookshelves = Util.copyAndPut(Util.mapValues(ModBlocks.CHISELED_BOOKSHELVES, Holder::value), WoodType.OAK, Blocks.CHISELED_BOOKSHELF);
+                        Map<WoodType, Block> lecterns = Util.copyAndPut(Util.mapValues(ModBlocks.LECTERNS, Holder::value), WoodType.OAK, Blocks.LECTERN);
+                        Map<WoodType, Block> barrels = Util.copyAndPut(Util.mapValues(ModBlocks.BARRELS, Holder::value), WoodType.SPRUCE, Blocks.BARREL);
+                        Map<WoodType, Block> crafters = Util.copyAndPut(Util.mapValues(ModBlocks.CRAFTERS, Holder::value), WoodType.OAK, Blocks.CRAFTER);
 
                         gameplayWoodTypeOrder.forEach(woodType -> {
                             output.accept(craftingTables.get(woodType));
