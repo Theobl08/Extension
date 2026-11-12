@@ -56,6 +56,7 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.RegisterCauldronFluidContentEvent;
+import net.theobl.extension.block.FletchingTableBlock;
 import net.theobl.extension.block.FourLayeredCauldronBlock;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.block.entity.ModBlockEntityType;
@@ -203,7 +204,7 @@ public class Extension {
             if(event.getUsePhase() == UseItemOnBlockEvent.UsePhase.BLOCK) {
                 if (!level.isClientSide()) {
                     MenuProvider provider = new SimpleMenuProvider(
-                            (i, inventory, player1) -> new FletchingMenu(i, inventory, ContainerLevelAccess.create(level, pos)), Component.translatable("container.fletching"));
+                            (i, inventory, player1) -> new FletchingMenu(i, inventory, ContainerLevelAccess.create(level, pos)), FletchingTableBlock.CONTAINER_TITLE);
                     player.openMenu(provider);
                     player.awardStat(ModStats.INTERACT_WITH_FLETCHING_TABLE);
                 }

@@ -20,6 +20,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.theobl.extension.Config;
 import net.theobl.extension.Extension;
 import net.theobl.extension.biome.ModBiomes;
+import net.theobl.extension.block.FletchingTableBlock;
 import net.theobl.extension.block.ModBlocks;
 import net.theobl.extension.effect.ModMobEffects;
 import net.theobl.extension.entity.ModEntityType;
@@ -160,7 +161,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("item.minecraft.tipped_arrow.effect.mundane", "Mundane Tipped Arrow");
         add("item.minecraft.tipped_arrow.effect.thick", "Thick Tipped Arrow");
 
-        add("container.fletching", "Fletching");
+        addTranslatableComponent(FletchingTableBlock.CONTAINER_TITLE, "Fletching");
         add(ModStats.INTERACT_WITH_FLETCHING_TABLE.toLanguageKey("stat"), "Interactions with Fletching Table");
     }
 

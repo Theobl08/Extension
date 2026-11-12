@@ -12,6 +12,7 @@ import mezz.jei.api.recipe.types.IRecipeHolderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.Blocks;
+import net.theobl.extension.block.FletchingTableBlock;
 import net.theobl.extension.item.crafting.FletchingRecipe;
 import net.theobl.extension.item.crafting.ModRecipeType;
 
@@ -19,7 +20,7 @@ public class FletchingRecipeCategory extends AbstractRecipeCategory<RecipeHolder
     public static final IRecipeHolderType<FletchingRecipe> FLETCHING = IRecipeHolderType.create(ModRecipeType.FLETCHING.getId());
 
     public FletchingRecipeCategory(IGuiHelper guiHelper) {
-        super(FLETCHING, Component.translatable("container.fletching"), guiHelper.createDrawableItemLike(Blocks.FLETCHING_TABLE), 90, 54);
+        super(FLETCHING, FletchingTableBlock.CONTAINER_TITLE, guiHelper.createDrawableItemLike(Blocks.FLETCHING_TABLE), 90, 54);
     }
 
     @Override

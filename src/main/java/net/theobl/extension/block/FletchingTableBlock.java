@@ -15,7 +15,7 @@ import net.theobl.extension.inventory.FletchingMenu;
 import net.theobl.extension.stats.ModStats;
 
 public class FletchingTableBlock extends Block {
-    private static final Component CONTAINER_TITLE = Component.translatable("container.fletching");
+    public static final Component CONTAINER_TITLE = Component.translatable("container.fletching");
 
     public FletchingTableBlock(Properties properties) {
         super(properties);
