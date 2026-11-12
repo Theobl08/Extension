@@ -52,8 +52,7 @@ public class ModLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         add("config.jade.plugin_extension.potion_cauldron", "Cauldron's Potion Info");
 
-        add("itemGroup.extension", "Extension");
-        addTranslatableComponent(ModCreativeModeTabs.VARIANT_VANILLA_BLOCKS.get().getDisplayName(), capitalizeString(ModCreativeModeTabs.VARIANT_VANILLA_BLOCKS.getId().getPath()));
+        lang(ModCreativeModeTabs.CREATIVE_MODE_TABS, c -> c.getDisplayName().getString());
 
         addTranslatableComponent(ModTooltips.CRAFTING_TABLE_TOOLTIP, "Make stuff");
         addTranslatableComponent(ModTooltips.FURNACE_TOOLTIP, "Smelt & cook");

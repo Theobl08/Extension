@@ -27,8 +27,9 @@ public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Extension.MODID);
 
     // Creates a creative tab with the id "extension:example_tab" for the example item, that is placed after the combat tab
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXTENSION_TAB = CREATIVE_MODE_TABS.register("extension_tab",
-            () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.extension"))
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXTENSION_TAB = CREATIVE_MODE_TABS.register(
+            "extension",
+            () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.extension.main"))
                     .withTabsBefore(CreativeModeTabs.COMBAT)
                     .icon(() -> ModItems.SPAWNER_MINECART.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {

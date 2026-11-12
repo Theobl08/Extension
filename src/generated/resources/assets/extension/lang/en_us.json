@@ -294,7 +294,7 @@
   "item.minecraft.tipped_arrow.effect.mundane": "Mundane Tipped Arrow",
   "item.minecraft.tipped_arrow.effect.small": "Arrow of Small",
   "item.minecraft.tipped_arrow.effect.thick": "Thick Tipped Arrow",
-  "itemGroup.extension": "Extension",
+  "itemGroup.extension.main": "Extension",
   "itemGroup.extension.variant_vanilla_blocks": "Variant Vanilla Blocks",
   "potion.longPotion": "Extended",
   "potion.strongPotion": "Enhanced",
